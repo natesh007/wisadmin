@@ -33,6 +33,11 @@ $routes->setAutoRoute(true);
 //Common
 $routes->add('/', 'Home::index');
 $routes->add('/', 'Home::index',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/engineering', 'Engineering::engineering',['namespace' => 'Modules\WIS\Controllers']);
+
+
+
+
 $routes->add('/admin', 'Admin::index',['namespace' => 'Modules\Admin\Controllers']);
 
 /**
