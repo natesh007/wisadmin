@@ -54,22 +54,22 @@
                     <div class="accordion-body">
                         <ul class="MenuList">
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/engineering" class="AppMenuLnk Engnrng">
+                                <a href="<?php echo base_url(); ?>/engineering" class="AppMenuLnk Engnrng">
                                     <span class="LnkTxt">BMS</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/machinery" class="AppMenuLnk Mchnry">
+                                <a href="<?php echo base_url(); ?>/machinery" class="AppMenuLnk Mchnry">
                                     <span class="LnkTxt">Machinery</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/resources" class="AppMenuLnk Rsrcs">
+                                <a href="<?php echo base_url(); ?>/resources" class="AppMenuLnk Rsrcs">
                                     <span class="LnkTxt">Resources</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/sanitation" class="AppMenuLnk Snttn">
+                                <a href="<?php echo base_url(); ?>/sanitation" class="AppMenuLnk Snttn">
                                     <span class="LnkTxt">Sanitation</span>
                                 </a>
                             </li>
@@ -89,53 +89,53 @@
                     <div class="accordion-body">
                         <ul class="MenuList">
                         <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/attendence" class="AppMenuLnk Attndnc">
+                                <a href="<?php echo base_url(); ?>/attendence" class="AppMenuLnk Attndnc">
                                     <span class="LnkTxt">Attendance</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/checklist" class="AppMenuLnk Chcklsts">
+                                <a href="<?php echo base_url(); ?>/checklist" class="AppMenuLnk Chcklsts">
                                     <span class="LnkTxt">Checklists</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/pPM" class="AppMenuLnk PPM">
+                                <a href="<?php echo base_url(); ?>/ppm" class="AppMenuLnk PPM">
                                     <span class="LnkTxt">PPM</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/aMC" class="AppMenuLnk PPM">
+                                <a href="<?php echo base_url(); ?>/amc" class="AppMenuLnk PPM">
                                     <span class="LnkTxt">AMC</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/complaintFeedback" class="AppMenuLnk CmplntsFdbck">
+                                <a href="<?php echo base_url(); ?>/complaintFeedback" class="AppMenuLnk CmplntsFdbck">
                                     <span class="LnkTxt">Complaints & Feedback</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/bedsOccupancy" class="AppMenuLnk BdsOccpncy">
+                                <a href="<?php echo base_url(); ?>/bedsOccupancy" class="AppMenuLnk BdsOccpncy">
                                     <span class="LnkTxt">Beds & Occupancy</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/manpowerUtilization" class="AppMenuLnk MnpwrUtlztn">
+                                <a href="<?php echo base_url(); ?>/manpowerUtilization" class="AppMenuLnk MnpwrUtlztn">
                                     <span class="LnkTxt">Manpower Utilization</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/inventoryManagement" class="AppMenuLnk InvntryMngmnt">
+                                <a href="<?php echo base_url(); ?>/inventoryManagement" class="AppMenuLnk InvntryMngmnt">
                                     <span class="LnkTxt">Inventory Management</span>
                                 </a>
                             </li>
                             
                            <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/repairMaintenance" class="AppMenuLnk ReprMntnnc">
+                                <a href="<?php echo base_url(); ?>/repairMaintenance" class="AppMenuLnk ReprMntnnc">
                                     <span class="LnkTxt">Repairs & Maintenance</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/billingSoftware" class="AppMenuLnk BllngSftwr">
+                                <a href="<?php echo base_url(); ?>/billingSoftware" class="AppMenuLnk BllngSftwr">
                                     <span class="LnkTxt">Billing Software</span>
                                 </a>
                             </li>
@@ -155,32 +155,32 @@
                     <div class="accordion-body">
                         <ul class="MenuList">
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/audits" class="AppMenuLnk Adts">
+                                <a href="<?php echo base_url(); ?>/audits" class="AppMenuLnk Adts">
                                     <span class="LnkTxt">Audits</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/benchmarking" class="AppMenuLnk Bnchmrkng">
+                                <a href="<?php echo base_url(); ?>/benchmarking" class="AppMenuLnk Bnchmrkng">
                                     <span class="LnkTxt">Benchmarking</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/recommendations" class="AppMenuLnk Rcmmndtns">
+                                <a href="<?php echo base_url(); ?>/recommendations" class="AppMenuLnk Rcmmndtns">
                                     <span class="LnkTxt">Recommendations</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/comparisions" class="AppMenuLnk Cmprsns">
+                                <a href="<?php echo base_url(); ?>/comparisions" class="AppMenuLnk Cmprsns">
                                     <span class="LnkTxt">Comparisions</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/carbonFootprint" class="AppMenuLnk CrbnFtprnt">
+                                <a href="<?php echo base_url(); ?>/carbonFootprint" class="AppMenuLnk CrbnFtprnt">
                                     <span class="LnkTxt">Carbon Footprint</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/plans" class="AppMenuLnk Plns">
+                                <a href="<?php echo base_url(); ?>/plans" class="AppMenuLnk Plns">
                                     <span class="LnkTxt">Plans</span>
                                 </a>
                             </li>
@@ -212,13 +212,13 @@
                         </div>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/notifications" class="HdrIcoLnk Ntfctns Updts"></a>
+                        <a href="<?php echo base_url(); ?>/notifications" class="HdrIcoLnk Ntfctns Updts"></a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/settings" class="HdrIcoLnk Sttngs"></a>
+                        <a href="<?php echo base_url(); ?>/settings" class="HdrIcoLnk Sttngs"></a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/login" class="HdrIcoLnk Lgout"></a>
+                        <a href="<?php echo base_url(); ?>/login" class="HdrIcoLnk Lgout"></a>
                     </li>
                 </ul>
             </div>
@@ -252,19 +252,19 @@
                                 <div class="accordion-body">
                                     <ul class="HsptlLst">
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Koyambedu<span
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Koyambedu<span
                                                     class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Velechary<span
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Velechary<span
                                                     class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic
                                                 Thoraipakkam<span class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic
                                                 Tiruvottiyur<span class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                     </ul>
@@ -287,19 +287,19 @@
                                 <div class="accordion-body">
                                     <ul class="HsptlLst">
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Pitam Pura<span
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Pitam Pura<span
                                                     class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Chandini
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Chandini
                                                 Chowk<span class="Ntfctns"><span class="Val">3</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Bhajanpura<span
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Bhajanpura<span
                                                     class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Karol Bagh<span
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Karol Bagh<span
                                                     class="Ntfctns"><span class="Val">2</span></span></a>
                                         </li>
                                     </ul>
@@ -322,15 +322,15 @@
                                 <div class="accordion-body">
                                     <ul class="HsptlLst">
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Kukatpally<span
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Kukatpally<span
                                                     class="Ntfctns"><span class="Val">1</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Kompally<span
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Kompally<span
                                                     class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Banjara
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Banjara
                                                 Hills<span class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                     </ul>
@@ -353,23 +353,23 @@
                                 <div class="accordion-body">
                                     <ul class="HsptlLst">
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Khardaha<span
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Khardaha<span
                                                     class="Ntfctns"><span class="Val">2</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic
                                                 Bidhannagar<span class="Ntfctns"><span class="Val">1</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Tangra<span
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Tangra<span
                                                     class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Chakpra<span
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Chakpra<span
                                                     class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic
                                                 Santragachi<span class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                     </ul>
@@ -392,19 +392,19 @@
                                 <div class="accordion-body">
                                     <ul class="HsptlLst">
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Nav Pada<span
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Nav Pada<span
                                                     class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Sundar
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Sundar
                                                 Nagar<span class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Dadar<span
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Dadar<span
                                                     class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="HsptlLnk">FirstMedic Chembur<span
+                                            <a href="<?php echo base_url(); ?>/hospitalSelection" class="HsptlLnk">FirstMedic Chembur<span
                                                     class="Ntfctns"><span class="Val">0</span></span></a>
                                         </li>
                                     </ul>
@@ -756,7 +756,7 @@
                     //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
                     map.setZoom(11);
                     map.panTo(this.getPosition());
-                    //infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>HospitalAdmin/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><div class='DtlsHldr Estblshd'><span class='DtlTxt'>2005</span><span class='DtlTtl'>Established</span></div><div class='DtlsHldr Twrs'><span class='DtlTxt'>03</span><span class='DtlTtl'>Blocks/ Towers</span></div></div><div class='PrptySbDtlsRw'><div class='DtlsHldr Bds'><span class='DtlTxt'>300</span><span class='DtlTtl'>Beds</span></div><div class='DtlsHldr Ntfctns'><span class='DtlTxt'>5</span><span class='DtlTtl'>New Notifications</span></div></div></div></li></ul>");
+                    //infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><div class='DtlsHldr Estblshd'><span class='DtlTxt'>2005</span><span class='DtlTtl'>Established</span></div><div class='DtlsHldr Twrs'><span class='DtlTxt'>03</span><span class='DtlTtl'>Blocks/ Towers</span></div></div><div class='PrptySbDtlsRw'><div class='DtlsHldr Bds'><span class='DtlTxt'>300</span><span class='DtlTtl'>Beds</span></div><div class='DtlsHldr Ntfctns'><span class='DtlTxt'>5</span><span class='DtlTtl'>New Notifications</span></div></div></div></li></ul>");
                     //infoWindow.open(map, marker);
                 });
             })(marker, data);
@@ -785,8 +785,8 @@
                             //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
                             map.setZoom(12);
                             map.panTo(this.getPosition());
-                            infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>HospitalAdmin/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><img src='<?= base_url() ; ?>/public/wis_assets/Images/dash_map.png' style='width:100%;  image-rendering: auto; image-rendering:crisp-edges;  image-rendering: pixelated;  image-rendering: -webkit-optimize-contrast;'></div></div></li></ul>");
-                            // infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>HospitalAdmin/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><div class='DtlsHldr Estblshd'><span class='DtlTxt'>2005</span><span class='DtlTtl'>Established</span></div><div class='DtlsHldr Twrs'><span class='DtlTxt'>03</span><span class='DtlTtl'>Blocks/ Towers</span></div></div><div class='PrptySbDtlsRw'><div class='DtlsHldr Bds'><span class='DtlTxt'>300</span><span class='DtlTtl'>Beds</span></div><div class='DtlsHldr Ntfctns'><span class='DtlTxt'>" + data.notificatins + "</span><span class='DtlTtl'>New Notifications</span></div></div></div></li></ul>");
+                            infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><img src='<?= base_url() ; ?>/public/wis_assets/Images/dash_map.png' style='width:100%;  image-rendering: auto; image-rendering:crisp-edges;  image-rendering: pixelated;  image-rendering: -webkit-optimize-contrast;'></div></div></li></ul>");
+                            // infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><div class='DtlsHldr Estblshd'><span class='DtlTxt'>2005</span><span class='DtlTtl'>Established</span></div><div class='DtlsHldr Twrs'><span class='DtlTxt'>03</span><span class='DtlTtl'>Blocks/ Towers</span></div></div><div class='PrptySbDtlsRw'><div class='DtlsHldr Bds'><span class='DtlTxt'>300</span><span class='DtlTtl'>Beds</span></div><div class='DtlsHldr Ntfctns'><span class='DtlTxt'>" + data.notificatins + "</span><span class='DtlTtl'>New Notifications</span></div></div></div></li></ul>");
                             infoWindow.open(map, marker);
                         });
                     })(marker, data);
@@ -810,8 +810,8 @@
                             //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
                             map.setZoom(12);
                             map.panTo(this.getPosition());
-                            //infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>HospitalAdmin/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><div class='DtlsHldr Estblshd'><span class='DtlTxt'>2005</span><span class='DtlTtl'>Established</span></div><div class='DtlsHldr Twrs'><span class='DtlTxt'>03</span><span class='DtlTtl'>Blocks/ Towers</span></div></div><div class='PrptySbDtlsRw'><div class='DtlsHldr Bds'><span class='DtlTxt'>300</span><span class='DtlTtl'>Beds</span></div><div class='DtlsHldr Ntfctns'><span class='DtlTxt'>" + data.notificatins + "</span><span class='DtlTtl'>New Notifications</span></div></div></div></li></ul>");
-                            infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>HospitalAdmin/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><img src='<?= base_url() ; ?>/public/wis_assets/Images/dash_map.png' style='width:100%;  image-rendering: auto; image-rendering:crisp-edges;  image-rendering: pixelated;  image-rendering: -webkit-optimize-contrast;'></div></div></li></ul>");
+                            //infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><div class='DtlsHldr Estblshd'><span class='DtlTxt'>2005</span><span class='DtlTtl'>Established</span></div><div class='DtlsHldr Twrs'><span class='DtlTxt'>03</span><span class='DtlTtl'>Blocks/ Towers</span></div></div><div class='PrptySbDtlsRw'><div class='DtlsHldr Bds'><span class='DtlTxt'>300</span><span class='DtlTtl'>Beds</span></div><div class='DtlsHldr Ntfctns'><span class='DtlTxt'>" + data.notificatins + "</span><span class='DtlTtl'>New Notifications</span></div></div></div></li></ul>");
+                            infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><img src='<?= base_url() ; ?>/public/wis_assets/Images/dash_map.png' style='width:100%;  image-rendering: auto; image-rendering:crisp-edges;  image-rendering: pixelated;  image-rendering: -webkit-optimize-contrast;'></div></div></li></ul>");
                             infoWindow.open(map, marker);
                         });
                     })(marker, data);
@@ -835,8 +835,8 @@
                             //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
                             map.setZoom(12);
                             map.panTo(this.getPosition());
-                           // infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>HospitalAdmin/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><div class='DtlsHldr Estblshd'><span class='DtlTxt'>2005</span><span class='DtlTtl'>Established</span></div><div class='DtlsHldr Twrs'><span class='DtlTxt'>03</span><span class='DtlTtl'>Blocks/ Towers</span></div></div><div class='PrptySbDtlsRw'><div class='DtlsHldr Bds'><span class='DtlTxt'>300</span><span class='DtlTtl'>Beds</span></div><div class='DtlsHldr Ntfctns'><span class='DtlTxt'>" + data.notificatins + "</span><span class='DtlTtl'>New Notifications</span></div></div></div></li></ul>");
-                           infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>HospitalAdmin/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><img src='<?= base_url() ; ?>/public/wis_assets/Images/dash_map.png' style='width:100%;  image-rendering: auto; image-rendering:crisp-edges;  image-rendering: pixelated;  image-rendering: -webkit-optimize-contrast;'></div></div></li></ul>");
+                           // infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><div class='DtlsHldr Estblshd'><span class='DtlTxt'>2005</span><span class='DtlTtl'>Established</span></div><div class='DtlsHldr Twrs'><span class='DtlTxt'>03</span><span class='DtlTtl'>Blocks/ Towers</span></div></div><div class='PrptySbDtlsRw'><div class='DtlsHldr Bds'><span class='DtlTxt'>300</span><span class='DtlTtl'>Beds</span></div><div class='DtlsHldr Ntfctns'><span class='DtlTxt'>" + data.notificatins + "</span><span class='DtlTtl'>New Notifications</span></div></div></div></li></ul>");
+                           infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><img src='<?= base_url() ; ?>/public/wis_assets/Images/dash_map.png' style='width:100%;  image-rendering: auto; image-rendering:crisp-edges;  image-rendering: pixelated;  image-rendering: -webkit-optimize-contrast;'></div></div></li></ul>");
                             infoWindow.open(map, marker);
                         });
                     })(marker, data);
@@ -860,8 +860,8 @@
                             //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
                             map.setZoom(12);
                             map.panTo(this.getPosition());
-                            //infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>HospitalAdmin/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><div class='DtlsHldr Estblshd'><span class='DtlTxt'>2005</span><span class='DtlTtl'>Established</span></div><div class='DtlsHldr Twrs'><span class='DtlTxt'>03</span><span class='DtlTtl'>Blocks/ Towers</span></div></div><div class='PrptySbDtlsRw'><div class='DtlsHldr Bds'><span class='DtlTxt'>300</span><span class='DtlTtl'>Beds</span></div><div class='DtlsHldr Ntfctns'><span class='DtlTxt'>" + data.notificatins + "</span><span class='DtlTtl'>New Notifications</span></div></div></div></li></ul>");
-                            infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>HospitalAdmin/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><img src='<?= base_url() ; ?>/public/wis_assets/Images/dash_map.png' style='width:100%;  image-rendering: auto; image-rendering:crisp-edges;  image-rendering: pixelated;  image-rendering: -webkit-optimize-contrast;'></div></div></li></ul>");
+                            //infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><div class='DtlsHldr Estblshd'><span class='DtlTxt'>2005</span><span class='DtlTtl'>Established</span></div><div class='DtlsHldr Twrs'><span class='DtlTxt'>03</span><span class='DtlTtl'>Blocks/ Towers</span></div></div><div class='PrptySbDtlsRw'><div class='DtlsHldr Bds'><span class='DtlTxt'>300</span><span class='DtlTtl'>Beds</span></div><div class='DtlsHldr Ntfctns'><span class='DtlTxt'>" + data.notificatins + "</span><span class='DtlTtl'>New Notifications</span></div></div></div></li></ul>");
+                            infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><img src='<?= base_url() ; ?>/public/wis_assets/Images/dash_map.png' style='width:100%;  image-rendering: auto; image-rendering:crisp-edges;  image-rendering: pixelated;  image-rendering: -webkit-optimize-contrast;'></div></div></li></ul>");
                             infoWindow.open(map, marker);
                         });
                     })(marker, data);
@@ -885,8 +885,8 @@
                             //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
                             map.setZoom(12);
                             map.panTo(this.getPosition());
-                           // infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>HospitalAdmin/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><div class='DtlsHldr Estblshd'><span class='DtlTxt'>2005</span><span class='DtlTtl'>Established</span></div><div class='DtlsHldr Twrs'><span class='DtlTxt'>03</span><span class='DtlTtl'>Blocks/ Towers</span></div></div><div class='PrptySbDtlsRw'><div class='DtlsHldr Bds'><span class='DtlTxt'>300</span><span class='DtlTtl'>Beds</span></div><div class='DtlsHldr Ntfctns'><span class='DtlTxt'>" + data.notificatins + "</span><span class='DtlTtl'>New Notifications</span></div></div></div></li></ul>");
-                           infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>HospitalAdmin/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><img src='<?= base_url() ; ?>/public/wis_assets/Images/dash_map.png' style='width:100%;  image-rendering: auto; image-rendering:crisp-edges;  image-rendering: pixelated;  image-rendering: -webkit-optimize-contrast;'></div></div></li></ul>");
+                           // infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><div class='DtlsHldr Estblshd'><span class='DtlTxt'>2005</span><span class='DtlTtl'>Established</span></div><div class='DtlsHldr Twrs'><span class='DtlTxt'>03</span><span class='DtlTtl'>Blocks/ Towers</span></div></div><div class='PrptySbDtlsRw'><div class='DtlsHldr Bds'><span class='DtlTxt'>300</span><span class='DtlTtl'>Beds</span></div><div class='DtlsHldr Ntfctns'><span class='DtlTxt'>" + data.notificatins + "</span><span class='DtlTtl'>New Notifications</span></div></div></div></li></ul>");
+                           infoWindow.setContent("<ul class='PrtyDshbrdLst MpInnr'><li><div class='PrtyDshbrdDtls'><a href='<?php echo base_url(); ?>/hospitalSelection' class='PrptyNme'>FirstMedic " + data.title + "</a><span class='PrptyAdd'>" + data.description + "</span><div class='PrptySbDtlsRw'><img src='<?= base_url() ; ?>/public/wis_assets/Images/dash_map.png' style='width:100%;  image-rendering: auto; image-rendering:crisp-edges;  image-rendering: pixelated;  image-rendering: -webkit-optimize-contrast;'></div></div></li></ul>");
                             infoWindow.open(map, marker);
                         });
                     })(marker, data);
