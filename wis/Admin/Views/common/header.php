@@ -163,7 +163,7 @@
                   </div>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#" role="button">Logout</a>
+                  <a class="nav-link" href="<?= base_url('/admin/logout') ?>" role="button">Logout</a>
                 </li> 
                 <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">

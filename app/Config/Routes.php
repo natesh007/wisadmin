@@ -84,6 +84,9 @@ $routes->add('/auditRecommendations', 'Home::auditRecommendations',['namespace' 
 
 
 $routes->add('/admin', 'Admin::index',['namespace' => 'Modules\Admin\Controllers']);
+$routes->add('/admin/login', 'Admin::index',['namespace' => 'Modules\Admin\Controllers']);
+$routes->add('/admin/logout', 'Admin::logout',['namespace' => 'Modules\Admin\Controllers']);
+$routes->add('/admin/users', 'Admin::users',['namespace' => 'Modules\Admin\Controllers']);
 
 /**
  * --------------------------------------------------------------------
