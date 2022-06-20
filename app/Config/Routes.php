@@ -32,8 +32,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 //Common
 $routes->add('/', 'Home::index');
-$routes->add('/', 'Home::index',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/login', 'Home::login',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/login', 'Home::index',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/dashboard', 'Home::dashboard',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/hospitalSelection', 'Home::hospitalSelection',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/checklistSubDetails', 'Home::checklistSubDetails',['namespace' => 'Modules\WIS\Controllers']);
@@ -78,16 +77,6 @@ $routes->add('/billingSoftware', 'Home::billingSoftware',['namespace' => 'Module
 $routes->add('/audits', 'Home::audits',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/auditObservations', 'Home::auditObservations',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/auditRecommendations', 'Home::auditRecommendations',['namespace' => 'Modules\WIS\Controllers']);
-//$routes->add('/engineering', 'Engineering::engineering',['namespace' => 'Modules\WIS\Controllers']);
-
-
-
-
-$routes->add('/admin', 'Admin::index',['namespace' => 'Modules\Admin\Controllers']);
-$routes->add('/admin/login', 'Admin::index',['namespace' => 'Modules\Admin\Controllers']);
-$routes->add('/admin/logout', 'Admin::logout',['namespace' => 'Modules\Admin\Controllers']);
-$routes->add('/admin/users', 'Admin::users',['namespace' => 'Modules\Admin\Controllers']);
-
 /**
  * --------------------------------------------------------------------
  * Additional Routing

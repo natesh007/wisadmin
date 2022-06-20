@@ -4,11 +4,7 @@ namespace Modules\WIS\Controllers;
 
 class Home extends BaseController
 {
-	public function index()
-	{
-		echo view('Modules\WIS\Views\welcome_message');
-	}
-	public function login(){
+	public function index(){
 		echo view('Modules\WIS\Views\login');
 	}
 	public function dashboard(){
