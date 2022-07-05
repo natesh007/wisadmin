@@ -40,7 +40,7 @@
                         <a href="<?php //echo base_url(); ?>HospitalAdmin/complaintReports" class="LnkTxt">Complaints Reports</a>
                     </li> -->
                     <li>
-                        <a href="<?php echo base_url(); ?>/complaintAttendence" class="LnkTxt Actv">Attendence</a>
+                        <a href="<?php echo base_url(); ?>/complaintAttendence" class="LnkTxt Actv">Man Power</a>
                     </li>
                 </ul>
             </div>
@@ -77,10 +77,15 @@
                 </div>
             </div>
             <div class="InnrPgBgHldr">
-                <div class="PrptyFtrsDshbrd StffAttndDshb">
-                    <div class="FtrTtlHldr">
-                        <a href="<?php echo base_url(); ?>/complaintDetReports" class="FtrTtl"><span class="LnkTxt">Engineering Staff</span></a>
-                    </div>
+                <div class="StffAttndDshb FullDetails">
+                    <span class="DptTtl">Engineering Staff 
+                        <span class="SftInnrDtls">
+                            <span class="DrpdwnTxt">Shift 1 : 09:00am - 06:00PM | </span>
+                            <span class="DrpdwnTxt">Shift 2 : 09:00am - 06:00PM | </span>
+                            <span class="DrpdwnTxt">Shift 3 : 09:00am - 06:00PM</span>
+                        </span>
+                    </span>
+
                     <div class="StffAttndDshbHldr">
                         <div class="StffBscDtls">
                             <div class="StffImgHldr">
@@ -94,35 +99,274 @@
                         <div class="StffDshHghlgtHldr">
                             <div class="StffDshHghlgt Assgnd">
                                 <span class="Count">5</span>
-                                <span class="CntTtl">Assigned</span>
+                                <span class="CntTtl">Shift 1</span>
                             </div>
-                            <div class="StffDshHghlgt Prsnt">
-                                <span class="Count">4</span>
-                                <span class="CntTtl">Present</span>
+                            <div class="StffDshHghlgt Assgnd">
+                                <span class="Count">5</span>
+                                <span class="CntTtl">Shift 2</span>
                             </div>
-                            <div class="StffDshHghlgt Absnt">
-                                <span class="Count">1</span>
-                                <span class="CntTtl">Absent</span>
-                            </div>
-                            <div class="StffDshHghlgt OnTm">
-                                <span class="Count">4</span>
-                                <span class="CntTtl">On time</span>
-                            </div>
-                            <div class="StffDshHghlgt LtL">
-                                <span class="Count">0</span>
-                                <span class="CntTtl">Late by >30 mins</span>
-                            </div>
-                            <div class="StffDshHghlgt LtM">
-                                <span class="Count">0</span>
-                                <span class="CntTtl">Late by <30 mins</span>
+                            <div class="StffDshHghlgt Assgnd">
+                                <span class="Count">5</span>
+                                <span class="CntTtl">Shift 3</span>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="PrptyFtrsDshbrd StffAttndDshb">
-                    <div class="FtrTtlHldr">
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/complaintDetReports" class="FtrTtl"><span class="LnkTxt">HVAC</span></a>
+                    <div class="AttDeptDtlsHldr">
+                        <div class="TableHldr">
+                        <table class="AppDataTbl">
+                                <tr class="Hdr">
+                                    <th>
+                                        <span class="DataTtl">S. No.</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Emp. ID.</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Employee Name</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Service Type</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Joined On</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Total Tasks Completed</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Avg. Task per Day</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Assigned Tasks</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Tasks In Process</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 1</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 2</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 3</span>
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1001</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">N. Raju</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">2</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1002</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Balu Naik</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1200</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">4</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">2</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1003</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Deeraj</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1211</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">4</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1004</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Naik</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1005</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Raju</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Electrical</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                               
+                            </table>
+                        </div>
                     </div>
+                </div>
+
+                <div class="StffAttndDshb FullDetails">
+                    <span class="DptTtl">HVAC</span>
                     <div class="StffAttndDshbHldr">
                         <div class="StffBscDtls">
                             <div class="StffImgHldr">
@@ -135,36 +379,275 @@
                         </div>
                         <div class="StffDshHghlgtHldr">
                             <div class="StffDshHghlgt Assgnd">
-                                <span class="Count">7</span>
-                                <span class="CntTtl">Assigned</span>
-                            </div>
-                            <div class="StffDshHghlgt Prsnt">
                                 <span class="Count">5</span>
-                                <span class="CntTtl">Present</span>
+                                <span class="CntTtl">Shift 1</span>
                             </div>
-                            <div class="StffDshHghlgt Absnt">
-                                <span class="Count">2</span>
-                                <span class="CntTtl">Absent</span>
+                            <div class="StffDshHghlgt Assgnd">
+                                <span class="Count">5</span>
+                                <span class="CntTtl">Shift 2</span>
                             </div>
-                            <div class="StffDshHghlgt OnTm">
-                                <span class="Count">3</span>
-                                <span class="CntTtl">On time</span>
-                            </div>
-                            <div class="StffDshHghlgt LtL">
-                                <span class="Count">2</span>
-                                <span class="CntTtl">Late by >30 mins</span>
-                            </div>
-                            <div class="StffDshHghlgt LtM">
-                                <span class="Count">0</span>
-                                <span class="CntTtl">Late by <30 mins</span>
+                            <div class="StffDshHghlgt Assgnd">
+                                <span class="Count">5</span>
+                                <span class="CntTtl">Shift 3</span>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="PrptyFtrsDshbrd StffAttndDshb">
-                    <div class="FtrTtlHldr">
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/complaintDetReports" class="FtrTtl"><span class="LnkTxt">Plumber</span></a>
+                    <div class="AttDeptDtlsHldr">
+                        <div class="TableHldr">
+                        <table class="AppDataTbl">
+                                <tr class="Hdr">
+                                    <th>
+                                        <span class="DataTtl">S. No.</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Emp. ID.</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Employee Name</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Service Type</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Joined On</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Total Tasks Completed</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Avg. Task per Day</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Assigned Tasks</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Tasks In Process</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 1</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 2</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 3</span>
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1001</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">N. Raju</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">2</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1002</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Balu Naik</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1200</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">4</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">2</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1003</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Deeraj</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1211</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">4</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1004</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Naik</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1005</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Raju</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Electrical</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                               
+                            </table>
+                        </div>
                     </div>
+                </div>
+
+                <div class="StffAttndDshb FullDetails">
+                    <span class="DptTtl">Plumber</span>
                     <div class="StffAttndDshbHldr">
                         <div class="StffBscDtls">
                             <div class="StffImgHldr">
@@ -177,36 +660,275 @@
                         </div>
                         <div class="StffDshHghlgtHldr">
                             <div class="StffDshHghlgt Assgnd">
-                                <span class="Count">10</span>
-                                <span class="CntTtl">Assigned</span>
+                                <span class="Count">5</span>
+                                <span class="CntTtl">Shift 1</span>
                             </div>
-                            <div class="StffDshHghlgt Prsnt">
-                                <span class="Count">9</span>
-                                <span class="CntTtl">Present</span>
+                            <div class="StffDshHghlgt Assgnd">
+                                <span class="Count">5</span>
+                                <span class="CntTtl">Shift 2</span>
                             </div>
-                            <div class="StffDshHghlgt Absnt">
-                                <span class="Count">1</span>
-                                <span class="CntTtl">Absent</span>
-                            </div>
-                            <div class="StffDshHghlgt OnTm">
-                                <span class="Count">9</span>
-                                <span class="CntTtl">On time</span>
-                            </div>
-                            <div class="StffDshHghlgt LtL">
-                                <span class="Count">0</span>
-                                <span class="CntTtl">Late by >30 mins</span>
-                            </div>
-                            <div class="StffDshHghlgt LtM">
-                                <span class="Count">0</span>
-                                <span class="CntTtl">Late by <30 mins</span>
+                            <div class="StffDshHghlgt Assgnd">
+                                <span class="Count">5</span>
+                                <span class="CntTtl">Shift 3</span>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="PrptyFtrsDshbrd StffAttndDshb">
-                    <div class="FtrTtlHldr">
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/complaintDetReports" class="FtrTtl"><span class="LnkTxt">Electrician</span></a>
+                    <div class="AttDeptDtlsHldr">
+                        <div class="TableHldr">
+                        <table class="AppDataTbl">
+                                <tr class="Hdr">
+                                    <th>
+                                        <span class="DataTtl">S. No.</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Emp. ID.</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Employee Name</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Service Type</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Joined On</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Total Tasks Completed</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Avg. Task per Day</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Assigned Tasks</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Tasks In Process</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 1</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 2</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 3</span>
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1001</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">N. Raju</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">2</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1002</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Balu Naik</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1200</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">4</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">2</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1003</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Deeraj</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1211</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">4</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1004</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Naik</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1005</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Raju</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Electrical</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                               
+                            </table>
+                        </div>
                     </div>
+                </div>
+
+                <div class="StffAttndDshb FullDetails">
+                    <span class="DptTtl">Electrician</span>
                     <div class="StffAttndDshbHldr">
                         <div class="StffBscDtls">
                             <div class="StffImgHldr">
@@ -219,36 +941,275 @@
                         </div>
                         <div class="StffDshHghlgtHldr">
                             <div class="StffDshHghlgt Assgnd">
-                                <span class="Count">8</span>
-                                <span class="CntTtl">Assigned</span>
+                                <span class="Count">5</span>
+                                <span class="CntTtl">Shift 1</span>
                             </div>
-                            <div class="StffDshHghlgt Prsnt">
-                                <span class="Count">6</span>
-                                <span class="CntTtl">Present</span>
+                            <div class="StffDshHghlgt Assgnd">
+                                <span class="Count">5</span>
+                                <span class="CntTtl">Shift 2</span>
                             </div>
-                            <div class="StffDshHghlgt Absnt">
-                                <span class="Count">2</span>
-                                <span class="CntTtl">Absent</span>
-                            </div>
-                            <div class="StffDshHghlgt OnTm">
-                                <span class="Count">6</span>
-                                <span class="CntTtl">On time</span>
-                            </div>
-                            <div class="StffDshHghlgt LtL">
-                                <span class="Count">0</span>
-                                <span class="CntTtl">Late by >30 mins</span>
-                            </div>
-                            <div class="StffDshHghlgt LtM">
-                                <span class="Count">0</span>
-                                <span class="CntTtl">Late by <30 mins</span>
+                            <div class="StffDshHghlgt Assgnd">
+                                <span class="Count">5</span>
+                                <span class="CntTtl">Shift 3</span>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="PrptyFtrsDshbrd StffAttndDshb">
-                    <div class="FtrTtlHldr">
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/complaintDetReports" class="FtrTtl"><span class="LnkTxt">Janitors</span></a>
+                    <div class="AttDeptDtlsHldr">
+                        <div class="TableHldr">
+                        <table class="AppDataTbl">
+                                <tr class="Hdr">
+                                    <th>
+                                        <span class="DataTtl">S. No.</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Emp. ID.</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Employee Name</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Service Type</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Joined On</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Total Tasks Completed</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Avg. Task per Day</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Assigned Tasks</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Tasks In Process</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 1</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 2</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 3</span>
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1001</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">N. Raju</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">2</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1002</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Balu Naik</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1200</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">4</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">2</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1003</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Deeraj</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1211</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">4</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1004</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Naik</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1005</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Raju</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Electrical</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                               
+                            </table>
+                        </div>
                     </div>
+                </div>
+
+                <div class="StffAttndDshb FullDetails">
+                    <span class="DptTtl">Janitors</span>
                     <div class="StffAttndDshbHldr">
                         <div class="StffBscDtls">
                             <div class="StffImgHldr">
@@ -261,30 +1222,297 @@
                         </div>
                         <div class="StffDshHghlgtHldr">
                             <div class="StffDshHghlgt Assgnd">
-                                <span class="Count">7</span>
-                                <span class="CntTtl">Assigned</span>
+                                <span class="Count">5</span>
+                                <span class="CntTtl">Shift 1</span>
                             </div>
-                            <div class="StffDshHghlgt Prsnt">
-                                <span class="Count">6</span>
-                                <span class="CntTtl">Present</span>
+                            <div class="StffDshHghlgt Assgnd">
+                                <span class="Count">5</span>
+                                <span class="CntTtl">Shift 2</span>
                             </div>
-                            <div class="StffDshHghlgt Absnt">
-                                <span class="Count">1</span>
-                                <span class="CntTtl">Absent</span>
-                            </div>
-                            <div class="StffDshHghlgt OnTm">
-                                <span class="Count">6</span>
-                                <span class="CntTtl">On time</span>
-                            </div>
-                            <div class="StffDshHghlgt LtL">
-                                <span class="Count">0</span>
-                                <span class="CntTtl">Late by >30 mins</span>
-                            </div>
-                            <div class="StffDshHghlgt LtM">
-                                <span class="Count">0</span>
-                                <span class="CntTtl">Late by <30 mins</span>
+                            <div class="StffDshHghlgt Assgnd">
+                                <span class="Count">5</span>
+                                <span class="CntTtl">Shift 3</span>
                             </div>
                         </div>
+                    </div>
+                    <div class="AttDeptDtlsHldr">
+                        <div class="TableHldr">
+                            <table class="AppDataTbl">
+                                <tr class="Hdr">
+                                    <th>
+                                        <span class="DataTtl">S. No.</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Emp. ID.</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Employee Name</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Service Type</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Joined On</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Total Tasks Completed</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Avg. Task per Day</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Assigned Tasks</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Tasks In Process</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 1</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 2</span>
+                                    </th>
+                                    <th>
+                                        <span class="DataTtl">Shift 3</span>
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1001</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">N. Raju</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">2</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1002</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Balu Naik</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1200</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">4</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">2</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1003</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Deeraj</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1211</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">4</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1004</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Naik</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Supervisor</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">EMP-1005</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Raju</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Electrical</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">18-01-2020</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1280</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">5</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">3</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">1</span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                    </td>
+                                </tr>
+                               
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="AppMdlHldr" class="AppModalHldr Hide">
+        <div class="AppModalInnrHldr LdrShpPrfl">
+            <div class="ModalTtlHldr LdrshpTtl">
+                <img src="<?= base_url() ; ?>/public/wis_assets/Images/Blank.png" class="PrflImg TmImg">
+                <span class="PrflName">Nivedita Kumari</span>
+                <span class="PrflDsgntn">Medical Staff</span>
+                <span class="PrflJnedDt">Joined on 21 June 2018</span>
+                <span id="AppMdlClsBtn" onclick="javascript:ModalPopup();" class="ModalClsBtn"></span>
+            </div>
+            <div class="ModalCntntHldr LdrshpDtl">
+                <div class="LdrPrfDtlsHldr">
+                    <div class="PrfDtl">
+                        <span class="PrflDtlTxt">EMP-8851-417</span>
+                        <span class="PrflDtlTtl">Employee ID</span>
+                    </div>
+                    <div class="PrfDtl">
+                        <span class="PrflDtlTxt">+91 XXXXX XXXXX</span>
+                        <span class="PrflDtlTtl">Contact No.</span>
+                    </div>
+                    <div class="PrfDtl">
+                        <span class="PrflDtlTxt">xxxxxx@xxxx.com</span>
+                        <span class="PrflDtlTtl">Email ID</span>
                     </div>
                 </div>
             </div>

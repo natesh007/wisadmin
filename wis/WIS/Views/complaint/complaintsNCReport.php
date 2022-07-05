@@ -34,7 +34,7 @@
                        <a href="<?php echo base_url(); ?>/complaintList" class="LnkTxt">Complaints Admin</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>/complaintAttendence" class="LnkTxt">Attendence</a>
+                        <a href="<?php echo base_url(); ?>/complaintAttendence" class="LnkTxt">Man Power</a>
                     </li>
                 </ul>
             </div>

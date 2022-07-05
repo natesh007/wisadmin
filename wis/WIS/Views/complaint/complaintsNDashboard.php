@@ -40,7 +40,7 @@
                         <a href="<?php //echo base_url(); ?>HospitalAdmin/complaintReports" class="LnkTxt">Complaints Reports</a>
                     </li> -->
                     <li>
-                        <a href="<?php echo base_url(); ?>/complaintAttendence" class="LnkTxt">Attendence</a>
+                        <a href="<?php echo base_url(); ?>/complaintAttendence" class="LnkTxt">Man Power</a>
                     </li>
                 </ul>
             </div>
