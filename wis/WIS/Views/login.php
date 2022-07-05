@@ -21,24 +21,27 @@
         <div class="ClntLogoHldr">
             <img src="<?= base_url() ; ?>/public/wis_assets/Images/ClientLogo-Big.png" class="ClntLogo" />
         </div>
+        <form  action="<?php echo base_url('login'); ?>" method="post" id="Login" data-aos="fade-up" data-aos-delay="900" autocomplete="off">
         <div class="LoginBox">
             <span class="TtlBx">Welcome</span>
             <span class="SbTtlBx">Please login with your credentials.</span>
             <div class="mb-3 row">
                 <span class="FormTxt">Username</span>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="staticEmail" value="Enter Username or Email ID" />
+                    <input type="text" class="form-control" id="staticEmail" name="Email" placeholder="Enter Username or Email ID" />
                 </div>
             </div>
             <div class="mb-3 row">
                 <span class="FormTxt">Password</span>
                 <div class="col-sm-12">
-                    <input type="password" class="form-control" id="inputPassword" value="Password" />
+                    <input type="password" class="form-control" id="inputPassword" name="Password" placeholder="Password" />
                 </div>
             </div>
-            <button type="button" onclick="location.href='<?= base_url() ; ?>/dashboard'"class="btn btn-primary">Submit</button>
+            <input type="submit" class="secondary_btn" value="Log In"/>
+            <!-- <button type="button" onclick="location.href='<?= base_url() ; ?>/dashboard'"class="btn btn-primary">Submit</button> -->
             <a href="#" class="LgnLnkTxt">Forgot Password?</a>
         </div>
+    </form>
     </div>
     <div class="LoginBg"></div>
     <div class="LoginLftDvdr"></div>

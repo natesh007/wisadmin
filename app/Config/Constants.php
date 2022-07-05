@@ -14,6 +14,8 @@
  | existing namespaces of App\* namespaced-classes.
  */
 defined('APP_NAMESPACE') || define('APP_NAMESPACE', 'App');
+defined('SAURL') || define('SAURL', 'https://igreen.systems/wissuperadmin/wisapi/API/');
+
 
 /*
  | --------------------------------------------------------------------------
