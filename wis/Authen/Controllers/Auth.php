@@ -14,14 +14,13 @@ class Auth extends BaseController
         if ($this->request->getMethod() == 'post') {
             $wsm = new AuthModel();
             $log_array =  array(
-                "name"        => 'login',
-                "param"         => array(
-                    "email"     => $this->request->getVar('Email'),
-                    "password"  => md5($this->request->getVar('Password'))
-                ),
+                    //"email"     => $this->request->getVar('email'),
+                    //"password"  => md5($this->request->getVar('password'))
+                    "email"     => "aparna@gmail.com",
+                    "password"  => md5("123456")
             );
-            $log_data = $wsm->callwebservice(SAURL, $log_array, 1, 1);
-
+            $log_data = $wsm->callwebservice(SAURL."login", $log_array);
+            echo "<pre>";print_r($log_data);exit;
             if ($log_data->response->status == 110 && $log_data->response->result == 'User Inactive') {
                 //$msg = 'Your account is not activated. Please check your email to activate your account.';
                 $mail =  $this->request->getVar('Email');
