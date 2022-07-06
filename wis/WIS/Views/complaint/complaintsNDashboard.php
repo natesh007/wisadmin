@@ -31,9 +31,6 @@
                
                 <ul class="InnrLnksHldr">
                     <li>
-                        <a href="<?php echo base_url(); ?>/complaintDashboard" class="LnkTxt Actv">Complaints Dashboard</a>
-                    </li>
-                    <li>
                         <a href="<?php echo base_url(); ?>/complaintList" class="LnkTxt">Complaints Admin</a>
                     </li>
                     <!-- <li>
@@ -41,6 +38,9 @@
                     </li> -->
                     <li>
                         <a href="<?php echo base_url(); ?>/complaintAttendence" class="LnkTxt">Man Power</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>/complaintDashboard" class="LnkTxt Actv">Complaints Dashboard</a>
                     </li>
                 </ul>
             </div>

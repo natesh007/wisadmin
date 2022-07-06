@@ -28,10 +28,7 @@
         <div class="ContainerLeft">
             <span class="SctnTtl CmplntsFdbck">Complaints</span>
             <div class="SctnInnerLnks">
-            <ul class="InnrLnksHldr">
-                    <li>
-                        <a href="<?php echo base_url(); ?>/complaintDashboard" class="LnkTxt">Complaints Dashboard</a>
-                    </li>
+                <ul class="InnrLnksHldr">
                     <li>
                         <a href="<?php echo base_url(); ?>/complaintList" class="LnkTxt">Complaints Admin</a>
                     </li>
@@ -40,6 +37,9 @@
                     </li> -->
                     <li>
                         <a href="<?php echo base_url(); ?>/complaintAttendence" class="LnkTxt Actv">Man Power</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>/complaintDashboard" class="LnkTxt">Complaints Dashboard</a>
                     </li>
                 </ul>
             </div>
