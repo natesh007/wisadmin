@@ -21,20 +21,20 @@
         <div class="ClntLogoHldr">
             <img src="<?= base_url() ; ?>/public/wis_assets/Images/ClientLogo-Big.png" class="ClntLogo" />
         </div>
-        <form  action="<?php echo base_url('login'); ?>" method="post" id="Login" data-aos="fade-up" data-aos-delay="900" autocomplete="off">
+        <form  action="<?php echo base_url('login'); ?>" method="post" id="Login" data-aos="fade-up" data-aos-delay="900" autocomplete="off" onSubmit="return formValidation();">
         <div class="LoginBox">
             <span class="TtlBx">Welcome</span>
             <span class="SbTtlBx">Please login with your credentials.</span>
             <div class="mb-3 row">
                 <span class="FormTxt">Username</span>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="staticEmail" name="Email" placeholder="Enter Username or Email ID" />
+                    <input type="text" class="form-control" id="staticEmail" name="email" placeholder="Enter Username or Email ID" />
                 </div>
             </div>
             <div class="mb-3 row">
                 <span class="FormTxt">Password</span>
                 <div class="col-sm-12">
-                    <input type="password" class="form-control" id="inputPassword" name="Password" placeholder="Password" />
+                    <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" />
                 </div>
             </div>
             <input type="submit" class="secondary_btn" value="Log In"/>
@@ -46,4 +46,68 @@
     <div class="LoginBg"></div>
     <div class="LoginLftDvdr"></div>
 </body>
+<script>
+    function formValidation()
+    {
+                postUrl = '<?php echo base_url('loginAjax'); ?>';
+                dataToPost = 
+                {
+                    email           :   $("#email").val(),
+                    password        :   $("#password").val(),
+                };
+                $.ajax({type: "POST",url : postUrl,data: dataToPost,async:false,}).done(function(data)  
+                {
+                    if(data.length != 0)
+                    {
+                        errors = data.split(","); 
+                        var item = [];
+                        for(i=0; i<errors.length; i++ )
+                        {
+                            var errrorarray = errors[i].split('~');
+                            if(errrorarray[0] == 'Email')
+                            {
+                                if(errrorarray[1] != '')
+                                {
+                                    if ($('#emerr').length == 0) 
+                                    {
+                                        $('.embox').css('background-color','#FAC4C4');
+                                        $('<p id="emerr">'+errrorarray[1]+'</p>').insertAfter("#Email");                   
+                                    }
+                                    
+                                }
+                                else
+                                {
+                                    $('.embox').css('background-color','#FFFFFF');
+                                    $('#emerr').remove();
+                                }
+                            }
+                            else if(errrorarray[0] == 'Password')
+                            {
+                                if(errrorarray[1] != '')
+                                {
+                                    if ($('#passerr').length == 0) 
+                                    {
+                                        $('.psbox').css('background-color','#FAC4C4');
+                                        $('<p id="passerr">'+errrorarray[1]+'</p>').insertAfter( "#password" );                   
+                                    }  
+                                }
+                                else
+                                {
+                                    $('.psbox').css('background-color','#FFFFFF');
+                                    $('#passerr').remove();
+                                }
+                            }
+                        }
+                        event.preventDefault();
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }).fail(function()  {
+                    alert("Sorry, Please Fill the Form again.");
+                    event.preventDefault();
+                });
+    }
+</script>
 </html>

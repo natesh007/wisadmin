@@ -79,6 +79,15 @@ class Home extends BaseController
 	public function listView(){
 		echo view('Modules\WIS\Views\attendence/listView');
 	}
+	public function updateList(){
+		echo view('Modules\WIS\Views\attendence/UpdateList');
+	}
+	public function listViewDepartment(){
+		echo view('Modules\WIS\Views\attendence/ListViewDepartment');
+	}
+	public function listViewVacancy(){
+		echo view('Modules\WIS\Views\attendence/ListViewVacancy');
+	}
 	public function ppm(){
 		echo view('Modules\WIS\Views/PPM');
 	}

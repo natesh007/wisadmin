@@ -1,30 +1,30 @@
 <?php
 
-namespace Home\Validation;
 
-use Home\Models\AuthModel;
+namespace Modules\Authen\Validation;
+use Modules\Authen\Models\AuthModel;
 
 class UserRules
 {
     public function LogincheckEmail(string $str, string $fields, array $data)
     {
+        return true;
+        // $wsm = new AuthModel();
+        // $data_check_email =  array(
+        //     "name" => "login",
+        //     "param" => array(
 
-        $wsm = new AuthModel();
-        $data_check_email =  array(
-            "name" => "uniqueuseremail",
-            "param" => array(
+        //         "Email" => $data['Email']
 
-                "Email" => $data['Email']
-
-            ),
-        );
-        $check_email = $wsm->callwebservice(WSURL, $data_check_email);
-        $count_email = $check_email->response->result;
-        if ($count_email->count == 0) {
-            return false;
-        } else {
-            return true;
-        }
+        //     ),
+        // );
+        // $check_email = $wsm->callwebservice(WSURL, $data_check_email);
+        // $count_email = $check_email->response->result;
+        // if ($count_email->count == 0) {
+        //     return false;
+        // } else {
+        //     return true;
+        // }
     }
     public function LogincheckMobile(string $str, string $fields, array $data)
     {

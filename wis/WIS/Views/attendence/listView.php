@@ -29,16 +29,16 @@
                
                 <ul class="InnrLnksHldr">
                     <li>
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/listView" class="LnkTxt Actv">Employee List</a>
+                        <a href="<?php echo base_url(); ?>/listView" class="LnkTxt Actv">Employee List</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/updateList" class="LnkTxt">Update List</a>
+                        <a href="<?php echo base_url(); ?>/updateList" class="LnkTxt">Update List</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/listViewDepartment" class="LnkTxt">Departments</a>
+                        <a href="<?php echo base_url(); ?>/listViewDepartment" class="LnkTxt">Departments</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/listViewVacancy" class="LnkTxt">Vacancies</a>
+                        <a href="<?php echo base_url(); ?>/listViewVacancy" class="LnkTxt">Vacancies</a>
                     </li>
                 </ul>
             </div>

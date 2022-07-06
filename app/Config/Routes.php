@@ -35,6 +35,7 @@ $routes->add('/', 'Home::index');
 //$routes->add('/login', 'Home::index',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/', 'Auth::index',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/login', 'Auth::login',['namespace' => 'Modules\Authen\Controllers']);
+$routes->add('/loginAjax', 'Auth::loginAjax', ['namespace' => 'Modules\Authen\Controllers']);
 $routes->add('/dashboard', 'Home::dashboard',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/hospitalSelection', 'Home::hospitalSelection',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/checklistSubDetails', 'Home::checklistSubDetails',['namespace' => 'Modules\WIS\Controllers']);
@@ -60,6 +61,9 @@ $routes->add('/attendence', 'Home::attendence',['namespace' => 'Modules\WIS\Cont
 $routes->add('/attendenceDeptDetail', 'Home::attendenceDeptDetail',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/attendenceCustomDate', 'Home::attendenceCustomDate',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/listView', 'Home::listView',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/updateList', 'Home::updateList',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/listViewDepartment', 'Home::listViewDepartment',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/listViewVacancy', 'Home::listViewVacancy',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/ppm', 'Home::ppm',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/amc', 'Home::amc',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/amcObservations', 'Home::amcObservations',['namespace' => 'Modules\WIS\Controllers']);

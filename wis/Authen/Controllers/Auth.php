@@ -14,11 +14,12 @@ class Auth extends BaseController
         if ($this->request->getMethod() == 'post') {
             $wsm = new AuthModel();
             $log_array =  array(
-                    //"email"     => $this->request->getVar('email'),
-                    //"password"  => md5($this->request->getVar('password'))
-                    "email"     => "aparna@gmail.com",
-                    "password"  => md5("123456")
+                    "email"     => $this->request->getVar('email'),
+                    "password"  => md5($this->request->getVar('password'))
+                    // "email"     => "aparna@gmail.com",
+                    // "password"  => md5("123456")
             );
+            //echo json_encode($log_array);die();
             $log_data = $wsm->callwebservice(SAURL."login", $log_array);
             echo "<pre>";print_r($log_data);exit;
             if ($log_data->response->status == 110 && $log_data->response->result == 'User Inactive') {
@@ -122,11 +123,12 @@ class Auth extends BaseController
     public function LoginAjax()
     {
         if ($this->request->getMethod() == 'post') {
+            //echo "hh88";die();
             $rules =
                 [
-                    'Email' =>
+                    'email' =>
                     [
-                        'rules'  => 'required|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]|LogincheckEmail[Email]',
+                        'rules'  => 'required|regex_match[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]|LogincheckEmail[email]',
                         'errors' =>
                         [
                             'required' => 'Please enter your email id',
@@ -135,7 +137,7 @@ class Auth extends BaseController
                         ]
                     ],
 
-                    'Password' =>
+                    'password' =>
                     [
                         'rules'  => 'required',
                         'errors' =>
@@ -146,11 +148,12 @@ class Auth extends BaseController
                 ];
             $errorstring = '';
             if (!$this->validate($rules)) {
-                $errorstring .= 'Email~' . $this->validator->showError('Email') . ',Password~' . $this->validator->showError('Password');
+                $errorstring .= 'Email~' . $this->validator->showError('email') . ',Password~' . $this->validator->showError('password');
                 print $errorstring;
                 exit;
             }
         }
+        echo "hh";die();
     }
     public function loginotp()
     {
