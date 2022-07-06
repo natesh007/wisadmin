@@ -88,7 +88,7 @@
                             Departments
                         </div>
                         <div class="col-md-6 BttnHldr">
-                            <button type="button" onclick="javascript:ModalPopup();" class="btn btn-primary SbmtBtn">Add/Update Department</button>
+                            <button type="button" onclick="javascript:ModalPopup();" class="btn btn-primary SbmtBtn" style="width:34%">Add/Update Department</button>
                         </div>
                     </div>
                 </div>
