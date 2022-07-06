@@ -21,73 +21,19 @@ class Auth extends BaseController
             );
             //echo json_encode($log_array);die();
             $log_data = $wsm->callwebservice(SAURL."login", $log_array);
-            //echo $log_data->status=="Failed","Success";exit;
+            //echo $log_data->status;exit;
             //echo "<pre>";print_r($log_data);exit;
-            if ($log_data->response->status == 110 && $log_data->response->result == 'User Inactive') {
-                //$msg = 'Your account is not activated. Please check your email to activate your account.';
-                $mail =  $this->request->getVar('Email');
-                return redirect()->to(base_url('withoutactive/'.base64_encode($mail)));
+            if ($log_data->status == "Failed") {
+                
+                $msg = 'Email or Password doesnot match';
+                return redirect()->to(base_url('login'))->with('msg', $msg);
             }
 
-            if ($log_data->response->status == 200) {
-                $count_token = $log_data->response->result->token;
-                $this->setUserSession($count_token);
-                $user_array =  array(
-                    "name"        => 'getuserdata',
-                    "param"         => array(),
-                );
-                $user_data = $wsm->callwebservice(SAURL, $user_array, 1);
-                $user = $user_data->response->result;
-                //print_r($user);exit;
-                if ($user->UserTypeCode == 'M') {
-                    $this->setUserDetails($user);
-                    $wel = 'Welcome';
-                    $get_profile_array = array(
-                        "name"  => "getmentorprofiledetails",
-                        "param" =>  array(
-                            "query" => "mentorprofiledetails"
-        
-                        ),
-                    );
-                    $get_profile = $wsm->callwebservice(SAURL, $get_profile_array, 1);
-                    $mentor = $get_profile->response->result;
-                    //print_r($mentor);exit;
-                    if($mentor->CurrentStatusID == '')
-                    {
-                        return redirect()->to(base_url('alumni/register_profile'));
-                    }
-                    else{
-                        return redirect()->to(base_url('alumni'))->with('wel', $wel);
-                    }
-                } else if ($user->UserTypeCode == 'S') {
-                    $this->setUserDetails($user);
-                    $wel = 'Welcome';
-                    $data_student_array = array(
-                        "name"  =>  'getstudentprofiledetails',
-                        "param" => array(
-                            "query" =>  "studentprofiledetails"
-                        ),
-                    );
-                    $std_data = $wsm->callwebservice(SAURL, $data_student_array,1);
-                    $student = $std_data->response->result;
-                    //print_r($student);exit;
-                    if($student->ContactNo == '')
-                    {
-                        return redirect()->to(base_url('student/student_register_profile'));
-                    }
-                    else{
-                        return redirect()->to(base_url('student'))->with('wel', $wel);
-                    }
-                    
-                } else {
-                    return redirect()->to(base_url());
-                }
-            } else {
-                $msg = 'Email or Password doesnot match';
-                return redirect()->to(base_url())->with('msg', $msg);
-            }
+            if ($log_data->status == "Success") {
+                return redirect()->to(base_url('dashboard'));
+            } 
         } else {
-            echo view('Modules\WIS\Views\login');
+            echo view('Modules\Auth\Views\LoginPage');
         }
     }
     private function setUserSession($count_token)
