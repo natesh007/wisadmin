@@ -1,12 +1,12 @@
 <?php
-namespace Modules\Authen\Controllers;
-use Modules\Authen\Models\AuthModel;
+namespace Modules\Auth\Controllers;
+use Modules\Auth\Models\AuthModel;
 
 class Auth extends BaseController
 {
     public function index()
     {
-        echo view('Modules\WIS\Views\login');
+        echo view('Modules\Auth\Views\LoginPage');
     }
     public function login()
     {
@@ -14,14 +14,15 @@ class Auth extends BaseController
         if ($this->request->getMethod() == 'post') {
             $wsm = new AuthModel();
             $log_array =  array(
-                    "email"     => $this->request->getVar('email'),
-                    "password"  => md5($this->request->getVar('password'))
-                    // "email"     => "aparna@gmail.com",
-                    // "password"  => md5("123456")
+                    //"email"     => $this->request->getVar('Email'),
+                    //"password"  => md5($this->request->getVar('Password'))
+                     "email"     => "aparna@gmail.com",
+                     "password"  => md5("123456")
             );
             //echo json_encode($log_array);die();
             $log_data = $wsm->callwebservice(SAURL."login", $log_array);
-            echo "<pre>";print_r($log_data);exit;
+            //echo $log_data->status=="Failed","Success";exit;
+            //echo "<pre>";print_r($log_data);exit;
             if ($log_data->response->status == 110 && $log_data->response->result == 'User Inactive') {
                 //$msg = 'Your account is not activated. Please check your email to activate your account.';
                 $mail =  $this->request->getVar('Email');

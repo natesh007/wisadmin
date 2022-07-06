@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Authen\Controllers;
+namespace Modules\Auth\Controllers;
 
 /**
  * Class BaseController

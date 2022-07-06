@@ -31,11 +31,11 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 //Common
-$routes->add('/', 'Home::index');
+//$routes->add('/', 'Home::index');
 //$routes->add('/login', 'Home::index',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/', 'Auth::index',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/login', 'Auth::login',['namespace' => 'Modules\Authen\Controllers']);
-$routes->add('/loginAjax', 'Auth::loginAjax', ['namespace' => 'Modules\Authen\Controllers']);
+$routes->add('/', 'Auth::index',['namespace' => 'Modules\Auth\Controllers']);
+$routes->add('/login', 'Auth::login',['namespace' => 'Modules\Auth\Controllers']);
+$routes->add('/loginAjax', 'Auth::loginAjax', ['namespace' => 'Modules\Auth\Controllers']);
 $routes->add('/dashboard', 'Home::dashboard',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/hospitalSelection', 'Home::hospitalSelection',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/checklistSubDetails', 'Home::checklistSubDetails',['namespace' => 'Modules\WIS\Controllers']);
