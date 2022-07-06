@@ -14,10 +14,8 @@ class Auth extends BaseController
         if ($this->request->getMethod() == 'post') {
             $wsm = new AuthModel();
             $log_array =  array(
-                    //"email"     => $this->request->getVar('Email'),
-                    //"password"  => md5($this->request->getVar('Password'))
-                     "email"     => "aparna@gmail.com",
-                     "password"  => md5("123456")
+                    "email"     => $this->request->getVar('Email'),
+                    "password"  => md5($this->request->getVar('Password'))
             );
             //echo json_encode($log_array);die();
             $log_data = $wsm->callwebservice(SAURL."login", $log_array);
