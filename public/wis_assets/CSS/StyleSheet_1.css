@@ -8266,7 +8266,8 @@ div.AppModalHldr div.AppModalInnrHldr div.ModalFnctnHldr div.BttnHldr {
     flex-wrap: nowrap;
 }
 
-div.AppModalHldr div.AppModalInnrHldr div.ModalFnctnHldr .InptBx {
+div.AppModalHldr div.AppModalInnrHldr div.ModalFnctnHldr .InptBx,
+div.AddCmptBlk .InptBx{
     border: 1px solid #ddd;
     font: 400 12px 'Open Sans';
     padding: 12px 35px 12px 12px;
@@ -8275,12 +8276,14 @@ div.AppModalHldr div.AppModalInnrHldr div.ModalFnctnHldr .InptBx {
     position: relative;
 }
 
-div.AppModalHldr div.AppModalInnrHldr div.ModalFnctnHldr .InptBx:focus {
+div.AppModalHldr div.AppModalInnrHldr div.ModalFnctnHldr .InptBx:focus,
+div.AddCmptBlk .InptBx:focus {
     box-shadow: none;
     border-color: #0078BA;
 }
 
-div.AppModalHldr div.AppModalInnrHldr div.ModalFnctnHldr .InptBx:after {
+div.AppModalHldr div.AppModalInnrHldr div.ModalFnctnHldr .InptBx:after,
+div.AddCmptBlk .InptBx:after {
     content: '';
     position: absolute;
     width: 18px;
@@ -9119,4 +9122,11 @@ div.AddCmplt button {
 }div.CmpltDescBlk p{
     font: 400 12px/100% 'Open Sans';
     line-height: 1.3;
+}div.AddCmptBlk{
+    background: #FBFBFB;
+    padding: 10px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e9e9e9;
+}div.AddCmptBlk .InptBx{
+    margin-bottom: 15px
 }

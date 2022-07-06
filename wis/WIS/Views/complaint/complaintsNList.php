@@ -1503,36 +1503,58 @@
         </div>
     </div>
     <div id="AddComplaintModal" class="AppModalHldr Hide">
-        <div class="AppModalInnrHldr Smllr">
+        <div class="AppModalInnrHldr Smllr" style="height: 42%">
             <div class="ModalTtlHldr">
                 <div class="ModalTtlHldr">
                     <span class="SctnTtl"></span>
                     <span class="FtrTtl">Add Complaint</span>
                     <span id="AppMdlClsBtn" onclick="javascript:ModalPopupAddComplaint();" class="ModalClsBtn"></span>
                 </div>
-                <div class="ModalFnctnHldr">
+                <div class="AddCmptBlk">
                     <div class="container-fluid">
                         <div class="row">
+                            <span class="InnrTtl">Common Complaint</span>
                             <div class="col-md-6">
-                                <input type="text" class="form-control InptBx" id="Text2" value="Notes">
+                                <select class="form-control InptBx">
+                                    <option>Select</option>
+                                </select>
+                                <input type="text" class="form-control InptBx"  placeholder="Add custom complaint"/>
                             </div>
-                            <div class="col-md-3">
-                                <span class="InnrTtl">Status</span>
+                            <div class="col-md-6">
+                                <input type="file" class="form-control InptBx" id="Text2">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span class="InnrTtl">Complaint Priority</span>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
                                     <label class="form-check-label" for="flexRadioDefault8">
-                                        Pending
+                                        High
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <span class="InnrTtl">&nbsp;</span>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                     <label class="form-check-label" for="flexRadioDefault2">
-                                        Complete
+                                        Medium
                                     </label>
                                 </div>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="InnrTtl">&nbsp;</span>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Low
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="InnrTtl">Complaint Remarks</span>
+                                <textarea class="form-control InptBx" rows="5"></textarea>
                             </div>
                         </div>
                     </div>
