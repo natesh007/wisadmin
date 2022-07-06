@@ -31,17 +31,19 @@
                 
                 <ul class="InnrLnksHldr">
                     <li>
-                        <a href="<?php echo base_url(); ?>/complaintDashboard" class="LnkTxt">Complaints Dashboard</a>
-                    </li>
-                    <li>
                         <a href="<?php echo base_url(); ?>/complaintList" class="LnkTxt">Complaints Admin</a>
                     </li>
-                    <!-- <li>
-                        <a href="<?php //echo base_url(); ?>HospitalAdmin/complaintReports" class="LnkTxt">Complaints Reports</a>
-                    </li> -->
                     <li>
                         <a href="<?php echo base_url(); ?>/complaintAttendence" class="LnkTxt Actv">Man Power</a>
                     </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>/complaintDashboard" class="LnkTxt">Complaints Dashboard</a>
+                    </li>
+                    
+                    <!-- <li>
+                        <a href="<?php //echo base_url(); ?>HospitalAdmin/complaintReports" class="LnkTxt">Complaints Reports</a>
+                    </li> -->
+                    
                 </ul>
             </div>
             <div class="SctnInnerMenu" style="margin-top: 0;">
@@ -80,9 +82,7 @@
                 <div class="StffAttndDshb FullDetails">
                     <span class="DptTtl">Engineering Staff 
                         <span class="SftInnrDtls">
-                            <span class="DrpdwnTxt">Shift 1 : 09:00am - 06:00PM | </span>
-                            <span class="DrpdwnTxt">Shift 2 : 09:00am - 06:00PM | </span>
-                            <span class="DrpdwnTxt">Shift 3 : 09:00am - 06:00PM</span>
+                            Shift 1 : <span class="DrpdwnTxt">09:00AM - 06:00PM</span><span class="DrpdwnTxtDiv"> | </span>Shift 2 : <span class="DrpdwnTxt">09:00AM - 06:00PM</span><span class="DrpdwnTxtDiv"> | </span>Shift 3 : <span class="DrpdwnTxt">09:00AM - 06:00PM</span>
                         </span>
                     </span>
 
@@ -192,7 +192,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -233,10 +233,10 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr>    
                                     <td>
                                         <span class="DataTxt">3</span>
                                     </td>
@@ -274,7 +274,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -315,7 +315,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -356,7 +356,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                
@@ -473,7 +473,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -514,7 +514,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -555,7 +555,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -596,7 +596,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -637,7 +637,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                
@@ -754,7 +754,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -795,7 +795,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -836,7 +836,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -877,7 +877,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -918,7 +918,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                
@@ -1035,7 +1035,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1076,7 +1076,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1117,7 +1117,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1158,7 +1158,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1199,7 +1199,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                
@@ -1316,7 +1316,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1357,7 +1357,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1398,7 +1398,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1439,7 +1439,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1480,7 +1480,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>
-                                        <span onclick="javascript:ModalPopup();" style="font-size:25px; cursor: pointer">&#128065;</span>
+                                        <img onclick="javascript:ModalPopup();" style="cursor: pointer; width: 20px; height: 20px;" src="<?= base_url('/public/wis_assets/Images/AppIcon-UserProfile-Grey.png'); ?>">
                                     </td>
                                 </tr>
                                

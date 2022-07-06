@@ -28,14 +28,13 @@
             <div class="SctnInnerLnks">
                 <ul class="InnrLnksHldr">
                     <li>
-                        <a href="<?php echo base_url(); ?>/complaintDashboard" class="LnkTxt">Complaints Dashboard</a>
-                    </li>
-                    <li>
                         <a href="<?php echo base_url(); ?>/complaintList" class="LnkTxt Actv">Complaints Admin</a>
                     </li>
-                    
                     <li>
                         <a href="<?php echo base_url(); ?>/complaintAttendence" class="LnkTxt">Man Power</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>/complaintDashboard" class="LnkTxt">Complaints Dashboard</a>
                     </li>
                 </ul>
             </div>
@@ -190,11 +189,18 @@
                 </div>
             </div>
             <div class="InnrPgBgHldr">
+                <div class="AddCmplt">
+                    <button type="button" onclick="javascript:ModalPopupAddComplaint();" class="btn btn-primary">Add Complaint</button>
+                </div>
                 <div class="TableHldr">
+               
                     <table class="AppDataTbl">
                         <tr class="Hdr">
                             <th>
                                 <span class="DataTtl">S. No.</span>
+                            </th>
+                            <th>
+                                <span class="DataTtl">Complaint S. No.</span>
                             </th>
                             <th>
                                 <span class="DataTtl">Complaint Type</span>
@@ -215,6 +221,9 @@
                                 <span class="DataTtl">Complaint time</span>
                             </th>
                             <th>
+                                <span class="DataTtl">Repair - Material</span>
+                            </th>
+                            <th>
                                 <span class="DataTtl">Status</span>
                             </th>
                             <th>
@@ -222,6 +231,9 @@
                             </th>
                         </tr>
                         <tr class="Rd">
+                            <td>
+                                <span class="DataTxt">23</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">23</span>
                             </td>
@@ -239,9 +251,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Patient</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Mobile</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span class="DataTxt">Not Assigned</span>
@@ -251,6 +267,9 @@
                             </td>
                         </tr>
                         <tr class="Rd">
+                            <td>
+                                <span class="DataTxt">22</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">22</span>
                             </td>
@@ -268,9 +287,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Patient</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Web</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span class="DataTxt">Not Assigned</span>
@@ -280,6 +303,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">21</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">21</span>
                             </td>
@@ -297,9 +323,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Patient</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Manual</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>
@@ -309,6 +339,9 @@
                             </td>
                         </tr>
                         <tr class="Rd">
+                            <td>
+                                <span class="DataTxt">20</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">20</span>
                             </td>
@@ -326,9 +359,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Visitor</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Mobile</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt Bad">03:00 PM (+2 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span class="DataTxt">Not Assigned</span>
@@ -338,6 +375,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">19</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">19</span>
                             </td>
@@ -355,9 +395,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Employee</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Web</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>
@@ -367,6 +411,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">18</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">18</span>
                             </td>
@@ -384,9 +431,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Employee</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Manual</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupTwo();" class="BtnLnk Prcss">In Process</span>
@@ -396,6 +447,9 @@
                             </td>
                         </tr>
                         <tr class="Rd">
+                            <td>
+                                <span class="DataTxt">17</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">17</span>
                             </td>
@@ -413,9 +467,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Patient</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Mobile</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span class="DataTxt">Not Assigned</span>
@@ -425,6 +483,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">16</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">16</span>
                             </td>
@@ -442,9 +503,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Patient</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Mobile</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>
@@ -454,6 +519,9 @@
                             </td>
                         </tr>
                         <tr class="Rd">
+                            <td>
+                                <span class="DataTxt">15</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">15</span>
                             </td>
@@ -471,9 +539,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Visitor</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Web</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt Bad">03:00 PM (+2 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span class="DataTxt">Not Assigned</span>
@@ -483,6 +555,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">14</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">14</span>
                             </td>
@@ -500,9 +575,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Employee</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Manual</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>
@@ -512,6 +591,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">13</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">13</span>
                             </td>
@@ -529,9 +611,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Employee</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Mobile</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupTwo();" class="BtnLnk Prcss">In Process</span>
@@ -541,6 +627,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">12</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">12</span>
                             </td>
@@ -558,9 +647,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Patient</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Web</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>
@@ -570,6 +663,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">11</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">11</span>
                             </td>
@@ -587,9 +683,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Employee</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Manual</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>
@@ -599,6 +699,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">10</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">10</span>
                             </td>
@@ -616,9 +719,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Employee</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Mobile</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupTwo();" class="BtnLnk Prcss">In Process</span>
@@ -628,6 +735,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">9</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">9</span>
                             </td>
@@ -645,9 +755,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Patient</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Web</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>
@@ -657,6 +771,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">8</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">8</span>
                             </td>
@@ -674,9 +791,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Employee</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Manual</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>
@@ -686,6 +807,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">7</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">7</span>
                             </td>
@@ -703,9 +827,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Employee</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Mobile</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupTwo();" class="BtnLnk Prcss">In Process</span>
@@ -715,6 +843,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">6</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">6</span>
                             </td>
@@ -732,9 +863,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Patient</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Web</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>
@@ -744,6 +879,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">5</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">5</span>
                             </td>
@@ -761,9 +899,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Employee</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Manual</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>
@@ -773,6 +915,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">4</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">4</span>
                             </td>
@@ -790,9 +935,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Employee</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Mobile</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupTwo();" class="BtnLnk Prcss">In Process</span>
@@ -802,6 +951,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">3</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">3</span>
                             </td>
@@ -819,9 +971,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Patient</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Web</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>
@@ -831,6 +987,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">2</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">2</span>
                             </td>
@@ -848,9 +1007,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Employee</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Manual</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>
@@ -860,6 +1023,9 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <span class="DataTxt">1</span>
+                            </td>
                             <td>
                                 <span class="DataTxt">1</span>
                             </td>
@@ -877,9 +1043,13 @@
                             </td>
                             <td>
                                 <span class="DataTxt">Employee</span>
+                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Mobile</span></span>
                             </td>
                             <td>
                                 <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">--------</span>
                             </td>
                             <td>
                                 <span id="LnkBtn1" onclick="javascript:ModalPopupTwo();" class="BtnLnk Prcss">In Process</span>
@@ -1078,6 +1248,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="CmpltImgBlk">
+                        <div class="container-fluid">
+                            <div class="col-md-12">
+                                <img src="<?= base_url('/public/wis_assets/Images/Complaint1.png'); ?>" class="CmpltImg"/>
+                                <img src="<?= base_url('/public/wis_assets/Images/Complaint2.png'); ?>" class="CmpltImg"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="CmpltDescBlk">
+                        <div class="container-fluid">
+                            <div class="col-md-12">
+                                <p><span class="CmpltDesHed">Description : </span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="DvBtnHldr">
                         <button type="button" onclick="location.href = '<?php echo site_url('HospitalAdmin/complaintList1'); ?>'" class="btn btn-primary SbmtBtn">Assign</button>
                     </div>
@@ -1187,6 +1372,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="CmpltImgBlk">
+                        <div class="container-fluid">
+                            <div class="col-md-12">
+                                <img src="<?= base_url('/public/wis_assets/Images/Complaint1.png'); ?>" class="CmpltImg"/>
+                                <img src="<?= base_url('/public/wis_assets/Images/Complaint2.png'); ?>" class="CmpltImg"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="CmpltDescBlk">
+                        <div class="container-fluid">
+                            <div class="col-md-12">
+                                <p><span class="CmpltDesHed">Description : </span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="DvBtnHldr">
                         <button type="button" onclick="" class="btn btn-primary SbmtBtn">Save</button>
                     </div>
@@ -1279,6 +1479,59 @@
                                 <div class="col-md-6">
                                     <span class="InnrTtl">Status</span>
                                     <span class="InnrTxt">Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="CmpltImgBlk">
+                        <div class="container-fluid">
+                            <div class="col-md-12">
+                                <img src="<?= base_url('/public/wis_assets/Images/Complaint1.png'); ?>" class="CmpltImg"/>
+                                <img src="<?= base_url('/public/wis_assets/Images/Complaint2.png'); ?>" class="CmpltImg"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="CmpltDescBlk">
+                        <div class="container-fluid">
+                            <div class="col-md-12">
+                                <p><span class="CmpltDesHed">Description : </span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="AddComplaintModal" class="AppModalHldr Hide">
+        <div class="AppModalInnrHldr Smllr">
+            <div class="ModalTtlHldr">
+                <div class="ModalTtlHldr">
+                    <span class="SctnTtl"></span>
+                    <span class="FtrTtl">Add Complaint</span>
+                    <span id="AppMdlClsBtn" onclick="javascript:ModalPopupAddComplaint();" class="ModalClsBtn"></span>
+                </div>
+                <div class="ModalFnctnHldr">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control InptBx" id="Text2" value="Notes">
+                            </div>
+                            <div class="col-md-3">
+                                <span class="InnrTtl">Status</span>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
+                                    <label class="form-check-label" for="flexRadioDefault8">
+                                        Pending
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="InnrTtl">&nbsp;</span>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Complete
+                                    </label>
                                 </div>
                             </div>
                         </div>

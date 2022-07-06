@@ -28,13 +28,13 @@
             <div class="SctnInnerLnks" style="padding-bottom: 0;">
                 <ul class="InnrLnksHldr">
                     <li>
-                        <a href="<?php echo base_url(); ?>/complaintDashboard" class="LnkTxt">Complaints Dashboard</a>
-                    </li>
-                    <li>
                        <a href="<?php echo base_url(); ?>/complaintList" class="LnkTxt">Complaints Admin</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>/complaintAttendence" class="LnkTxt">Man Power</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>/complaintDashboard" class="LnkTxt">Complaints Dashboard</a>
                     </li>
                 </ul>
             </div>
