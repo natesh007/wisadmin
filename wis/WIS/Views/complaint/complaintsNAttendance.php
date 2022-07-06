@@ -110,6 +110,9 @@
                                 <span class="CntTtl">Shift 3</span>
                             </div>
                         </div>
+                        <div class="AddCmplt">
+                            <button type="button" class="btn btn-primary">Add Complaint</button>
+                        </div>
                     </div>
                     <div class="AttDeptDtlsHldr">
                         <div class="TableHldr">
