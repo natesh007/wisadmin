@@ -1557,6 +1557,9 @@
                                 <textarea class="form-control InptBx" rows="5"></textarea>
                             </div>
                         </div>
+                        <div class="AddCmplt" style="text-align: center">
+                            <button type="button" class="btn btn-primary">Save</button>
+                        </div>
                     </div>
                 </div>
             </div>
