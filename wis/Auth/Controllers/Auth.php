@@ -19,11 +19,11 @@ class Auth extends BaseController
             );
             //echo json_encode($log_array);die();
             $log_data = $wsm->callwebservice(SAURL."login", $log_array);
-            //echo $log_data->status;exit;
+            //echo $log_data->msg;exit;
             //echo "<pre>";print_r($log_data);exit;
             if ($log_data->status == "Failed") {
                 
-                $msg = 'Email or Password doesnot match';
+                $msg = $log_data->msg;
                 return redirect()->to(base_url('login'))->with('msg', $msg);
             }
 
