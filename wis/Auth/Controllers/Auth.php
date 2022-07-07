@@ -15,7 +15,7 @@ class Auth extends BaseController
             $wsm = new AuthModel();
             $log_array =  array(
                     "email"     => $this->request->getVar('Email'),
-                    "password"  => md5($this->request->getVar('Password'))
+                    "password"  => $this->request->getVar('Password')
             );
             //echo json_encode($log_array);die();
             $log_data = $wsm->callwebservice(SAURL."login", $log_array);
