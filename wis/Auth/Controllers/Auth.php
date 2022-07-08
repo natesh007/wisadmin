@@ -10,23 +10,17 @@ class Auth extends BaseController
     }
     public function login()
     {
-
         if ($this->request->getMethod() == 'post') {
             $wsm = new AuthModel();
             $log_array =  array(
                     "email"     => $this->request->getVar('Email'),
                     "password"  => $this->request->getVar('Password')
             );
-            //echo json_encode($log_array);die();
             $log_data = $wsm->callwebservice(SAURL."login", $log_array);
-            //echo $log_data->msg;exit;
-            //echo "<pre>";print_r($log_data->data->DeptID);exit;
             if ($log_data->status == "Failed") {
-                
                 $msg = $log_data->msg;
                 return redirect()->to(base_url('login'))->with('msg', $msg);
             }
-
             if ($log_data->status == "Success") {
                 $this->setEmployeeDetails($log_data->data);
                 return redirect()->to(base_url('dashboard'));
@@ -46,7 +40,6 @@ class Auth extends BaseController
             "Contact"      => $user->Contact,
             "Address"        => $user->Address,
             "JobType"      => $user->JobType,
-            "City"         => $user->City,
             "RoleID"      => $user->RoleID,
             "Status"      => $user->Status,
             "accessToken"      => $user->accessToken,

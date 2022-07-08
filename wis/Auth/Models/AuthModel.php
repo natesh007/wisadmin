@@ -6,20 +6,20 @@ use CodeIgniter\Model;
 
 class AuthModel extends Model
 {
-  function callwebservice($service_url, $data_array)
-  {
+    function callwebservice($service_url, $data_array, $session_chk = 0, $sessiontype = 1)
+    {
         $ch = curl_init($service_url);
         $body = json_encode($data_array);
         $headers = array();
         $headers[] = 'Content-Type: application/json';
-        /*if ($session_chk == 1) {
+        if ($session_chk == 1) {
             if ($sessiontype == 1) {
-                $headers[] = 'Authorization: Token ' . session()->get('Token');
+                $headers[] = 'Authorization: Token ' . session()->get('accessToken');
             }
             elseif($sessiontype == 2){
-                $headers[] = 'Authorization: Token '.session()->get('FPToken');
+                $headers[] = 'Authorization: Token '.session()->get('fb');
             }
-        }*/
+        }
         // Set the cURL options
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $body);

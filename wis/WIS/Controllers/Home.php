@@ -79,9 +79,6 @@ class Home extends BaseController
 	public function listView(){
 		echo view('Modules\WIS\Views\attendence/listView');
 	}
-	public function updateList(){
-		echo view('Modules\WIS\Views\attendence/UpdateList');
-	}
 	public function listViewDepartment(){
 		echo view('Modules\WIS\Views\attendence/ListViewDepartment');
 	}
@@ -128,7 +125,6 @@ class Home extends BaseController
 		echo view('Modules\WIS\Views/bedsOccupancy/bedsOccupancyDetails');
 	}
 	public function inventoryManagement(){
-		// echo view('Modules\WIS\Views/inventoryManagement');
 		echo view('Modules\WIS\Views/inventorySanitation');
 	}
 	public function manpowerUtilization(){

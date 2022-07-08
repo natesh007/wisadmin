@@ -356,7 +356,7 @@
         </div>
     </div>
     <div id="AppMdlHldr" class="AppModalHldr Hide">
-    <div class="AppModalInnrHldr" style="width:50%;height:40%;left:30%;top:16%">
+        <div class="AppModalInnrHldr" style="width:50%;height:40%;left:30%;top:16%">
             <div class="ModalTtlHldr">
                 <div class="ModalTtlHldr">
                     <span class="SctnTtl">Electrical</span>
@@ -368,7 +368,7 @@
                     <div class="TableHldr">
                         <table class="AppDataTbl" style="width: 100%;">
                             <tr class="Hdr">
-                                <th ><span class="DataTtl">Sno</span></th>
+                                <th ><span class="DataTtl">S. No.</span></th>
                                 <th ><span class="DataTtl">Service Department</span></th>
                                 <th ><span class="DataTtl">Branch Name</span></th>
                                 

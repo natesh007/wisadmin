@@ -16,6 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <style>
         .or{
             text-align: center;
@@ -76,7 +77,7 @@
             
         </div>
         <div class="ContainerRight">
-             <div class="SrchFltrDv ChckLst">
+            <div class="SrchFltrDv ChckLst">
                 <div class="container-fluid">
                     <div class="row">
                         
@@ -104,117 +105,194 @@
         </div>
     </div>
     <div id="AppMdlHldr" class="AppModalHldr Hide">
-        <div class="AppModalInnrHldr LdrShpPrfl" style="height: 48%;">
-                <div class="ModalTtlHldr LdrshpTtl" style="height: 100%;">
-                    
-                        <span class="PrflName">Add Employee</span>
-                    
-                        <span id="AppMdlClsBtn" onclick="javascript:ModalPopup();" class="ModalClsBtn"></span>
-                        <div class="ModalCntntHldr LdrshpDtl" style="top:60px">
-                        
-                        <div class="or"></div>
-                        <div style="border: 2px solid #8484997d;  box-sizing: border-box;width: 95%; margin-left: 10px;border-radius:8px">
-                            <!-- <div class="LdrPrfDtlsHldr" style="margin-left: 15px;margin-top:10px;">
-                                <span  class="nn">Employee Name:</span><br>
-                                <input type="text" id="fname" name="fname" placeholder="Employee Name"><br>
-                                <span class="nn">Department:</span><br>
-                                <input type="text" id="lname" name="lname">
-                                
-                                
-                            
+        <div class="AppModalInnrHldr" style="width:50%;height:85%;left:30%;top:8%">
+            <div class="ModalTtlHldr">
+                <div class="ModalTtlHldr">
+                    <span class="SctnTtl"></span>
+                    <span class="FtrTtl">Add Employee</span>
+                    <span id="AppMdlClsBtn" onclick="javascript:ModalPopup();" class="ModalClsBtn"></span>
+                </div>
+                <div class="ModalCntntHldr AddEmpBlk" style="top:60px">
+                    <div class="alert alert-success alert-dismissible" id="InfoDiv"></div>
+                    <form method="post" id="AddEmployeeForm">
+                        <div class="formgrp row">
+                            <div class="col-md-6">
+                                <label for="EmpName" class="FrmLbl">Employee Name</label>
+                                <input type="text" class="form-control InptBx" id="EmpName" name="EmpName" placeholder="Enter Employee Name"/>
                             </div>
-                            <div class="LdrPrfDtlsHldr" style="margin-left: 15px;margin-top:10px">
-                                <span  class="nn">Department:</span><br>
-                                <input type="text" id="fname" name="fname"><br>
-                                <span class="nn">Job Title:</span><br>
-                                <input type="text" id="lname" name="lname">
-                              
-                            </div> -->
-                            <div class="row">
-                        
-                                <div class="col-md-6">
-                                <input type="text" id="fname" name="fname" class="form-control InptBx Clndr" placeholder="Employee Name">
-                                   
-                                </div>
-                                <div class="col-md-6">
-                                <input type="text" id="fname" name="fname" class="form-control InptBx Clndr" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="or"></div>
-                            <div class="row">
-                        
-                                <div class="col-md-6">
-                                <input type="text" id="fname" name="fname" class="form-control InptBx Clndr" placeholder="Phone Number">
-                                   
-                                </div>
-                                <div class="col-md-6">
-                                <select class="form-select InptBx" aria-label="Default select example">
-                                        <option selected>Experience</option>
-                                        <option value="1">6 Months</option>
-                                        <option value="1">1 Year</option>
-                                        <option value="2">2+ Year</option>
-                                        
-                                    
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="or"></div>
-                            <div class="row">
-                        
-                                <div class="col-md-6">
-                                    <select class="form-select InptBx" aria-label="Default select example">
-                                        <option selected>Service Department</option>
-                                        <!-- <option value="1">All</option> -->
-                                        <option value="1">Electrical</option>
-                                        <option value="2">Supervisor</option>
-                                        <option value="3">Nursing </option>
-                                        <option value="3">Janitor</option>
-                                        <option value="3">Plumber</option>
-                                    
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <select class="form-select InptBx" aria-label="Default select example">
-                                        <option selected>Job Title</option>
-                                        <option value="1">Senior Electrician</option>
-                                        <option value="2">Junior Electrician</option>
-                                        <option value="3">DG Operator</option>
-                                        <option value="3">Senior Janitor</option>
-                                        <option value="3">Senior Plumber</option>
-                                        <option value="3">Junior Plumber</option>
-                                    
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="or"></div>
-                            <div class="row">
-                        
-                                <div class="col-md-6">
-                                <input type="file" id="fname" name="fname" class="form-control InptBx Clndr" placeholder="Adhar">
-                                   
-                                </div>
-                                <div class="col-md-6">
-                                <select class="form-select InptBx" aria-label="Default select example">
-                                        <option selected>Experience</option>
-                                        <option value="1">6 Months</option>
-                                        <option value="1">1 Year</option>
-                                        <option value="2">2+ Year</option>
-                                        
-                                    
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="LdrPrfDtlsHldr" style="margin-left: 15px;margin-top:10px">
-                                
-                                <button type="button" onclick="" class="btn btn-primary SbmtBtn" style="margin-left:30%">Submit</button>
-                            
+                            <div class="col-md-6">
+                                <label for="OrgID" class="FrmLbl">Organization</label>
+                                <select class="form-control InptBx" name="OrgID" id="OrgID">
+                                    <option disabled selected value hidden>Select Organization</option>
+                                    <?php foreach($organizations as $organization){
+                                        echo '<option value="' . $organization->OrgID . '">' . $organization->OrgName . '</option>' ;
+                                    } ?>
+                                </select>
                             </div>
                         </div>
-                        
+                        <div class="formgrp row">
+                            <div class="col-md-6">
+                                <label for="BrID" class="FrmLbl">Branch</label>
+                                <select class="form-control InptBx" name="BrID" id="BrID">
+                                    <option disabled selected value hidden>Select Branch</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="DeptID" class="FrmLbl">Department</label>
+                                <select class="form-control InptBx" name="DeptID" id="DeptID">
+                                    <option disabled selected value hidden>Select Department</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="formgrp row">
+                            <div class="col-md-6">
+                                <label for="JobTID" class="FrmLbl">Job Title</label>
+                                <select class="form-control InptBx" name="JobTID" id="JobTID">
+                                    <option disabled selected value hidden>Select Job Title</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="Email" class="FrmLbl">Email</label>
+                                <input type="email" class="form-control InptBx" id="Email" name="Email" placeholder="Enter Email ID"/>
+                            </div>
+                        </div>
+                        <div class="formgrp row">
+                            <div class="col-md-6">
+                                <label for="Mobile" class="FrmLbl">Mobile Number</label>
+                                <input type="text" class="form-control InptBx" id="Mobile" name="Mobile" placeholder="Enter Mobile Number"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="Gender" class="FrmLbl">Gender</label>
+                                <select class="form-control InptBx" name="Gender" id="Gender">
+                                    <option disabled selected value hidden>Select Gender</option>
+                                    <option value="M">Male</option>
+								    <option value="F">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="formgrp row">
+                            <div class="col-md-6">
+                                <label for="DateOfJoining" class="FrmLbl">Date Of Joining</label>
+                                <input type="date" class="form-control InptBx" id="DateOfJoining" name="DateOfJoining" placeholder="Select Date Of Joining"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="JobType" class="FrmLbl">Job Type</label>
+                                <input type="text" class="form-control InptBx" id="JobType" name="JobType" placeholder="Enter Job Type"/>
+                            </div>
+                        </div>
+                        <div class="formgrp row">
+                            <div class="col-md-6">
+                                <label for="Address" class="FrmLbl">Address</label>
+                                <textarea class="form-control InptBx" rows="5" id="Address" name="Address" placeholder="Enter Address"></textarea>
+                            </div>
+                        </div>
+                        <div class="text-center SavBtnBlk">
+                            <button type="submit" class="btn btn-primary SavBtn">Assign</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            
         </div>
     </div>
+    <script>
+        $('#OrgID').change(function(){
+            if($(this).val() != ''){
+                $.post("<?= base_url('/employees/getbranchesandjobtitlesbyorg') ?>", {OrgID: $(this).val()}, function(data, status){
+                    var branches = '';
+                    $.each(data.branches, function (i, field) {
+                        branches += '<option value="'+field.BrID +'">'+field.BrName+'</option>';
+                    });
+                    $('#BrID').html(branches);
+                    var jobtitles = '<option disabled selected value hidden>Select Job Title</option>';
+                    $.each(data.jobtitles, function (i, field) {
+                        jobtitles += '<option value="'+field.JobTID +'">'+field.JobTitle+'</option>';
+                    });
+                    $('#JobTID').html(jobtitles);
+                });
+            }
+        });
+        $('#BrID, #OrgID').change(function(){
+            if($("#BrID").val() != '' && $("#OrgID").val()){
+                $.post("<?= base_url('/employees/getdepartmentsbyorgnbranch') ?>", {OrgID: $("#OrgID").val(), BrID: $("#BrID").val()}, function(data, status){
+                    var depts = '<option disabled selected value hidden>Select Departments</option>';
+                    $.each(data, function (i, field) {
+                        depts += '<option value="'+field.DeptID +'">'+field.DeptName+'</option>';
+                    });
+                    $('#DeptID').html(depts);
+                });
+            }
+        });
+        $("form[id='AddEmployeeForm']").validate({
+            rules: {
+                EmpName: {
+                    required: true,
+                    normalizer: function(value) {
+                        return $.trim(value);
+                    },
+                },
+                OrgID: "required",
+                BrID: "required",
+                DeptID: "required",
+                JobTID: "required",
+                Email: {
+                    required: true,
+                    normalizer: function(value) {
+                        return $.trim(value);
+                    },
+					email: true,
+                },
+                Mobile: {
+                    required: true,
+                    normalizer: function(value) {
+                        return $.trim(value);
+                    }
+                },
+            },
+            messages: {
+                EmpName: {
+                    required: "Please enter Employee Name.",
+                },
+                OrgID: "Please select Organization",
+                BrID: "Please select Branches",
+                DeptID: "Please select Department",
+                JobTID: "Please select Job Title",
+                Email: {
+                    required: "Please enter Email.",
+                    email: "Please enter valid Email.",
+                    UniqueColumn: "This email is already existing. Please try with another.",
+                },
+                Mobile: "Please enter Mobile Number",
+            },
+            submitHandler: function(form) {
+                var data = new FormData($('#AddEmployeeForm')[0]);
+                $.ajax({
+                    url: "<?= base_url('/employees/add_employee'); ?>",
+                    type: "POST",
+                    data: data,
+                    mimeType: "multipart/form-data",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    error: function(request, response) {
+                        console.log(request);
+                    },
+                    success: function(result) {
+                        var obj = jQuery.parseJSON(result);
+                        if (obj.status == 'Success')
+                            $("#InfoDiv").addClass('alert-success').removeClass('alert-danger');
+                        else
+                            $("#InfoDiv").addClass('alert-danger').removeClass('alert-success');
+                        $("#InfoDiv").html(obj.msg);
+                        $("#InfoDiv").show();
+                        setTimeout(function() {
+                            $("#InfoDiv").hide();
+                        }, 3000);
+                        if (obj.status == 'Success')
+                            window.location.href = '<?= base_url('/updateList') ?>';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
