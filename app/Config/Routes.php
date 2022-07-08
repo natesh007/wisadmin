@@ -35,6 +35,7 @@ $routes->setAutoRoute(true);
 //$routes->add('/login', 'Home::index',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/', 'Auth::index',['namespace' => 'Modules\Auth\Controllers']);
 $routes->add('/login', 'Auth::login',['namespace' => 'Modules\Auth\Controllers']);
+$routes->add('/logout', 'Auth::logout', ['namespace' => 'Modules\Auth\Controllers']);
 $routes->add('/loginAjax', 'Auth::loginAjax', ['namespace' => 'Modules\Auth\Controllers']);
 $routes->add('/dashboard', 'Home::dashboard',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/hospitalSelection', 'Home::hospitalSelection',['namespace' => 'Modules\WIS\Controllers']);

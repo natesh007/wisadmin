@@ -15,13 +15,13 @@
                         </div>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/notifications" class="HdrIcoLnk Ntfctns Updts"></a>
+                        <a href="<?php echo base_url(); ?>/notifications" class="HdrIcoLnk Ntfctns Updts"></a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/settings" class="HdrIcoLnk Sttngs"></a>
+                        <a href="<?php echo base_url(); ?>/settings" class="HdrIcoLnk Sttngs"></a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>HospitalAdmin/login" class="HdrIcoLnk Lgout"></a>
+                        <a href="<?php echo base_url(); ?>/logout" class="HdrIcoLnk Lgout"></a>
                     </li>
                 </ul>
             </div>
