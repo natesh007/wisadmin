@@ -32,7 +32,7 @@
         <ul class="MenuList">
             <li>
                 <a href="<?php echo base_url(); ?>/dashboard" class="AppMenuLnk Map Actv">
-                    <span class="LnkTxt">Map</span>
+                    <span class="LnkTxt">Map <?php echo session('EmpName');?></span>
                 </a>
             </li>
             <li>
@@ -219,7 +219,7 @@
                         <a href="<?php echo base_url(); ?>/settings" class="HdrIcoLnk Sttngs"></a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>/login" class="HdrIcoLnk Lgout"></a>
+                        <a href="<?php echo base_url(); ?>/logout" class="HdrIcoLnk Lgout"></a>
                     </li>
                 </ul>
             </div>
