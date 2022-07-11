@@ -17,6 +17,8 @@
     <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href=" <?= base_url() ?>/public/wis_assets/CSS/bootstrap-select.css">
+    <script src="<?= base_url()?>/public/wis_assets/Scripts/bootstrap-select.min.js"></script>
     <style>
         .or{
             text-align: center;
@@ -31,22 +33,6 @@
             color: #333;
             margin-left: 15px;
         }
-        .btn {
-  background-color: DodgerBlue;
-  border: none;
-  color: white;
-  padding: 12px 30px;
-  cursor: pointer;
-  font-size: 20px;
-  width: 100%;
-    padding: 12px 40px 12px 12px;
-    font: 600 12px/100% 'Open San';
-}
-
-/* Darker background on mouse-over */
-.btn:hover {
-  background-color: RoyalBlue;
-}
     </style>
 </head>
 <body>
@@ -133,8 +119,7 @@
                         <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="BrID" class="FrmLbl">Branch</label>
-                                <select class="form-control InptBx" name="BrID" id="BrID">
-                                    <option disabled selected value hidden>Select Branch</option>
+                                <select class="form-control InptBx selectpicker" name="BrID[]" id="BrID" multiple data-live-search="true">
                                 </select>
                             </div>
                             <div class="col-md-6">
@@ -187,7 +172,7 @@
                             </div>
                         </div>
                         <div class="text-center SavBtnBlk">
-                            <button type="submit" class="btn btn-primary SavBtn">Assign</button>
+                            <button type="submit" class="btn btn-primary SavBtn">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -203,6 +188,7 @@
                         branches += '<option value="'+field.BrID +'">'+field.BrName+'</option>';
                     });
                     $('#BrID').html(branches);
+					$('#BrID').selectpicker("refresh");
                     var jobtitles = '<option disabled selected value hidden>Select Job Title</option>';
                     $.each(data.jobtitles, function (i, field) {
                         jobtitles += '<option value="'+field.JobTID +'">'+field.JobTitle+'</option>';
@@ -223,6 +209,7 @@
             }
         });
         $("form[id='AddEmployeeForm']").validate({
+            ignore: [],
             rules: {
                 EmpName: {
                     required: true,
@@ -239,7 +226,7 @@
                     normalizer: function(value) {
                         return $.trim(value);
                     },
-					email: true,
+                    email: true,
                 },
                 Mobile: {
                     required: true,
@@ -262,6 +249,13 @@
                     UniqueColumn: "This email is already existing. Please try with another.",
                 },
                 Mobile: "Please enter Mobile Number",
+            },
+            errorPlacement: function(error, element) {
+                if (element.attr("id") == "BrID") {
+                    error.insertAfter(".bootstrap-select");
+                } else {
+                    error.insertAfter(element);
+                }
             },
             submitHandler: function(form) {
                 var data = new FormData($('#AddEmployeeForm')[0]);

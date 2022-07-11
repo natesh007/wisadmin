@@ -18,17 +18,17 @@ class Employees extends BaseController
 		if ($this->request->getMethod() == 'post') {
             $wsm = new AuthModel();
             $emp_data =  array(
-				"EmpName" => $this->request->getVar('EmpName'),
-				"OrgID"  => $this->request->getVar('OrgID'),
-				"BrID"  => $this->request->getVar('BrID'),
-				"DeptID"  => $this->request->getVar('DeptID'),
-				"JobTID"  => $this->request->getVar('JobTID'),
-				"Email"  => $this->request->getVar('Email'),
-				"Gender"  => $this->request->getVar('Gender'),
-				"Mobile"  => $this->request->getVar('Mobile'),
-				"DateOfJoining"  => $this->request->getVar('DateOfJoining'),
-				"JobType"  => $this->request->getVar('JobType'),
-				"Address"  => $this->request->getVar('Address'),
+				"EmpName" => @$this->request->getVar('EmpName'),
+				"OrgID"  => @$this->request->getVar('OrgID'),
+				"BrID"  => @$this->request->getVar('BrID'),
+				"DeptID"  => @$this->request->getVar('DeptID'),
+				"JobTID"  => @$this->request->getVar('JobTID'),
+				"Email"  => @$this->request->getVar('Email'),
+				"Gender"  => @$this->request->getVar('Gender'),
+				"Mobile"  => @$this->request->getVar('Mobile'),
+				"DateOfJoining"  => @$this->request->getVar('DateOfJoining'),
+				"JobType"  => @$this->request->getVar('JobType'),
+				"Address"  => @$this->request->getVar('Address'),
             );
             $emp_data = $wsm->callwebservice(SAURL."addemployee", $emp_data, 1, 1);
             echo json_encode($emp_data);
@@ -37,7 +37,7 @@ class Employees extends BaseController
 	public function getbranchesandjobtitlesbyorg(){
         $wsm = new AuthModel();
         $Org = array(
-            "OrgID" => $this->request->getVar('OrgID'),
+            "OrgID" => @$this->request->getVar('OrgID'),
         );
         $branches_data = $wsm->callwebservice(SAURL."branches", $Org);
 		$data['branches'] = [];
@@ -56,8 +56,8 @@ class Employees extends BaseController
 	public function getdepartmentsbyorgnbranch(){
 		$wsm = new AuthModel();
         $OrgBr = array(
-            "OrgID" => $this->request->getVar('OrgID'),
-            "BrID" => $this->request->getVar('BrID')
+            "OrgID" => @$this->request->getVar('OrgID'),
+            "BrID" => implode(',', @$this->request->getVar('BrID'))
         );
         $departments_data = $wsm->callwebservice(SAURL."departments", $OrgBr);
 		$departments = [];

@@ -7877,7 +7877,6 @@ div.formgrp {
 button.SavBtn {
     font: 600 12px/100% 'Open Sans';
     color: #fff;
-    padding: 12px 40px 12px 12px;
     box-sizing: border-box;
     background: #0078BA !important;
     background: linear-gradient(180deg, #1F97DD 0%, #0078BB 100%) !important;
