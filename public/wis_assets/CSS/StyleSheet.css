@@ -7877,7 +7877,6 @@ div.formgrp {
 button.SavBtn {
     font: 600 12px/100% 'Open Sans';
     color: #fff;
-    padding: 12px 40px 12px 12px;
     box-sizing: border-box;
     background: #0078BA !important;
     background: linear-gradient(180deg, #1F97DD 0%, #0078BB 100%) !important;
@@ -7901,4 +7900,15 @@ label.error {
 }
 div#InfoDiv{
     display: none;
+}.bootstrap-select>.dropdown-toggle{
+    border: 1px solid #ddd !important;
+    font: 400 12px 'Open Sans' !important;
+    box-sizing: border-box !important;
+    height: 40px !important;
+    background: #FFFFFF !important;
+    outline: none !important;
+}.bootstrap-select>.dropdown-toggle:focus,
+.bs-searchbox .form-control:focus {
+    box-shadow: none !important;
+    border-color: #0078BA !important;
 }
