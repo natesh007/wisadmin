@@ -246,7 +246,6 @@
                 Email: {
                     required: "Please enter Email.",
                     email: "Please enter valid Email.",
-                    UniqueColumn: "This email is already existing. Please try with another.",
                 },
                 Mobile: "Please enter Mobile Number",
             },
