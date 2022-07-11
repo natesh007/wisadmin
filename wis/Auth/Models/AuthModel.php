@@ -20,6 +20,7 @@ class AuthModel extends Model
                 $headers[] = 'Authorization: Bearer '.session()->get('fb');
             }
         }
+        //print_r($headers); exit();
         // Set the cURL options
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
