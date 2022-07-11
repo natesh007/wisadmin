@@ -5,7 +5,16 @@ use Modules\Auth\Models\AuthModel;
 
 class Employees extends BaseController
 {
-	public function updateList(){
+	public function index(){
+		$wsm = new AuthModel();
+		$emp_data = $wsm->callwebservice(SAURL."employees", "", 1, 1);
+		$data['employees'] = [];
+		if (@$emp_data->status == "Success") {
+			$data['employees'] = @$emp_data->data;
+		}
+		echo view('Modules\WIS\Views\attendence\listView', $data);
+		
+	}public function updateList(){
 		$wsm = new AuthModel();
 		$org_data = $wsm->callwebservice(SAURL."organizationslist","");
 		$data['organizations'] = [];

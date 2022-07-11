@@ -14,10 +14,10 @@ class AuthModel extends Model
         $headers[] = 'Content-Type: application/json';
         if ($session_chk == 1) {
             if ($sessiontype == 1) {
-                $headers[] = 'Authorization: Token ' . session()->get('accessToken');
+                $headers[] = 'Authorization: Bearer ' . session()->get('accessToken');
             }
             elseif($sessiontype == 2){
-                $headers[] = 'Authorization: Token '.session()->get('fb');
+                $headers[] = 'Authorization: Bearer '.session()->get('fb');
             }
         }
         // Set the cURL options

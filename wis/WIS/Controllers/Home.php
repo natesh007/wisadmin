@@ -76,9 +76,6 @@ class Home extends BaseController
 	public function attendenceCustomDate(){
 		echo view('Modules\WIS\Views\attendence/attendenceCustomDate');
 	}
-	public function listView(){
-		echo view('Modules\WIS\Views\attendence/listView');
-	}
 	public function listViewDepartment(){
 		echo view('Modules\WIS\Views\attendence/ListViewDepartment');
 	}

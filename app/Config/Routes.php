@@ -61,7 +61,6 @@ $routes->add('/sanitationWashroomFullDetails', 'Home::sanitationWashroomFullDeta
 $routes->add('/attendence', 'Home::attendence',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/attendenceDeptDetail', 'Home::attendenceDeptDetail',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/attendenceCustomDate', 'Home::attendenceCustomDate',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/listView', 'Home::listView',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/listViewDepartment', 'Home::listViewDepartment',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/listViewVacancy', 'Home::listViewVacancy',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/ppm', 'Home::ppm',['namespace' => 'Modules\WIS\Controllers']);
@@ -84,6 +83,7 @@ $routes->add('/audits', 'Home::audits',['namespace' => 'Modules\WIS\Controllers'
 $routes->add('/auditObservations', 'Home::auditObservations',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/auditRecommendations', 'Home::auditRecommendations',['namespace' => 'Modules\WIS\Controllers']);
 
+$routes->add('/listView', 'Employees::index',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/updateList', 'Employees::updateList',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/employees/add_employee', 'Employees::add_employee',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/employees/getbranchesandjobtitlesbyorg', 'Employees::getbranchesandjobtitlesbyorg',['namespace' => 'Modules\WIS\Controllers']);
