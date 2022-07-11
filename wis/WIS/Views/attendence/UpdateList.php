@@ -218,7 +218,7 @@
                     },
                 },
                 OrgID: "required",
-                BrID: "required",
+                "BrID[]": "required",
                 DeptID: "required",
                 JobTID: "required",
                 Email: {
@@ -240,7 +240,7 @@
                     required: "Please enter Employee Name.",
                 },
                 OrgID: "Please select Organization",
-                BrID: "Please select Branches",
+                "BrID[]": "Please select Branches",
                 DeptID: "Please select Department",
                 JobTID: "Please select Job Title",
                 Email: {
@@ -251,8 +251,9 @@
                 Mobile: "Please enter Mobile Number",
             },
             errorPlacement: function(error, element) {
-                if (element.attr("id") == "BrID") {
+                if (element.attr("name") == "BrID[]") {
                     error.insertAfter(".bootstrap-select");
+                    $(".bootstrap-select .dropdown-toggle")[0].style.setProperty( 'border-color', 'red', 'important' );
                 } else {
                     error.insertAfter(element);
                 }
