@@ -15,15 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap"
         rel="stylesheet" />
     <link href="<?= base_url() ; ?>/public/wis_assets/CSS/StyleSheet.css?ver=1" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
-    </script>
-    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <link rel="stylesheet" href=" <?= base_url() ?>/public/wis_assets/CSS/bootstrap-select.css">
-    <script src="<?= base_url()?>/public/wis_assets/Scripts/bootstrap-select.min.js"></script>
 </head>
 
 <body>
@@ -53,6 +45,7 @@
         </div>
         <div class="ContainerRight">
             <div class="SrchFltrDv ChckLst">
+                <div class="alert alert-success alert-dismissible" id="ErrDiv"></div>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-3" style="font: 600 15px/100% 'Open Sans';    color: #0078BA;    padding-top: 16px; font-weight: bold;width:18%">
@@ -68,7 +61,7 @@
                         <div class="row">
 
                             <div class="col-md-2">
-                                <select class="form-select InptBx" aria-label="Default select example">
+                                <select class="form-select InptBx" aria-label="Default select example" name="" id="">
                                     <option selected>Service Department</option>
                                     <option value="1">All</option>
                                     <option value="2">Electrical</option>
@@ -80,7 +73,7 @@
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <select class="form-select InptBx" aria-label="Default select example">
+                                <select class="form-select InptBx" aria-label="Default select example" name="" id="">
                                     <option selected>Job Title</option>
                                     <option value="1">Senior Electrician</option>
                                     <option value="2">Junior Electrician</option>
@@ -178,15 +171,14 @@
                                                     <span class="DataTxt">8</span>
                                                 </td>
                                                 <td>
-                                                    <span class="DataTxt">8</span>
+                                                    <span class="DataTxt" onclick="javascript:UpdateEmployee('.$emp->EmpID.');">Edit</span>
+                                                    &nbsp;
+                                                    <span class="DataTxt" id="ActInAct" onclick="activeinactive('."'getemployee', ".$emp->EmpID.', ';
+                                                    if($emp->Status == 1) echo '0'; else echo '1';
+                                                    echo ')">';
+                                                    if($emp->Status == 1) echo 'Inactivate'; else echo 'Actvate';
+                                                    echo '</span>
                                                 </td>
-                                                <td>
-                                                    <span class="DataTxt" onclick="javascript:UpdateEmployee('.$emp->EmpID.');">Edit</span>&nbsp;';
-                                                    if($emp->Status == 1)
-                                                        echo '<span class="DataTxt">Inactivate</span>';
-                                                    else
-                                                    echo '<span class="DataTxt">Activate</span>';
-                                                echo '</td>
                                             </tr>';
                                         }
                                     }else{
@@ -298,6 +290,14 @@
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
+    </script>
+    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="<?= base_url()?>/public/wis_assets/Scripts/bootstrap-select.min.js"></script>
     <script>
         function UpdateEmployee(EmpID){
             if (document.getElementById('AppMdlHldr').getAttribute('class') == 'AppModalHldr Hide') {
