@@ -88,6 +88,8 @@ $routes->add('/updateList', 'Employees::updateList',['namespace' => 'Modules\WIS
 $routes->add('/employees/add_employee', 'Employees::add_employee',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/employees/getbranchesandjobtitlesbyorg', 'Employees::getbranchesandjobtitlesbyorg',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/employees/getdepartmentsbyorgnbranch', 'Employees::getdepartmentsbyorgnbranch',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/employees/get_employee', 'Employees::get_employee',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/employees/update_employee', 'Employees::update_employee',['namespace' => 'Modules\WIS\Controllers']);
 
 /**
  * --------------------------------------------------------------------

@@ -40,11 +40,10 @@
 <?php echo view('Modules\WIS\Views\common/footer')  ?>
 <?php echo view('Modules\WIS\Views\common/header')  ?>
 <?php echo view('Modules\WIS\Views\common/header_sub')  ?>
-<div class="AppFllContainer FllScrn">
-    <div class="ContainerLeft">
+    <div class="AppFllContainer FllScrn">
+        <div class="ContainerLeft">
             <span class="SctnTtl CmplntsFdbck">List View</span>
             <div class="SctnInnerLnks">
-               
                 <ul class="InnrLnksHldr">
                     <li>
                         <a href="<?php echo base_url(); ?>/listView" class="LnkTxt">Employee List</a>
@@ -59,8 +58,7 @@
                         <a href="<?php echo base_url(); ?>/listViewVacancy" class="LnkTxt">Vacancies</a>
                     </li>
                 </ul>
-            </div>
-            
+            </div>            
         </div>
         <div class="ContainerRight">
             <div class="SrchFltrDv ChckLst">
@@ -72,7 +70,7 @@
                         </div>
                         <div class="col-md-1 BttnHldr or">OR</div>
                         <div class="col-md-3 BttnHldr">
-                       <a href="<?php echo base_url(); ?>asset/hospital_admin/Images/sample_department.xlsx" class="btn" download><i class="fa fa-download"></i>
+                        <a href="<?php echo base_url(); ?>asset/hospital_admin/Images/sample_department.xlsx" class="btn" download><i class="fa fa-download"></i>
                         Existing Employee List
                                 </a>                           
                         </div>
@@ -85,9 +83,7 @@
                         </div>
                     </div>
                 </div>
-             </div>          
-           
-           
+            </div>    
         </div>
     </div>
     <div id="AppMdlHldr" class="AppModalHldr Hide">
@@ -167,6 +163,15 @@
                         </div>
                         <div class="formgrp row">
                             <div class="col-md-6">
+                                <label for="PreviousExp" class="FrmLbl">Previous Experience</label>
+                                <select class="form-control InptBx" name="PreviousExp" id="PreviousExp">
+                                    <option disabled selected value hidden>Select Previous Experience</option>
+                                    <?php foreach($prev_exp as $key => $prev){
+                                        echo '<option value="' . $key . '">' . $prev . '</option>' ;
+                                    } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
                                 <label for="Address" class="FrmLbl">Address</label>
                                 <textarea class="form-control InptBx" rows="5" id="Address" name="Address" placeholder="Enter Address"></textarea>
                             </div>
@@ -203,6 +208,9 @@
                     var depts = '<option disabled selected value hidden>Select Departments</option>';
                     $.each(data, function (i, field) {
                         depts += '<option value="'+field.DeptID +'">'+field.DeptName+'</option>';
+                        $.each(field.Subdeparts, function (j, field2) {
+                            depts += '<option value="'+field2.DeptID +'">'+field2.DeptName+'</option>';
+                        });
                     });
                     $('#DeptID').html(depts);
                 });
