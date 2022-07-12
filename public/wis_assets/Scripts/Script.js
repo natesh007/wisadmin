@@ -1,4 +1,5 @@
-﻿function ModalPopup() {
+﻿var BaseURL = $("#BaseURL").val();
+function ModalPopup() {
     if (document.getElementById('AppMdlHldr').getAttribute('class') == 'AppModalHldr Hide') {
         document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
     }
@@ -34,4 +35,19 @@ function ModalPopupAddComplaint() {
     }
     return false;
 }
-
+function activeinactive(MasterTable, ID, Status){
+    $.post(BaseURL+"/activeinactive", {MasterTable: MasterTable, ID: ID, Status: Status}, function(data, status){
+        var obj = jQuery.parseJSON(data);
+        if (obj.status == 'Success')
+            $("#ErrDiv").addClass('alert-success').removeClass('alert-danger');
+        else
+            $("#ErrDiv").addClass('alert-danger').removeClass('alert-success');
+        $("#ErrDiv").html(obj.msg);
+        $("#ErrDiv").show();
+        setTimeout(function() {
+            $("#ErrDiv").hide();
+        }, 3000);
+        if (obj.status == 'Success')
+            window.location.href = BaseURL+'/listView';
+    });
+}

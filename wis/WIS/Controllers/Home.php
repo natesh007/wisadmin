@@ -1,6 +1,7 @@
 <?php
 
 namespace Modules\WIS\Controllers;
+use Modules\Auth\Models\AuthModel;
 
 class Home extends BaseController
 {
@@ -142,7 +143,16 @@ class Home extends BaseController
 	public function auditRecommendations(){
 		echo view('Modules\WIS\Views/audits/audit_recommendations');
 	}
-	
+	public function activeinactive(){
+		$wsm = new AuthModel();
+		$data = array(
+			"MasterTable" => @$this->request->getVar('MasterTable'),
+			"ID" => @$this->request->getVar('ID'),
+			"Status" => @$this->request->getVar('Status'),
+		);
+		$res = $wsm->callwebservice(SAURL."activeinactive", $data);
+		echo json_encode($res);
+	}
 
 	
 }

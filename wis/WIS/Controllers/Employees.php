@@ -12,6 +12,19 @@ class Employees extends BaseController
 		if (@$emp_data->status == "Success") {
 			$data['employees'] = @$emp_data->data;
 		}
+        $departments_data = $wsm->callwebservice(SAURL."alldepartments", "", 1, 1);
+		$data['departments'] = [];
+		if (@$departments_data->status == "Success") {
+			$data['departments'] = @$departments_data->data->data;
+		}
+		/*$Org =  array(
+			"OrgID" => session(''),
+		);
+		$jobtitles_data = $wsm->callwebservice(SAURL."jobtitles", $Org, 1, 1);
+		$data['jobtitles'] = [];
+		if (@$jobtitles_data->status == "Success") {
+			$data['jobtitles'] = @$jobtitles_data->data;
+		}*/
 		echo view('Modules\WIS\Views\attendence\listView', $data);
 		
 	}public function updateList(){
@@ -111,7 +124,7 @@ class Employees extends BaseController
 				"OrgID" => @$data['employee']->OrgID,
 			);
 			$branches_data = $wsm->callwebservice(SAURL."branches", $Org);
-		if (@$branches_data->status == "Success") {
+			if (@$branches_data->status == "Success") {
 				$data['branches'] = @$branches_data->data;
 			}
 			$jobtitles_data = $wsm->callwebservice(SAURL."jobtitles", $Org);
@@ -146,6 +159,7 @@ class Employees extends BaseController
 				"Mobile"  => @$this->request->getVar('Mobile'),
 				"DateOfJoining"  => @$this->request->getVar('DateOfJoining'),
 				"JobType"  => @$this->request->getVar('JobType'),
+				"PreviousExp"  => @$this->request->getVar('PreviousExp'),
 				"Address"  => @$this->request->getVar('Address'),
             );
             $emp_data = $wsm->callwebservice(SAURL."editemployee", $emp_data, 1, 1);

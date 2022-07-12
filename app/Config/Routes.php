@@ -82,6 +82,7 @@ $routes->add('/billingSoftware', 'Home::billingSoftware',['namespace' => 'Module
 $routes->add('/audits', 'Home::audits',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/auditObservations', 'Home::auditObservations',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/auditRecommendations', 'Home::auditRecommendations',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/activeinactive', 'Home::activeinactive',['namespace' => 'Modules\WIS\Controllers']);
 
 $routes->add('/listView', 'Employees::index',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/updateList', 'Employees::updateList',['namespace' => 'Modules\WIS\Controllers']);
