@@ -33,18 +33,15 @@ class Auth extends BaseController
     private function setEmployeeDetails($user)
     {
         $data = [
-            "DeptID"        => $user->DeptID,
-            "EmpID"    => $user->EmpID,
-            "EmpName"  => $user->EmpName,
-            "EmailID"     => $user->EmailID,
-            "Contact"      => $user->Contact,
-            "Address"        => $user->Address,
-            "JobType"      => $user->JobType,
-            "RoleID"      => $user->RoleID,
-            "Status"      => $user->Status,
-            "accessToken"      => $user->accessToken,
-            "fb"      => $user->fb,
-            "is_logged_in"      => true
+            "OrgID" => $user->OrgID,
+            "OrgName" => $user->OrgName,
+            "DeptID" => $user->DeptID,
+            "EmpID" => $user->EmpID,
+            "EmpName" => $user->EmpName,
+            "RoleID" => $user->RoleID,
+            "accessToken" => $user->accessToken,
+            "fb" => $user->fb,
+            "is_logged_in" => true
         ];
         session()->set($data);
         return true;

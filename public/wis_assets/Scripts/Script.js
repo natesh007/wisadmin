@@ -48,6 +48,6 @@ function activeinactive(MasterTable, ID, Status){
             $("#ErrDiv").hide();
         }, 3000);
         if (obj.status == 'Success')
-            window.location.href = BaseURL+'/listView';
+            window.location.href = window.location.href
     });
 }

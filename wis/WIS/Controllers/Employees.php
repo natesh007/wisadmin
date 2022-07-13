@@ -7,87 +7,55 @@ class Employees extends BaseController
 {
 	public function index(){
 		$wsm = new AuthModel();
-		$emp_data = $wsm->callwebservice(SAURL."employees", "", 1, 1);
+		//Get Employees
+		$data['Department'] = @$this->request->getVar('Department');
+		$data['JobTitle'] = @$this->request->getVar('JobTitle');
+		$employees_array = array(
+			"DeptID" => $data['Department'],
+			"JobTID"  => $data['JobTitle']
+		);
+		$employees_data = $wsm->callwebservice(SAURL."employees", $employees_array, 1, 1);
 		$data['employees'] = [];
-		if (@$emp_data->status == "Success") {
-			$data['employees'] = @$emp_data->data;
+		if (@$employees_data->status == "Success") {
+			$data['employees'] = @$employees_data->data;
 		}
+
+		//Get Departments For Search Dropdown
         $departments_data = $wsm->callwebservice(SAURL."alldepartments", "", 1, 1);
 		$data['departments'] = [];
 		if (@$departments_data->status == "Success") {
-			$data['departments'] = @$departments_data->data->data;
+			$data['departments'] = @$departments_data->data;
 		}
-		/*$Org =  array(
-			"OrgID" => session(''),
-		);
-		$jobtitles_data = $wsm->callwebservice(SAURL."jobtitles", $Org, 1, 1);
-		$data['jobtitles'] = [];
-		if (@$jobtitles_data->status == "Success") {
-			$data['jobtitles'] = @$jobtitles_data->data;
-		}*/
-		echo view('Modules\WIS\Views\attendence\listView', $data);
-		
-	}public function updateList(){
-		$wsm = new AuthModel();
-		$org_data = $wsm->callwebservice(SAURL."organizationslist","");
-		$data['organizations'] = [];
-		if (@$org_data->status == "Success") {
-			$data['organizations'] = @$org_data->data;
-		}
-		$prev_exp_data = $wsm->callwebservice(SAURL."experiencelist","");
-		$data['prev_exp'] = [];
-		if (@$prev_exp_data->status == "Success") {
-			$data['prev_exp'] = @$prev_exp_data->data;
-		}
-		echo view('Modules\WIS\Views\attendence\UpdateList', $data);
-	}
-	public function add_employee(){
-		if ($this->request->getMethod() == 'post') {
-            $wsm = new AuthModel();
-            $emp_data =  array(
-				"EmpName" => @$this->request->getVar('EmpName'),
-				"OrgID"  => @$this->request->getVar('OrgID'),
-				"BrID"  => implode(',', @$this->request->getVar('BrID')),
-				"DeptID"  => @$this->request->getVar('DeptID'),
-				"JobTID"  => @$this->request->getVar('JobTID'),
-				"Email"  => @$this->request->getVar('Email'),
-				"Gender"  => @$this->request->getVar('Gender'),
-				"Mobile"  => @$this->request->getVar('Mobile'),
-				"DateOfJoining"  => @$this->request->getVar('DateOfJoining'),
-				"JobType"  => @$this->request->getVar('JobType'),
-				"PreviousExp"  => @$this->request->getVar('PreviousExp'),
-				"Address"  => @$this->request->getVar('Address'),
-            );
-            $emp_data = $wsm->callwebservice(SAURL."addemployee", $emp_data, 1, 1);
-            echo json_encode($emp_data);
-        }
-	}
-	public function getbranchesandjobtitlesbyorg(){
-        $wsm = new AuthModel();
-        $Org = array(
-            "OrgID" => @$this->request->getVar('OrgID'),
-        );
-        $branches_data = $wsm->callwebservice(SAURL."branches", $Org);
+
+		//Get Branches For Dropdown
+		$branches_data = $wsm->callwebservice(SAURL."branches", "", 1, 1);
 		$data['branches'] = [];
 		if (@$branches_data->status == "Success") {
 			$data['branches'] = @$branches_data->data;
 		}
-        $jobtitles_data = $wsm->callwebservice(SAURL."jobtitles", $Org);
+
+		//Get Job Titles For Dropdown
+		$jobtitles_data = $wsm->callwebservice(SAURL."jobtitles", "", 1, 1);
 		$data['jobtitles'] = [];
 		if (@$jobtitles_data->status == "Success") {
 			$data['jobtitles'] = @$jobtitles_data->data;
 		}
-		header('Content-type: application/json');
-        print json_encode($data, JSON_PRETTY_PRINT);
-        exit; 
-    }
+
+		//Get Previous Experience For Dropdown
+		$prev_exp_data = $wsm->callwebservice(SAURL."experiencelist", "");
+		$data['prev_exp'] = [];
+		if (@$prev_exp_data->status == "Success") {
+			$data['prev_exp'] = @$prev_exp_data->data;
+		}
+		echo view('Modules\WIS\Views\attendence\listView', $data);
+		
+	}
 	public function getdepartmentsbyorgnbranch(){
 		$wsm = new AuthModel();
-        $OrgBr = array(
-            "OrgID" => @$this->request->getVar('OrgID'),
+        $departments_array = array(
             "BrID" => implode(',', @$this->request->getVar('BrID'))
         );
-        $departments_data = $wsm->callwebservice(SAURL."departments", $OrgBr);
+        $departments_data = $wsm->callwebservice(SAURL."departments", $departments_array, 1, 1);
 		$departments = [];
 		if (@$departments_data->status == "Success") {
 			$departments = @$departments_data->data->data;
@@ -98,44 +66,20 @@ class Employees extends BaseController
 	}
 	public function get_employee(){
 		$wsm = new AuthModel();
-        $Emp = array(
+        $employee_array = array(
             "EmpID" => @$this->request->getVar('EmpID'),
         );
-        $emp_data = $wsm->callwebservice(SAURL."getemployee", $Emp, 1, 1);
+        $employee_data = $wsm->callwebservice(SAURL."getemployee", $employee_array, 1, 1);
 		$data['employee'] = [];
-		if (@$emp_data->status == "Success") {
-			$data['employee'] = @$emp_data->data[0];
+		if (@$employee_data->status == "Success") {
+			$data['employee'] = @$employee_data->data[0];
 		}
-		$org_data = $wsm->callwebservice(SAURL."organizationslist","");
-		$data['organizations'] = [];
-		if (@$org_data->status == "Success") {
-			$data['organizations'] = @$org_data->data;
-		}
-		$prev_exp_data = $wsm->callwebservice(SAURL."experiencelist","");
-		$data['prev_exp'] = [];
-		if (@$prev_exp_data->status == "Success") {
-			$data['prev_exp'] = @$prev_exp_data->data;
-		}
-		$data['branches'] = [];
-		$data['jobtitles'] = [];
 		$data['departments'] = [];
 		if(!empty($data['employee'])){
-			$Org = array(
-				"OrgID" => @$data['employee']->OrgID,
-			);
-			$branches_data = $wsm->callwebservice(SAURL."branches", $Org);
-			if (@$branches_data->status == "Success") {
-				$data['branches'] = @$branches_data->data;
-			}
-			$jobtitles_data = $wsm->callwebservice(SAURL."jobtitles", $Org);
-			if (@$jobtitles_data->status == "Success") {
-				$data['jobtitles'] = @$jobtitles_data->data;
-			}
-			$OrgBr = array(
-				"OrgID" => @$data['employee']->OrgID,
+			$departments_array = array(
 				"BrID" => @$data['employee']->BrID
 			);
-			$departments_data = $wsm->callwebservice(SAURL."departments", $OrgBr);
+			$departments_data = $wsm->callwebservice(SAURL."departments", $departments_array, 1, 1);
 			if (@$departments_data->status == "Success") {
 				$data['departments'] = @$departments_data->data->data;
 			}
@@ -144,26 +88,17 @@ class Employees extends BaseController
         print json_encode($data, JSON_PRETTY_PRINT);
         exit;
 	}
-	public function update_employee(){
+	public function add_or_update_employee(){
 		if ($this->request->getMethod() == 'post') {
             $wsm = new AuthModel();
-            $emp_data =  array(
-				"EmpID" => @$this->request->getVar('EmpID'),
-				"EmpName" => @$this->request->getVar('EmpName'),
-				"OrgID"  => @$this->request->getVar('OrgID'),
-				"BrID"  => implode(',', @$this->request->getVar('BrID')),
-				"DeptID"  => @$this->request->getVar('DeptID'),
-				"JobTID"  => @$this->request->getVar('JobTID'),
-				"Email"  => @$this->request->getVar('Email'),
-				"Gender"  => @$this->request->getVar('Gender'),
-				"Mobile"  => @$this->request->getVar('Mobile'),
-				"DateOfJoining"  => @$this->request->getVar('DateOfJoining'),
-				"JobType"  => @$this->request->getVar('JobType'),
-				"PreviousExp"  => @$this->request->getVar('PreviousExp'),
-				"Address"  => @$this->request->getVar('Address'),
-            );
-            $emp_data = $wsm->callwebservice(SAURL."editemployee", $emp_data, 1, 1);
-            echo json_encode($emp_data);
+            $employee_array =  @$this->request->getVar();
+			$employee_array['BrID'] = implode(',', $employee_array['BrID']);
+			if(@$this->request->getVar('EmpID')){
+				$employee_data = $wsm->callwebservice(SAURL."editemployee", $employee_array, 1, 1);
+			}else{
+				$employee_data = $wsm->callwebservice(SAURL."addemployee", $employee_array, 1, 1);
+			}
+            echo json_encode($employee_data);
         }
 	}
 }

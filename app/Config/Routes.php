@@ -61,7 +61,6 @@ $routes->add('/sanitationWashroomFullDetails', 'Home::sanitationWashroomFullDeta
 $routes->add('/attendence', 'Home::attendence',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/attendenceDeptDetail', 'Home::attendenceDeptDetail',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/attendenceCustomDate', 'Home::attendenceCustomDate',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/listViewDepartment', 'Home::listViewDepartment',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/listViewVacancy', 'Home::listViewVacancy',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/ppm', 'Home::ppm',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/amc', 'Home::amc',['namespace' => 'Modules\WIS\Controllers']);
@@ -83,14 +82,14 @@ $routes->add('/audits', 'Home::audits',['namespace' => 'Modules\WIS\Controllers'
 $routes->add('/auditObservations', 'Home::auditObservations',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/auditRecommendations', 'Home::auditRecommendations',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/activeinactive', 'Home::activeinactive',['namespace' => 'Modules\WIS\Controllers']);
-
+$routes->add('/updateList', 'Home::updateList',['namespace' => 'Modules\WIS\Controllers']);
+//Employees Routes
 $routes->add('/listView', 'Employees::index',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/updateList', 'Employees::updateList',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/employees/add_employee', 'Employees::add_employee',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/employees/getbranchesandjobtitlesbyorg', 'Employees::getbranchesandjobtitlesbyorg',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/employees/getdepartmentsbyorgnbranch', 'Employees::getdepartmentsbyorgnbranch',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/employees/get_employee', 'Employees::get_employee',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/employees/update_employee', 'Employees::update_employee',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/employees/add_or_update_employee', 'Employees::add_or_update_employee',['namespace' => 'Modules\WIS\Controllers']);
+//Departments Routes
+$routes->add('/listViewDepartment', 'Departments::index',['namespace' => 'Modules\WIS\Controllers']);
 
 /**
  * --------------------------------------------------------------------

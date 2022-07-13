@@ -32,7 +32,7 @@
         <ul class="MenuList">
             <li>
                 <a href="<?php echo base_url(); ?>/dashboard" class="AppMenuLnk Map Actv">
-                    <span class="LnkTxt">Map <?php echo session('EmpName');?></span>
+                    <span class="LnkTxt">Map <?= session('EmpName'); ?></span>
                 </a>
             </li>
             <li>
@@ -209,7 +209,7 @@
                     <li>
                         <div class="PrfHldr">
                             <img src="<?= base_url() ; ?>/public/wis_assets/Images/UserImg.jpg" class="UserImg" />
-                            <span class="UsrNme">Radhika K.</span>
+                            <span class="UsrNme"><?= session('EmpName'); ?></span>
                         </div>
                     </li>
                     <li>

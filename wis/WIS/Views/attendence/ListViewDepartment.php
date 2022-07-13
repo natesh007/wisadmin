@@ -12,44 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link href="<?= base_url() ; ?>/public/wis_assets/CSS/StyleSheet.css?ver=1" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
-    <style>
-        th,td {
-  text-align: center !important;
-  width: 33%; 
-}
-        .or{
-            text-align: center;
-    font-weight: bold;
-    font-size: 17px;
-    text-align: center;
-    margin-top: 10px;
-    
-        }
-        .nn{
-            font: 600 12px/100% 'Open Sans';
-            color: #333;
-            margin-left: 15px;
-        }
-        .btn {
-  background-color: DodgerBlue;
-  border: none;
-  color: white;
-  padding: 12px 30px;
-  cursor: pointer;
-  font-size: 20px;
-  width: 100%;
-    padding: 12px 40px 12px 12px;
-    font: 600 12px/100% 'Open San';
-}
-
-/* Darker background on mouse-over */
-.btn:hover {
-  background-color: RoyalBlue;
-}
-    </style>
 </head>
 <body>
 <?php echo view('Modules\WIS\Views\common/leftmenu')  ?>
@@ -60,7 +22,6 @@
     <div class="ContainerLeft">
             <span class="SctnTtl CmplntsFdbck">List View</span>
             <div class="SctnInnerLnks">
-               
                 <ul class="InnrLnksHldr">
                     <li>
                         <a href="<?php echo base_url(); ?>/listView" class="LnkTxt">Employee List</a>
@@ -76,74 +37,59 @@
                     </li>
                 </ul>
             </div>
-            
         </div>
         <div class="ContainerRight">
-             <div class="SrchFltrDv ChckLst">
+            <div class="SrchFltrDv ChckLst">
+                <div class="alert alert-success alert-dismissible" id="ErrDiv"></div>
                 <div class="container-fluid">
                     <div class="row">
-                        
-                        <div class="col-md-3" style="font: 600 15px/100% 'Open Sans';    color: #0078BA;    padding-top: 16px;
-                            font-weight: bold;width:10%">
+                        <div class="col-md-6" style="font: 600 15px/100% 'Open Sans';    color: #0078BA;    padding-top: 16px;
+                            font-weight: bold;">
                             Departments
                         </div>
-                        <div class="col-md-6 BttnHldr">
-                            <button type="button" onclick="javascript:ModalPopup();" class="btn btn-primary SbmtBtn" style="width:34%">Add/Update Department</button>
+                        <div class="col-md-6" style="text-align: right">
+                            <button type="button" onclick="javascript:AddOrUpdateDepartment('');" class="btn btn-primary SbmtBtn" style="width:34%">Add Department</button>
                         </div>
                     </div>
                 </div>
-             </div>          
-           
-           
+            </div>     
             <div class="SrchFltrDv ChckLst">
                 <div class="container-fluid">
-                    <div class="row">
-                        
-                        <div class="col-md-2">
-                            <select class="form-select InptBx" aria-label="Default select example">
-                                <option selected>Service Department</option>
-                                <option value="1">All</option>
-                                <option value="1">Electrical</option>
-                                <option value="2">Supervisor</option>
-                                <option value="3">Nursing </option>
-                                <option value="3">Janitor</option>
-                                <option value="3">Plumber</option>
-                               
-                            </select>
+                    <form action="" method="post"> 
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="search" class="form-control InptBx" placeholder="Search By Department" name="DepartmentName" value="<?= $DepartmentName; ?>"/>
+                            </div>
+                            <div class="col-md-2">
+                                <select class="form-select InptBx" name="Branch">
+                                    <option disabled selected value hidden>Select Branch</option>
+                                    <option value="">All</option>
+                                    <?php if(!empty($branches)){
+                                        foreach($branches as $branch){
+                                            echo '<option value="'.$branch->BrID.'"';
+                                            if($Branch == $branch->BrID) echo 'selected';
+                                            echo '>'.$branch->BrName.'</option>';
+                                        }
+                                    } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <select class="form-select InptBx" aria-label="Default select example">
+                                    <option selected>Sort by</option>
+                                    <option value="1">Job Title</option>
+                                    <option value="2">Service Department</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 BttnHldr">
+                                <button type="submit" class="btn btn-primary SbmtBtn">Submit</button>
+                                <button type="button" class="btn btn-primary FnctnBtn Prnt">Print</button>
+                                <button type="button" class="btn btn-primary FnctnBtn Dwnld">Download</button>
+                            </div>
                         </div>
-                        <div class="col-md-2">
-                            <select class="form-select InptBx" aria-label="Default select example">
-                                <option selected>Job Title</option>
-                                <option value="1">Senior Electrician</option>
-                                <option value="2">Junior Electrician</option>
-                                <option value="3">DG Operator</option>
-                                <option value="3">Senior Janitor</option>
-                                <option value="3">Senior Plumber</option>
-                                <option value="3">Junior Plumber</option>
-                               
-                            </select>
-                        </div>
-                       
-                       
-                        <div class="col-md-2">
-                            <select class="form-select InptBx" aria-label="Default select example">
-                                <option selected>Sort by</option>
-                                <option value="1">Job Title</option>
-                                <option value="2">Service Department</option>
-                               
-                            </select>
-                        </div>
-                        <div class="col-md-2 BttnHldr">
-                            <button type="button" onclick="" class="btn btn-primary SbmtBtn">Submit</button>
-                            <button type="button" class="btn btn-primary FnctnBtn Prnt">Print</button>
-                            <button type="button" class="btn btn-primary FnctnBtn Dwnld">Download</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="InnrPgBgHldr">
-                <span class="SctnTtl CmplntsFdbck" style="font: 600 15px/100% 'Open Sans';color: #101010d9;padding-top: 16px;        font-weight: bold;width:18%">Supervisor Department
-                </span>
                 <div class="TableHldr">
                     <table class="AppDataTbl">
                         <tbody>
@@ -151,211 +97,46 @@
                                 <th>
                                     <span class="DataTtl">S. No.</span>
                                 </th>
-                               
                                 <th>
                                     <span class="DataTtl">Service Department</span>
                                 </th>
                                 <th>
-                                    <span class="DataTtl">Job Title</span>
-                                </th>
-                                
-                                
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    <span class="DataTxt">1</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Supervisor</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Senior Supervisor</span>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="DataTxt">2</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Supervisor</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Junior Supervisor</span>
-                                </td>
-                               
-                            </tr>
-                            
-                            
-                            
-                        </tbody>
-                    </table>
-                </div>
-                <div style="padding-top:25px"></div>
-                <span class="SctnTtl CmplntsFdbck" style="font: 600 15px/100% 'Open Sans';color: #101010d9;padding-top: 16px;        font-weight: bold;width:18%">Electrical Department
-                </span>
-                <div class="TableHldr">
-                    <table class="AppDataTbl">
-                        <tbody>
-                            <tr class="Hdr">
-                                <th>
-                                    <span class="DataTtl">S. No.</span>
-                                </th>
-                               
-                                <th>
-                                    <span class="DataTtl">Service Department</span>
+                                    <span class="DataTtl">Parent Department</span>
                                 </th>
                                 <th>
-                                    <span class="DataTtl">Job Title</span>
-                                </th>
-                                
-                                
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="DataTxt">1</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Electrical</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Senior Electrician</span>
-                                </td>
-                                
-                                
-                            </tr>
-                            <td>
-                                    <span class="DataTxt">2</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Electrical</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Junior Electrician</span>
-                                </td>
-                                
-                                
-                            </tr>
-                            
-                            
-                            <tr>
-                                <td>
-                                    <span class="DataTxt">3</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Electrical</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">DG Operator</span>
-                                </td>
-                                
-                            </tr>
-                           
-                            
-                            
-                        </tbody>
-                    </table>
-                </div>
-                <div style="padding-top:25px"></div>
-                <span class="SctnTtl CmplntsFdbck" style="font: 600 15px/100% 'Open Sans';color: #101010d9;padding-top: 16px;        font-weight: bold;width:18%">Plumber Department
-                </span>
-                <div class="TableHldr">
-                    <table class="AppDataTbl">
-                        <tbody>
-                            <tr class="Hdr">
-                                <th>
-                                    <span class="DataTtl">S. No.</span>
-                                </th>
-                               
-                                <th>
-                                    <span class="DataTtl">Service Department</span>
+                                    <span class="DataTtl">Branch</span>
                                 </th>
                                 <th>
-                                    <span class="DataTtl">Job Title</span>
+                                    <span class="DataTtl">Actions</span>
                                 </th>
-                                
-                                
                             </tr>
-                            
-                            <tr>
-                                <td>
-                                    <span class="DataTxt">1</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Plumber</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Senior Plumber</span>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="DataTxt">2</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Plumber</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Junior Plumber</span>
-                                </td>
-                                
-                            </tr>
-                            
-                            
-                            
-                            
-                        </tbody>
-                    </table>
-                </div>
-                <div style="padding-top:25px"></div>
-                <span class="SctnTtl CmplntsFdbck" style="font: 600 15px/100% 'Open Sans';color: #101010d9;padding-top: 16px;        font-weight: bold;width:18%">Janitor Department
-                </span>
-                <div class="TableHldr">
-                    <table class="AppDataTbl">
-                        <tbody>
-                            <tr class="Hdr">
-                                <th>
-                                    <span class="DataTtl">S. No.</span>
-                                </th>
-                               
-                                <th>
-                                    <span class="DataTtl">Service Department</span>
-                                </th>
-                                <th>
-                                    <span class="DataTtl">Job Title</span>
-                                </th>
-                                
-                                
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    <span class="DataTxt">1</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Janitor</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Junior Janitor</span>
-                                </td>
-                               
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="DataTxt">2</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Janitor</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">Junior Janitor</span>
-                                </td>
-                               
-                            </tr>
-                            
-                            
+                            <?php if(!empty($departments)){
+                                foreach($departments as $key => $department){
+                                    echo '<tr>
+                                        <td>
+                                            <span class="DataTxt">'.($key+1).'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$department->DeptName.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$department->ParentName.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$department->BrName.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt" onclick="javascript:AddOrUpdateDepartment('.$department->DeptID.');">Edit</span>
+                                            &nbsp;
+                                            <span class="DataTxt" id="ActInAct" onclick="activeinactive('."'getdepartment', ".$department->DeptID.', ';
+                                            if($department->Status == 1) echo '0'; else echo '1';
+                                            echo ')">';
+                                            if($department->Status == 1) echo 'Inactivate'; else echo 'Actvate';
+                                            echo '</span>
+                                        </td>
+                                    </tr>';
+                                } 
+                            } ?>
                         </tbody>
                     </table>
                 </div>
@@ -364,55 +145,124 @@
         </div>
     </div>
     <div id="AppMdlHldr" class="AppModalHldr Hide">
-        <div class="AppModalInnrHldr LdrShpPrfl" style="height: 48%;">
-                <div class="ModalTtlHldr LdrshpTtl" style="height: 100%;">
-                    
-                        <span class="PrflName">Add/Update Department</span>
-                    
-                        <span id="AppMdlClsBtn" onclick="javascript:ModalPopup();" class="ModalClsBtn"></span>
-                        <div class="ModalCntntHldr LdrshpDtl" style="top:60px">
-                        <div class="LdrPrfDtlsHldr" style="margin-left: 15px;">
-                        <input type="radio" id="html" name="fav_language" value="Upload Excel"><label for="html" class="nn">Upload Excel</label>  <input type="file" id="myFile" name="filename" style="margin-left: 100px;">
-                            <a href="<?php echo base_url(); ?>asset/hospital_admin/Images/sample_department.xlsx" download>
-                                Download Sample Format
-                                </a>
-                        
+        <div class="AppModalInnrHldr" style="width:50%;height:48%;left:30%;top:8%">
+            <div class="ModalTtlHldr">
+                <div class="ModalTtlHldr">
+                    <span class="SctnTtl"><?= session('OrgName'); ?></span>
+                    <span class="FtrTtl">Add Department</span>
+                    <span id="AppMdlClsBtn" onclick="javascript:AddOrUpdateDepartment('');" class="ModalClsBtn"></span>
+                </div>
+                <div class="ModalCntntHldr AddEmpBlk" style="top:60px">
+                    <div class="alert alert-success alert-dismissible" id="InfoDiv"></div>
+                    <form method="post" id="AddOrUpdateDepartmentForm">
+                        <div class="formgrp row">
+                            <div class="col-md-6">
+                                <input type="hidden" class="form-control" id="DeptID" name="DeptID"/>
+                                <label for="DeptName" class="FrmLbl">Department Name</label>
+                                <input type="text" class="form-control InptBx" id="DeptName" name="DeptName" placeholder="Enter Department Name"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="BrID" class="FrmLbl">Parent Department</label>
+                                <select class="form-control InptBx" name="BrID" id="BrID">
+                                    <option disabled selected value hidden>Select Parent Department</option>
+                                    <?php foreach($departments as $department){
+                                        echo '<option value="' . $department->DeptID . '">' . $department->DeptName . '</option>' ;
+                                    } ?>
+                                </select>
+                            </div>
                         </div>
-                        <div class="or">OR</div>
-                        <div class="LdrPrfDtlsHldr" style="margin-left: 15px;margin-top:10px">
-                        <input type="radio" id="html" name="fav_language" value="Upload Excel"><label for="html" class="nn">Add Department</label>
-                        <button type="button" onclick="" class="btn btn-primary SbmtBtn" style="margin-left: 10px;">+Add</button>
-                        
-                        
+                        <div class="formgrp row">
+                            <div class="col-md-6">
+                                <label for="BrID" class="FrmLbl">Branch</label>
+                                <select class="form-control InptBx" name="BrID" id="BrID">
+                                    <option disabled selected value hidden>Select Branch</option>
+                                    <?php foreach($branches as $branch){
+                                        echo '<option value="' . $branch->BrID . '">' . $branch->BrName . '</option>' ;
+                                    } ?>
+                                </select>
+                            </div>
                         </div>
-                        <div class="or"></div>
-                        <div class="LdrPrfDtlsHldr" style="margin-left: 15px;margin-top:10px">
-                            <span  class="nn">Department:</span><br>
-                            <input type="text" id="fname" name="fname"><br>
-                            <label class="nn">Job Title:</label><br>
-                            <input type="text" id="lname" name="lname">
-                            
-                            <!-- <button type="button" onclick="" class="btn btn-primary SbmtBtn" style="margin-left:15px">Submit</button> -->
-                        
+                        <div class="text-center SavBtnBlk">
+                            <button type="submit" class="btn btn-primary SavBtn">Submit</button>
                         </div>
-                        <div class="LdrPrfDtlsHldr" style="margin-left: 15px;margin-top:10px">
-                            <span  class="nn">Department:</span><br>
-                            <input type="text" id="fname" name="fname"><br>
-                            <label class="nn">Job Title:</label><br>
-                            <input type="text" id="lname" name="lname">
-                            
-                            <!-- <button type="button" onclick="" class="btn btn-primary SbmtBtn" style="margin-left:15px">Submit</button> -->
-                        
-                        </div>
-                        <div class="LdrPrfDtlsHldr" style="margin-left: 15px;margin-top:10px">
-                            
-                            <button type="button" onclick="" class="btn btn-primary SbmtBtn" style="margin-left:50%">Submit</button>
-                        
-                        </div>
+                    </form>
                 </div>
             </div>
-            
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script>
+        function AddOrUpdateDepartment(DeptID){
+            if (document.getElementById('AppMdlHldr').getAttribute('class') == 'AppModalHldr Hide') {
+                $("#AppMdlHldr FtrTtl").html('Add Department');
+                $("#AppMdlHldr button.SavBtn").html('Submit');
+                if(DeptID != ''){
+                    $("#AppMdlHldr FtrTtl").html('Update Department');
+                    $("#AppMdlHldr button.SavBtn").html('Update');
+                    $.post("<?= base_url('/departments/get_department') ?>", {DeptID: DeptID}, function(data, status){
+                        $("#DeptID").val(data.department.DeptID);
+                        $("#DeptName").val(data.department.DeptName);
+                    });
+                }
+                document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
+            } else {
+                $('#AddOrUpdateDepartmentForm input, #AddOrUpdateDepartmentForm select, #AddOrUpdateDepartmentForm textarea').val('');
+                document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr Hide');
+            }
+        }
+        $("form[id='AddOrUpdateDepartmentForm']").validate({
+            ignore: [],
+            rules: {
+                DeptName: {
+                    required: true,
+                    normalizer: function(value) {
+                        return $.trim(value);
+                    },
+                },
+            },
+            messages: {
+                DeptName: {
+                    required: "Please enter Department Name.",
+                },
+            },
+            submitHandler: function(form) {
+                var data = new FormData($('#AddOrUpdateDepartmentForm')[0]);
+                console.log(data);
+                var url = '<?= base_url('/departments/add_department'); ?>';
+                if(data.DeptID != ''){
+                    url = '<?= base_url('/departments/update_department'); ?>';
+                }
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: data,
+                    mimeType: "multipart/form-data",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    error: function(request, response) {
+                        console.log(request);
+                    },
+                    success: function(result) {
+                        var obj = jQuery.parseJSON(result);
+                        if (obj.status == 'Success')
+                            $("#InfoDiv").addClass('alert-success').removeClass('alert-danger');
+                        else
+                            $("#InfoDiv").addClass('alert-danger').removeClass('alert-success');
+                        $("#InfoDiv").html(obj.msg);
+                        $("#InfoDiv").show();
+                        setTimeout(function() {
+                            $("#InfoDiv").hide();
+                        }, 3000);
+                        if (obj.status == 'Success')
+                            window.location.href = window.location.href;
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

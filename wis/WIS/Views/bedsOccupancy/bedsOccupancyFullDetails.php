@@ -194,7 +194,7 @@
                     <li>
                         <div class="PrfHldr">
                             <img src="Images/UserImg.jpg" class="UserImg" />
-                            <span class="UsrNme">Radhika K.</span>
+                            <span class="UsrNme"><?= session('EmpName'); ?></span>
                         </div>
                     </li>
                     <li>

@@ -11,7 +11,7 @@
                     <li>
                         <div class="PrfHldr">
                             <img src="<?= base_url() ; ?>/public/wis_assets/Images/UserImg.jpg" class="UserImg" />
-                            <span class="UsrNme">Radhika K.</span>
+                            <span class="UsrNme"><?= session('EmpName'); ?></span>
                         </div>
                     </li>
                     <li>

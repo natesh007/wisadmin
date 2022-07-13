@@ -48,57 +48,65 @@
                 <div class="alert alert-success alert-dismissible" id="ErrDiv"></div>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-3" style="font: 600 15px/100% 'Open Sans';    color: #0078BA;    padding-top: 16px; font-weight: bold;width:18%">
+                        <div class="col-md-6" style="font: 600 15px/100% 'Open Sans'; color: #0078BA; padding-top: 16px; font-weight: bold;">
                             Employee List
                         </div>
-                        <!-- <div class="col-md-6 BttnHldr">
-                            <button type="button" onclick="javascript:ModalPopup();" class="btn btn-primary SbmtBtn">Add New Employee</button>
-                        </div> -->
+                        <div class="col-md-6" style="text-align: right">
+                            <button type="button" onclick="javascript:AddOrUpdateEmployee('');" class="btn btn-primary SbmtBtn">Add New Employee</button>
+                        </div>
                     </div>
                 </div>
                 <div class="SrchFltrDv ChckLst">
                     <div class="container-fluid">
-                        <div class="row">
-
-                            <div class="col-md-2">
-                                <select class="form-select InptBx" aria-label="Default select example" name="" id="">
-                                    <option selected>Service Department</option>
-                                    <option value="1">All</option>
-                                    <option value="2">Electrical</option>
-                                    <option value="3">Supervisor</option>
-                                    <option value="4">HVAC</option>
-                                    <option value="5">Janitor</option>
-                                    <option value="6">Plumber</option>
-
-                                </select>
+                        <form action="" method="post">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <select class="form-select InptBx" aria-label="Default select example" name="Department">
+                                        <option disabled selected value hidden>Service Department</option>
+                                        <option value="">All</option>
+                                        <?php if(!empty($departments)){
+                                            foreach($departments as $department){
+                                                echo '<option value="'.$department->DeptID.'"';
+                                                if($Department == $department->DeptID) echo 'selected';
+                                                echo '>'.$department->DeptName.'</option>';
+                                            }
+                                        } ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <select class="form-select InptBx" aria-label="Default select example" name="JobTitle">
+                                        <option disabled selected value hidden>Job Title</option>
+                                        <option value="">All</option>
+                                        <?php if(!empty($jobtitles)){
+                                            foreach($jobtitles as $jobtitle){
+                                                echo '<option value="'.$jobtitle->JobTID.'"';
+                                                if($JobTitle == $jobtitle->JobTID) echo 'selected';
+                                                echo '>'.$jobtitle->JobTitle.'</option>';
+                                            }
+                                        } ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-2 BttnHldr">
+                                    <select class="form-select InptBx" aria-label="Default select example">
+                                        <option disabled selected value hidden>Joining To Date</option>
+                                        <option value="1">6 Months</option>
+                                        <option value="2">1 Year</option>
+                                        <option value="3">2+ Year</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 BttnHldr">
+                                    <button type="submit" class="btn btn-primary SbmtBtn">Submit</button>
+                                    <button type="button" class="btn btn-primary FnctnBtn Prnt">Print</button>
+                                    <button type="button" class="btn btn-primary FnctnBtn Dwnld">Download</button>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="file" class="form-control InptBx" name=""/>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" onclick="" class="btn btn-primary SbmtBtn">Upload</button>
+                                </div>
                             </div>
-                            <div class="col-md-2">
-                                <select class="form-select InptBx" aria-label="Default select example" name="" id="">
-                                    <option selected>Job Title</option>
-                                    <option value="1">Senior Electrician</option>
-                                    <option value="2">Junior Electrician</option>
-                                    <option value="3">DG Operator</option>
-                                    <option value="3">Senior Janitor</option>
-                                    <option value="3">Senior Plumber</option>
-                                    <option value="3">Junior Plumber</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 BttnHldr">
-                                <select class="form-select InptBx" aria-label="Default select example">
-                                    <option selected>Joining To Date</option>
-                                    <option value="1">6 Months</option>
-                                    <option value="2">1 Year</option>
-                                    <option value="3">2+ Year</option>
-
-                                </select>
-                                <!-- <input type="text" class="form-control InptBx Clndr" id="Text1" value="Joining To Date" /> -->
-                            </div>
-                            <div class="col-md-2 BttnHldr">
-                                <button type="button" onclick="" class="btn btn-primary SbmtBtn">Submit</button>
-                                <button type="button" class="btn btn-primary FnctnBtn Prnt">Print</button>
-                                <button type="button" class="btn btn-primary FnctnBtn Dwnld">Download</button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <?php if($employees){
@@ -171,7 +179,7 @@
                                                     <span class="DataTxt">8</span>
                                                 </td>
                                                 <td>
-                                                    <span class="DataTxt" onclick="javascript:UpdateEmployee('.$emp->EmpID.');">Edit</span>
+                                                    <span class="DataTxt" onclick="javascript:AddOrUpdateEmployee('.$emp->EmpID.');">Edit</span>
                                                     &nbsp;
                                                     <span class="DataTxt" id="ActInAct" onclick="activeinactive('."'getemployee', ".$emp->EmpID.', ';
                                                     if($emp->Status == 1) echo '0'; else echo '1';
@@ -199,58 +207,62 @@
         </div>
     </div>
     <div id="AppMdlHldr" class="AppModalHldr Hide">
-    <div class="AppModalInnrHldr" style="width:50%;height:85%;left:30%;top:8%">
+        <div class="AppModalInnrHldr" style="width:50%;height:85%;left:30%;top:8%">
             <div class="ModalTtlHldr">
                 <div class="ModalTtlHldr">
-                    <span class="SctnTtl"></span>
+                    <span class="SctnTtl"><?= session('OrgName'); ?></span>
                     <span class="FtrTtl">Add Employee</span>
-                    <span id="AppMdlClsBtn" onclick="javascript:UpdateEmployee('');" class="ModalClsBtn"></span>
+                    <span id="AppMdlClsBtn" onclick="javascript:AddOrUpdateEmployee('');" class="ModalClsBtn"></span>
                 </div>
                 <div class="ModalCntntHldr AddEmpBlk" style="top:60px">
                     <div class="alert alert-success alert-dismissible" id="InfoDiv"></div>
-                    <form method="post" id="UpdateEmployeeForm">
+                    <form method="post" id="AddOrUpdateEmployeeForm">
                         <div class="formgrp row">
                             <div class="col-md-6">
-                                <input type="hidden" class="form-control" id="EmpID" name="EmpID"/>
                                 <label for="EmpName" class="FrmLbl">Employee Name</label>
                                 <input type="text" class="form-control InptBx" id="EmpName" name="EmpName" placeholder="Enter Employee Name"/>
                             </div>
                             <div class="col-md-6">
-                                <label for="OrgID" class="FrmLbl">Organization</label>
-                                <select class="form-control InptBx" name="OrgID" id="OrgID">
+                                <label for="BrID" class="FrmLbl">Branch</label>
+                                <select class="form-control InptBx selectpicker" name="BrID[]" id="BrID" multiple data-live-search="true">
+                                <?php if(!empty($branches)){
+                                    foreach($branches as $branch){
+                                        echo '<option value="'.$branch->BrID .'">'.$branch->BrName.'</option>';
+                                    }
+                                } ?>
                                 </select>
                             </div>
                         </div>
                         <div class="formgrp row">
-                            <div class="col-md-6">
-                                <label for="BrID" class="FrmLbl">Branch</label>
-                                <select class="form-control InptBx selectpicker" name="BrID[]" id="BrID" multiple data-live-search="true">
-                                </select>
-                            </div>
                             <div class="col-md-6">
                                 <label for="DeptID" class="FrmLbl">Department</label>
                                 <select class="form-control InptBx" name="DeptID" id="DeptID">
                                     <option disabled selected value hidden>Select Department</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="JobTID" class="FrmLbl">Job Title</label>
                                 <select class="form-control InptBx" name="JobTID" id="JobTID">
                                     <option disabled selected value hidden>Select Job Title</option>
+                                    <?php if(!empty($jobtitles)){
+                                        foreach($jobtitles as $jobtitle){
+                                            echo '<option value="'.$jobtitle->JobTID .'">'.$jobtitle->JobTitle.'</option>';
+                                        }
+                                    } ?>
                                 </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="Email" class="FrmLbl">Email</label>
-                                <input type="email" class="form-control InptBx" id="Email" name="Email" placeholder="Enter Email ID"/>
                             </div>
                         </div>
                         <div class="formgrp row">
                             <div class="col-md-6">
+                                <label for="Email" class="FrmLbl">Email</label>
+                                <input type="email" class="form-control InptBx" id="Email" name="Email" placeholder="Enter Email ID"/>
+                            </div>
+                            <div class="col-md-6">
                                 <label for="Mobile" class="FrmLbl">Mobile Number</label>
                                 <input type="text" class="form-control InptBx" id="Mobile" name="Mobile" placeholder="Enter Mobile Number"/>
                             </div>
+                        </div>
+                        <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="Gender" class="FrmLbl">Gender</label>
                                 <select class="form-control InptBx" name="Gender" id="Gender">
@@ -259,31 +271,36 @@
 								    <option value="F">Female</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="DateOfJoining" class="FrmLbl">Date Of Joining</label>
                                 <input type="date" class="form-control InptBx" id="DateOfJoining" name="DateOfJoining" placeholder="Select Date Of Joining"/>
                             </div>
+                        </div>
+                        <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="JobType" class="FrmLbl">Job Type</label>
                                 <input type="text" class="form-control InptBx" id="JobType" name="JobType" placeholder="Enter Job Type"/>
                             </div>
-                        </div>
-                        <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="PreviousExp" class="FrmLbl">Previous Experience</label>
                                 <select class="form-control InptBx" name="PreviousExp" id="PreviousExp">
                                     <option disabled selected value hidden>Select Previous Experience</option>
+                                    <?php if(!empty($prev_exp)){
+                                        foreach($prev_exp as $key => $exp){
+                                            echo '<option value="'.$key .'">'.$exp.'</option>';
+                                        }
+                                    } ?>
                                 </select>
                             </div>
+                        </div>
+                        <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="Address" class="FrmLbl">Address</label>
                                 <textarea class="form-control InptBx" rows="5" id="Address" name="Address" placeholder="Enter Address"></textarea>
                             </div>
                         </div>
                         <div class="text-center SavBtnBlk">
-                            <button type="submit" class="btn btn-primary SavBtn">Update</button>
+                            <button type="submit" class="btn btn-primary SavBtn">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -299,30 +316,23 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="<?= base_url()?>/public/wis_assets/Scripts/bootstrap-select.min.js"></script>
     <script>
-        function UpdateEmployee(EmpID){
+        function AddOrUpdateEmployee(EmpID){
             if (document.getElementById('AppMdlHldr').getAttribute('class') == 'AppModalHldr Hide') {
+                $("#AppMdlHldr span.FtrTtl").html('Add Employee');
+                $("#AppMdlHldr button.SavBtn").html('Submit');
                 if(EmpID != ''){
+                    $("#AppMdlHldr span.FtrTtl").html('Update Employee');
+                    $("#AppMdlHldr button.SavBtn").html('Update');
                     $.post("<?= base_url('/employees/get_employee') ?>", {EmpID: EmpID}, function(data, status){
-                        $("#EmpID").val(data.employee.EmpID);
+                        if($("#EmpID").length == 0){
+                            $('<input type="hidden" class="form-control" id="EmpID" name="EmpID" value="'+data.employee.EmpID+'"/>').insertAfter("#EmpName");
+                        }
                         $("#EmpName").val(data.employee.EmpName);
-                        var orgs = '<option disabled selected value hidden>Select Organization</option>';
-                        $.each(data.organizations, function (i, field) {
-                            orgs += '<option value="'+field.OrgID+'"';
-                            if(field.OrgID == data.employee.OrgID)
-                                orgs += 'selected';
-                            orgs += '>'+field.OrgName+'</option>';
+                        var sel_brs = data.employee.BrID.split(',');
+                        $.each(sel_brs, function (i, field) {
+                            $('#BrID option[value="'+field+'"]').prop('selected', true);
                         });
-                        $("#OrgID").html(orgs);
-                        var brs ='';
-                        $.each(data.branches, function (i, field) {
-                            brs += '<option value="'+field.BrID+'"';
-                            var sel_brs = data.employee.BrID.split(',');;
-                            console.log(sel_brs);
-                            if(jQuery.inArray(field.BrID, sel_brs) != -1)
-                                brs += 'selected';
-                            brs += '>'+field.BrName+'</option>';
-                        });
-                        $("#BrID").html(brs);
+                        $('#BrID').selectpicker('refresh');
                         var depts = '<option disabled selected value hidden>Select Department</option>';
                         $.each(data.departments, function (i, field) {
                             depts += '<option value="'+field.DeptID+'"';
@@ -337,64 +347,25 @@
                             });
                         });
                         $("#DeptID").html(depts);
-                        var ttls = '<option disabled selected value hidden>Select Job Title</option>';
-                        $.each(data.jobtitles, function (i, field) {
-                            ttls += '<option value="'+field.JobTID+'"';
-                            if(field.JobTID == data.employee.JobTID)
-                                ttls += 'selected';
-                            ttls += '>'+field.JobTitle+'</option>';
-                        });
-                        $("#JobTID").html(ttls);
+                        $('#JobTID option[value="'+data.employee.JobTID+'"]').prop('selected', true);
                         $("#Email").val(data.employee.EmailID);
                         $("#Mobile").val(data.employee.Mobile);
-                        var gen = '<option disabled selected value hidden>Select Gender</option><option value="M"';
-                        if(data.employee.Gender == 'M')
-                            gen += 'selected';
-                        gen += '>Male</option><option value="F"';
-                        if(data.employee.Gender == 'F')
-                            gen += 'selected';
-                        gen += '>Female</option>';
-                        $("#Gender").html(gen);
+                        $('#Gender option[value="'+data.employee.Gender+'"]').prop('selected', true);
                         $("#DateOfJoining").val(data.employee.DateOfJoining);
                         $("#JobType").val(data.employee.JobType);
-                        var prev_exp = '<option disabled selected value hidden>Select Previous Experience</option>';
-                        $.each(data.prev_exp, function (i, field) {
-                            prev_exp += '<option value="'+i+'"';
-                            if(i == data.employee.PreviousExp)
-                                prev_exp += 'selected';
-                            prev_exp += '>'+field+'</option>';
-                        });
-                        $("#PreviousExp").html(prev_exp);
+                        $('#PreviousExp option[value="'+data.employee.PreviousExp+'"]').prop('selected', true);
                         $("#Address").val(data.employee.Address);                        
-                        $('#BrID').selectpicker("refresh");
                     });
-                    document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
                 }
+                document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
             } else {
-                $('#UpdateEmployeeForm input, #UpdateEmployeeForm select, #UpdateEmployeeForm textarea').val('');
+                $('#AddOrUpdateEmployeeForm input, #AddOrUpdateEmployeeForm select, #AddOrUpdateEmployeeForm textarea').val('');
                 document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr Hide');
             }
         }
-        $('#OrgID').change(function(){
-            if($(this).val() != ''){
-                $.post("<?= base_url('/employees/getbranchesandjobtitlesbyorg') ?>", {OrgID: $(this).val()}, function(data, status){
-                    var branches = '';
-                    $.each(data.branches, function (i, field) {
-                        branches += '<option value="'+field.BrID +'">'+field.BrName+'</option>';
-                    });
-                    $('#BrID').html(branches);
-					$('#BrID').selectpicker("refresh");
-                    var jobtitles = '<option disabled selected value hidden>Select Job Title</option>';
-                    $.each(data.jobtitles, function (i, field) {
-                        jobtitles += '<option value="'+field.JobTID +'">'+field.JobTitle+'</option>';
-                    });
-                    $('#JobTID').html(jobtitles);
-                });
-            }
-        });
-        $('#BrID, #OrgID').change(function(){
-            if($("#BrID").val() != '' && $("#OrgID").val()){
-                $.post("<?= base_url('/employees/getdepartmentsbyorgnbranch') ?>", {OrgID: $("#OrgID").val(), BrID: $("#BrID").val()}, function(data, status){
+        $('#BrID').change(function(){
+            if($("#BrID").val() != ''){
+                $.post("<?= base_url('/employees/getdepartmentsbyorgnbranch') ?>", {BrID: $("#BrID").val()}, function(data, status){
                     var depts = '<option disabled selected value hidden>Select Departments</option>';
                     $.each(data, function (i, field) {
                         depts += '<option value="'+field.DeptID +'">'+field.DeptName+'</option>';
@@ -406,7 +377,7 @@
                 });
             }
         });
-        $("form[id='UpdateEmployeeForm']").validate({
+        $("form[id='AddOrUpdateEmployeeForm']").validate({
             ignore: [],
             rules: {
                 EmpName: {
@@ -415,7 +386,6 @@
                         return $.trim(value);
                     },
                 },
-                OrgID: "required",
                 "BrID[]": "required",
                 DeptID: "required",
                 JobTID: "required",
@@ -437,7 +407,6 @@
                 EmpName: {
                     required: "Please enter Employee Name.",
                 },
-                OrgID: "Please select Organization",
                 "BrID[]": "Please select Branches",
                 DeptID: "Please select Department",
                 JobTID: "Please select Job Title",
@@ -456,9 +425,9 @@
                 }
             },
             submitHandler: function(form) {
-                var data = new FormData($('#UpdateEmployeeForm')[0]);
+                var data = new FormData($('#AddOrUpdateEmployeeForm')[0]);
                 $.ajax({
-                    url: "<?= base_url('/employees/update_employee'); ?>",
+                    url: '<?= base_url('/employees/add_or_update_employee'); ?>',
                     type: "POST",
                     data: data,
                     mimeType: "multipart/form-data",
@@ -480,7 +449,7 @@
                             $("#InfoDiv").hide();
                         }, 3000);
                         if (obj.status == 'Success')
-                            window.location.href = '<?= base_url('/listView') ?>';
+                            window.location.href = window.location.href;
                     }
                 });
             }

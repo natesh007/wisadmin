@@ -7268,7 +7268,7 @@ div.AppModalHldr div.AppModalInnrHldr div.ModalTtlHldr {
 div.AppModalHldr div.AppModalInnrHldr div.ModalTtlHldr span.SctnTtl {
     display: block;
     box-sizing: border-box;
-    padding: 15px 60px 0 20px;
+    padding: 15px 60px 5px 20px;
     font: 600 13px/100% 'Open Sans';
     color: #555;
 }
