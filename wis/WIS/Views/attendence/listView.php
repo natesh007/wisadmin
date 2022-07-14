@@ -237,7 +237,7 @@
                             <div class="col-md-6">
                                 <label for="DeptID" class="FrmLbl">Department</label>
                                 <select class="form-control InptBx" name="DeptID" id="DeptID">
-                                    <option disabled selected value hidden>Select Department</option>
+                                    <option disabled selected value hidden>Select Departments</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
@@ -327,23 +327,32 @@
                     $.post("<?= base_url('/employees/get_employee') ?>", {EmpID: EmpID}, function(data, status){
                         $('<input type="hidden" class="form-control" id="EmpID" name="EmpID" value="'+data.employee.EmpID+'"/>').insertAfter("#EmpName");
                         $("#EmpName").val(data.employee.EmpName);
-                        var sel_brs = data.employee.BrID.split(',');
-                        $.each(sel_brs, function (i, field) {
-                            $('#BrID option[value="'+field+'"]').prop('selected', true);
-                        });
+                        if(data.employee.BrID){
+                            var sel_brs = data.employee.BrID.split(',');
+                            $.each(sel_brs, function (i, field) {
+                                $('#BrID option[value="'+field+'"]').prop('selected', true);
+                            });
+                        }
                         $('#BrID').selectpicker('refresh');
-                        var depts = '<option disabled selected value hidden>Select Department</option>';
+                        var depts = '<option disabled selected value hidden>Select Departments</option>';
                         $.each(data.departments, function (i, field) {
-                            depts += '<option value="'+field.DeptID+'"';
-                            if(field.DeptID == data.employee.DeptID)
-                                depts += 'selected';
-                            depts += '>'+field.DeptName+'</option>';
+                            if(field.Subdeparts.length !== 0){
+                                depts += '<optgroup label="'+field.DeptName+'">';
+                            }else{
+                                depts += '<option value="'+field.DeptID+'"';
+                                if(field.DeptID == data.employee.DeptID)
+                                    depts += 'selected';
+                                depts += ' style="font-weight:700; font-family: inherit; font-size: inherit;"ss>'+field.DeptName+'</option>';
+                            }
                             $.each(field.Subdeparts, function (j, field2) {
                                 depts += '<option value="'+field2.DeptID +'"';
                                 if(field2.DeptID == data.employee.DeptID)
                                     depts += 'selected';
                                 depts += '>'+field2.DeptName+'</option>';
                             });
+                            if(field.Subdeparts.length !== 0){
+                                depts += '</optgroup>';
+                            }
                         });
                         $("#DeptID").html(depts);
                         $('#JobTID option[value="'+data.employee.JobTID+'"]').prop('selected', true);
@@ -367,10 +376,17 @@
                 $.post("<?= base_url('/employees/getdepartmentsbyorgnbranch') ?>", {BrID: $("#BrID").val()}, function(data, status){
                     var depts = '<option disabled selected value hidden>Select Departments</option>';
                     $.each(data, function (i, field) {
-                        depts += '<option value="'+field.DeptID +'">'+field.DeptName+'</option>';
+                        if(field.Subdeparts.length !== 0){
+                            depts += '<optgroup label="'+field.DeptName+'">';
+                        }else{
+                            depts += '<option value="'+field.DeptID +'" style="font-weight:700; font-family: inherit; font-size: inherit;">'+field.DeptName+'</option>';
+                        }
                         $.each(field.Subdeparts, function (j, field2) {
                             depts += '<option value="'+field2.DeptID +'">'+field2.DeptName+'</option>';
                         });
+                        if(field.Subdeparts.length !== 0){
+                            depts += '</optgroup>';
+                        }
                     });
                     $('#DeptID').html(depts);
                 });

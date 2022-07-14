@@ -65,7 +65,7 @@ class Employees extends BaseController
         $departments_data = $this->AuthModel->callwebservice(SAURL."departments", $departments_array, 1, 1);
 		$departments = [];
 		if (@$departments_data->status == "Success") {
-			$departments = @$departments_data->data->data;
+			$departments = @$departments_data->data;
 		}
 		header('Content-type: application/json');
         print json_encode($departments, JSON_PRETTY_PRINT);
@@ -88,7 +88,7 @@ class Employees extends BaseController
 			);
 			$departments_data = $this->AuthModel->callwebservice(SAURL."departments", $departments_array, 1, 1);
 			if (@$departments_data->status == "Success") {
-				$data['departments'] = @$departments_data->data->data;
+				$data['departments'] = @$departments_data->data;
 			}
 		}
 		header('Content-type: application/json');
