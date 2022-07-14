@@ -161,7 +161,7 @@
                                                     <span class="DataTxt">'.$emp->EmpName.'</span>
                                                 </td>
                                                 <td>
-                                                    <span class="DataTxt">'.$employee->DeptName.'</span>
+                                                    <span class="DataTxt">'.$emp->DeptName.'</span>
                                                 </td>
                                                 <td>
                                                     <span class="DataTxt">'.$emp->JobType.'</span>
@@ -317,6 +317,7 @@
     <script src="<?= base_url()?>/public/wis_assets/Scripts/bootstrap-select.min.js"></script>
     <script>
         function AddOrUpdateEmployee(EmpID){
+            $("#EmpID").remove();
             if (document.getElementById('AppMdlHldr').getAttribute('class') == 'AppModalHldr Hide') {
                 $("#AppMdlHldr span.FtrTtl").html('Add Employee');
                 $("#AppMdlHldr button.SavBtn").html('Submit');
@@ -324,9 +325,7 @@
                     $("#AppMdlHldr span.FtrTtl").html('Update Employee');
                     $("#AppMdlHldr button.SavBtn").html('Update');
                     $.post("<?= base_url('/employees/get_employee') ?>", {EmpID: EmpID}, function(data, status){
-                        if($("#EmpID").length == 0){
-                            $('<input type="hidden" class="form-control" id="EmpID" name="EmpID" value="'+data.employee.EmpID+'"/>').insertAfter("#EmpName");
-                        }
+                        $('<input type="hidden" class="form-control" id="EmpID" name="EmpID" value="'+data.employee.EmpID+'"/>').insertAfter("#EmpName");
                         $("#EmpName").val(data.employee.EmpName);
                         var sel_brs = data.employee.BrID.split(',');
                         $.each(sel_brs, function (i, field) {

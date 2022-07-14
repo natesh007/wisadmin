@@ -31,8 +31,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 //Common
-//$routes->add('/', 'Home::index');
-//$routes->add('/login', 'Home::index',['namespace' => 'Modules\WIS\Controllers']);
+
 $routes->add('/', 'Auth::index',['namespace' => 'Modules\Auth\Controllers']);
 $routes->add('/login', 'Auth::login',['namespace' => 'Modules\Auth\Controllers']);
 $routes->add('/logout', 'Auth::logout', ['namespace' => 'Modules\Auth\Controllers']);
@@ -83,14 +82,17 @@ $routes->add('/auditObservations', 'Home::auditObservations',['namespace' => 'Mo
 $routes->add('/auditRecommendations', 'Home::auditRecommendations',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/activeinactive', 'Home::activeinactive',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/updateList', 'Home::updateList',['namespace' => 'Modules\WIS\Controllers']);
+
 //Employees Routes
 $routes->add('/listView', 'Employees::index',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/employees/getdepartmentsbyorgnbranch', 'Employees::getdepartmentsbyorgnbranch',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/employees/get_employee', 'Employees::get_employee',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/employees/add_or_update_employee', 'Employees::add_or_update_employee',['namespace' => 'Modules\WIS\Controllers']);
+
 //Departments Routes
 $routes->add('/listViewDepartment', 'Departments::index',['namespace' => 'Modules\WIS\Controllers']);
-
+$routes->add('/departments/get_department', 'Departments::get_department',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/departments/add_or_update_department', 'Departments::add_or_update_department',['namespace' => 'Modules\WIS\Controllers']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing

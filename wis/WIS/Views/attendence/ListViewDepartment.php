@@ -162,8 +162,8 @@
                                 <input type="text" class="form-control InptBx" id="DeptName" name="DeptName" placeholder="Enter Department Name"/>
                             </div>
                             <div class="col-md-6">
-                                <label for="BrID" class="FrmLbl">Parent Department</label>
-                                <select class="form-control InptBx" name="BrID" id="BrID">
+                                <label for="ParentDeptID" class="FrmLbl">Parent Department</label>
+                                <select class="form-control InptBx" name="ParentDeptID" id="ParentDeptID">
                                     <option disabled selected value hidden>Select Parent Department</option>
                                     <?php foreach($departments as $department){
                                         echo '<option value="' . $department->DeptID . '">' . $department->DeptName . '</option>' ;
@@ -196,15 +196,18 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script>
         function AddOrUpdateDepartment(DeptID){
+            $("#DeptID").remove();
             if (document.getElementById('AppMdlHldr').getAttribute('class') == 'AppModalHldr Hide') {
-                $("#AppMdlHldr FtrTtl").html('Add Department');
+                $("#AppMdlHldr span.FtrTtl").html('Add Department');
                 $("#AppMdlHldr button.SavBtn").html('Submit');
                 if(DeptID != ''){
-                    $("#AppMdlHldr FtrTtl").html('Update Department');
+                    $("#AppMdlHldr span.FtrTtl").html('Update Department');
                     $("#AppMdlHldr button.SavBtn").html('Update');
                     $.post("<?= base_url('/departments/get_department') ?>", {DeptID: DeptID}, function(data, status){
-                        $("#DeptID").val(data.department.DeptID);
-                        $("#DeptName").val(data.department.DeptName);
+                        $('<input type="hidden" class="form-control" id="DeptID" name="DeptID" value="'+data.DeptID+'"/>').insertAfter("#DeptName");
+                        $("#DeptName").val(data.DeptName);
+                        $('#ParentDeptID option[value="'+data.ParentDept+'"]').prop('selected', true);
+                        $('#BrID option[value="'+data.BrID+'"]').prop('selected', true);
                     });
                 }
                 document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
@@ -222,21 +225,18 @@
                         return $.trim(value);
                     },
                 },
+                BrID: "required",
             },
             messages: {
                 DeptName: {
                     required: "Please enter Department Name.",
                 },
+                BrID: "Please select Branch",
             },
             submitHandler: function(form) {
                 var data = new FormData($('#AddOrUpdateDepartmentForm')[0]);
-                console.log(data);
-                var url = '<?= base_url('/departments/add_department'); ?>';
-                if(data.DeptID != ''){
-                    url = '<?= base_url('/departments/update_department'); ?>';
-                }
                 $.ajax({
-                    url: url,
+                    url: '<?= base_url('/departments/add_or_update_department'); ?>',
                     type: "POST",
                     data: data,
                     mimeType: "multipart/form-data",

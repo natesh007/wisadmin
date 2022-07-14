@@ -5,9 +5,6 @@ use Modules\Auth\Models\AuthModel;
 
 class Home extends BaseController
 {
-	public function index(){
-		echo view('Modules\WIS\Views\login');
-	}
 	public function dashboard(){
 		echo view('Modules\WIS\Views\dashboard');
 	}
@@ -78,7 +75,7 @@ class Home extends BaseController
 		echo view('Modules\WIS\Views\attendence/attendenceCustomDate');
 	}
 	public function updateList(){
-		echo view('Modules\WIS\Views\attendence\UpdateList', $data);
+		echo view('Modules\WIS\Views\attendence\UpdateList');
 	}
 	public function listViewVacancy(){
 		echo view('Modules\WIS\Views\attendence/ListViewVacancy');
