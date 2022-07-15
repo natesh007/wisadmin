@@ -130,6 +130,9 @@
                                             <span class="DataTtl">Service Department</span>
                                         </th>
                                         <th>
+                                            <span class="DataTtl">Job Type</span>
+                                        </th>
+                                        <th>
                                             <span class="DataTtl">Job Title</span>
                                         </th>
                                         <th>
@@ -167,13 +170,16 @@
                                                     <span class="DataTxt">'.$emp->JobType.'</span>
                                                 </td>
                                                 <td>
+                                                    <span class="DataTxt">'.$emp->JobTitle.'</span>
+                                                </td>
+                                                <td>
                                                     <span class="DataTxt">'.$emp->DateOfJoining.'</span>
                                                 </td>
                                                 <td>
-                                                    <span class="DataTxt">3</span>
+                                                    <span class="DataTxt">'.$emp->PreviousExperience.'</span>
                                                 </td>
                                                 <td>
-                                                    <span class="DataTxt">'.$emp->PreviousExp.'</span>
+                                                    <span class="DataTxt">'.$emp->PreviousExperience.'</span>
                                                 </td>
                                                 <td>
                                                     <span class="DataTxt">8</span>

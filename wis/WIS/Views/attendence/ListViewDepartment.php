@@ -74,10 +74,10 @@
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <select class="form-select InptBx" aria-label="Default select example">
-                                    <option selected>Sort by</option>
-                                    <option value="1">Job Title</option>
-                                    <option value="2">Service Department</option>
+                                <select class="form-select InptBx" aria-label="Default select example" name="SortType">
+                                    <option disabled selected value hidden>Sort By</option>
+                                    <option value="department" <?php if($SortType == 'department') echo 'selected'; ?>>Service Department</option>
+                                    <option value="branch" <?php if($SortType == 'branch') echo 'selected'; ?>>Branch</option>
                                 </select>
                             </div>
                             <div class="col-md-2 BttnHldr">

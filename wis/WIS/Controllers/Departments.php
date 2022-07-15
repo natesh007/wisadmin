@@ -16,9 +16,11 @@ class Departments extends BaseController
 	public function index(){
 		$data['DepartmentName'] = @$this->request->getVar('DepartmentName');
 		$data['Branch'] = @$this->request->getVar('Branch');
+		$data['SortType'] = @$this->request->getVar('SortType');
 		$departments_array = array(
 			"DeptName" => $data['DepartmentName'],
-			"BrID" => $data['Branch']
+			"BrID" => $data['Branch'],
+			"SortType" => $data['SortType'],
 		);
 		$departments_data = $this->AuthModel->callwebservice(SAURL."alldepartments", $departments_array, 1, 1);
 		$data['departments'] = [];
