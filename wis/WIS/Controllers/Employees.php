@@ -17,9 +17,11 @@ class Employees extends BaseController
 		//Get Employees
 		$data['Department'] = @$this->request->getVar('Department');
 		$data['JobTitle'] = @$this->request->getVar('JobTitle');
+		$data['JoiningDate'] = @$this->request->getVar('JoiningDate');
 		$employees_array = array(
 			"DeptID" => $data['Department'],
-			"JobTID"  => $data['JobTitle']
+			"JobTID"  => $data['JobTitle'],
+			"JoiningDate"  => $data['JoiningDate']
 		);
 		$employees_data = $this->AuthModel->callwebservice(SAURL."employees", $employees_array, 1, 1);
 		$data['employees'] = [];

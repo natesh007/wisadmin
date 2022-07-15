@@ -73,9 +73,11 @@
                                         <option value="">All</option>
                                         <?php if(!empty($departments)){
                                             foreach($departments as $department){
+                                                if($department->ParentDept == 0){
                                                 echo '<option value="'.$department->DeptID.'"';
                                                 if($Department == $department->DeptID) echo 'selected';
                                                 echo '>'.$department->DeptName.'</option>';
+                                                }
                                             }
                                         } ?>
                                     </select>
@@ -94,11 +96,11 @@
                                     </select>
                                 </div>
                                 <div class="col-md-2 BttnHldr">
-                                    <select class="form-select InptBx" aria-label="Default select example">
+                                    <select class="form-select InptBx" aria-label="Default select example" name="JoiningDate">
                                         <option disabled selected value hidden>Joining To Date</option>
-                                        <option value="1">6 Months</option>
-                                        <option value="2">1 Year</option>
-                                        <option value="3">2+ Year</option>
+                                        <option value="1" <?=($JoiningDate==1?'selected':'')?>>6 Months</option>
+                                        <option value="2" <?=($JoiningDate==2?'selected':'')?>>1 Year</option>
+                                        <option value="3" <?=($JoiningDate==3?'selected':'')?>>All</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4 BttnHldr">
@@ -145,9 +147,7 @@
                                         <th>
                                             <span class="DataTtl">Previous Experience</span>
                                         </th>
-                                        <th>
-                                            <span class="DataTtl">Total Experience</span>
-                                        </th>
+                                       
                                         <th>
                                             <span class="DataTtl">Actions</span>
                                         </th>
@@ -182,9 +182,7 @@
                                                 <td>
                                                     <span class="DataTxt">'.$emp->PreviousExperience.'</span>
                                                 </td>
-                                                <td>
-                                                    <span class="DataTxt">8</span>
-                                                </td>
+                                              
                                                 <td>
                                                     <span class="DataTxt" onclick="javascript:AddOrUpdateEmployee('.$emp->EmpID.');">Edit</span>
                                                     &nbsp;
