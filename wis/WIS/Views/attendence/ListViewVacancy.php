@@ -41,9 +41,6 @@
                         <a href="<?php echo base_url(); ?>/listView" class="LnkTxt">Employee List</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>/updateList" class="LnkTxt">Update List</a>
-                    </li>
-                    <li>
                         <a href="<?php echo base_url(); ?>/listViewDepartment" class="LnkTxt">Departments</a>
                     </li>
                     <li>

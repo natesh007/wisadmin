@@ -34,6 +34,34 @@ class Departments extends BaseController
         if (@$branches_data->status == "Success") {
             $data['branches'] = @$branches_data->data;
         }
+
+		//For Download CSV File
+		if(isset($_POST['Download'])){
+			$filename = 'departments.csv';
+			header("Content-Description: File Transfer");
+			header("Content-Disposition: attachment; filename=$filename");
+			header("Content-Type: application/csv; ");
+			$departments = [];
+			if($data['departments']){
+				foreach($data['departments'] as $key => $dept){
+					$departments[$key] = [
+						'SINO' => $key+1,
+						'DeptName' => @$dept->DeptName,
+						'ParentName' => @$dept->ParentName,
+						'BrName' => @$dept->BrName
+					];
+				}
+			}
+			$file = fopen('php://output', 'w');
+			$header = array("S. No.", "Service Department", "Parent Department", "Branch");
+			fputcsv($file, $header);
+			foreach ($departments as $key => $line) {
+				fputcsv($file, $line);
+			}
+			fclose($file);
+			exit;
+		}
+
 		echo view('Modules\WIS\Views\attendence\ListViewDepartment', $data);
 	}
 	//Get department for edit

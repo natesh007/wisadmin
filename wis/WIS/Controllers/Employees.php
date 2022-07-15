@@ -54,6 +54,50 @@ class Employees extends BaseController
 		if (@$prev_exp_data->status == "Success") {
 			$data['prev_exp'] = @$prev_exp_data->data;
 		}
+
+		//For Download CSV File
+		if(isset($_POST['Download'])){
+			$filename = 'employees.csv';
+			header("Content-Description: File Transfer");
+			header("Content-Disposition: attachment; filename=$filename");
+			header("Content-Type: application/csv; ");
+			$employees = [];
+			if($data['employees']){
+				$i = 0;
+				foreach($data['employees'] as $employee){
+					if(@$employee->Employees){
+						foreach($employee->Employees as $emp){
+							$employees[$i] = [
+								'SINO' => $i+1,
+								'EmpID' => 'EMP-'.@$emp->EmpID,
+								'EmpName' => @$emp->EmpName,
+								'EmailID' => @$emp->EmailID,
+								'Contact' => @$emp->Contact,
+								'DeptName' => @$employee->DeptName .' -> '. @$emp->DeptName,
+								'JobType' => @$emp->JobType,
+								'JobTitle' => @$emp->JobTitle,
+								'DateOfJoining' => @$emp->DateOfJoining,
+								'Experience' => @$emp->Experience,
+								'PreviousExperience' => @$emp->PreviousExperience,
+								'TotalExperience' => 0,
+								'CreatedDate' => @$emp->CreatedDate,
+								'UpdatedDate' => @$emp->UpdatedDate,
+							];
+							$i++;
+						}
+					}
+				}
+			}
+			$file = fopen('php://output', 'w');
+			$header = array("S. No.", "Emp. ID.", "Employee Name", "Email ID", "Contact No.", "Service Department", "Job Type", "Job Title", "Joined On", "Experience", "Previous Experience", "Total Experience", "Created On", "Last Updated On");
+			fputcsv($file, $header);
+			foreach ($employees as $key => $line) {
+				fputcsv($file, $line);
+			}
+			fclose($file);
+			exit;
+		}
+		
 		echo view('Modules\WIS\Views\attendence\listView', $data);
 		
 	}

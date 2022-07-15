@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap"
         rel="stylesheet" />
     <link href="<?= base_url() ; ?>/public/wis_assets/CSS/StyleSheet.css?ver=1" rel="stylesheet" />
-    <link rel="stylesheet" href=" <?= base_url() ?>/public/wis_assets/CSS/bootstrap-select.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/public/wis_assets/CSS/bootstrap-select.css">
 </head>
 
 <body>
@@ -30,9 +30,6 @@
                 <ul class="InnrLnksHldr">
                     <li>
                         <a href="<?php echo base_url(); ?>/listView" class="LnkTxt Actv">Employee List</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url(); ?>/updateList" class="LnkTxt">Update List</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>/listViewDepartment" class="LnkTxt">Departments</a>
@@ -51,7 +48,17 @@
                         <div class="col-md-6" style="font: 600 15px/100% 'Open Sans'; color: #0078BA; padding-top: 16px; font-weight: bold;">
                             Employee List
                         </div>
-                        <div class="col-md-6" style="text-align: right">
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="file" class="form-control InptBx" name=""/>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="button" onclick="" class="btn btn-primary SbmtBtn">Upload</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2" style="text-align: right">
                             <button type="button" onclick="javascript:AddOrUpdateEmployee('');" class="btn btn-primary SbmtBtn">Add New Employee</button>
                         </div>
                     </div>
@@ -94,23 +101,17 @@
                                         <option value="3">2+ Year</option>
                                     </select>
                                 </div>
-                                <div class="col-md-3 BttnHldr">
+                                <div class="col-md-4 BttnHldr">
                                     <button type="submit" class="btn btn-primary SbmtBtn">Submit</button>
-                                    <button type="button" class="btn btn-primary FnctnBtn Prnt">Print</button>
-                                    <button type="button" class="btn btn-primary FnctnBtn Dwnld">Download</button>
-                                </div>
-                                <div class="col-md-2">
-                                    <input type="file" class="form-control InptBx" name=""/>
-                                </div>
-                                <div class="col-md-1">
-                                    <button type="button" onclick="" class="btn btn-primary SbmtBtn">Upload</button>
+                                    <button type="button" class="btn btn-primary FnctnBtn Prnt" onclick="printemployees()">Print</button>
+                                    <button type="submit" class="btn btn-primary FnctnBtn Dwnld" name="Download">Download</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
                 <?php if($employees){
-                    echo '<div class="InnrPgBgHldr">';
+                    echo '<div class="InnrPgBgHldr" id="EmpTbl">';
                     foreach($employees as $employee){
                         echo '<span class="SctnTtl CmplntsFdbck" style="font: 600 15px/100% '.'Open Sans'.';color: #101010d9;padding-top: 16px;font-weight: bold;width:18%">'.$employee->DeptName.'</span>
                         <div class="TableHldr">
@@ -475,6 +476,9 @@
                 });
             }
         });
+        function printemployees(){
+            window.print();
+        }
     </script>
 </body>
 

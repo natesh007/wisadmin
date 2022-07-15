@@ -1,4 +1,5 @@
 ﻿body {
+    -webkit-print-color-adjust: exact;
     background: #f4f4f4;
     margin: 0;
     padding: 0;
@@ -7911,4 +7912,18 @@ div#InfoDiv, div#ErrDiv{
 .bs-searchbox .form-control:focus {
     box-shadow: none !important;
     border-color: #0078BA !important;
-}
+}@media print {
+    body * {
+      visibility: hidden;
+      position: unset;
+    }
+    #EmpTbl, #EmpTbl * {
+      visibility: visible;
+    }
+    #EmpTbl {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  }

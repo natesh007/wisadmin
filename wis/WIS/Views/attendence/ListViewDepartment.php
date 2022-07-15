@@ -27,9 +27,6 @@
                         <a href="<?php echo base_url(); ?>/listView" class="LnkTxt">Employee List</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>/updateList" class="LnkTxt">Update List</a>
-                    </li>
-                    <li>
                         <a href="<?php echo base_url(); ?>/listViewDepartment" class="LnkTxt Actv">Departments</a>
                     </li>
                     <li>
@@ -83,7 +80,7 @@
                             <div class="col-md-2 BttnHldr">
                                 <button type="submit" class="btn btn-primary SbmtBtn">Submit</button>
                                 <button type="button" class="btn btn-primary FnctnBtn Prnt">Print</button>
-                                <button type="button" class="btn btn-primary FnctnBtn Dwnld">Download</button>
+                                <button type="submit" class="btn btn-primary FnctnBtn Dwnld" name="Download">Download</button>
                             </div>
                         </div>
                     </form>
