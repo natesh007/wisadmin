@@ -2407,7 +2407,7 @@ div.SrchFltrDv .InptBx {
     position: relative;
 }
 
-div.SrchFltrDv .InptBx:focus {
+div.SrchFltrDv .InptBx:focus, .CmpntInptBx:focus{
     box-shadow: none;
     border-color: #0078BA;
 }
@@ -7502,7 +7502,7 @@ div.TableHldr table.AppDataTbl td span.PrssStts.Mnl {
 div.TableHldr table.AppDataTbl td .BtnLnk {
     display: inline-block;
     font: 600 12px/100% 'Open Sans';
-    background: #0078BA;
+    background: #0078BA !important;
     color: #fff;
     border-radius: 5px;
     text-decoration: none;
@@ -9069,19 +9069,8 @@ span.DrpdwnTxtDiv {
 
 div.AddCmplt {
     text-align: right;
-    width: 100%;
-    margin: auto;
 }
 
-div.AddCmplt button {
-    font: 600 12px/100% 'Open Sans';
-    color: #fff;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    background: #0078BA;
-    border: none;
-    height: 30px;
-}
 .CmpltBy{
     position: relative;
 }
@@ -9131,4 +9120,94 @@ div.AddCmplt button {
     border-bottom: 1px solid #e9e9e9;
 }div.AddCmptBlk .InptBx{
     margin-bottom: 15px
+}
+/*Lakshmi 23/7/22*/
+a   .AddNewRcrd{
+    display: inline-block;
+    font: 600 12px/100% 'Open Sans';
+    background: #0078BA !important;
+    color: #fff !important;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin-bottom: 8px
+}
+div.PgHdr{
+    background-color: #F5F8FC;
+    padding: 36px 0px;
+    text-align: center;
+}
+span.PgHdrTtl1{
+    color: #0078BA;
+    font: 600 22px/100% 'Poppins';
+    display: block;
+}h1.PgHdrTtl2{
+    color: #1B1B1B;
+    font: 500 16px/100% 'Poppins' !important;
+    margin: 15px 0px 0px 0px !important;
+}
+div.PgInnrHdr{
+    margin: 20px 40px; 
+    background-color: #F5F8FC;
+    padding: 15px 0px;
+    border-radius: 8px;
+}
+span.AdrsTxt{
+    color: #4E4B4B;
+    font: 600 22px/100% 'Poppins';
+    margin-left: 10px
+}a.ChngAdrTxt{
+    color: #00237D !important;
+    float: right;
+    font: 400 14px/100% 'Poppins';
+    margin-right: 10px
+}div.PgInnrCntnt{
+    margin: 20px 40px; 
+}.CmpntInptBx{
+    background-color: #F5F8FC !important;
+    height: 60px;
+    width: 100%;
+    border: 1px solid #F5F8FC;
+    border-radius: 8px;
+    padding: 10px;
+    outline: none !important;
+}label.CmpntInptTtl{
+    color: #4E4B4B;
+    font: 600 16px/100% 'Poppins' !important;
+    margin-bottom: 10px;
+}div.CmpntInptBlk{
+    margin-bottom:15px
+}div.CmplntBtnBlk{
+    text-align: center;
+}div.CmplntBtnBlk button {
+    font: 600 18px/100% 'Poppins';
+    background: #0078BA !important;
+    color: #FFFFFF !important;
+    border-radius: 10px;
+    padding: 10px 40px;
+    box-shadow: none !important;
+}label.CmpntInptLbl {
+    font: 400 16px/100% 'Poppins';
+    color: #8C8A8A;
+}span.PgInnrTtl{
+    color: #4E4B4B;
+    font: 600 16px/100% 'Poppins';
+    text-align: center;
+    display: block;
+}div.CmplntTypBlk{
+    box-shadow: 0px 1px 6px #00000029;
+    border-radius: 8px;
+    background: #FFFFFF;
+    padding: 10px;
+    margin: 0px 0px 20px 0px;
+}div.CmpntPrt{
+    background-color: #F5F8FC;
+    height: 60px;
+    border-radius: 8px;
+}.CmplntType{
+    font: 500 18px/100% 'Poppins';
+    color: #4E4B4B;
+}.SlctdPrt{
+    color: #FF9202;
+    font: 500 18px/100% 'Poppins';
 }

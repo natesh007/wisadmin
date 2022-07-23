@@ -110,7 +110,7 @@
                                 <span class="CntTtl">Shift 3</span>
                             </div>
                         </div>
-                        <div class="AddCmplt">
+                        <div class="CmplntBtnBlk">
                             <button type="button" class="btn btn-primary">Save</button>
                         </div>
                     </div>

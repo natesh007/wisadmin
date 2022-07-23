@@ -95,9 +95,6 @@ class Home extends BaseController
 	public function complaintDashboard(){
 		echo view('Modules\WIS\Views/complaint/complaintsNDashboard');
 	}
-	public function complaintList(){
-		echo view('Modules\WIS\Views/complaint/complaintsNList');
-	}
 	public function complaintAttendence(){
 		echo view('Modules\WIS\Views/complaint/complaintsNAttendance');
 	}

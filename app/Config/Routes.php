@@ -67,7 +67,6 @@ $routes->add('/amcObservations', 'Home::amcObservations',['namespace' => 'Module
 $routes->add('/amcRecommendations', 'Home::amcRecommendations',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaintFeedback', 'Home::complaintFeedback',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaintDashboard', 'Home::complaintDashboard',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/complaintList', 'Home::complaintList',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaintAttendence', 'Home::complaintAttendence',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaintDetReports', 'Home::complaintDetReports',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaintCReports', 'Home::complaintCReports',['namespace' => 'Modules\WIS\Controllers']);
@@ -92,6 +91,17 @@ $routes->add('/employees/add_or_update_employee', 'Employees::add_or_update_empl
 $routes->add('/listViewDepartment', 'Departments::index',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/departments/get_department', 'Departments::get_department',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/departments/add_or_update_department', 'Departments::add_or_update_department',['namespace' => 'Modules\WIS\Controllers']);
+
+//Complaints Routes
+$routes->add('/complaintList', 'Complaints::index',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/add_complaint', 'Complaints::add_complaint',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/add_complaint2', 'Complaints::add_complaint2',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/add_complaint3', 'Complaints::add_complaint3',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/add_complaint4', 'Complaints::add_complaint4',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/add_complaint_cron', 'Complaints::add_complaint_cron',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/add_complaint2_cron', 'Complaints::add_complaint2_cron',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/add_complaint3_cron', 'Complaints::add_complaint3_cron',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/add_complaint4_cron', 'Complaints::add_complaint4_cron',['namespace' => 'Modules\WIS\Controllers']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing

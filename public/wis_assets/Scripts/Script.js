@@ -26,15 +26,6 @@ function ModalPopupThree() {
     }
     return false;
 }
-function ModalPopupAddComplaint() {
-    if (document.getElementById('AddComplaintModal').getAttribute('class') == 'AppModalHldr Hide') {
-        document.getElementById('AddComplaintModal').setAttribute('class', 'AppModalHldr');
-    }
-    else {
-        document.getElementById('AddComplaintModal').setAttribute('class', 'AppModalHldr Hide');
-    }
-    return false;
-}
 function activeinactive(MasterTable, ID, Status){
     $.post(BaseURL+"/activeinactive", {MasterTable: MasterTable, ID: ID, Status: Status}, function(data, status){
         var obj = jQuery.parseJSON(data);
