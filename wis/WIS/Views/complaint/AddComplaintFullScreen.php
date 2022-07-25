@@ -16,7 +16,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
         <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
     </head>
-    <body style="background-color: #FFFFFF;">
+    <body style="background-color: #FFFFFF; overflow-y: auto;">
         <div class="InnrPg">
             <div class="PgHdr">
                 <span class="PgHdrTtl1">Enter Address of Area to Raise a Complaint</span>
@@ -29,11 +29,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <label class="CmpntInptTtl">Contact Info</label>
-                        <div class="form-floating CmpntInptBlk">
+                        <div class="form-floating mb-3">
                             <input type="text" class="form-control CmpntInptBx" id="Name" placeholder="Name"/>
                             <label for="Name" class="CmpntInptLbl">Name</label>
                         </div>
-                        <div class="form-floating CmpntInptBlk">
+                        <div class="form-floating mb-3">
                             <input type="text" class="form-control CmpntInptBx" id="PhoneNo" placeholder="Phone Number (+91)"/>
                             <label for="PhoneNo" class="CmpntInptLbl">Phone Number (+91)</label>
                         </div>
@@ -42,31 +42,31 @@
                         <label class="CmpntInptTtl">Contact Info</label>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-floating CmpntInptBlk">
+                                <div class="form-floating mb-3">
                                     <input type="text" class="form-control CmpntInptBx" id="Building" placeholder="Building/ Apartment Name/ House No."/>
                                     <label for="Building" class="CmpntInptLbl">Building/ Apartment Name/ House No.</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-floating CmpntInptBlk">
+                                <div class="form-floating mb-3">
                                     <input type="text" class="form-control CmpntInptBx" id="Block" placeholder="Block No."/>
                                     <label for="Block" class="CmpntInptLbl">Block No.</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-floating CmpntInptBlk">
+                                <div class="form-floating mb-3">
                                     <input type="text" class="form-control CmpntInptBx" id="Floor" placeholder="Floor No."/>
                                     <label for="Floor" class="CmpntInptLbl">Floor No.</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-floating CmpntInptBlk">
+                                <div class="form-floating mb-3">
                                     <input type="text" class="form-control CmpntInptBx" id="Room" placeholder="Room Name/ No."/>
                                     <label for="Room" class="CmpntInptLbl">Room Name/ No.</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-floating CmpntInptBlk">
+                                <div class="form-floating mb-3">
                                     <input type="text" class="form-control CmpntInptBx" id="Locality" placeholder="Locality/ Area / Street"/>
                                     <label for="Locality" class="CmpntInptLbl">Locality/ Area / Street</label>
                                 </div>
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class="CmplntBtnBlk" style="text-align: center">
-                    <button type="button" class="btn">Raise Complaint</button>
+                    <a href="<?= base_url('complaints/add_complaint2_mob'); ?>"><button type="button" class="btn">Raise Complaint</button></a>
                 </div>
             </div>
         </div>

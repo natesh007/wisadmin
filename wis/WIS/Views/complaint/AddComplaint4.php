@@ -15,6 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
 </head>
 <body>
 <?php echo view('Modules\WIS\Views\common/leftmenu')  ?>
@@ -72,12 +73,12 @@
             </div>
             <div class="InnrPg">
                 <div class="PgHdr">
-                    <span class="PgHdrTtl1">Thank You!</span>
+                    <span class="PgHdrTtl1">Thank You! <a href="<?= base_url('/complaints/add_complaint4_mob'); ?>" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
                     <h1 class="PgHdrTtl2">Your complaint has been recorded.</h1>
                     <span class="icon-fullscreen"></span>
                 </div>
                 <div class="PgInnrCntnt">
-                    <div class="CmpntInptBlk CmpntPrt" style="padding: 15px;">
+                    <div class="mb-3 CmpntPrt" style="padding: 15px;">
                         <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
                         <span class="CmplntType ms-4">Heating/ Cooling</span>
                     </div>
@@ -95,14 +96,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label class="CmpntInptTtl">Location</label>
-                            <div class="CmpntInptBlk">
-                                <input type="text" class="form-control CmpntInptBx" id="Location" placeholder="Location" value="Waiting Hall, Floor 2, Block - A, ESIC Hospital"/>
+                            <div class="mb-3">
+                                <input type="text" class="form-control CmpntInptBx" id="Location" placeholder="Location" value="Waiting Hall, Floor 2, Block - A, ESIC Hospital" readonly/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label class="CmpntInptTtl">Nature of Complaint</label>
-                            <div class="CmpntInptBlk">
-                                <input type="text" class="form-control CmpntInptBx" id="Nature" placeholder="Nature of Complaint" value="Temperature too Hot"/>
+                            <div class="mb-3">
+                                <input type="text" class="form-control CmpntInptBx" id="Nature" placeholder="Nature of Complaint" value="Temperature too Hot" readonly/>
                             </div>
                         </div>
                     </div>
@@ -110,14 +111,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label class="CmpntInptTtl">Images</label>
-                            <div class="CmpntInptBlk">
+                            <div class="mb-3">
                                 <img src="<?= base_url('/public/wis_assets/Images/Complaint1.png'); ?>" class="CmpltImg"/>
                                 <img src="<?= base_url('/public/wis_assets/Images/Complaint2.png'); ?>" class="CmpltImg"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label class="CmpntInptTtl">Complaint Priority</label>
-                            <div class="CmpntInptBlk CmpntPrt" style="padding: 20px;">
+                            <div class="mb-3 CmpntPrt" style="padding: 20px;">
                                 <span class="SlctdPrt">High</span>
                             </div>
                         </div>
@@ -126,20 +127,20 @@
                     <div class="row">
                         <label class="CmpntInptTtl">Complaint Raised By (Optional)</label>
                         <div class="col-md-4">
-                            <div class="form-floating CmpntInptBlk">
-                                <input type="text" class="form-control CmpntInptBx" id="Name" placeholder="Name" value="Rajkumar Malik"/>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control CmpntInptBx" id="Name" placeholder="Name" value="Rajkumar Malik" readonly/>
                                 <label for="Name" class="CmpntInptLbl">Name</label>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-floating CmpntInptBlk">
-                                <input type="text" class="form-control CmpntInptBx" id="PhoneNo" placeholder="Phone Number (+91)" value="Rajkumar Malik"/>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control CmpntInptBx" id="PhoneNo" placeholder="Phone Number (+91)" value="9291939495" readonly/>
                                 <label for="PhoneNo" class="CmpntInptLbl">Phone Number (+91)</label>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="CmpntInptBlk">
-                                <select class="form-control CmpntInptBx" id="Select Designation">
+                            <div class="mb-3">
+                                <select class="form-control CmpntInptBx" id="Select Designation" disabled>
                                     <option>Select Designation</option>
                                     <option selected>Patient</option>
                                 </select>
@@ -150,13 +151,10 @@
                     <div class="row">
                         <label class="CmpntInptTtl">Complaint Remarks</label>
                         <div class="col-md-12">
-                            <div class="CmpntInptBlk">
-                                <textarea class="form-control CmpntInptBx" placeholder="Add description" id="Description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
+                            <div class="mb-3">
+                                <textarea class="form-control CmpntInptBx" placeholder="Add description" id="Description" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
                             </div>
                         </div>
-                    </div>
-                    <div class="CmplntBtnBlk" style="text-align: center">
-                        <button type="button" class="btn">Submit</button>
                     </div>
                 </div>
             </div>

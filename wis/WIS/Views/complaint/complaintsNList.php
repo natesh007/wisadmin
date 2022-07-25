@@ -193,7 +193,6 @@
                     <a href="<?= base_url('complaints/add_complaint') ?>" class="AddNewRcrd">Add Complaint</a>
                 </div>
                 <div class="TableHldr">
-               
                     <table class="AppDataTbl">
                         <tr class="Hdr">
                             <th>

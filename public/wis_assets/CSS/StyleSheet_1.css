@@ -9122,7 +9122,7 @@ div.AddCmplt {
     margin-bottom: 15px
 }
 /*Lakshmi 23/7/22*/
-a   .AddNewRcrd{
+a.AddNewRcrd{
     display: inline-block;
     font: 600 12px/100% 'Open Sans';
     background: #0078BA !important;
@@ -9165,18 +9165,15 @@ span.AdrsTxt{
     margin: 20px 40px; 
 }.CmpntInptBx{
     background-color: #F5F8FC !important;
-    height: 60px;
     width: 100%;
     border: 1px solid #F5F8FC;
+    height: 60px !important;
     border-radius: 8px;
-    padding: 10px;
     outline: none !important;
 }label.CmpntInptTtl{
     color: #4E4B4B;
     font: 600 16px/100% 'Poppins' !important;
     margin-bottom: 10px;
-}div.CmpntInptBlk{
-    margin-bottom:15px
 }div.CmplntBtnBlk{
     text-align: center;
 }div.CmplntBtnBlk button {
@@ -9198,8 +9195,11 @@ span.AdrsTxt{
     box-shadow: 0px 1px 6px #00000029;
     border-radius: 8px;
     background: #FFFFFF;
-    padding: 10px;
+    padding: 10px 0px;
     margin: 0px 0px 20px 0px;
+    cursor: pointer;
+    height: 100%;
+    margin-bottom: 10px
 }div.CmpntPrt{
     background-color: #F5F8FC;
     height: 60px;
@@ -9210,4 +9210,15 @@ span.AdrsTxt{
 }.SlctdPrt{
     color: #FF9202;
     font: 500 18px/100% 'Poppins';
+}.form-floating>label{
+    top: 5px !important;
+}@media only screen and (min-width: 200px) and (max-width: 900px)  {
+    .CmpntInptLbl, .PgInnrTtl{
+        font-size: 13px !important;
+    }.CmplntType{
+        font-size: 15px !important;
+    }.PgInnrHdr,
+    .PgInnrCntnt{
+        margin: 20px !important;
+    }
 }

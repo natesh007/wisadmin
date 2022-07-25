@@ -25,7 +25,7 @@ class Complaints extends BaseController
 		echo view('Modules\WIS\Views\complaint\AddComplaint');
 	}
 	//Add Complaint Full Screen
-	public function add_complaint_cron(){
+	public function add_complaint_mob(){
 		echo view('Modules\WIS\Views\complaint\AddComplaintFullScreen');
 	}
 	//Add Complaint Step 2
@@ -37,7 +37,7 @@ class Complaints extends BaseController
 		echo view('Modules\WIS\Views\complaint\AddComplaint2');
 	}
 	//Add Complaint Step 2 Full Screen
-	public function add_complaint2_cron(){
+	public function add_complaint2_mob(){
 		echo view('Modules\WIS\Views\complaint\AddComplaint2FullScreen');
 	}
 	//Add Complaint Step 3
@@ -49,7 +49,7 @@ class Complaints extends BaseController
 		echo view('Modules\WIS\Views\complaint\AddComplaint3');
 	}
 	//Add Complaint Step 3 Full Screen
-	public function add_complaint3_cron(){
+	public function add_complaint3_mob(){
 		echo view('Modules\WIS\Views\complaint\AddComplaint3FullScreen');
 	}
 	//Add Complaint Step 4
@@ -61,7 +61,7 @@ class Complaints extends BaseController
 		echo view('Modules\WIS\Views\complaint\AddComplaint4');
 	}
 	//Add Complaint Step 4 Full Screen
-	public function add_complaint4_cron(){
+	public function add_complaint4_mob(){
 		echo view('Modules\WIS\Views\complaint\AddComplaint4FullScreen');
 	}
 }

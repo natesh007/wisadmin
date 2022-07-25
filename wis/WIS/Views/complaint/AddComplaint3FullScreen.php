@@ -16,32 +16,29 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
         <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
     </head>
-    <body style="background-color: #FFFFFF;">
+    <body style="background-color: #FFFFFF; overflow-y: auto;">
         <div class="InnrPg">
             <div class="PgHdr">
                 <span class="PgHdrTtl1">Waiting Hall -1</span>
                 <h1 class="PgHdrTtl2">Floor 2, Block - A, ESIC Hospital</h1>
                 <span class="icon-fullscreen"></span>
             </div>
-            <div class="PgInnrHdr">
-                <span class="PgInnrTtl">Please select from below to raise complaint<span>
-            </div>
             <div class="PgInnrCntnt">
-                <div class="CmpntInptBlk CmpntPrt" style="padding: 15px;">
+                <div class="mb-3 CmpntPrt" style="padding: 15px;">
                     <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
                     <span class="CmplntType ms-4">Heating/ Cooling</span>
                 </div>
                 <div class="row">
                     <label class="CmpntInptTtl">Common Complaint</label>
                     <div class="col-md-6">
-                        <div class="CmpntInptBlk">
+                        <div class="mb-3">
                             <select class="form-control CmpntInptBx" id="CommonComplaint">
                                 <option>Select</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-floating CmpntInptBlk">
+                        <div class="form-floating mb-3">
                             <input type="text" class="form-control CmpntInptBx" id="PhoneNo" placeholder="Add Custom Complaint"/>
                             <label for="PhoneNo" class="CmpntInptLbl">Add Custom Complaint</label>
                         </div>
@@ -51,16 +48,16 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label class="CmpntInptTtl">Add Images</label>
-                        <div class="form-floating CmpntInptBlk">
+                        <div class="form-floating mb-3">
                             <input type="text" class="form-control CmpntInptBx" id="PhoneNo" placeholder="Add Custom Complaint"/>
                             <label for="PhoneNo" class="CmpntInptLbl">Add Custom Complaint</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label class="CmpntInptTtl">Complaint Priority</label>
-                        <div class="CmpntInptBlk CmpntPrt" style="padding: 20px;">
+                        <div class="mb-3 CmpntPrt" style="padding: 20px;">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-4">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                         <label class="form-check-label CmplntType" for="flexRadioDefault2">
@@ -68,7 +65,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-5">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                         <label class="form-check-label CmplntType" for="flexRadioDefault2">
@@ -76,7 +73,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-3">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                         <label class="form-check-label CmplntType" for="flexRadioDefault2">
@@ -92,19 +89,19 @@
                 <div class="row">
                     <label class="CmpntInptTtl">Complaint Raised By (Optional)</label>
                     <div class="col-md-4">
-                        <div class="form-floating CmpntInptBlk">
+                        <div class="form-floating mb-3">
                             <input type="text" class="form-control CmpntInptBx" id="Name" placeholder="Name"/>
                             <label for="Name" class="CmpntInptLbl">Name</label>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-floating CmpntInptBlk">
+                        <div class="form-floating mb-3">
                             <input type="text" class="form-control CmpntInptBx" id="PhoneNo" placeholder="Phone Number (+91)"/>
                             <label for="PhoneNo" class="CmpntInptLbl">Phone Number (+91)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="CmpntInptBlk">
+                        <div class="mb-3">
                             <select class="form-control CmpntInptBx" id="Select Designation">
                                 <option>Select Designation</option>
                             </select>
@@ -115,14 +112,14 @@
                 <div class="row">
                     <label class="CmpntInptTtl">Complaint Remarks</label>
                     <div class="col-md-12">
-                        <div class="form-floating CmpntInptBlk">
+                        <div class="form-floating mb-3">
                             <textarea class="form-control CmpntInptBx" placeholder="Add description" id="Description"></textarea>
                             <label for="Description" class="CmpntInptLbl">Add description</label>
                         </div>
                     </div>
                 </div>
                 <div class="CmplntBtnBlk" style="text-align: center">
-                    <button type="button" class="btn">Submit</button>
+                    <a href="<?= base_url('complaints/add_complaint4_mob'); ?>"><button type="button" class="btn">Submit</button></a>
                 </div>
             </div>
         </div>

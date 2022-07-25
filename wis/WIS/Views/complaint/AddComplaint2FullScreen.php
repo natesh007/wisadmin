@@ -16,7 +16,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
         <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
     </head>
-    <body style="background-color: #FFFFFF;">
+    <body style="background-color: #FFFFFF; overflow-y: auto;">
         <div class="InnrPg">
             <div class="PgHdr">
                 <span class="PgHdrTtl1">Waiting Hall -1</span>
@@ -28,101 +28,109 @@
             </div>
             <div class="PgInnrCntnt">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-6 mb-3">
                         <div class="row CmplntTypBlk">
-                            <div class="col-sm-4">
+                            <div class="col-md-3 text-center my-md-auto">
                                 <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
                             </div>
-                            <div class="col-sm-8 my-auto">
-                                <span class="">Heating/ Cooling</span>
+                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
+                                <span class="CmplntType">Heating/ Cooling</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-6 mb-3">
                         <div class="row CmplntTypBlk">
-                            <div class="col-sm-4">
+                            <div class="col-md-3 text-center my-md-auto">
                                 <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
                             </div>
-                            <div class="col-sm-8 my-auto">
-                                <span class="">Water</span>
+                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
+                                <span class="CmplntType">Water</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-6 mb-3">
                         <div class="row CmplntTypBlk">
-                            <div class="col-sm-4">
+                            <div class="col-md-3 text-center my-md-auto">
                                 <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
                             </div>
-                            <div class="col-sm-8 my-auto">
-                                <span class="">Drinking Water</span>
+                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
+                                <span class="CmplntType">Drinking Water</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-6 mb-3">
                         <div class="row CmplntTypBlk">
-                            <div class="col-sm-4">
+                            <div class="col-md-3 text-center my-md-auto">
                                 <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
                             </div>
-                            <div class="col-sm-8 my-auto">
-                                <span class="">Cleanliness</span>
+                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
+                                <span class="CmplntType">Cleanliness</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-6 mb-3">
                         <div class="row CmplntTypBlk">
-                            <div class="col-sm-4">
+                            <div class="col-md-3 text-center my-md-auto m">
                                 <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
                             </div>
-                            <div class="col-sm-8 my-auto">
-                                <span class="">Equipment</span>
+                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
+                                <span class="CmplntType">Equipment</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-6 mb-3">
                         <div class="row CmplntTypBlk">
-                            <div class="col-sm-4">
+                            <div class="col-md-3 text-center my-md-auto">
                                 <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
                             </div>
-                            <div class="col-sm-8 my-auto">
-                                <span class="">Damages</span>
+                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
+                                <span class="CmplntType">Damages</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-6 mb-3">
                         <div class="row CmplntTypBlk">
-                            <div class="col-sm-4">
+                            <div class="col-md-3 text-center my-md-auto">
                                 <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
                             </div>
-                            <div class="col-sm-8 my-auto">
-                                <span class="">Tissues</span>
+                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
+                                <span class="CmplntType">Tissues</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-6 mb-3">
                         <div class="row CmplntTypBlk">
-                            <div class="col-sm-4">
+                            <div class="col-md-3 text-center my-md-auto">
                                 <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
                             </div>
-                            <div class="col-sm-8 my-auto">
-                                <span class="">Soap</span>
+                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
+                                <span class="CmplntType">Soap</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-6 mb-3">
                         <div class="row CmplntTypBlk">
-                            <div class="col-sm-4">
+                            <div class="col-md-3 text-center my-md-auto">
                                 <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
                             </div>
-                            <div class="col-sm-8 my-auto">
-                                <span class="">Others</span>
+                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
+                                <span class="CmplntType">Others</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="CmplntBtnBlk" style="text-align: center">
-                    <button type="button" class="btn">Continue</button>
+                    <a href="<?= base_url('complaints/add_complaint3_mob'); ?>"><button type="button" class="btn">Continue</button></a>
                 </div>
             </div>
         </div>
     </body>
+    <script>
+        $( ".CmplntTypBlk" ).click(function() {
+            $(".CmplntTypBlk").css("background", "#FFFFFF");
+            $(".CmplntTypBlk").find("span.CmplntType").css("color", "#4E4B4B");
+            $(this).css("background", "green");
+            $(this).find("span.CmplntType").css("color", "#FFFFFF");
+        });
+    </script>
 </html>
