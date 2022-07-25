@@ -2407,7 +2407,8 @@ div.SrchFltrDv .InptBx {
     position: relative;
 }
 
-div.SrchFltrDv .InptBx:focus, .CmpntInptBx:focus{
+div.SrchFltrDv .InptBx:focus,
+.CmpntInptBx:focus {
     box-shadow: none;
     border-color: #0078BA;
 }
@@ -8267,7 +8268,7 @@ div.AppModalHldr div.AppModalInnrHldr div.ModalFnctnHldr div.BttnHldr {
 }
 
 div.AppModalHldr div.AppModalInnrHldr div.ModalFnctnHldr .InptBx,
-div.AddCmptBlk .InptBx{
+div.AddCmptBlk .InptBx {
     border: 1px solid #ddd;
     font: 400 12px 'Open Sans';
     padding: 12px 35px 12px 12px;
@@ -9071,13 +9072,14 @@ div.AddCmplt {
     text-align: right;
 }
 
-.CmpltBy{
+.CmpltBy {
     position: relative;
 }
-.CmpltByInfo{
+
+.CmpltByInfo {
     display: none;
     background-color: black;
-    width:60px;
+    width: 60px;
     color: #fff;
     text-align: center;
     border-radius: 6px;
@@ -9088,9 +9090,11 @@ div.AddCmplt {
     right: -21px;
     margin-left: -60px;
 }
+
 .CmpltBy:hover .CmpltByInfo {
     display: block;
 }
+
 .CmpltBy .CmpltByInfo::after {
     content: "";
     position: absolute;
@@ -9100,29 +9104,44 @@ div.AddCmplt {
     border-width: 5px;
     border-style: solid;
     border-color: black transparent transparent transparent;
-}img.CmpltImg{
+}
+
+img.CmpltImg {
     margin-right: 10px;
-}div.CmpltImgBlk{
+}
+
+div.CmpltImgBlk {
     padding: 10px;
     border-bottom: 1px solid #ddd;
-}div.CmpltDescBlk{
+}
+
+div.CmpltDescBlk {
     padding: 10px;
-}span.CmpltDesHed{
+}
+
+span.CmpltDesHed {
     font: 600 13px/100% 'Open Sans';
     color: #444;
-}div.CmpltDescBlk p{
+}
+
+div.CmpltDescBlk p {
     font: 400 12px/100% 'Open Sans';
     line-height: 1.3;
-}div.AddCmptBlk{
+}
+
+div.AddCmptBlk {
     background: #FBFBFB;
     padding: 10px;
     box-sizing: border-box;
     border-bottom: 1px solid #e9e9e9;
-}div.AddCmptBlk .InptBx{
+}
+
+div.AddCmptBlk .InptBx {
     margin-bottom: 15px
 }
+
 /*Lakshmi 23/7/22*/
-a.AddNewRcrd{
+a.AddNewRcrd {
     display: inline-block;
     font: 600 12px/100% 'Open Sans';
     background: #0078BA !important;
@@ -9132,66 +9151,90 @@ a.AddNewRcrd{
     padding: 10px 20px;
     margin-bottom: 8px
 }
-div.PgHdr{
+
+div.PgHdr {
     background-color: #F5F8FC;
     padding: 36px 0px;
     text-align: center;
 }
-span.PgHdrTtl1{
+
+span.PgHdrTtl1 {
     color: #0078BA;
     font: 600 22px/100% 'Poppins';
     display: block;
-}h1.PgHdrTtl2{
+}
+
+h1.PgHdrTtl2 {
     color: #1B1B1B;
     font: 500 16px/100% 'Poppins' !important;
     margin: 15px 0px 0px 0px !important;
 }
-div.PgInnrHdr{
-    margin: 20px 40px; 
+
+div.PgInnrHdr {
+    margin: 20px 40px;
     background-color: #F5F8FC;
     padding: 15px 0px;
     border-radius: 8px;
 }
-span.AdrsTxt{
+
+span.AdrsTxt {
     color: #4E4B4B;
     font: 600 22px/100% 'Poppins';
     margin-left: 10px
-}a.ChngAdrTxt{
+}
+
+a.ChngAdrTxt {
     color: #00237D !important;
     float: right;
     font: 400 14px/100% 'Poppins';
     margin-right: 10px
-}div.PgInnrCntnt{
-    margin: 20px 40px; 
-}.CmpntInptBx{
+}
+
+div.PgInnrCntnt {
+    margin: 20px 40px;
+}
+
+.CmpntInptBx {
     background-color: #F5F8FC !important;
     width: 100%;
     border: 1px solid #F5F8FC;
     height: 60px !important;
     border-radius: 8px;
     outline: none !important;
-}label.CmpntInptTtl{
+}
+
+label.CmpntInptTtl {
     color: #4E4B4B;
     font: 600 16px/100% 'Poppins' !important;
     margin-bottom: 10px;
-}div.CmplntBtnBlk{
+}
+
+div.CmplntBtnBlk {
     text-align: center;
-}div.CmplntBtnBlk button {
+}
+
+div.CmplntBtnBlk button {
     font: 600 18px/100% 'Poppins';
     background: #0078BA !important;
     color: #FFFFFF !important;
     border-radius: 10px;
     padding: 10px 40px;
     box-shadow: none !important;
-}label.CmpntInptLbl {
+}
+
+label.CmpntInptLbl {
     font: 400 16px/100% 'Poppins';
     color: #8C8A8A;
-}span.PgInnrTtl{
+}
+
+span.PgInnrTtl {
     color: #4E4B4B;
     font: 600 16px/100% 'Poppins';
     text-align: center;
     display: block;
-}div.CmplntTypBlk{
+}
+
+div.CmplntTypBlk {
     box-shadow: 0px 1px 6px #00000029;
     border-radius: 8px;
     background: #FFFFFF;
@@ -9200,25 +9243,93 @@ span.AdrsTxt{
     cursor: pointer;
     height: 100%;
     margin-bottom: 10px
-}div.CmpntPrt{
+}
+
+div.CmpntPrt {
     background-color: #F5F8FC;
     height: 60px;
     border-radius: 8px;
-}.CmplntType{
+}
+
+.CmplntType {
     font: 500 18px/100% 'Poppins';
     color: #4E4B4B;
-}.SlctdPrt{
+}
+
+.SlctdPrt {
     color: #FF9202;
     font: 500 18px/100% 'Poppins';
-}.form-floating>label{
+}
+
+.form-floating>label {
     top: 5px !important;
-}@media only screen and (min-width: 200px) and (max-width: 900px)  {
-    .CmpntInptLbl, .PgInnrTtl{
+}
+
+@media only screen and (min-width: 200px) and (max-width: 900px) {
+
+    .CmpntInptLbl,
+    .PgInnrTtl {
         font-size: 13px !important;
-    }.CmplntType{
+    }
+
+    .CmplntType {
         font-size: 15px !important;
-    }.PgInnrHdr,
-    .PgInnrCntnt{
+    }
+
+    .PgInnrHdr,
+    .PgInnrCntnt {
         margin: 20px !important;
     }
+}
+.progressbar {
+    text-align: center;
+}
+.progressbar li {
+    list-style: none;
+    display: inline-block;
+    width: 15%;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    font: 300 14px/100% 'Poppins';
+    color: #707070;
+}
+.progressbar li:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    line-height: 30px;
+    border: 0.5px solid #0078BA;
+    border-radius: 100%;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    background-color: #F5F8FC;
+}
+.progressbar li:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #F5F8FC;
+    top: 8px;
+    left: -50%;
+    z-index: -1;
+}
+.progressbar li:first-child:after {
+    content: none;
+}
+.progressbar li.active {
+    color: #0078BA;
+}
+.progressbar li.active:before {
+    height: 20px;
+    width: 20px;
+    background-color: #0078BA;
+    box-shadow: 0 0 0 3px #F5F8FC, 
+                0 0 0 6px #0078BA, 
+                0 0 0 0px #FFFFFF;
+}
+.progressbar li.active+li:after {
+    background: linear-gradient(to right, #0078BA 70%, #F5F8FC 30%);
 }

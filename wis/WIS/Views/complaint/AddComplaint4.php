@@ -82,17 +82,12 @@
                         <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
                         <span class="CmplntType ms-4">Heating/ Cooling</span>
                     </div>
-                    <!--<ol class="steps">
-                        <li class="step is-active" data-step="1">
-                            Step 1
-                        </li>
-                        <li class="step" data-step="2">
-                            Step 2
-                        </li>
-                        <li class="step" data-step="3">
-                            Step 3
-                        </li>
-                    </ol>-->
+                    <ul class="progressbar">
+                        <li class="active">Registered</li>
+                        <li>Assigned</li>
+                        <li>On Going</li>
+                        <li>Completed</li>
+                    </ul>
                     <div class="row">
                         <div class="col-md-6">
                             <label class="CmpntInptTtl">Location</label>
