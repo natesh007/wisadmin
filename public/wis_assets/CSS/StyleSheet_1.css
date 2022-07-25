@@ -9264,23 +9264,6 @@ div.CmpntPrt {
 .form-floating>label {
     top: 5px !important;
 }
-
-@media only screen and (min-width: 200px) and (max-width: 900px) {
-
-    .CmpntInptLbl,
-    .PgInnrTtl {
-        font-size: 13px !important;
-    }
-
-    .CmplntType {
-        font-size: 15px !important;
-    }
-
-    .PgInnrHdr,
-    .PgInnrCntnt {
-        margin: 20px !important;
-    }
-}
 .progressbar {
     text-align: center;
 }
@@ -9332,4 +9315,23 @@ div.CmpntPrt {
 }
 .progressbar li.active+li:after {
     background: linear-gradient(to right, #0078BA 70%, #F5F8FC 30%);
+}
+@media only screen and (min-width: 200px) and (max-width: 900px) {
+    .CmpntInptLbl,
+    .PgInnrTtl {
+        font-size: 13px !important;
+    }
+    .CmplntType {
+        font-size: 15px !important;
+    }
+    .PgInnrHdr,
+    .PgInnrCntnt {
+        margin: 20px !important;
+    }
+    .progressbar li {
+        width: 24%;
+    }
+    ul.progressbar {
+        padding: 0 !important;
+    }
 }
