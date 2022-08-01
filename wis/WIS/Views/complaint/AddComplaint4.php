@@ -78,79 +78,78 @@
                     <span class="icon-fullscreen"></span>
                 </div>
                 <div class="PgInnrCntnt">
-                    <div class="mb-3 CmpntPrt" style="padding: 15px;">
-                        <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                        <span class="CmplntType ms-4">Heating/ Cooling</span>
-                    </div>
+                    <?php if(!empty($complaint_category)){
+                        echo '<div class="mb-3 CmpntPrt" style="padding: 15px;">
+                            <img src="'.$complaint_category->CategoryIcon.'"/>
+                            <span class="CmplntType ms-4">'.$complaint_category->CategoryName.'</span>
+                        </div>';
+                    } ?>
                     <ul class="progressbar">
                         <li class="active">Registered</li>
                         <li>Assigned</li>
                         <li>On Going</li>
                         <li>Completed</li>
                     </ul>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label class="CmpntInptTtl">Location</label>
-                            <div class="mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="Location" placeholder="Location" value="Waiting Hall, Floor 2, Block - A, ESIC Hospital" readonly/>
+                    <?php if(!empty($complaint)){
+                        echo '<div class="row">
+                            <div class="col-md-6">
+                                <label class="CmpntInptTtl">Location</label>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control CmpntInptBx" id="Location" placeholder="Location" value="'.$complaint->RoomName.', '.$complaint->FloorName.', '.$complaint->BlockName.', '.$complaint->BuildingName.'" readonly/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="CmpntInptTtl">Nature of Complaint</label>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control CmpntInptBx" id="Nature" placeholder="Nature of Complaint" value="'.$complaint->ComplaintNature.'" readonly/>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <label class="CmpntInptTtl">Nature of Complaint</label>
-                            <div class="mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="Nature" placeholder="Nature of Complaint" value="Temperature too Hot" readonly/>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="CmpntInptTtl">Images</label>
+                                <div class="mb-3">';
+                                if(isset($complaint->Images)){
+                                    foreach($complaint->Images as $Image){
+                                        echo '<img src="'.$Image.'" class="CmpltImg"/>';
+                                    }
+                                } 
+                                echo '</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="CmpntInptTtl">Complaint Priority</label>
+                                <div class="mb-3 CmpntPrt" style="padding: 20px;">
+                                    <span class="SlctdPrt">'.$complaint->Priority.'</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label class="CmpntInptTtl">Images</label>
-                            <div class="mb-3">
-                                <img src="<?= base_url('/public/wis_assets/Images/Complaint1.png'); ?>" class="CmpltImg"/>
-                                <img src="<?= base_url('/public/wis_assets/Images/Complaint2.png'); ?>" class="CmpltImg"/>
+                        <hr>
+                        <div class="row">
+                            <label class="CmpntInptTtl">Complaint Raised By (Optional)</label>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control CmpntInptBx" id="Name" placeholder="Name" value="'.$complaint->Name.'" readonly/>
+                                    <label for="Name" class="CmpntInptLbl">Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control CmpntInptBx" id="PhoneNo" placeholder="Phone Number (+91)" value="'.$complaint->Mobile.'" readonly/>
+                                    <label for="PhoneNo" class="CmpntInptLbl">Phone Number (+91)</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <label class="CmpntInptTtl">Complaint Priority</label>
-                            <div class="mb-3 CmpntPrt" style="padding: 20px;">
-                                <span class="SlctdPrt">High</span>
+                        <hr>
+                        <div class="row">
+                            <label class="CmpntInptTtl">Complaint Remarks</label>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <textarea class="form-control CmpntInptBx" placeholder="Add description" id="Description" readonly>'.$complaint->ComplaintRemarks.'</textarea>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <label class="CmpntInptTtl">Complaint Raised By (Optional)</label>
-                        <div class="col-md-4">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="Name" placeholder="Name" value="Rajkumar Malik" readonly/>
-                                <label for="Name" class="CmpntInptLbl">Name</label>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="PhoneNo" placeholder="Phone Number (+91)" value="9291939495" readonly/>
-                                <label for="PhoneNo" class="CmpntInptLbl">Phone Number (+91)</label>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <select class="form-control CmpntInptBx" id="Select Designation" disabled>
-                                    <option>Select Designation</option>
-                                    <option selected>Patient</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <label class="CmpntInptTtl">Complaint Remarks</label>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <textarea class="form-control CmpntInptBx" placeholder="Add description" id="Description" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
-                            </div>
-                        </div>
-                    </div>
+                        </div>';
+                    } ?>
                 </div>
             </div>
         </div>

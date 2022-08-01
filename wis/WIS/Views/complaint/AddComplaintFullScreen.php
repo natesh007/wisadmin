@@ -27,50 +27,44 @@
             </div>
             <div class="PgInnrCntnt">
                 <div class="row">
-                    <div class="col-md-4">
-                        <label class="CmpntInptTtl">Contact Info</label>
+                    <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control CmpntInptBx" id="Name" placeholder="Name"/>
-                            <label for="Name" class="CmpntInptLbl">Name</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control CmpntInptBx" id="PhoneNo" placeholder="Phone Number (+91)"/>
-                            <label for="PhoneNo" class="CmpntInptLbl">Phone Number (+91)</label>
+                            <select class="form-select CmpntInptBx" id="Building" aria-label="Building">
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <label for="Building" class="CmpntInptLbl">Building/ Apartment Name/ House No.</label>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <label class="CmpntInptTtl">Contact Info</label>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control CmpntInptBx" id="Building" placeholder="Building/ Apartment Name/ House No."/>
-                                    <label for="Building" class="CmpntInptLbl">Building/ Apartment Name/ House No.</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control CmpntInptBx" id="Block" placeholder="Block No."/>
-                                    <label for="Block" class="CmpntInptLbl">Block No.</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control CmpntInptBx" id="Floor" placeholder="Floor No."/>
-                                    <label for="Floor" class="CmpntInptLbl">Floor No.</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control CmpntInptBx" id="Room" placeholder="Room Name/ No."/>
-                                    <label for="Room" class="CmpntInptLbl">Room Name/ No.</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control CmpntInptBx" id="Locality" placeholder="Locality/ Area / Street"/>
-                                    <label for="Locality" class="CmpntInptLbl">Locality/ Area / Street</label>
-                                </div>
-                            </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <select class="form-select CmpntInptBx" id="Block" aria-label="Block">
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <label for="Block" class="CmpntInptLbl">Block No.</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <select class="form-select CmpntInptBx" id="Floor" aria-label="Floor">
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <label for="Floor" class="CmpntInptLbl">Floor No.</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <select class="form-select CmpntInptBx" id="Room" aria-label="Room">
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <label for="Room" class="CmpntInptLbl">Room Name/ No.</label>
                         </div>
                     </div>
                 </div>

@@ -73,109 +73,41 @@
             </div>
             <div class="InnrPg">
                 <div class="PgHdr">
-                    <span class="PgHdrTtl1">Waiting Hall -1 <a href="<?= base_url('/complaints/add_complaint2_mob'); ?>" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
-                    <h1 class="PgHdrTtl2">Floor 2, Block - A, ESIC Hospital</h1>
-                    <span class="icon-fullscreen"></span>
+                    <?php if(!empty(@$categories->location)){
+                        echo '<span class="PgHdrTtl1">'.@$categories->location->RoomName.' <a href="'.base_url('/complaints/add_complaint2_mob').'" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
+                        <h1 class="PgHdrTtl2">'.@$categories->location->FloorName.', '.@$categories->location->BlockName.', '.@$categories->location->BuildingName.'</h1><span class="icon-fullscreen"></span>';
+                    } ?>
                 </div>
                 <div class="PgInnrHdr">
                     <span class="PgInnrTtl">Please select from below to raise complaint<span>
                 </div>
                 <div class="PgInnrCntnt">
-                    <div class="row">
-                        <div class="col-md-2 mb-3">
-                            <div class="row CmplntTypBlk">
-                                <div class="col-md-3 text-center my-auto">
-                                    <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                                </div>
-                                <div class="col-md-9 my-auto text-break">
-                                    <span class="CmplntType">Heating/ Cooling</span>
-                                </div>
-                            </div>
+                    <form action="<?= base_url('complaints/add_complaint3'); ?>" method="get">
+                        <input type="hidden" name="BID" value="<?= $_GET['BID']; ?>"/>
+                        <input type="hidden" name="BKID" value="<?= $_GET['BKID']; ?>"/>
+                        <input type="hidden" name="FID" value="<?= $_GET['FID']; ?>"/>
+                        <input type="hidden" name="RID" value="<?= $_GET['RID']; ?>"/>
+                        <input type="hidden" name="ComCatID" id="ComCatID" value=""/>
+                        <div class="row">
+                            <?php if(!empty(@$categories->data)){
+                                foreach($categories->data as $category){
+                                    echo '<div class="col-md-2 mb-3">
+                                        <div class="row CmplntTypBlk" var="'.$category->ComCatID.'">
+                                            <div class="col-md-3 text-center my-auto">
+                                                <img src="'.$category->CategoryIcon.'"/>
+                                            </div>
+                                            <div class="col-md-9 my-auto text-break">
+                                                <span class="CmplntType">'.$category->CategoryName.'</span>
+                                            </div>
+                                        </div>
+                                    </div>';
+                                }
+                            } ?>
                         </div>
-                        <div class="col-md-2 mb-3">
-                            <div class="row CmplntTypBlk">
-                                <div class="col-md-3 text-center my-auto">
-                                    <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                                </div>
-                                <div class="col-md-9 my-auto text-break">
-                                    <span class="CmplntType">Water</span>
-                                </div>
-                            </div>
+                        <div class="CmplntBtnBlk" style="text-align: center">
+                            <button type="submit" class="btn">Continue</button>
                         </div>
-                        <div class="col-md-2 mb-3">
-                            <div class="row CmplntTypBlk">
-                                <div class="col-md-3 text-center my-auto">
-                                    <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                                </div>
-                                <div class="col-md-9 my-auto text-break">
-                                    <span class="CmplntType">Drinking Water</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2 mb-3">
-                            <div class="row CmplntTypBlk">
-                                <div class="col-md-3 text-center my-auto">
-                                    <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                                </div>
-                                <div class="col-md-9 my-auto text-break">
-                                    <span class="CmplntType">Cleanliness</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2 mb-3">
-                            <div class="row CmplntTypBlk">
-                                <div class="col-md-3 text-center my-auto">
-                                    <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                                </div>
-                                <div class="col-md-9 my-auto text-break">
-                                    <span class="CmplntType">Equipment</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2 mb-3">
-                            <div class="row CmplntTypBlk">
-                                <div class="col-md-3 text-center my-auto">
-                                    <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                                </div>
-                                <div class="col-md-9 my-auto text-break">
-                                    <span class="CmplntType">Damages</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2 mb-3">
-                            <div class="row CmplntTypBlk">
-                                <div class="col-md-3 text-center my-auto">
-                                    <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                                </div>
-                                <div class="col-md-9 my-auto text-break">
-                                    <span class="CmplntType">Tissues</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2 mb-3">
-                            <div class="row CmplntTypBlk">
-                                <div class="col-md-3 text-center my-auto">
-                                    <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                                </div>
-                                <div class="col-md-9 my-auto text-break">
-                                    <span class="CmplntType">Soap</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2 mb-3">
-                            <div class="row CmplntTypBlk">
-                                <div class="col-md-3 text-center my-auto">
-                                    <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                                </div>
-                                <div class="col-md-9 my-auto text-break">
-                                    <span class="CmplntType">Others</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="CmplntBtnBlk" style="text-align: center">
-                        <a href="<?= base_url('complaints/add_complaint3'); ?>"><button type="button" class="btn">Continue</button></a>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -187,6 +119,7 @@
         $(".CmplntTypBlk").find("span.CmplntType").css("color", "#4E4B4B");
         $(this).css("background", "green");
         $(this).find("span.CmplntType").css("color", "#FFFFFF");
+        $("#ComCatID").val($(this).attr('var'));
     });
 </script>
 </html>

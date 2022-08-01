@@ -102,6 +102,9 @@ $routes->add('/complaints/add_complaint_mob', 'Complaints::add_complaint_mob',['
 $routes->add('/complaints/add_complaint2_mob', 'Complaints::add_complaint2_mob',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint3_mob', 'Complaints::add_complaint3_mob',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint4_mob', 'Complaints::add_complaint4_mob',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/getblocksbybuilding', 'Complaints::getblocksbybuilding',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/getfloorsbyblock', 'Complaints::getfloorsbyblock',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/getroomsbyfloor', 'Complaints::getroomsbyfloor',['namespace' => 'Modules\WIS\Controllers']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing

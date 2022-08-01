@@ -80,60 +80,83 @@
                     <a class="ChngAdrTxt" href="">Change Address</a>
                 </div>
                 <div class="PgInnrCntnt">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label class="CmpntInptTtl">Contact Info</label>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="Name" placeholder="Name"/>
-                                <label for="Name" class="CmpntInptLbl">Name</label>
+                    <form action="<?= base_url('complaints/add_complaint2'); ?>" method="get">
+                        <div class="row">
+                            <div class="col-md-6  mb-3">
+                                <label for="BID" class="CmpntInptTtl">Building/ Apartment Name/ House No.</label>
+                                <select class="form-select CmpntInptBx" id="BID" name="BID">
+                                    <option disabled selected value hidden>Select Building/ Apartment Name/ House No.</option>
+                                    <?php if(!empty($buildings)){
+                                        foreach($buildings as $building){
+                                            echo '<option value="'.$building->BID.'">'.$building->BuildingName.' ('.$building->BrName.')</option>';
+                                        } 
+                                    } ?>
+                                </select>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="PhoneNo" placeholder="Phone Number (+91)"/>
-                                <label for="PhoneNo" class="CmpntInptLbl">Phone Number (+91)</label>
+                            <div class="col-md-6 mb-3">
+                                <label for="BKID" class="CmpntInptTtl">Block No.</label>
+                                <select class="form-select CmpntInptBx" id="BKID" name="BKID">
+                                    <option disabled selected value hidden>Select Block No.</option>
+                                </select>
                             </div>
-                        </div>
-                        <div class="col-md-8">
-                            <label class="CmpntInptTtl">Contact Info</label>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3">
-                                        <input type="text" class="form-control CmpntInptBx" id="Building" placeholder="Building/ Apartment Name/ House No."/>
-                                        <label for="Building" class="CmpntInptLbl">Building/ Apartment Name/ House No.</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3">
-                                        <input type="text" class="form-control CmpntInptBx" id="Block" placeholder="Block No."/>
-                                        <label for="Block" class="CmpntInptLbl">Block No.</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3">
-                                        <input type="text" class="form-control CmpntInptBx" id="Floor" placeholder="Floor No."/>
-                                        <label for="Floor" class="CmpntInptLbl">Floor No.</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3">
-                                        <input type="text" class="form-control CmpntInptBx" id="Room" placeholder="Room Name/ No."/>
-                                        <label for="Room" class="CmpntInptLbl">Room Name/ No.</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3">
-                                        <input type="text" class="form-control CmpntInptBx" id="Locality" placeholder="Locality/ Area / Street"/>
-                                        <label for="Locality" class="CmpntInptLbl">Locality/ Area / Street</label>
-                                    </div>
-                                </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="FID" class="CmpntInptTtl">Floor No.</label>
+                                <select class="form-select CmpntInptBx" id="FID" name="FID">
+                                    <option disabled selected value hidden>Select Floor No.</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="RID" class="CmpntInptTtl">Room Name/ No.</label>
+                                <select class="form-select CmpntInptBx" id="RID" name="RID">
+                                    <option disabled selected value hidden>Select Room Name/ No.</option>
+                                </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="CmplntBtnBlk" style="text-align: center">
-                        <a href="<?= base_url('complaints/add_complaint2'); ?>"><button type="button" class="btn">Raise Complaint</button></a>
-                    </div>
+                        <div class="CmplntBtnBlk" style="text-align: center">
+                            <button type="submit" class="btn">Raise Complaint</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $('#BID').change(function(){
+            if($(this).val() != ''){
+                $.post("<?= base_url('/complaints/getblocksbybuilding') ?>", {BuildingID: $(this).val()}, function(data, status){      
+                    var blocks = '<option disabled selected value hidden>Select Block No.</option>';
+                    console.log(data);
+                    if(data.length > 0){
+                        $.each(data, function (i, field) {
+                            blocks += '<option value="'+field.BKID+'">'+field.BlockName+'</option>';
+                        });
+                    }
+                    $('#BKID').html(blocks);
+                });
+            }
+        });
+        $('#BKID').change(function(){
+            if($(this).val() != ''){
+                $.post("<?= base_url('/complaints/getfloorsbyblock') ?>", {BlockID: $(this).val()}, function(data, status){
+                    var floors = '<option disabled selected value hidden>Select Floor No.</option>';
+                    $.each(data, function (i, field) {
+                        floors += '<option value="'+field.FID+'">'+field.FloorName+'</option>';
+                    });
+                    $('#FID').html(floors);
+                });
+            }
+        });
+        $('#FID').change(function(){
+            if($(this).val() != ''){
+                $.post("<?= base_url('/complaints/getroomsbyfloor') ?>", {FloorID: $(this).val()}, function(data, status){
+                    var rooms = '<option disabled selected value hidden>Select Room Name/ No.</option>';
+                    $.each(data, function (i, field) {
+                        rooms += '<option value="'+field.RID+'">'+field.RoomName+'</option>';
+                    });
+                    $('#RID').html(rooms);
+                });
+            }
+        });
+    </script>
 </body>
 </html>

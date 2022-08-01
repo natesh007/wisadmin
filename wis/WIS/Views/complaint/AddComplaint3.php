@@ -73,107 +73,102 @@
             </div>
             <div class="InnrPg">
                 <div class="PgHdr">
-                    <span class="PgHdrTtl1">Waiting Hall -1 <a href="<?= base_url('/complaints/add_complaint3_mob'); ?>" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
-                    <h1 class="PgHdrTtl2">Floor 2, Block - A, ESIC Hospital</h1>
-                    <span class="icon-fullscreen"></span>
+                    <?php if(!empty(@$location)){
+                        echo '<span class="PgHdrTtl1">'.@$location->RoomName.' <a href="'.base_url('/complaints/add_complaint3_mob').'" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
+                        <h1 class="PgHdrTtl2">'.@$location->FloorName.', '.@$location->BlockName.', '.@$location->BuildingName.'</h1><span class="icon-fullscreen"></span>';
+                    } ?>
                 </div>
                 <div class="PgInnrCntnt">
-                    <div class="mb-3 CmpntPrt" style="padding: 15px;">
-                        <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                        <span class="CmplntType ms-4">Heating/ Cooling</span>
-                    </div>
-                    <div class="row">
-                        <label class="CmpntInptTtl">Common Complaint</label>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <select class="form-control CmpntInptBx" id="CommonComplaint">
-                                    <option>Select</option>
-                                </select>
+                    <?php if(!empty($complaint_category)){
+                        echo '<div class="mb-3 CmpntPrt" style="padding: 15px;">
+                            <img src="'.$complaint_category->CategoryIcon.'"/>
+                            <span class="CmplntType ms-4">'.$complaint_category->CategoryName.'</span>
+                        </div>';
+                    } ?>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="EmpID" value="<?= session('EmpID'); ?>"/>
+                        <input type="hidden" name="BID" value="<?= $_GET['BID']; ?>"/>
+                        <input type="hidden" name="BKID" value="<?= $_GET['BKID']; ?>"/>
+                        <input type="hidden" name="FID" value="<?= $_GET['FID']; ?>"/>
+                        <input type="hidden" name="RID" value="<?= $_GET['RID']; ?>"/>
+                        <input type="hidden" name="ComCatID" value="<?= $_GET['ComCatID']; ?>"/>
+                        <div class="row">
+                            <label class="CmpntInptTtl">Common Complaint</label>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <select class="form-control CmpntInptBx" id="ComNatID" name="ComNatID">
+                                        <option disabled selected value hidden>Select Common Complaint</option>
+                                        <?php if(!empty($complaints)){
+                                            foreach($complaints as $key => $complaint){
+                                                echo '<option value="'.$key.'">'.$complaint.'</option>';
+                                            }
+                                        } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control CmpntInptBx" id="CustomComplaint" name="CustomComplaint" placeholder="Add Custom Complaint"/>
+                                    <label for="CustomComplaint" class="CmpntInptLbl">Add Custom Complaint</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="CustomComplaint" placeholder="Add Custom Complaint"/>
-                                <label for="CustomComplaint" class="CmpntInptLbl">Add Custom Complaint</label>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="CmpntInptTtl">Add Images</label>
+                                <div class="form-floating mb-3">
+                                    <input type="file" multiple name="Images[]" />
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label class="CmpntInptTtl">Add Images</label>
-                            <div class="form-floating mb-3">
-                                
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="CmpntInptTtl">Complaint Priority</label>
-                            <div class="mb-3 CmpntPrt" style="padding: 20px;">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                            <label class="form-check-label CmplntType" for="flexRadioDefault2">
-                                            High
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                            <label class="form-check-label CmplntType" for="flexRadioDefault2">
-                                            Medium
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                            <label class="form-check-label CmplntType" for="flexRadioDefault2">
-                                            Low
-                                            </label>
-                                        </div>
+                            <div class="col-md-6">
+                                <label class="CmpntInptTtl">Complaint Priority</label>
+                                <div class="mb-3 CmpntPrt" style="padding: 20px;">
+                                    <div class="row">
+                                        <?php if(!empty($priorities)){
+                                            foreach($priorities as $key => $priority){
+                                                echo '<div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="Priority" id="Priority'.$key.'" value="'.$key.'">
+                                                        <label class="form-check-label CmplntType" for="Priority'.$key.'">'.$priority.'</label>
+                                                    </div>
+                                                </div>';
+                                            } 
+                                        } ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <label class="CmpntInptTtl">Complaint Raised By (Optional)</label>
-                        <div class="col-md-4">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="Name" placeholder="Name"/>
-                                <label for="Name" class="CmpntInptLbl">Name</label>
+                        <hr>
+                        <div class="row">
+                            <label class="CmpntInptTtl">Complaint Raised By (Optional)</label>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control CmpntInptBx" id="Name" name="Name" placeholder="Name"/>
+                                    <label for="Name" class="CmpntInptLbl">Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control CmpntInptBx" id="Mobile" name="Mobile" placeholder="Phone Number (+91)"/>
+                                    <label for="Mobile" class="CmpntInptLbl">Phone Number (+91)</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="PhoneNo" placeholder="Phone Number (+91)"/>
-                                <label for="PhoneNo" class="CmpntInptLbl">Phone Number (+91)</label>
+                        <hr>
+                        <div class="row">
+                            <label class="CmpntInptTtl">Complaint Remarks</label>
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control CmpntInptBx" placeholder="Add description" id="Remarks" name="Remarks"></textarea>
+                                    <label for="Remarks" class="CmpntInptLbl">Add Remarks</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <select class="form-control CmpntInptBx" id="Select Designation">
-                                    <option>Select Designation</option>
-                                </select>
-                            </div>
+                        <div class="CmplntBtnBlk" style="text-align: center">
+                            <button type="submit" class="btn">Submit</button>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <label class="CmpntInptTtl">Complaint Remarks</label>
-                        <div class="col-md-12">
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control CmpntInptBx" placeholder="Add description" id="Description"></textarea>
-                                <label for="Description" class="CmpntInptLbl">Add description</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="CmplntBtnBlk" style="text-align: center">
-                        <a href="<?= base_url('complaints/add_complaint4'); ?>"><button type="button" class="btn">Submit</button></a>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
