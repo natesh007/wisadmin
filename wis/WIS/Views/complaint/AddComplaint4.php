@@ -85,10 +85,14 @@
                         </div>';
                     } ?>
                     <ul class="progressbar">
-                        <li class="active">Registered</li>
-                        <li>Assigned</li>
-                        <li>On Going</li>
-                        <li>Completed</li>
+                        <?php if(!empty($complaint_status)){
+                            foreach($complaint_status as $key => $status){
+                                echo ' <li ';
+                                if($status == $complaint->StausName)
+                                    echo 'class="active"';
+                                echo '>'.$status.'</li>';
+                            }
+                        } ?>
                     </ul>
                     <?php if(!empty($complaint)){
                         echo '<div class="row">

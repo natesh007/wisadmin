@@ -8,7 +8,7 @@ class Complaints extends BaseController
 	function __construct(){
 		$this->AuthModel = new AuthModel();
 	}
-	
+
 	//get Complaints for list view
 	public function index(){
 		if (session('EmpID') == null) {
@@ -106,6 +106,11 @@ class Complaints extends BaseController
 				$complaints['complaint_category'] = $data['complaint_category'];
 				$complaints['complaint'] = @$complaint->data->{0};
 				$complaints['complaint_images'] = @$complaint->data->Images;
+				$complaint_status = $this->AuthModel->callwebservice(SAURL."complaintstatus", '', 1, 1);
+				$complaints['complaint_status'] = [];
+				if($complaint_status->status == 'Success'){
+					$complaints['complaint_status'] = @$complaint_status->data;
+				}
 				echo view('Modules\WIS\Views\complaint\AddComplaint4', $complaints);
 				exit;
 			}
