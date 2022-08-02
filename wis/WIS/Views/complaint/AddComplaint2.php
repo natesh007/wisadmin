@@ -12,9 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link href="<?= base_url() ; ?>/public/wis_assets/CSS/StyleSheet_1.css?ver=1" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
     <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
 </head>
 <body>
@@ -82,13 +79,12 @@
                     <span class="PgInnrTtl">Please select from below to raise complaint<span>
                 </div>
                 <div class="PgInnrCntnt">
-                    <form action="<?= base_url('complaints/add_complaint3'); ?>" method="get">
+                    <form action="<?= base_url('complaints/add_complaint3'); ?>" method="get" id="AddComplaint2">
                         <input type="hidden" name="BID" value="<?= $_GET['BID']; ?>"/>
                         <input type="hidden" name="BKID" value="<?= $_GET['BKID']; ?>"/>
                         <input type="hidden" name="FID" value="<?= $_GET['FID']; ?>"/>
                         <input type="hidden" name="RID" value="<?= $_GET['RID']; ?>"/>
-                        <input type="hidden" name="ComCatID" id="ComCatID" value=""/>
-                        <div class="row">
+                        <div class="row" id="NatureDiv">
                             <?php if(!empty(@$categories->data)){
                                 foreach($categories->data as $category){
                                     echo '<div class="col-md-2 mb-3">
@@ -104,6 +100,7 @@
                                 }
                             } ?>
                         </div>
+                        <input type="hidden" name="ComCatID" id="ComCatID" value=""/>
                         <div class="CmplntBtnBlk" style="text-align: center">
                             <button type="submit" class="btn">Continue</button>
                         </div>
@@ -113,13 +110,29 @@
         </div>
     </div>
 </body>
-<script>
-    $( ".CmplntTypBlk" ).click(function() {
-        $(".CmplntTypBlk").css("background", "#FFFFFF");
-        $(".CmplntTypBlk").find("span.CmplntType").css("color", "#4E4B4B");
-        $(this).css("background", "green");
-        $(this).find("span.CmplntType").css("color", "#FFFFFF");
-        $("#ComCatID").val($(this).attr('var'));
-    });
-</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script>
+        $( ".CmplntTypBlk" ).click(function() {
+            $(".CmplntTypBlk").css("background", "#FFFFFF");
+            $(".CmplntTypBlk").find("span.CmplntType").css("color", "#4E4B4B");
+            $(this).css("background", "green");
+            $(this).find("span.CmplntType").css("color", "#FFFFFF");
+            $("#ComCatID").val($(this).attr('var'));
+        });
+        $("form[id='AddComplaint2']").validate({
+            ignore: [],
+            rules: {
+                ComCatID: "required"
+            },
+            messages: {
+                ComCatID: "Please select Complaint Nature"
+            },
+            submitHandler: function(form) {
+                form.sibmit();
+            }
+        });
+    </script>
 </html>

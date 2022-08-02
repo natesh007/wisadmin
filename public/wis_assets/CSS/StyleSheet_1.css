@@ -9335,3 +9335,21 @@ div.CmpntPrt {
         padding: 0 !important;
     }
 }
+div.UpdFle{
+    width: 53px;
+    height: 53px;
+    background-color: #F5F8FC;
+    color: #0078BA;
+    text-align: center;
+    font-size: 45px;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+}
+label.error {
+    color: red;
+    font: 600 12px 'Open Sans';
+}
+.CmpntInptBx.error {
+    border-color: red !important;
+}

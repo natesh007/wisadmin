@@ -12,9 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link href="<?= base_url() ; ?>/public/wis_assets/CSS/StyleSheet_1.css?ver=1" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
     <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
 </head>
 <body>
@@ -85,14 +82,14 @@
                             <span class="CmplntType ms-4">'.$complaint_category->CategoryName.'</span>
                         </div>';
                     } ?>
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="" method="post" enctype="multipart/form-data" id="AddComplaint3">
                         <input type="hidden" name="EmpID" value="<?= session('EmpID'); ?>"/>
                         <input type="hidden" name="BID" value="<?= $_GET['BID']; ?>"/>
                         <input type="hidden" name="BKID" value="<?= $_GET['BKID']; ?>"/>
                         <input type="hidden" name="FID" value="<?= $_GET['FID']; ?>"/>
                         <input type="hidden" name="RID" value="<?= $_GET['RID']; ?>"/>
                         <input type="hidden" name="ComCatID" value="<?= $_GET['ComCatID']; ?>"/>
-                        <div class="row">
+                        <div class="row" id="ComplaintDiv">
                             <label class="CmpntInptTtl">Common Complaint</label>
                             <div class="col-md-6">
                                 <div class="mb-3">
@@ -117,8 +114,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="CmpntInptTtl">Add Images</label>
-                                <div class="form-floating mb-3">
-                                    <input type="file" multiple name="Images[]" />
+                                <div class="mb-3">
+                                    <div class="UpdFle">+</div>
+                                    <input type="file" multiple name="Images[]" class="d-none" id="AddImages"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -158,7 +156,7 @@
                         <hr>
                         <div class="row">
                             <label class="CmpntInptTtl">Complaint Remarks</label>
-                            <div class="col-md-12">
+                            <div class="col-md-12" id="RemarksDiv">
                                 <div class="form-floating mb-3">
                                     <textarea class="form-control CmpntInptBx" placeholder="Add description" id="Remarks" name="Remarks"></textarea>
                                     <label for="Remarks" class="CmpntInptLbl">Add Remarks</label>
@@ -173,5 +171,45 @@
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script>
+        $( ".UpdFle" ).click(function() {
+            $("#AddImages").click();
+        });
+        $("form[id='AddComplaint3']").validate({
+            ignore: [],
+            rules: {
+                ComNatID: {
+                    required : function(element) {
+                        if($("#ComNatID").val() == null && $("#CustomComplaint").val() == '') { 
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                },
+                Remarks: "required",
+            },
+            messages: {
+                ComNatID: "Please select Common Complaint or enter Custom Complaint",
+                Remarks: "Please enter complaint remarks",
+            },
+            errorPlacement: function(error, element) {
+                if (element.attr("name") == "ComNatID") {
+                    error.insertAfter("#ComplaintDiv");
+                } else if(element.attr("name") == "Remarks") {
+                    error.insertAfter("#RemarksDiv");
+                }else {
+                    error.insertAfter(element);
+                }
+            },
+            submitHandler: function(form) {
+                form.sibmit();
+            }
+        });
+    </script>
 </body>
 </html>

@@ -97,7 +97,6 @@ $routes->add('/complaintList', 'Complaints::index',['namespace' => 'Modules\WIS\
 $routes->add('/complaints/add_complaint', 'Complaints::add_complaint',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint2', 'Complaints::add_complaint2',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint3', 'Complaints::add_complaint3',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/complaints/add_complaint4', 'Complaints::add_complaint4',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint_mob', 'Complaints::add_complaint_mob',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint2_mob', 'Complaints::add_complaint2_mob',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint3_mob', 'Complaints::add_complaint3_mob',['namespace' => 'Modules\WIS\Controllers']);

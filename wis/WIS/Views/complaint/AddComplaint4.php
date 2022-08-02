@@ -110,9 +110,9 @@
                             <div class="col-md-6">
                                 <label class="CmpntInptTtl">Images</label>
                                 <div class="mb-3">';
-                                if(isset($complaint->Images)){
-                                    foreach($complaint->Images as $Image){
-                                        echo '<img src="'.$Image.'" class="CmpltImg"/>';
+                                if(isset($complaint_images)){
+                                    foreach($complaint_images as $Image){
+                                        echo '<img src="'.$Image->Image.'" class="CmpltImg"/>';
                                     }
                                 } 
                                 echo '</div>
