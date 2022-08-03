@@ -204,6 +204,12 @@
                                 <span class="DataTtl">Complaint Type</span>
                             </th>
                             <th>
+                                <span class="DataTtl">Complaint Nature</span>
+                            </th>
+                            <th>
+                                <span class="DataTtl">Building</span>
+                            </th>
+                            <th>
                                 <span class="DataTtl">Block</span>
                             </th>
                             <th>
@@ -231,7 +237,10 @@
                         <?php if(!empty($complaints->List)){
                             $i = 1;
                             foreach($complaints->List as $complaint){
-                                echo '<tr class="Rd">
+                                echo '<tr ';
+                                if($complaint->AssignedBy == '')
+                                    echo 'class="Rd"';
+                                echo '>
                                     <td>
                                         <span class="DataTxt">'.$i.'</span>
                                     </td>
@@ -240,6 +249,12 @@
                                     </td>
                                     <td>
                                         <span class="DataTxt">'.$complaint->CategoryName.'</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">'.$complaint->ComplaintNature.'</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">'.$complaint->BuildingName.'</span>
                                     </td>
                                     <td>
                                         <span class="DataTxt">'.$complaint->BlockName.'</span>
@@ -251,11 +266,13 @@
                                         <span class="DataTxt">'.$complaint->RoomName.'</span>
                                     </td>
                                     <td>
-                                        <span class="DataTxt">Patient</span>
+                                        <span class="DataTxt">';
+                                        if($complaint->empid == 0) echo 'Patient'; else echo 'Employee';
+                                        echo '</span>
                                         &nbsp;<span class="CmpltBy"><img src="'.base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg').'"/><span class="CmpltByInfo">Mobile</span></span>
                                     </td>
                                     <td>
-                                        <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                                        <span class="DataTxt">'.$complaint->CreatedDate.'</span>
                                     </td>
                                     <td>
                                         <span class="DataTxt">--------</span>
@@ -263,14 +280,17 @@
                                     <td>
                                         <span class="DataTxt">'.$complaint->StausName.'</span>
                                     </td>
-                                    <td>
-                                        <span id="LnkBtn1" onclick="javascript:ModalPopup();" class="BtnLnk">Assign Complaint</span>
-                                    </td>
+                                    <td>';
+                                        if($complaint->AssignedBy != '') 
+                                            echo '<span class="DataTxt">'.$complaint->AssignedBy.'</span>';
+                                        else
+                                            echo '<span id="LnkBtn1" onclick="javascript:ModalPopup();" class="BtnLnk">Assign Complaint</span>';
+                                   echo '</td>
                                 </tr>';
                                 $i++;
                             } 
                         } ?>
-                        <tr class="Rd">
+                        <!-- <tr class="Rd">
                             <td>
                                 <span class="DataTxt">22</span>
                             </td>
@@ -1061,7 +1081,7 @@
                             <td>
                                 <span class="DataTxt"> Raju</span>
                             </td>
-                        </tr>
+                        </tr> -->
                     </table>
                 </div>
             </div>
