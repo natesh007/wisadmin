@@ -73,9 +73,15 @@
             </div>
             <div class="InnrPg">
                 <div class="PgHdr">
-                    <span class="PgHdrTtl1">Thank You! <a href="<?= base_url('/complaints/add_complaint4_mob'); ?>" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
+                    <?php
+                        $url = base_url().'/complaints/add_complaint4_mob';
+                        if(isset($_GET['ComID']) && isset($_GET['ComCatID'])){
+                            $url .= '?ComID='.$_GET['ComID'].'&ComCatID='.$_GET['ComCatID'];
+                        }
+                        $url .= '"';
+                    ?>
+                    <span class="PgHdrTtl1">Thank You! <a href="<?= $url; ?>" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
                     <h1 class="PgHdrTtl2">Your complaint has been recorded.</h1>
-                    <span class="icon-fullscreen"></span>
                 </div>
                 <div class="PgInnrCntnt">
                     <?php if(!empty($complaint_category)){
@@ -88,7 +94,7 @@
                         <?php if(!empty($complaint_status)){
                             foreach($complaint_status as $key => $status){
                                 echo ' <li ';
-                                if($status == $complaint->StausName)
+                                if($status == @$complaint->StausName)
                                     echo 'class="active"';
                                 echo '>'.$status.'</li>';
                             }

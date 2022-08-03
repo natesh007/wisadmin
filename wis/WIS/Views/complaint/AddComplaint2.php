@@ -71,8 +71,12 @@
             <div class="InnrPg">
                 <div class="PgHdr">
                     <?php if(!empty(@$categories->location)){
-                        echo '<span class="PgHdrTtl1">'.@$categories->location->RoomName.' <a href="'.base_url('/complaints/add_complaint2_mob').'" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
-                        <h1 class="PgHdrTtl2">'.@$categories->location->FloorName.', '.@$categories->location->BlockName.', '.@$categories->location->BuildingName.'</h1><span class="icon-fullscreen"></span>';
+                        echo '<span class="PgHdrTtl1">'.@$categories->location->RoomName.' <a href="'.base_url().'/complaints/add_complaint2_mob';
+                        if(isset($_GET['BID']) && isset($_GET['BKID']) && isset($_GET['FID']) && isset($_GET['RID'])){
+                            echo '?BID='.$_GET['BID'].'&BKID='.$_GET['BKID'].'&FID='.$_GET['FID'].'&RID='.$_GET['RID'];
+                        }
+                        echo '" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
+                        <h1 class="PgHdrTtl2">'.@$categories->location->FloorName.', '.@$categories->location->BlockName.', '.@$categories->location->BuildingName.'</h1>';
                     } ?>
                 </div>
                 <div class="PgInnrHdr">
@@ -87,7 +91,7 @@
                         <div class="row" id="NatureDiv">
                             <?php if(!empty(@$categories->data)){
                                 foreach($categories->data as $category){
-                                    echo '<div class="col-md-2 mb-3">
+                                    echo '<div class="col-md-2 col-6 mb-3">
                                         <div class="row CmplntTypBlk" var="'.$category->ComCatID.'">
                                             <div class="col-md-3 text-center my-auto">
                                                 <img src="'.$category->CategoryIcon.'"/>

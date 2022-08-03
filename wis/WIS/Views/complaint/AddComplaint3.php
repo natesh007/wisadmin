@@ -71,8 +71,12 @@
             <div class="InnrPg">
                 <div class="PgHdr">
                     <?php if(!empty(@$location)){
-                        echo '<span class="PgHdrTtl1">'.@$location->RoomName.' <a href="'.base_url('/complaints/add_complaint3_mob').'" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
-                        <h1 class="PgHdrTtl2">'.@$location->FloorName.', '.@$location->BlockName.', '.@$location->BuildingName.'</h1><span class="icon-fullscreen"></span>';
+                        echo '<span class="PgHdrTtl1">'.@$location->RoomName.' <a href="'.base_url().'/complaints/add_complaint3_mob';
+                        if(isset($_GET['BID']) && isset($_GET['BKID']) && isset($_GET['FID']) && isset($_GET['RID']) && isset($_GET['ComCatID'])){
+                            echo '?BID='.$_GET['BID'].'&BKID='.$_GET['BKID'].'&FID='.$_GET['FID'].'&RID='.$_GET['RID'].'&ComCatID='.$_GET['ComCatID'];
+                        }
+                        echo '" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
+                        <h1 class="PgHdrTtl2">'.@$location->FloorName.', '.@$location->BlockName.', '.@$location->BuildingName.'</h1>';
                     } ?>
                 </div>
                 <div class="PgInnrCntnt">

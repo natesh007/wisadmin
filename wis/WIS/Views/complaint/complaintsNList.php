@@ -12,9 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link href="<?= base_url() ; ?>/public/wis_assets/CSS/StyleSheet_1.css?ver=1" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
 </head>
 <body>
 <?php echo view('Modules\WIS\Views\common/leftmenu')  ?>
@@ -77,7 +74,7 @@
                             <img src="<?= base_url() ; ?>/public/wis_assets/Images/Blank.png" class="WdgtIcnHldr TtCmplnts" />
                         </div>
                         <div class="WdgtTxtDtlsDv">
-                            <span class="WdgtVlu">23</span>
+                            <span class="WdgtVlu"><?= @$complaints->ComplaintsData[0]->UnAssigned+@$complaints->ComplaintsData[0]->InProcess+@$complaints->ComplaintsData[0]->Completed; ?></span>
                             <span class="WdgtNme">Total Complaints</span>
                         </div>
                     </div>
@@ -88,7 +85,7 @@
                             <img src="<?= base_url() ; ?>/public/wis_assets/Images/Blank.png" class="WdgtIcnHldr UnAssgnd" />
                         </div>
                         <div class="WdgtTxtDtlsDv">
-                            <span class="WdgtVlu">5</span>
+                            <span class="WdgtVlu"><?= @$complaints->ComplaintsData[0]->UnAssigned; ?></span>
                             <span class="WdgtNme">Un-Assigned</span>
                         </div>
                     </div>
@@ -99,7 +96,7 @@
                             <img src="<?= base_url() ; ?>/public/wis_assets/Images/Blank.png" class="WdgtIcnHldr InPrcss" />
                         </div>
                         <div class="WdgtTxtDtlsDv">
-                            <span class="WdgtVlu">6</span>
+                            <span class="WdgtVlu"><?= @$complaints->ComplaintsData[0]->InProcess; ?></span>
                             <span class="WdgtNme">In Process</span>
                         </div>
                     </div>
@@ -110,7 +107,7 @@
                             <img src="<?= base_url() ; ?>/public/wis_assets/Images/Blank.png" class="WdgtIcnHldr Cmpltd" />
                         </div>
                         <div class="WdgtTxtDtlsDv">
-                            <span class="WdgtVlu">12</span>
+                            <span class="WdgtVlu"><?= @$complaints->ComplaintsData[0]->Completed; ?></span>
                             <span class="WdgtNme">Completed</span>
                         </div>
                     </div>
@@ -123,67 +120,69 @@
                             <span class="InnrTtl">Date</span>
                             <span class="InnrTxt">05-12-2021</span>
                         </div>
-                        <div class="col-md-2">
-                            <select class="form-select InptBx" aria-label="Default select example">
-                                <option selected>Complaint Type</option>
-                                <option value="1">Heating/ Cooling</option>
-                                <option value="2">Cleanliness</option>
-                                <option value="3">Water</option>
-                                <option value="4">Equipment</option>
-                                <option value="5">Damages</option>
-                                <option value="6">Soap</option>
-                                <option value="7">Tissues</option>
-                                <option value="8">Drinking Water</option>
-                            </select>
-                        </div>
-                        <div class="col-md-1">
-                            <select class="form-select InptBx" aria-label="Default select example">
-                                <option selected>Block</option>
-                                <option value="1">Block A</option>
-                                <option value="2">Block B</option>
-                                <option value="3">Block C</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <select class="form-select InptBx" aria-label="Default select example">
-                                <option selected>Floor</option>
-                                <option value="1">Floor 01</option>
-                                <option value="2">Floor 02</option>
-                                <option value="3">Floor 03</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <select class="form-select InptBx" aria-label="Default select example">
-                                <option selected>Room</option>
-                                <option value="1">Patient Rooms</option>
-                                <option value="2">Waiting Halls</option>
-                                <option value="3">Out Patient</option>
-                                <option value="4">Emergency</option>
-                                <option value="5">ICU</option>
-                                <option value="6">Washrooms</option>
-                                <option value="7">Common Area</option>
-                                <option value="8">Imaging</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <select class="form-select InptBx" aria-label="Default select example">
-                                <option selected>Complaint by</option>
-                                <option value="1">All</option>
-                                <option value="2">Patient</option>
-                                <option value="3">Visitor</option>
-                                <option value="4">Employee</option>
-                            </select>
-                        </div>
-                        <div class="col-md-1">
-                            <select class="form-select InptBx" aria-label="Default select example">
-                                <option selected>Status</option>
-                                <option value="1">Not Assigned</option>
-                                <option value="2">Under Process</option>
-                                <option value="3">Completed</option>
-                            </select>
-                        </div>
-                        <div class="col-md-1 BttnHldr">
-                            <button type="button" onclick="" class="btn btn-primary SbmtBtn">Submit</button>
+                        <div class="col-md-11">
+                            <form action="" method="post">
+                                <div class="row">
+                                    <div class="col-md-2 mb-2">
+                                        <select class="form-select InptBx" aria-label="ComCatID" name="ComCatID" id="ComCatID">
+                                            <option disabled selected value hidden>Complaint Category</option>
+                                            <option value="1">Heating/ Cooling</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 mb-2">
+                                        <select class="form-select InptBx" aria-label="ComNatID" name="ComNatID" id="ComNatID">
+                                            <option disabled selected value hidden>Complaint Type</option>
+                                            <option value="1">Heating/ Cooling</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 mb-2">
+                                        <select class="form-select InptBx" aria-label="BID" name="BID" id="BID">
+                                            <option disabled selected value hidden>Building</option>
+                                            <?php if(!empty($buildings)){
+                                                foreach($buildings as $building){
+                                                    echo '<option value="'.$building->BID.'">'.$building->BuildingName.' ('.$building->BrName.')</option>';
+                                                }
+                                            } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 mb-2">
+                                        <select class="form-select InptBx" aria-label="BKID" name="BKID" id="BKID">
+                                            <option disabled selected value hidden>Block</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 mb-2">
+                                        <select class="form-select InptBx" aria-label="FID" name="FID" id="FID">
+                                            <option disabled selected value hidden>Floor</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 mb-2">
+                                        <select class="form-select InptBx" aria-label="RID" name="RID" id="RID">
+                                            <option disabled selected value hidden>Room</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 mb-2">
+                                        <select class="form-select InptBx" aria-label="ComplaintBy" name="ComplaintBy">
+                                            <option disabled selected value hidden>Complaint by</option>
+                                            <option value="ALL">All</option>
+                                            <option value="0">Patient</option>
+                                            <option value="1">Employee</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 mb-2">
+                                        <select class="form-select InptBx" aria-label="ComplaintStatus" name="ComplaintStatus">
+                                            <option disabled selected value hidden>Status</option>
+                                            <?php if(!empty($complaint_status)){
+                                                foreach($complaint_status as $key => $status){
+                                                    echo '<option value="'.$key.'">'.$status.'</option> ';
+                                                }
+                                            } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1 BttnHldr mb-2">
+                                        <button type="submit" class="btn btn-primary SbmtBtn">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -229,42 +228,48 @@
                                 <span class="DataTtl">Completed by</span>
                             </th>
                         </tr>
-                        <tr class="Rd">
-                            <td>
-                                <span class="DataTxt">23</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">23</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">Heating/ Cooling</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">Building 02</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">Block A</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">Waiting Hall - 1</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">Patient</span>
-                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Mobile</span></span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">03:00 PM (+1 Hour)</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">--------</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">Not Assigned</span>
-                            </td>
-                            <td>
-                                <span id="LnkBtn1" onclick="javascript:ModalPopup();" class="BtnLnk">Assign Complaint</span>
-                            </td>
-                        </tr>
+                        <?php if(!empty($complaints->List)){
+                            $i = 1;
+                            foreach($complaints->List as $complaint){
+                                echo '<tr class="Rd">
+                                    <td>
+                                        <span class="DataTxt">'.$i.'</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">'.$complaint->ComID.'</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">'.$complaint->CategoryName.'</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">'.$complaint->BlockName.'</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">'.$complaint->FloorName.'</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">'.$complaint->RoomName.'</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">Patient</span>
+                                        &nbsp;<span class="CmpltBy"><img src="'.base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg').'"/><span class="CmpltByInfo">Mobile</span></span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">03:00 PM (+1 Hour)</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">--------</span>
+                                    </td>
+                                    <td>
+                                        <span class="DataTxt">'.$complaint->StausName.'</span>
+                                    </td>
+                                    <td>
+                                        <span id="LnkBtn1" onclick="javascript:ModalPopup();" class="BtnLnk">Assign Complaint</span>
+                                    </td>
+                                </tr>';
+                                $i++;
+                            } 
+                        } ?>
                         <tr class="Rd">
                             <td>
                                 <span class="DataTxt">22</span>
@@ -1501,5 +1506,58 @@
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
+    <script>
+        $('#ComCatID').change(function(){
+            if($(this).val() != ''){
+                $.post("<?= base_url('/complaints/getcomplainttypesbycomplaintcategory') ?>", {ComCatID: $(this).val()}, function(data, status){      
+                    var blocks = '<option disabled selected value hidden>Complaint Type</option>';
+                    if(data.length > 0){
+                        $.each(data, function (i, field) {
+                            blocks += '<option value="'+i+'">'+field+'</option>';
+                        });
+                    }
+                    $('#ComNatID').html(blocks);
+                });
+            }
+        });
+        $('#BID').change(function(){
+            if($(this).val() != ''){
+                $.post("<?= base_url('/complaints/getblocksbybuilding') ?>", {BuildingID: $(this).val()}, function(data, status){      
+                    var blocks = '<option disabled selected value hidden>Block</option>';
+                    if(data.length > 0){
+                        $.each(data, function (i, field) {
+                            blocks += '<option value="'+field.BKID+'">'+field.BlockName+'</option>';
+                        });
+                    }
+                    $('#BKID').html(blocks);
+                });
+            }
+        });
+        $('#BKID').change(function(){
+            if($(this).val() != ''){
+                $.post("<?= base_url('/complaints/getfloorsbyblock') ?>", {BlockID: $(this).val()}, function(data, status){
+                    var floors = '<option disabled selected value hidden>Floor</option>';
+                    $.each(data, function (i, field) {
+                        floors += '<option value="'+field.FID+'">'+field.FloorName+'</option>';
+                    });
+                    $('#FID').html(floors);
+                });
+            }
+        });
+        $('#FID').change(function(){
+            if($(this).val() != ''){
+                $.post("<?= base_url('/complaints/getroomsbyfloor') ?>", {FloorID: $(this).val()}, function(data, status){
+                    var rooms = '<option disabled selected value hidden>Room</option>';
+                    $.each(data, function (i, field) {
+                        rooms += '<option value="'+field.RID+'">'+field.RoomName+'</option>';
+                    });
+                    $('#RID').html(rooms);
+                });
+            }
+        });
+    </script>
 </body>
 </html>

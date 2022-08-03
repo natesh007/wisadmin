@@ -73,8 +73,7 @@
                     <span class="PgHdrTtl1">Enter Address of Area to Raise a Complaint <a href="<?= base_url('/complaints/add_complaint_mob'); ?>" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
                 </div>
                 <div class="PgInnrHdr">
-                    <span class="AdrsTxt">Address</span>
-                    <a class="ChngAdrTxt" href="">Change Address</a>
+                    <span class="AdrsTxt">Organization : <?= (session('OrgName') ? session('OrgName'): '') ?></span>
                 </div>
                 <div class="PgInnrCntnt">
                     <form action="<?= base_url('complaints/add_complaint2'); ?>" method="get" id="AddComplaint1">
@@ -126,7 +125,6 @@
             if($(this).val() != ''){
                 $.post("<?= base_url('/complaints/getblocksbybuilding') ?>", {BuildingID: $(this).val()}, function(data, status){      
                     var blocks = '<option disabled selected value hidden>Select Block No.</option>';
-                    console.log(data);
                     if(data.length > 0){
                         $.each(data, function (i, field) {
                             blocks += '<option value="'+field.BKID+'">'+field.BlockName+'</option>';

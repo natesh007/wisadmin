@@ -12,125 +12,71 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
         <link href="<?= base_url() ; ?>/public/wis_assets/CSS/StyleSheet_1.css?ver=1" rel="stylesheet" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-        <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
     </head>
     <body style="background-color: #FFFFFF; overflow-y: auto;">
         <div class="InnrPg">
             <div class="PgHdr">
-                <span class="PgHdrTtl1">Waiting Hall -1</span>
-                <h1 class="PgHdrTtl2">Floor 2, Block - A, ESIC Hospital</h1>
-                <span class="icon-fullscreen"></span>
+                <?php if(!empty(@$categories->location)){
+                    echo '<span class="PgHdrTtl1">'.@$categories->location->RoomName.'</span>
+                    <h1 class="PgHdrTtl2">'.@$categories->location->FloorName.', '.@$categories->location->BlockName.', '.@$categories->location->BuildingName.'</h1>';
+                } ?>
             </div>
             <div class="PgInnrHdr">
                 <span class="PgInnrTtl">Please select from below to raise complaint<span>
             </div>
             <div class="PgInnrCntnt">
-                <div class="row">
-                    <div class="col-md-2 col-6 mb-3">
-                        <div class="row CmplntTypBlk">
-                            <div class="col-md-3 text-center my-md-auto">
-                                <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                            </div>
-                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
-                                <span class="CmplntType">Heating/ Cooling</span>
-                            </div>
-                        </div>
+                <form action="<?= base_url('complaints/add_complaint3_mob'); ?>" method="get" id="AddComplaint2">
+                    <input type="hidden" name="BID" value="<?= $_GET['BID']; ?>"/>
+                    <input type="hidden" name="BKID" value="<?= $_GET['BKID']; ?>"/>
+                    <input type="hidden" name="FID" value="<?= $_GET['FID']; ?>"/>
+                    <input type="hidden" name="RID" value="<?= $_GET['RID']; ?>"/>
+                    <div class="row" id="NatureDiv">
+                        <?php if(!empty(@$categories->data)){
+                            foreach($categories->data as $category){
+                                echo '<div class="col-md-2 col-6 mb-3">
+                                    <div class="row CmplntTypBlk" var="'.$category->ComCatID.'">
+                                        <div class="col-md-3 text-center my-auto">
+                                            <img src="'.$category->CategoryIcon.'"/>
+                                        </div>
+                                        <div class="col-md-9 my-auto text-break">
+                                            <span class="CmplntType">'.$category->CategoryName.'</span>
+                                        </div>
+                                    </div>
+                                </div>';
+                            }
+                        } ?>
                     </div>
-                    <div class="col-md-2 col-6 mb-3">
-                        <div class="row CmplntTypBlk">
-                            <div class="col-md-3 text-center my-md-auto">
-                                <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                            </div>
-                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
-                                <span class="CmplntType">Water</span>
-                            </div>
-                        </div>
+                    <input type="hidden" name="ComCatID" id="ComCatID" value=""/>
+                    <div class="CmplntBtnBlk" style="text-align: center">
+                        <button type="submit" class="btn">Continue</button>
                     </div>
-                    <div class="col-md-2 col-6 mb-3">
-                        <div class="row CmplntTypBlk">
-                            <div class="col-md-3 text-center my-md-auto">
-                                <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                            </div>
-                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
-                                <span class="CmplntType">Drinking Water</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 mb-3">
-                        <div class="row CmplntTypBlk">
-                            <div class="col-md-3 text-center my-md-auto">
-                                <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                            </div>
-                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
-                                <span class="CmplntType">Cleanliness</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 mb-3">
-                        <div class="row CmplntTypBlk">
-                            <div class="col-md-3 text-center my-md-auto m">
-                                <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                            </div>
-                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
-                                <span class="CmplntType">Equipment</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 mb-3">
-                        <div class="row CmplntTypBlk">
-                            <div class="col-md-3 text-center my-md-auto">
-                                <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                            </div>
-                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
-                                <span class="CmplntType">Damages</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 mb-3">
-                        <div class="row CmplntTypBlk">
-                            <div class="col-md-3 text-center my-md-auto">
-                                <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                            </div>
-                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
-                                <span class="CmplntType">Tissues</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 mb-3">
-                        <div class="row CmplntTypBlk">
-                            <div class="col-md-3 text-center my-md-auto">
-                                <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                            </div>
-                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
-                                <span class="CmplntType">Soap</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 mb-3">
-                        <div class="row CmplntTypBlk">
-                            <div class="col-md-3 text-center my-md-auto">
-                                <img src="<?= base_url('/public/wis_assets/Images/CmplntTyp1.png') ?>"/>
-                            </div>
-                            <div class="col-md-9 my-md-auto text-md-start text-center text-break">
-                                <span class="CmplntType">Others</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="CmplntBtnBlk" style="text-align: center">
-                    <a href="<?= base_url('complaints/add_complaint3_mob'); ?>"><button type="button" class="btn">Continue</button></a>
-                </div>
+                </form>
             </div>
         </div>
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script>
         $( ".CmplntTypBlk" ).click(function() {
             $(".CmplntTypBlk").css("background", "#FFFFFF");
             $(".CmplntTypBlk").find("span.CmplntType").css("color", "#4E4B4B");
             $(this).css("background", "green");
             $(this).find("span.CmplntType").css("color", "#FFFFFF");
+            $("#ComCatID").val($(this).attr('var'));
+        });
+        $("form[id='AddComplaint2']").validate({
+            ignore: [],
+            rules: {
+                ComCatID: "required"
+            },
+            messages: {
+                ComCatID: "Please select Complaint Nature"
+            },
+            submitHandler: function(form) {
+                form.sibmit();
+            }
         });
     </script>
 </html>

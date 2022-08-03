@@ -15,7 +15,35 @@ class Complaints extends BaseController
 			header('Location: ' . base_url('/'));
 			exit;
 		}
-		echo view('Modules\WIS\Views\complaint\complaintsNList');
+		$buildings_array = array(
+			"OrgID" => session('OrgID')
+		);
+		$buildings_data = $this->AuthModel->callwebservice(SAURL."getbuildings", $buildings_array, 1, 1);
+		$data['buildings'] = [];
+		if (@$buildings_data->status == "Success") {
+			$data['buildings'] = @$buildings_data->data;
+		}	
+		$complaint_status = $this->AuthModel->callwebservice(SAURL."complaintstatus", '', 1, 1);
+		$data['complaint_status'] = [];
+		if($complaint_status->status == 'Success'){
+			$data['complaint_status'] = @$complaint_status->data;
+		}
+		$complaints_array = array(
+			"ComCatID" => $this->request->getVar('ComCatID'),
+			"ComNatID" => $this->request->getVar('ComNatID'),
+			"BID" => $this->request->getVar('BID'),
+			"BKID" => $this->request->getVar('BKID'),
+			"FID" => $this->request->getVar('FID'),
+			"RID" => $this->request->getVar('RID'),
+			"ComplaintBy" => $this->request->getVar('ComplaintBy'),
+			"ComplaintStatus" => $this->request->getVar('ComplaintStatus'),
+		);
+		$complaints_data = $this->AuthModel->callwebservice(SAURL."getcomplaints", $complaints_array, 1, 1);
+		$data['complaints'] = [];
+		if (@$complaints_data->status == "Success") {
+			$data['complaints'] = @$complaints_data->data;
+		}
+		echo view('Modules\WIS\Views\complaint\complaintsNList', $data);
 	}
 
 	//Add Complaint
@@ -103,19 +131,183 @@ class Complaints extends BaseController
 			}
 			$complaint = $this->AuthModel->callwebservice(SAURL."addcomplaint", $complaint_array, 1, 1);
 			if($complaint->status == 'Success'){
-				$complaints['complaint_category'] = $data['complaint_category'];
-				$complaints['complaint'] = @$complaint->data->{0};
-				$complaints['complaint_images'] = @$complaint->data->Images;
-				$complaint_status = $this->AuthModel->callwebservice(SAURL."complaintstatus", '', 1, 1);
-				$complaints['complaint_status'] = [];
-				if($complaint_status->status == 'Success'){
-					$complaints['complaint_status'] = @$complaint_status->data;
-				}
-				echo view('Modules\WIS\Views\complaint\AddComplaint4', $complaints);
-				exit;
+				return redirect()->to(base_url('complaints/add_complaint4?ComID='.@$complaint->data->{0}->ComID.'&ComCatID='.@$complaint->data->{0}->ComCatID));
 			}
 		}
 		echo view('Modules\WIS\Views\complaint\AddComplaint3', $data);
+	}
+
+	//Add Complaint Step 4
+	public function add_complaint4(){
+		if (session('EmpID') == null) {
+			header('Location: ' . base_url('/'));
+			exit;
+		}
+		$complaint_category_array = array(
+			"ComCatID" => $_GET['ComCatID']
+		);
+		$complaint_category_data = $this->AuthModel->callwebservice(SAURL."getcomplaintcategory", $complaint_category_array, 1, 1);
+		$data['complaint_category'] = [];
+		if (@$complaint_category_data->status == "Success") {
+			$data['complaint_category'] = @$complaint_category_data->data[0];
+		}
+		$complaint_array = array(
+			"ComID" => $_GET['ComID']
+		);
+		$complaint_data = $this->AuthModel->callwebservice(SAURL."getcomplaint", $complaint_array, 1, 1);
+		$data['complaint'] = [];
+		if (@$complaint_data->status == "Success") {
+			$data['complaint'] = @$complaint_data->data->{0};
+			$data['complaint_images'] = @$complaint->data->Images;
+		}
+		$complaint_status = $this->AuthModel->callwebservice(SAURL."complaintstatus", '', 1, 1);
+		$data['complaint_status'] = [];
+		if($complaint_status->status == 'Success'){
+			$data['complaint_status'] = @$complaint_status->data;
+		}
+		echo view('Modules\WIS\Views\complaint\AddComplaint4', $data);
+	}
+
+	//Add Complaint Mobile
+	public function add_complaint_mob($OrgID = '', $BID = '', $BKID = '', $FID = '', $RID = ''){
+		$data = [
+			'OrgID' => $OrgID,
+			'BID' => $BID,
+			'BKID' => $BKID,
+			'FID' => $FID,
+			'RID' => $RID,
+		];
+		$data['info'] = [];
+		if($OrgID != '' && $BID != '' && $BKID != '' && $FID != '' && $RID != ''){
+			$info_data = $this->AuthModel->callwebservice(SAURL."getinfo", $data, 1, 1);
+			if (@$info_data->status == "Success") {
+				$data['info'] = @$info_data->data;
+			}
+		}
+		$organizations_data = $this->AuthModel->callwebservice(SAURL."organizationslist", '', 1, 1);
+		$data['organizations'] = [];
+		if (@$organizations_data->status == "Success") {
+			$data['organizations'] = @$organizations_data->data;
+		}
+		echo view('Modules\WIS\Views\complaint\AddComplaintFullScreen', $data);
+	}
+
+	//Add Complaint Step 2 Mobile
+	public function add_complaint2_mob(){
+		$categories_array = @$this->request->getVar();
+		$categories_data = $this->AuthModel->callwebservice(SAURL."complaintcategory", $categories_array, 1, 1);
+		$data['categories'] = [];
+		if (@$categories_data->status == "Success") {
+			$data['categories'] = @$categories_data->data;
+		}
+		echo view('Modules\WIS\Views\complaint\AddComplaint2FullScreen', $data);
+	}
+
+	//Add Complaint Step 3 Mobile
+	public function add_complaint3_mob(){
+		$location_array = array(
+			"BID" => $_GET['BID'],
+			"BKID" => $_GET['BKID'],
+			"FID" => $_GET['FID'],
+			"RID" => $_GET['RID']
+		);
+		$location_data = $this->AuthModel->callwebservice(SAURL."complaintcategory", $location_array, 1, 1);
+		$data['location'] = [];
+		if (@$location_data->status == "Success") {
+			$data['location'] = @$location_data->data->location;
+		}
+		$complaints_array = array(
+			"ComCatID" => $_GET['ComCatID']
+		);
+		$complaints_data = $this->AuthModel->callwebservice(SAURL."complaintnature", $complaints_array, 1, 1);
+		$data['complaints'] = [];
+		if (@$complaints_data->status == "Success") {
+			$data['complaints'] = @$complaints_data->data;
+		}
+		
+		$complaint_category = $this->AuthModel->callwebservice(SAURL."getcomplaintcategory", $complaints_array, 1, 1);
+		$data['complaint_category'] = [];
+		if (@$complaint_category->status == "Success") {
+			$data['complaint_category'] = @$complaint_category->data[0];
+		}
+		$priorities_data = $this->AuthModel->callwebservice(SAURL."complaintpriority", '', 1, 1);
+		$data['priorities'] = [];
+		if (@$priorities_data->status == "Success") {
+			$data['priorities'] = @$priorities_data->data;
+		}
+		if ($this->request->getMethod() == 'post') {
+			$complaint_array = @$this->request->getVar();
+			$complaint_array['Images'] = [];
+			if ($this->request->getFileMultiple('Images')) {
+				foreach ($this->request->getFileMultiple('Images') as $key => $image) {
+					if($image != ''){
+						$orginalextension = $image->getClientExtension();
+						$randcharforimg = substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(8 / strlen($x)))), 1, 8);
+						$newimgname = $randcharforimg . '-' . time() . '.' . $orginalextension;
+						$image->move(WRITEPATH . 'uploads/category/', $newimgname);
+						$complaint_array['Images'][$key] = 'writable/uploads/category/' . $newimgname;
+					}
+				}
+			}
+			$complaint = $this->AuthModel->callwebservice(SAURL."addcomplaint", $complaint_array, 1, 1);
+			if($complaint->status == 'Success'){
+				return redirect()->to(base_url('complaints/add_complaint4_mob?ComID='.@$complaint->data->{0}->ComID.'&ComCatID='.@$complaint->data->{0}->ComCatID));
+			}
+		}
+		echo view('Modules\WIS\Views\complaint\AddComplaint3FullScreen', $data);
+	}
+	
+	//Add Complaint Step 4 Mobile
+	public function add_complaint4_mob(){
+		$complaint_category_array = array(
+			"ComCatID" => $_GET['ComCatID']
+		);
+		$complaint_category_data = $this->AuthModel->callwebservice(SAURL."getcomplaintcategory", $complaint_category_array, 1, 1);
+		$data['complaint_category'] = [];
+		if (@$complaint_category_data->status == "Success") {
+			$data['complaint_category'] = @$complaint_category_data->data[0];
+		}
+		$complaint_array = array(
+			"ComID" => $_GET['ComID']
+		);
+		$complaint_data = $this->AuthModel->callwebservice(SAURL."getcomplaint", $complaint_array, 1, 1);
+		$data['complaint'] = [];
+		if (@$complaint_data->status == "Success") {
+			$data['complaint'] = @$complaint_data->data->{0};
+			$data['complaint_images'] = @$complaint->data->Images;
+		}
+		$complaint_status = $this->AuthModel->callwebservice(SAURL."complaintstatus", '', 1, 1);
+		$data['complaint_status'] = [];
+		if($complaint_status->status == 'Success'){
+			$data['complaint_status'] = @$complaint_status->data;
+		}
+		echo view('Modules\WIS\Views\complaint\AddComplaint4FullScreen', $data);
+	}
+
+	//Get Complaint Type By Complaint Category
+	public function getcomplainttypesbycomplaintcategory(){
+		$categories_array =  @$this->request->getVar();
+		$natures_data = $this->AuthModel->callwebservice(SAURL."getrooms", $categories_array, 1, 1);
+		$natures = [];
+		if (@$natures_data->status == "Success") {
+			$natures = @$natures_data->data;
+		}	
+		header('Content-type: application/json');
+		print json_encode($natures, JSON_PRETTY_PRINT);
+		exit;
+	}
+
+	//Get Buildings By Organization
+	public function getbuildingsbyorganization(){
+		$organization_array =  @$this->request->getVar();
+		$buildings_data = $this->AuthModel->callwebservice(SAURL."getbuildings", $organization_array, 1, 1);
+		$buildings = [];
+		if (@$buildings_data->status == "Success") {
+			$buildings = @$buildings_data->data;
+		}	
+		header('Content-type: application/json');
+		print json_encode($buildings, JSON_PRETTY_PRINT);
+		exit;
 	}
 
 	//Get Blocks By Building
@@ -155,22 +347,5 @@ class Complaints extends BaseController
 		header('Content-type: application/json');
         print json_encode($rooms, JSON_PRETTY_PRINT);
         exit;
-	}
-
-	//Add Complaint Full Screen
-	public function add_complaint_mob(){
-		echo view('Modules\WIS\Views\complaint\AddComplaintFullScreen');
-	}
-	//Add Complaint Step 2 Full Screen
-	public function add_complaint2_mob(){
-		echo view('Modules\WIS\Views\complaint\AddComplaint2FullScreen');
-	}
-	//Add Complaint Step 3 Full Screen
-	public function add_complaint3_mob(){
-		echo view('Modules\WIS\Views\complaint\AddComplaint3FullScreen');
-	}
-	//Add Complaint Step 4 Full Screen
-	public function add_complaint4_mob(){
-		echo view('Modules\WIS\Views\complaint\AddComplaint4FullScreen');
 	}
 }
