@@ -97,7 +97,7 @@
                             <label class="CmpntInptTtl">Common Complaint</label>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <select class="form-control CmpntInptBx" id="ComNatID" name="ComNatID">
+                                    <select class="form-select CmpntInptBx" id="ComNatID" name="ComNatID">
                                         <option disabled selected value hidden>Select Common Complaint</option>
                                         <?php if(!empty($complaints)){
                                             foreach($complaints as $key => $complaint){
@@ -119,8 +119,8 @@
                             <div class="col-md-6">
                                 <label class="CmpntInptTtl">Add Images</label>
                                 <div class="mb-3">
-                                    <div class="UpdFle">+</div>
-                                    <input type="file" multiple name="Images[]" class="d-none" id="AddImages"/>
+                                    <!-- <div class="UpdFle">+</div> -->
+                                    <input type="file" multiple name="Images[]" id="AddImages"/>
                                 </div>
                             </div>
                             <div class="col-md-6">

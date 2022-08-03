@@ -125,11 +125,9 @@
             if($(this).val() != ''){
                 $.post("<?= base_url('/complaints/getblocksbybuilding') ?>", {BuildingID: $(this).val()}, function(data, status){      
                     var blocks = '<option disabled selected value hidden>Select Block No.</option>';
-                    if(data.length > 0){
-                        $.each(data, function (i, field) {
-                            blocks += '<option value="'+field.BKID+'">'+field.BlockName+'</option>';
-                        });
-                    }
+                    $.each(data, function (i, field) {
+                        blocks += '<option value="'+field.BKID+'">'+field.BlockName+'</option>';
+                    });
                     $('#BKID').html(blocks);
                 });
             }

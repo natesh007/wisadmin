@@ -103,11 +103,9 @@
             if($(this).val() != ''){
                 $.post("<?= base_url('/complaints/getbuildingsbyorganization') ?>", {OrgID: $(this).val()}, function(data, status){      
                     var buildings = '<option disabled selected value hidden>Select Building/ Apartment Name/ House No.</option>';
-                    if(data.length > 0){
-                        $.each(data, function (i, field) {
-                            buildings += '<option value="'+field.BID+'">'+field.BuildingName+' ('+field.BrName+')</option>';
-                        });
-                    }
+                    $.each(data, function (i, field) {
+                        buildings += '<option value="'+field.BID+'">'+field.BuildingName+' ('+field.BrName+')</option>';
+                    });
                     $('#BID').html(buildings);
                 });
             }
@@ -116,11 +114,9 @@
             if($(this).val() != ''){
                 $.post("<?= base_url('/complaints/getblocksbybuilding') ?>", {BuildingID: $(this).val()}, function(data, status){      
                     var blocks = '<option disabled selected value hidden>Select Block No.</option>';
-                    if(data.length > 0){
-                        $.each(data, function (i, field) {
-                            blocks += '<option value="'+field.BKID+'">'+field.BlockName+'</option>';
-                        });
-                    }
+                    $.each(data, function (i, field) {
+                        blocks += '<option value="'+field.BKID+'">'+field.BlockName+'</option>';
+                    });
                     $('#BKID').html(blocks);
                 });
             }

@@ -126,13 +126,25 @@
                                     <div class="col-md-2 mb-2">
                                         <select class="form-select InptBx" aria-label="ComCatID" name="ComCatID" id="ComCatID">
                                             <option disabled selected value hidden>Complaint Category</option>
-                                            <option value="1">Heating/ Cooling</option>
+                                            <?php if(!empty($categories)){
+                                                foreach($categories as $category){ 
+                                                    echo '<option value="'.$category->ComCatID.'" ';
+                                                    if($SearchKeywords['ComCatID'] == $category->ComCatID) echo 'selected';
+                                                    echo '>'.$category->CategoryName.'</option>';
+                                                }
+                                            } ?>
                                         </select>
                                     </div>
                                     <div class="col-md-2 mb-2">
                                         <select class="form-select InptBx" aria-label="ComNatID" name="ComNatID" id="ComNatID">
                                             <option disabled selected value hidden>Complaint Type</option>
-                                            <option value="1">Heating/ Cooling</option>
+                                            <?php if(!empty($types)){
+                                                foreach($types as $key => $type){ 
+                                                    echo '<option value="'.$key.'" ';
+                                                    if($SearchKeywords['ComNatID'] == $key) echo 'selected';
+                                                    echo '>'.$type.'</option>';
+                                                }
+                                            } ?>
                                         </select>
                                     </div>
                                     <div class="col-md-2 mb-2">
@@ -140,7 +152,9 @@
                                             <option disabled selected value hidden>Building</option>
                                             <?php if(!empty($buildings)){
                                                 foreach($buildings as $building){
-                                                    echo '<option value="'.$building->BID.'">'.$building->BuildingName.' ('.$building->BrName.')</option>';
+                                                    echo '<option value="'.$building->BID.'" ';
+                                                    if($SearchKeywords['BID'] == $building->BID) echo 'selected';
+                                                    echo '>'.$building->BuildingName.' ('.$building->BrName.')</option>';
                                                 }
                                             } ?>
                                         </select>
@@ -148,24 +162,45 @@
                                     <div class="col-md-2 mb-2">
                                         <select class="form-select InptBx" aria-label="BKID" name="BKID" id="BKID">
                                             <option disabled selected value hidden>Block</option>
+                                            <?php if(!empty($blocks)){
+                                                foreach($blocks as $block){ 
+                                                    echo '<option value="'.$block->BKID.'" ';
+                                                    if($SearchKeywords['BKID'] == $block->BKID) echo 'selected';
+                                                    echo '>'.$block->BlockName.'</option>';
+                                                }
+                                            } ?>
                                         </select>
                                     </div>
                                     <div class="col-md-2 mb-2">
                                         <select class="form-select InptBx" aria-label="FID" name="FID" id="FID">
                                             <option disabled selected value hidden>Floor</option>
+                                            <?php if(!empty($floors)){
+                                                foreach($floors as $floor){ 
+                                                    echo '<option value="'.$floor->FID.'" ';
+                                                    if($SearchKeywords['FID'] == $floor->FID) echo 'selected';
+                                                    echo '>'.$floor->FloorName.'</option>';
+                                                }
+                                            } ?>
                                         </select>
                                     </div>
                                     <div class="col-md-2 mb-2">
                                         <select class="form-select InptBx" aria-label="RID" name="RID" id="RID">
-                                            <option disabled selected value hidden>Room</option>
+                                            <option disabled selected value hidden>Room</option> 
+                                            <?php if(!empty($rooms)){
+                                                foreach($rooms as $room){ 
+                                                    echo '<option value="'.$room->RID.'" ';
+                                                    if($SearchKeywords['RID'] == $room->RID) echo 'selected';
+                                                    echo '>'.$room->RoomName.'</option>';
+                                                }
+                                            } ?>
                                         </select>
                                     </div>
                                     <div class="col-md-2 mb-2">
                                         <select class="form-select InptBx" aria-label="ComplaintBy" name="ComplaintBy">
                                             <option disabled selected value hidden>Complaint by</option>
-                                            <option value="ALL">All</option>
-                                            <option value="0">Patient</option>
-                                            <option value="1">Employee</option>
+                                            <option value="ALL" <?php if($SearchKeywords['ComplaintBy'] == 'ALL') echo 'selected'; ?>>All</option>
+                                            <option value="0" <?php if($SearchKeywords['ComplaintBy'] == '0') echo 'selected'; ?>>Patient</option>
+                                            <option value="1" <?php if($SearchKeywords['ComplaintBy'] == '1') echo 'selected'; ?>>Employee</option>
                                         </select>
                                     </div>
                                     <div class="col-md-2 mb-2">
@@ -201,10 +236,10 @@
                                 <span class="DataTtl">Complaint S. No.</span>
                             </th>
                             <th>
-                                <span class="DataTtl">Complaint Type</span>
+                                <span class="DataTtl">Complaint Category</span>
                             </th>
                             <th>
-                                <span class="DataTtl">Complaint Nature</span>
+                                <span class="DataTtl">Complaint Type</span>
                             </th>
                             <th>
                                 <span class="DataTtl">Building</span>
@@ -1532,14 +1567,13 @@
     <script>
         $('#ComCatID').change(function(){
             if($(this).val() != ''){
-                $.post("<?= base_url('/complaints/getcomplainttypesbycomplaintcategory') ?>", {ComCatID: $(this).val()}, function(data, status){      
-                    var blocks = '<option disabled selected value hidden>Complaint Type</option>';
-                    if(data.length > 0){
-                        $.each(data, function (i, field) {
-                            blocks += '<option value="'+i+'">'+field+'</option>';
-                        });
-                    }
-                    $('#ComNatID').html(blocks);
+                $.post("<?= base_url('/complaints/getcomplainttypesbycomplaintcategory') ?>", {ComCatID: $(this).val()}, function(data, status){   
+                    console.log(data);   
+                    var types = '<option disabled selected value hidden>Complaint Type</option>';
+                    $.each(data, function (i, field) {
+                        types += '<option value="'+i+'">'+field+'</option>';
+                    });
+                    $('#ComNatID').html(types);
                 });
             }
         });
@@ -1547,11 +1581,9 @@
             if($(this).val() != ''){
                 $.post("<?= base_url('/complaints/getblocksbybuilding') ?>", {BuildingID: $(this).val()}, function(data, status){      
                     var blocks = '<option disabled selected value hidden>Block</option>';
-                    if(data.length > 0){
-                        $.each(data, function (i, field) {
-                            blocks += '<option value="'+field.BKID+'">'+field.BlockName+'</option>';
-                        });
-                    }
+                    $.each(data, function (i, field) {
+                        blocks += '<option value="'+field.BKID+'">'+field.BlockName+'</option>';
+                    });
                     $('#BKID').html(blocks);
                 });
             }

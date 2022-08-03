@@ -28,7 +28,12 @@ class Complaints extends BaseController
 		if($complaint_status->status == 'Success'){
 			$data['complaint_status'] = @$complaint_status->data;
 		}
-		$complaints_array = array(
+		$categories = $this->AuthModel->callwebservice(SAURL."complaintcategorysearch", '', 1, 1);
+		$data['categories'] = [];
+		if($categories->status == 'Success'){
+			$data['categories'] = @$categories->data->data;
+		}
+		$data['SearchKeywords'] = array(
 			"ComCatID" => $this->request->getVar('ComCatID'),
 			"ComNatID" => $this->request->getVar('ComNatID'),
 			"BID" => $this->request->getVar('BID'),
@@ -38,10 +43,50 @@ class Complaints extends BaseController
 			"ComplaintBy" => $this->request->getVar('ComplaintBy'),
 			"ComplaintStatus" => $this->request->getVar('ComplaintStatus'),
 		);
-		$complaints_data = $this->AuthModel->callwebservice(SAURL."getcomplaints", $complaints_array, 1, 1);
+		$complaints_data = $this->AuthModel->callwebservice(SAURL."getcomplaints", $data['SearchKeywords'], 1, 1);
 		$data['complaints'] = [];
 		if (@$complaints_data->status == "Success") {
 			$data['complaints'] = @$complaints_data->data;
+		}
+		$data['types'] = [];
+		if($this->request->getVar('ComCatID') != ''){
+			$categories_array = array(
+				"ComCatID" => $this->request->getVar('ComCatID')
+			);
+			$natures_data = $this->AuthModel->callwebservice(SAURL."complaintnature", $categories_array, 1, 1);
+			if (@$natures_data->status == "Success") {
+				$data['types'] = @$natures_data->data;
+			}
+		}	
+		$data['blocks'] = [];
+		if($this->request->getVar('BID') != ''){
+			$building_array = array(
+				"BuildingID" => $this->request->getVar('BID')
+			);
+			$blocks_data = $this->AuthModel->callwebservice(SAURL."getblocks", $building_array, 1, 1);
+			if (@$blocks_data->status == "Success") {
+				$data['blocks'] = @$blocks_data->data;
+			}
+		}
+		$data['floors'] = [];
+		if($this->request->getVar('BKID') != ''){
+			$block_array = array(
+				"BlockID" => $this->request->getVar('BKID')
+			);
+			$floors_data = $this->AuthModel->callwebservice(SAURL."getfloors", $block_array, 1, 1);
+			if (@$floors_data->status == "Success") {
+				$data['floors'] = @$floors_data->data;
+			}
+		}
+		$data['rooms'] = [];
+		if($this->request->getVar('FID') != ''){
+			$floor_array = array(
+				"FloorID" => $this->request->getVar('FID')
+			);
+			$rooms_data = $this->AuthModel->callwebservice(SAURL."getrooms", $floor_array, 1, 1);
+			if (@$rooms_data->status == "Success") {
+				$data['rooms'] = @$rooms_data->data;
+			}
 		}
 		echo view('Modules\WIS\Views\complaint\complaintsNList', $data);
 	}
@@ -158,7 +203,7 @@ class Complaints extends BaseController
 		$data['complaint'] = [];
 		if (@$complaint_data->status == "Success") {
 			$data['complaint'] = @$complaint_data->data->{0};
-			$data['complaint_images'] = @$complaint->data->Images;
+			$data['complaint_images'] = @$complaint_data->data->Images;
 		}
 		$complaint_status = $this->AuthModel->callwebservice(SAURL."complaintstatus", '', 1, 1);
 		$data['complaint_status'] = [];
@@ -274,7 +319,7 @@ class Complaints extends BaseController
 		$data['complaint'] = [];
 		if (@$complaint_data->status == "Success") {
 			$data['complaint'] = @$complaint_data->data->{0};
-			$data['complaint_images'] = @$complaint->data->Images;
+			$data['complaint_images'] = @$complaint_data->data->Images;
 		}
 		$complaint_status = $this->AuthModel->callwebservice(SAURL."complaintstatus", '', 1, 1);
 		$data['complaint_status'] = [];
@@ -287,7 +332,7 @@ class Complaints extends BaseController
 	//Get Complaint Type By Complaint Category
 	public function getcomplainttypesbycomplaintcategory(){
 		$categories_array =  @$this->request->getVar();
-		$natures_data = $this->AuthModel->callwebservice(SAURL."getrooms", $categories_array, 1, 1);
+		$natures_data = $this->AuthModel->callwebservice(SAURL."complaintnature", $categories_array, 1, 1);
 		$natures = [];
 		if (@$natures_data->status == "Success") {
 			$natures = @$natures_data->data;
