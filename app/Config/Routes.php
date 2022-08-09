@@ -109,7 +109,7 @@ $routes->add('/complaints/getroomsbyfloor', 'Complaints::getroomsbyfloor',['name
 $routes->add('/complaints/getcomplainttypesbycomplaintcategory', 'Complaints::getcomplainttypesbycomplaintcategory',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/get_complaint', 'Complaints::get_complaint',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/getemployeesbydepartment', 'Complaints::getemployeesbydepartment',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/complaints/assign_complaint', 'Complaints::assign_complaint',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/update_complaint', 'Complaints::update_complaint',['namespace' => 'Modules\WIS\Controllers']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing

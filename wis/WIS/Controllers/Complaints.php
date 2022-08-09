@@ -429,20 +429,10 @@ class Complaints extends BaseController
         exit;
 	}
 
-	//Assign Complaint
-	public function assign_complaint(){
+	//Update Complaint
+	public function update_complaint(){
 		if ($this->request->getMethod() == 'post') {
             $complaint_array =  @$this->request->getVar();
-			$complaint_data = $this->AuthModel->callwebservice(SAURL."updatecomplaint", $complaint_array, 1, 1);
-			echo json_encode($complaint_data);
-        }
-	}
-	//Inprogress Complaint
-	public function inprogress_complaint(){
-		if ($this->request->getMethod() == 'post') {
-            $complaint_array =  @$this->request->getVar();
-			print_r($complaint_array);exit;
-			// echo json_encode($complaint_array);die();
 			$complaint_data = $this->AuthModel->callwebservice(SAURL."updatecomplaint", $complaint_array, 1, 1);
 			echo json_encode($complaint_data);
         }

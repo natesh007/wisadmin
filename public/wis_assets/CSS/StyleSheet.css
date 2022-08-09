@@ -7899,7 +7899,7 @@ label.error {
 .InptBx.error {
     border-color: red !important;
 }
-div#InfoDiv, div#ErrDiv{
+div#InfoDiv, div#ErrDiv, div#InfoDiv1{
     display: none;
 }.bootstrap-select>.dropdown-toggle{
     border: 1px solid #ddd !important;
