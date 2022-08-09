@@ -160,7 +160,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="ParentDeptID" class="FrmLbl">Parent Department</label>
-                                <select class="form-control InptBx" name="ParentDeptID" id="ParentDeptID">
+                                <select class="form-select InptBx" name="ParentDeptID" id="ParentDeptID">
                                     <option disabled selected value hidden>Select Parent Department</option>
                                     <?php foreach($departments as $department){
                                         echo '<option value="' . $department->DeptID . '">' . $department->DeptName . '</option>' ;
@@ -171,7 +171,7 @@
                         <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="BrID" class="FrmLbl">Branch</label>
-                                <select class="form-control InptBx" name="BrID" id="BrID">
+                                <select class="form-select InptBx" name="BrID" id="BrID">
                                     <option disabled selected value hidden>Select Branch</option>
                                     <?php foreach($branches as $branch){
                                         echo '<option value="' . $branch->BrID . '">' . $branch->BrName . '</option>' ;
