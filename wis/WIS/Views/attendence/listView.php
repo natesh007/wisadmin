@@ -229,7 +229,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="BrID" class="FrmLbl">Branch</label>
-                                <select class="form-control InptBx selectpicker" name="BrID[]" id="BrID" multiple data-live-search="true">
+                                <select class="form-select InptBx selectpicker" name="BrID[]" id="BrID" multiple data-live-search="true">
                                 <?php if(!empty($branches)){
                                     foreach($branches as $branch){
                                         echo '<option value="'.$branch->BrID .'">'.$branch->BrName.'</option>';
@@ -241,13 +241,13 @@
                         <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="DeptID" class="FrmLbl">Department</label>
-                                <select class="form-control InptBx" name="DeptID" id="DeptID">
+                                <select class="form-select InptBx" name="DeptID" id="DeptID">
                                     <option disabled selected value hidden>Select Departments</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="JobTID" class="FrmLbl">Job Title</label>
-                                <select class="form-control InptBx" name="JobTID" id="JobTID">
+                                <select class="form-select InptBx" name="JobTID" id="JobTID">
                                     <option disabled selected value hidden>Select Job Title</option>
                                     <?php if(!empty($jobtitles)){
                                         foreach($jobtitles as $jobtitle){
@@ -270,7 +270,7 @@
                         <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="Gender" class="FrmLbl">Gender</label>
-                                <select class="form-control InptBx" name="Gender" id="Gender">
+                                <select class="form-select InptBx" name="Gender" id="Gender">
                                     <option disabled selected value hidden>Select Gender</option>
                                     <option value="M">Male</option>
 								    <option value="F">Female</option>
@@ -288,7 +288,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="PreviousExp" class="FrmLbl">Previous Experience</label>
-                                <select class="form-control InptBx" name="PreviousExp" id="PreviousExp">
+                                <select class="form-select InptBx" name="PreviousExp" id="PreviousExp">
                                     <option disabled selected value hidden>Select Previous Experience</option>
                                     <?php if(!empty($prev_exp)){
                                         foreach($prev_exp as $key => $exp){
