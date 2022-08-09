@@ -272,7 +272,7 @@
                         <?php if(!empty($complaints->List)){
                             $i = 1;
                             foreach($complaints->List as $complaint){
-                                if($complaint->ComID==87){
+                                if($complaint->AssignedBy != ''){
                                     echo '<tr ';
                                     if($complaint->AssignedBy == '')
                                         echo 'class="Rd"';
@@ -314,11 +314,11 @@
                                             <span class="DataTxt">--------</span>
                                         </td>
                                         <td>
-                                            <span class="DataTxt">'.$complaint->StausName.'</span>
+                                        <span id="LnkBtn1" onclick="javascript:InprogressComplaint('.$complaint->ComID.');"             class="BtnLnk Prcss">In Process</span>
                                         </td>
                                         <td>';
                                            
-                                               echo '<span id="LnkBtn1" onclick="javascript:InprogressComplaint('.$complaint->ComID.');" class="BtnLnk Prcss">In Process</span>';
+                                        echo '<span class="DataTxt">'.$complaint->AssignedBy.'</span>';
                                                 // echo '<span id="LnkBtn1" onclick="javascript:ModalPopupTwo();" class="BtnLnk Prcss">In Process</span>';
                                        echo '</td>
                                     </tr>';
@@ -1182,128 +1182,8 @@
         </div>
     </div>
     <div id="AppMdlHldrTwo" class="AppModalHldr Hide">
-        <div class="AppModalInnrHldr Smllr">
-            <div class="ModalTtlHldr">
-                <div class="ModalTtlHldr">
-                    <span class="SctnTtl">Assigned Complaint</span>
-                    <span class="FtrTtl">Heating/ Cooling</span>
-                    <span id="AppMdlClsBtn" onclick="javascript:ModalPopupTwo();" class="ModalClsBtn"></span>
-                </div>
-                <div class="ModalFnctnHldr">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Date</span>
-                                <span class="InnrTxt">06-12-2021</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Area</span>
-                                <span class="InnrTxt">Area Name</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Block</span>
-                                <span class="InnrTxt">Block A</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Room</span>
-                                <span class="InnrTxt">Wating Hall - 1</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Complaint by</span>
-                                <span class="InnrTxt">Patient</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Complaint Time</span>
-                                <span class="InnrTxt Bad">03:00 PM (+2 Hour)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ModalCntntHldr">
-                    <div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <span class="InnrTtl">Patient Name</span>
-                                    <span class="InnrTxt">Naveen Kumar</span>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="InnrTtl">Contact No.</span>
-                                    <span class="InnrTxt">+91 1234567890</span>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="InnrTtl">Patient ID</span>
-                                    <span class="InnrTxt">AA88565-55615</span>
-                                </div>
-                                <div class="col-md-6">
-                                    <span class="InnrTtl">Comment</span>
-                                    <span class="InnrTxt">A/c is not cooling</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ModalFnctnHldr HeightAuto" style="background: #ecffe6; border-color: #81e562;">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <span class="InnrTtl">Assigned to</span>
-                                    <span class="InnrTxt">N. Raju (EMP-1001)</span>
-                                </div>
-                                <div class="col-md-4">
-                                    <span class="InnrTtl">Assigned time</span>
-                                    <span class="InnrTxt">05:18 PM</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ModalFnctnHldr" style="background: #fff;">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control InptBx" id="Text2" value="Notes">
-                                </div>
-                                <div class="col-md-3">
-                                    <span class="InnrTtl">Status</span>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
-                                        <label class="form-check-label" for="flexRadioDefault8">
-                                            Pending
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <span class="InnrTtl">&nbsp;</span>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            Complete
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="CmpltImgBlk">
-                        <div class="container-fluid">
-                            <div class="col-md-12">
-                                <img src="<?= base_url('/public/wis_assets/Images/Complaint1.png'); ?>" class="CmpltImg"/>
-                                <img src="<?= base_url('/public/wis_assets/Images/Complaint2.png'); ?>" class="CmpltImg"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="CmpltDescBlk">
-                        <div class="container-fluid">
-                            <div class="col-md-12">
-                                <p><span class="CmpltDesHed">Description : </span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="DvBtnHldr">
-                        <button type="button" onclick="" class="btn btn-primary SbmtBtn">Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <form action="" method="post" id="InprogressComplaint">
+            </form>
     </div>
     <div id="AppMdlHldrThree" class="AppModalHldr Hide">
         <div class="AppModalInnrHldr Smllr">
@@ -1488,23 +1368,23 @@
             }
         }
         function InprogressComplaint(ComID){
-            if (document.getElementById('AppMdlHldr').getAttribute('class') == 'AppModalHldr Hide') {
+            if (document.getElementById('AppMdlHldrTwo').getAttribute('class') == 'AppModalHldr Hide') {
                 $.post("<?= base_url('/complaints/get_complaint') ?>", {ComID: ComID}, function(data, status){
                     var complaint = '<form action="" method="post" id="InprogressComplaint"><div class="AppModalInnrHldr Smllr"><div class="ModalTtlHldr"><div class="ModalTtlHldr"><span class="SctnTtl">Assigned Complaint</span><span class="FtrTtl">'+data.complaint.CategoryName+'</span><span id="AppMdlClsBtn" onclick="javascript:InprogressComplaint('+ComID+');" class="ModalClsBtn"></span></div><div class="ModalFnctnHldr"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Date</span><span class="InnrTxt">'+data.complaint.CreatedDate+'</span></div><div class="col-md-2"><span class="InnrTtl">Building</span><span class="InnrTxt">'+data.complaint.BuildingName+'</span></div><div class="col-md-2"><span class="InnrTtl">Block</span><span class="InnrTxt">'+data.complaint.BlockName+'</span></div><div class="col-md-1"><span class="InnrTtl">Floor</span><span class="InnrTxt">'+data.complaint.FloorName+'</span></div><div class="col-md-1"><span class="InnrTtl">Room</span><span class="InnrTxt">'+data.complaint.RoomName+'</span></div><div class="col-md-2"><span class="InnrTtl">Complaint by</span><span class="InnrTxt">';
                     if(data.complaint.empid == 0) 
                         complaint += 'Patient';
                     else 
                         complaint += 'Employee';
-                    complaint += '</span></div><div class="col-md-2"><span class="InnrTtl">Complaint Time</span><span class="InnrTxt Bad">03:00 PM (+2 Hour)</span></div></div></div></div><input type="hidden" name="ComID" value="'+ComID+'"/><input type="hidden" name="Priority" value="'+data.complaint.ComplaintPriority+'"/><div class="ModalCntntHldr"><div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Patient Name</span><span class="InnrTxt">'+data.complaint.Name+'</span></div><div class="col-md-2"><span class="InnrTtl">Contact No.</span><span class="InnrTxt">+91 '+data.complaint.Mobile+'</span></div><!--<div class="col-md-2"><span class="InnrTtl">Patient ID</span><span class="InnrTxt">'+data.complaint.CategoryName+'</span></div>--><div class="col-md-5"><span class="InnrTtl">Comment</span><span class="InnrTxt">'+data.complaint.ComplaintRemarks+'</span></div></div></div></div><div class="TableHldr" id="EmpTbl"></div><div class="alert alert-success alert-dismissible" id="InfoDiv"><div class="container-fluid"><div class="row"><div class="col-md-4"><span class="InnrTtl">Assigned To </span><span class="InnrTxt">N. Raju (EMP-1001)</span></div><div class="col-md-4"><span class="InnrTtl">Assigned Time </span><span class="InnrTxt">05:18 PM</span></div></div></div></div><div class="ModalFnctnHldr" style="background: #fff;"><div class="container-fluid"><div class="row"><div class="col-md-6"><input type="text" class="form-control InptBx" id="notes" placeholder="Notes"></div><div class="col-md-3"><span class="InnrTtl">Status</span><div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8"><label class="form-check-label" for="flexRadioDefault8">Pending</label></div></div><div class="col-md-3"><span class="InnrTtl">&nbsp;</span><div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"><label class="form-check-label" for="flexRadioDefault2">Complete</label></div></div></div></div><div class="container-fluid"><div class="row"><!--<div class="col-md-12"><span class="InnrTtl">Recommended To</span><span class="InnrTxt">N. Raju (EMP-1001)</span></div>--></div></div></div><div class="CmpltImgBlk"><div class="container-fluid"><div class="col-md-12">';
+                    complaint += '</span></div><div class="col-md-2"><span class="InnrTtl">Complaint Time</span><span class="InnrTxt Bad">03:00 PM (+2 Hour)</span></div></div></div></div><input type="hidden" name="ComID" id="ComID" value="'+ComID+'"/><input type="hidden" name="Priority" value="'+data.complaint.ComplaintPriority+'"/><div class="ModalCntntHldr"><div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Patient Name</span><span class="InnrTxt">'+data.complaint.Name+'</span></div><div class="col-md-2"><span class="InnrTtl">Contact No.</span><span class="InnrTxt">+91 '+data.complaint.Mobile+'</span></div><!--<div class="col-md-2"><span class="InnrTtl">Patient ID</span><span class="InnrTxt">'+data.complaint.CategoryName+'</span></div>--><div class="col-md-5"><span class="InnrTtl">Comment</span><span class="InnrTxt">'+data.complaint.ComplaintRemarks+'</span></div></div></div></div><div class="TableHldr" id="EmpTbl"></div><div class="alert alert-success alert-dismissible" id="InfoDiv"><div class="container-fluid"><div class="row"><div class="col-md-4"><span class="InnrTtl">Assigned To </span><span class="InnrTxt">'+data.complaint.AssignedBy+'</span></div><div class="col-md-4"><span class="InnrTtl">Assigned Time </span><span class="InnrTxt">'+data.complaint.UpdatedDate+'</span></div></div></div></div><div class="ModalFnctnHldr" style="background: #fff;"><div class="container-fluid"><div class="row"><div class="col-md-6"><input type="text" class="form-control InptBx" id="notes" name="notes" placeholder="Notes"></div><div class="col-md-3"><span class="InnrTtl">Status</span><div class="form-check"><input class="form-check-input" type="radio" name="status" id="flexRadioDefault8" value="2"><label class="form-check-label" for="flexRadioDefault8">Pending</label></div></div><div class="col-md-3"><span class="InnrTtl">&nbsp;</span><div class="form-check"><input class="form-check-input" type="radio" name="status" id="flexRadioDefault2" value="3"><label class="form-check-label" for="flexRadioDefault2">Complete</label></div></div></div></div><div class="container-fluid"><div class="row"><!--<div class="col-md-12"><span class="InnrTtl">Recommended To</span><span class="InnrTxt">N. Raju (EMP-1001)</span></div>--></div></div></div><div class="CmpltImgBlk"><div class="container-fluid"><div class="col-md-12">';
                     $.each(data.Images, function (i, field) {
                         complaint += '<img src="'+field.Image+'" class="CmpltImg"/>';
                     });
                     complaint += '</div></div></div><div class="CmpltDescBlk"><div class="container-fluid"><div class="col-md-12"><p><span class="CmpltDesHed">Description : </span> '+data.complaint.ComplaintRemarks+'</p></div></div></div><div class="DvBtnHldr"><button type="submit" class="btn btn-primary SbmtBtn">Save</button></div></div></div></div></form>';    
-                    $("#AppMdlHldr").html(complaint);            
-                    document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
+                    $("#AppMdlHldrTwo #InprogressComplaint").html(complaint);            
+                    document.getElementById('AppMdlHldrTwo').setAttribute('class', 'AppModalHldr');
                 });
             } else {
-                document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr Hide');
+                document.getElementById('AppMdlHldrTwo').setAttribute('class', 'AppModalHldr Hide');
             }
         }
         $(document).on("change", "#DeptID", function(){
@@ -1574,20 +1454,27 @@
         $("form[id='InprogressComplaint']").validate({
             ignore: [],
             rules: {
-                DeptID: "required",
+                status: "required",
                 //EmpID:{ required:true }
             },
             messages: {
                 //EmpID: "Please select Employee",
-                DeptID: "Please select Department"
+                status: "Please select Status"
             },
-            submitHandler: function(form) {
-                form.sibmit();
-                var data = new FormData($('#AssingComplaint')[0]);
+            submitHandler: function(form) {  
+                var notes = $("#notes").val();
+                var ComID = $("#ComID").val();
+                var check_value = $('.form-check-input:checked').val();  
+                var inprogressData = {
+                    ComID:ComID,
+                    ComplaintStatus: check_value, 
+                    Note : notes
+                    };          
+                console.log(inprogressData);
                 $.ajax({
-                    url: '<?= base_url('/complaints/assign_complaint'); ?>',
+                    url: '<?= base_url('/complaints/inprogress_complaint'); ?>',
                     type: "POST",
-                    data: data,
+                    data: inprogressData,
                     mimeType: "multipart/form-data",
                     contentType: false,
                     cache: false,
