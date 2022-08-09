@@ -272,56 +272,109 @@
                         <?php if(!empty($complaints->List)){
                             $i = 1;
                             foreach($complaints->List as $complaint){
-                                echo '<tr ';
-                                if($complaint->AssignedBy == '')
-                                    echo 'class="Rd"';
-                                echo '>
-                                    <td>
-                                        <span class="DataTxt">'.$i.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->ComID.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->CategoryName.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->ComplaintNature.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->BuildingName.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->BlockName.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->FloorName.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->RoomName.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">';
-                                        if($complaint->empid == 0) echo 'Patient'; else echo 'Employee';
-                                        echo '</span>
-                                        &nbsp;<span class="CmpltBy"><img src="'.base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg').'"/><span class="CmpltByInfo">Mobile</span></span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->CreatedDate.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">--------</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->StausName.'</span>
-                                    </td>
-                                    <td>';
-                                        if($complaint->AssignedBy != '') 
-                                            echo '<span class="DataTxt">'.$complaint->AssignedBy.'</span>';
-                                        else
-                                            echo '<span id="LnkBtn1" onclick="javascript:AssignComplaint('.$complaint->ComID.');" class="BtnLnk">Assign Complaint</span>';
-                                   echo '</td>
-                                </tr>';
+                                if($complaint->ComID==87){
+                                    echo '<tr ';
+                                    if($complaint->AssignedBy == '')
+                                        echo 'class="Rd"';
+                                    echo '>
+                                        <td>
+                                            <span class="DataTxt">'.$i.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->ComID.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->CategoryName.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->ComplaintNature.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->BuildingName.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->BlockName.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->FloorName.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->RoomName.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">';
+                                            if($complaint->empid == 0) echo 'Patient'; else echo 'Employee';
+                                            echo '</span>
+                                            &nbsp;<span class="CmpltBy"><img src="'.base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg').'"/><span class="CmpltByInfo">Mobile</span></span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->CreatedDate.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">--------</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->StausName.'</span>
+                                        </td>
+                                        <td>';
+                                           
+                                               echo '<span id="LnkBtn1" onclick="javascript:InprogressComplaint('.$complaint->ComID.');" class="BtnLnk Prcss">In Process</span>';
+                                                // echo '<span id="LnkBtn1" onclick="javascript:ModalPopupTwo();" class="BtnLnk Prcss">In Process</span>';
+                                       echo '</td>
+                                    </tr>';
+                                }else{
+                                    echo '<tr ';
+                                    if($complaint->AssignedBy == '')
+                                        echo 'class="Rd"';
+                                    echo '>
+                                        <td>
+                                            <span class="DataTxt">'.$i.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->ComID.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->CategoryName.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->ComplaintNature.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->BuildingName.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->BlockName.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->FloorName.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->RoomName.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">';
+                                            if($complaint->empid == 0) echo 'Patient'; else echo 'Employee';
+                                            echo '</span>
+                                            &nbsp;<span class="CmpltBy"><img src="'.base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg').'"/><span class="CmpltByInfo">Mobile</span></span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->CreatedDate.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">--------</span>
+                                        </td>
+                                        <td>
+                                            <span class="DataTxt">'.$complaint->StausName.'</span>
+                                        </td>
+                                        <td>';
+                                            if($complaint->AssignedBy != '') 
+                                                echo '<span class="DataTxt">'.$complaint->AssignedBy.'</span>';
+                                            else
+                                                echo '<span id="LnkBtn1" onclick="javascript:AssignComplaint('.$complaint->ComID.');" class="BtnLnk">Assign Complaint</span>';
+                                       echo '</td>
+                                    </tr>';
+                                }
+                                
                                 $i++;
                             } 
                         } ?>
@@ -1429,6 +1482,26 @@
                 document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr Hide');
             }
         }
+        function InprogressComplaint(ComID){
+            if (document.getElementById('AppMdlHldr').getAttribute('class') == 'AppModalHldr Hide') {
+                $.post("<?= base_url('/complaints/get_complaint') ?>", {ComID: ComID}, function(data, status){
+                    var complaint = '<form action="" method="post" id="InprogressComplaint"><div class="AppModalInnrHldr Smllr"><div class="ModalTtlHldr"><div class="ModalTtlHldr"><span class="SctnTtl">Assigned Complaint</span><span class="FtrTtl">'+data.complaint.CategoryName+'</span><span id="AppMdlClsBtn" onclick="javascript:InprogressComplaint('+ComID+');" class="ModalClsBtn"></span></div><div class="ModalFnctnHldr"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Date</span><span class="InnrTxt">'+data.complaint.CreatedDate+'</span></div><div class="col-md-2"><span class="InnrTtl">Building</span><span class="InnrTxt">'+data.complaint.BuildingName+'</span></div><div class="col-md-2"><span class="InnrTtl">Block</span><span class="InnrTxt">'+data.complaint.BlockName+'</span></div><div class="col-md-1"><span class="InnrTtl">Floor</span><span class="InnrTxt">'+data.complaint.FloorName+'</span></div><div class="col-md-1"><span class="InnrTtl">Room</span><span class="InnrTxt">'+data.complaint.RoomName+'</span></div><div class="col-md-2"><span class="InnrTtl">Complaint by</span><span class="InnrTxt">';
+                    if(data.complaint.empid == 0) 
+                        complaint += 'Patient';
+                    else 
+                        complaint += 'Employee';
+                    complaint += '</span></div><div class="col-md-2"><span class="InnrTtl">Complaint Time</span><span class="InnrTxt Bad">03:00 PM (+2 Hour)</span></div></div></div></div><input type="hidden" name="ComID" value="'+ComID+'"/><input type="hidden" name="Priority" value="'+data.complaint.ComplaintPriority+'"/><div class="ModalCntntHldr"><div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Patient Name</span><span class="InnrTxt">'+data.complaint.Name+'</span></div><div class="col-md-2"><span class="InnrTtl">Contact No.</span><span class="InnrTxt">+91 '+data.complaint.Mobile+'</span></div><!--<div class="col-md-2"><span class="InnrTtl">Patient ID</span><span class="InnrTxt">'+data.complaint.CategoryName+'</span></div>--><div class="col-md-5"><span class="InnrTtl">Comment</span><span class="InnrTxt">'+data.complaint.ComplaintRemarks+'</span></div></div></div></div><div class="TableHldr" id="EmpTbl"></div><div class="alert alert-success alert-dismissible" id="InfoDiv"><div class="container-fluid"><div class="row"><div class="col-md-4"><span class="InnrTtl">Assigned To </span><span class="InnrTxt">N. Raju (EMP-1001)</span></div><div class="col-md-4"><span class="InnrTtl">Assigned Time </span><span class="InnrTxt">05:18 PM</span></div></div></div></div><div class="ModalFnctnHldr" style="background: #fff;"><div class="container-fluid"><div class="row"><div class="col-md-6"><input type="text" class="form-control InptBx" id="notes" placeholder="Notes"></div><div class="col-md-3"><span class="InnrTtl">Status</span><div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8"><label class="form-check-label" for="flexRadioDefault8">Pending</label></div></div><div class="col-md-3"><span class="InnrTtl">&nbsp;</span><div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"><label class="form-check-label" for="flexRadioDefault2">Complete</label></div></div></div></div><div class="container-fluid"><div class="row"><!--<div class="col-md-12"><span class="InnrTtl">Recommended To</span><span class="InnrTxt">N. Raju (EMP-1001)</span></div>--></div></div></div><div class="CmpltImgBlk"><div class="container-fluid"><div class="col-md-12">';
+                    $.each(data.Images, function (i, field) {
+                        complaint += '<img src="'+field.Image+'" class="CmpltImg"/>';
+                    });
+                    complaint += '</div></div></div><div class="CmpltDescBlk"><div class="container-fluid"><div class="col-md-12"><p><span class="CmpltDesHed">Description : </span> '+data.complaint.ComplaintRemarks+'</p></div></div></div><div class="DvBtnHldr"><button type="submit" class="btn btn-primary SbmtBtn">Save</button></div></div></div></div></form>';    
+                    $("#AppMdlHldr").html(complaint);            
+                    document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
+                });
+            } else {
+                document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr Hide');
+            }
+        }
         $(document).on("change", "#DeptID", function(){
             if($(this).val() != ''){
                 $.post("<?= base_url('/complaints/getemployeesbydepartment') ?>", {DeptID: $(this).val()}, function(data, status){
@@ -1444,6 +1517,47 @@
             }
         });
         $("form[id='AssingComplaint']").validate({
+            ignore: [],
+            rules: {
+                DeptID: "required",
+                //EmpID:{ required:true }
+            },
+            messages: {
+                //EmpID: "Please select Employee",
+                DeptID: "Please select Department"
+            },
+            submitHandler: function(form) {
+                form.sibmit();
+                var data = new FormData($('#AssingComplaint')[0]);
+                $.ajax({
+                    url: '<?= base_url('/complaints/assign_complaint'); ?>',
+                    type: "POST",
+                    data: data,
+                    mimeType: "multipart/form-data",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    error: function(request, response) {
+                        console.log(request);
+                    },
+                    success: function(result) {
+                        var obj = jQuery.parseJSON(result);
+                        if (obj.status == 'Success')
+                            $("#InfoDiv").addClass('alert-success').removeClass('alert-danger');
+                        else
+                            $("#InfoDiv").addClass('alert-danger').removeClass('alert-success');
+                        $("#InfoDiv").html(obj.msg);
+                        $("#InfoDiv").show();
+                        setTimeout(function() {
+                            $("#InfoDiv").hide();
+                        }, 3000);
+                        if (obj.status == 'Success')
+                            window.location.href = window.location.href;
+                    }
+                });
+            }
+        });
+        $("form[id='InprogressComplaint']").validate({
             ignore: [],
             rules: {
                 DeptID: "required",
