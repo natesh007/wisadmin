@@ -119,10 +119,7 @@ class Employees extends BaseController
 	}
 	//Get employee for edit
 	public function get_employee(){
-        $employee_array = array(
-            "EmpID" => @$this->request->getVar('EmpID'),
-        );
-        $employee_data = $this->AuthModel->callwebservice(SAURL."getemployee", $employee_array, 1, 1);
+        $employee_data = $this->AuthModel->callwebservice(SAURL."getemployee", @$this->request->getVar(), 1, 1);
 		$data['employee'] = [];
 		if (@$employee_data->status == "Success") {
 			$data['employee'] = @$employee_data->data[0];

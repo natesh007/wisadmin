@@ -9108,8 +9108,8 @@ div.AddCmplt {
 
 img.CmpltImg {
     margin-right: 10px;
-    height: 100px; 
-    width: 100px;
+    height: 50px; 
+    width: 50px;
 }
 
 div.CmpltImgBlk {
@@ -9354,4 +9354,6 @@ label.error {
 }
 .CmpntInptBx.error {
     border-color: red !important;
+}div#InfoDiv, div#ErrDiv{
+    display: none;
 }

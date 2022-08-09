@@ -319,7 +319,7 @@
                                         if($complaint->AssignedBy != '') 
                                             echo '<span class="DataTxt">'.$complaint->AssignedBy.'</span>';
                                         else
-                                            echo '<span id="LnkBtn1" onclick="javascript:ModalPopup();" class="BtnLnk">Assign Complaint</span>';
+                                            echo '<span id="LnkBtn1" onclick="javascript:AssignComplaint('.$complaint->ComID.');" class="BtnLnk">Assign Complaint</span>';
                                    echo '</td>
                                 </tr>';
                                 $i++;
@@ -1122,213 +1122,7 @@
             </div>
         </div>
     </div>
-    <div id="AppMdlHldr" class="AppModalHldr Hide">
-        <div class="AppModalInnrHldr Smllr">
-            <div class="ModalTtlHldr">
-                <div class="ModalTtlHldr">
-                    <span class="SctnTtl">Assigned Complaint</span>
-                    <span class="FtrTtl">Heating/ Cooling</span>
-                    <span id="AppMdlClsBtn" onclick="javascript:ModalPopup();" class="ModalClsBtn"></span>
-                </div>
-                <div class="ModalFnctnHldr">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Date</span>
-                                <span class="InnrTxt">06-12-2021</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Area</span>
-                                <span class="InnrTxt">Area Name</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Block</span>
-                                <span class="InnrTxt">Block A</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Room</span>
-                                <span class="InnrTxt">Wating Hall - 1</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Complaint by</span>
-                                <span class="InnrTxt">Patient</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Complaint Time</span>
-                                <span class="InnrTxt Bad">03:00 PM (+2 Hour)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ModalCntntHldr">
-                    <div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <span class="InnrTtl">Patient Name</span>
-                                    <span class="InnrTxt">Naveen Kumar</span>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="InnrTtl">Contact No.</span>
-                                    <span class="InnrTxt">+91 1234567890</span>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="InnrTtl">Patient ID</span>
-                                    <span class="InnrTxt">AA88565-55615</span>
-                                </div>
-                                <div class="col-md-6">
-                                    <span class="InnrTtl">Comment</span>
-                                    <span class="InnrTxt">A/c is not cooling</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="TableHldr">
-                        <table class="AppDataTbl">
-                            <tr class="Hdr">
-                                <th>
-
-                                </th>
-                                <th>
-                                    <span class="DataTtl">Emp. ID.</span>
-                                </th>
-                                <th>
-                                    <span class="DataTtl">Employee Name</span>
-                                </th>
-                                <th>
-                                    <span class="DataTtl">Contact No.</span>
-                                </th>
-                                <th>
-                                    <span class="DataTtl">Shift Timing</span>
-                                </th>
-                                <th>
-                                    <span class="DataTtl">Assigned</span>
-                                </th>
-                                <th>
-                                    <span class="DataTtl">In Progress</span>
-                                </th>
-                                <th>
-                                    <span class="DataTtl">Total Task Completed</span>
-                                </th>
-                            </tr>
-                            <tr>
-                                <td class="Cntr">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    </div>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">EMP-1001</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">N. Raju</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">+91 8987876567</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">09:00 AM to 07:00 PM</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">3</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">1</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">8</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="Cntr">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    </div>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">EMP-1002</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">B Gopal</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">+91 9898789098</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">09:00 AM to 07:00 PM</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">1</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">3</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">7</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="Cntr">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    </div>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">EMP-1003</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">N. Raju</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">+91 9098789098</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">09:00 AM to 07:00 PM</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">3</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">1</span>
-                                </td>
-                                <td>
-                                    <span class="DataTxt">15</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="ModalFnctnHldr" style="background: #fff;">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span class="InnrTtl">Recommended To</span>
-                                    <span class="InnrTxt">N. Raju (EMP-1001)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="CmpltImgBlk">
-                        <div class="container-fluid">
-                            <div class="col-md-12">
-                                <img src="<?= base_url('/public/wis_assets/Images/Complaint1.png'); ?>" class="CmpltImg"/>
-                                <img src="<?= base_url('/public/wis_assets/Images/Complaint2.png'); ?>" class="CmpltImg"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="CmpltDescBlk">
-                        <div class="container-fluid">
-                            <div class="col-md-12">
-                                <p><span class="CmpltDesHed">Description : </span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="DvBtnHldr">
-                        <button type="button" onclick="location.href = '<?php echo site_url('HospitalAdmin/complaintList1'); ?>'" class="btn btn-primary SbmtBtn">Assign</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="AppMdlHldr" class="AppModalHldr Hide"></div>
     <div id="AppMdlHldrTwo" class="AppModalHldr Hide">
         <div class="AppModalInnrHldr Smllr">
             <div class="ModalTtlHldr">
@@ -1564,6 +1358,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script>
         $('#ComCatID').change(function(){
             if($(this).val() != ''){
@@ -1607,6 +1402,85 @@
                         rooms += '<option value="'+field.RID+'">'+field.RoomName+'</option>';
                     });
                     $('#RID').html(rooms);
+                });
+            }
+        });
+        function AssignComplaint(ComID){
+            if (document.getElementById('AppMdlHldr').getAttribute('class') == 'AppModalHldr Hide') {
+                $.post("<?= base_url('/complaints/get_complaint') ?>", {ComID: ComID}, function(data, status){
+                    var complaint = '<form action="" method="post" id="AssingComplaint"><div class="AppModalInnrHldr Smllr"><div class="ModalTtlHldr"><div class="ModalTtlHldr"><span class="SctnTtl">Assigned Complaint</span><span class="FtrTtl">'+data.complaint.CategoryName+'</span><span id="AppMdlClsBtn" onclick="javascript:AssignComplaint('+ComID+');" class="ModalClsBtn"></span></div><div class="ModalFnctnHldr"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Date</span><span class="InnrTxt">'+data.complaint.CreatedDate+'</span></div><div class="col-md-2"><span class="InnrTtl">Building</span><span class="InnrTxt">'+data.complaint.BuildingName+'</span></div><div class="col-md-2"><span class="InnrTtl">Block</span><span class="InnrTxt">'+data.complaint.BlockName+'</span></div><div class="col-md-1"><span class="InnrTtl">Floor</span><span class="InnrTxt">'+data.complaint.FloorName+'</span></div><div class="col-md-1"><span class="InnrTtl">Room</span><span class="InnrTxt">'+data.complaint.RoomName+'</span></div><div class="col-md-2"><span class="InnrTtl">Complaint by</span><span class="InnrTxt">';
+                    if(data.complaint.empid == 0) 
+                        complaint += 'Patient';
+                    else 
+                        complaint += 'Employee';
+                    complaint += '</span></div><div class="col-md-2"><span class="InnrTtl">Complaint Time</span><span class="InnrTxt Bad">03:00 PM (+2 Hour)</span></div></div></div></div><input type="hidden" name="ComID" value="'+ComID+'"/><input type="hidden" name="Priority" value="'+data.complaint.ComplaintPriority+'"/><div class="ModalCntntHldr"><div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Patient Name</span><span class="InnrTxt">'+data.complaint.Name+'</span></div><div class="col-md-2"><span class="InnrTtl">Contact No.</span><span class="InnrTxt">+91 '+data.complaint.Mobile+'</span></div><!--<div class="col-md-2"><span class="InnrTtl">Patient ID</span><span class="InnrTxt">'+data.complaint.CategoryName+'</span></div>--><div class="col-md-5"><span class="InnrTtl">Comment</span><span class="InnrTxt">'+data.complaint.ComplaintRemarks+'</span></div><div class="col-md-3"><select name="DeptID" id="DeptID" class="form-select InptBx"><option disabled selected value hidden>Department</option>';
+                    $.each(data.departments, function (i, field) {
+                        complaint += '<option value="'+field.DeptID+'">'+field.DeptName+'</option>';
+                    });
+                    complaint += '</select></div></div></div></div><div class="TableHldr" id="EmpTbl"></div><div class="alert alert-success alert-dismissible" id="InfoDiv"></div><div class="ModalFnctnHldr" style="background: #fff;"><div class="container-fluid"><div class="row"><!--<div class="col-md-12"><span class="InnrTtl">Recommended To</span><span class="InnrTxt">N. Raju (EMP-1001)</span></div>--></div></div></div><div class="CmpltImgBlk"><div class="container-fluid"><div class="col-md-12">';
+                    $.each(data.Images, function (i, field) {
+                        complaint += '<img src="'+field.Image+'" class="CmpltImg"/>';
+                    });
+                    complaint += '</div></div></div><div class="CmpltDescBlk"><div class="container-fluid"><div class="col-md-12"><p><span class="CmpltDesHed">Description : </span> '+data.complaint.ComplaintRemarks+'</p></div></div></div><div class="DvBtnHldr"><button type="submit" class="btn btn-primary SbmtBtn">Assign</button></div></div></div></div></form>';    
+                    $("#AppMdlHldr").html(complaint);            
+                    document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
+                });
+            } else {
+                document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr Hide');
+            }
+        }
+        $(document).on("change", "#DeptID", function(){
+            if($(this).val() != ''){
+                $.post("<?= base_url('/complaints/getemployeesbydepartment') ?>", {DeptID: $(this).val()}, function(data, status){
+                    var employees = '<table class="AppDataTbl"><tr class="Hdr"><th></th><th><span class="DataTtl">Emp. ID.</span></th><th><span class="DataTtl">Employee Name</span></th><th><span class="DataTtl">Contact No.</span></th><!--<th><span class="DataTtl">Shift Timing</span></th>--><th><span class="DataTtl">Assigned</span></th><th><span class="DataTtl">In Progress</span></th><th><span class="DataTtl">Total Task Completed</span></th></tr>';
+                    $.each(data, function (i, field) {
+                        if(field.EmpID != null){
+                            employees += '<tr><td class="Cntr"><div class="form-check"><input class="form-check-input" type="radio" name="EmpID" value="'+field.EmpID+'"></div></td><td><span class="DataTxt">'+field.EmpID+'</span></td><td><span class="DataTxt">'+field.EmpName+'</span></td><td><span class="DataTxt">+91 '+field.Mobile+'</span></td><!--<td><span class="DataTxt">09:00 AM to 07:00 PM</span></td>--><td><span class="DataTxt">'+field.Assigned+'</span></td><td><span class="DataTxt">'+field.InProcess+'</span></td><td><span class="DataTxt">'+field.Completed+'</span></td></tr>';
+                        }
+                    });
+                    employees += '</table>';
+                    $('#EmpTbl').html(employees);
+                });
+            }
+        });
+        $("form[id='AssingComplaint']").validate({
+            ignore: [],
+            rules: {
+                DeptID: "required",
+                //EmpID:{ required:true }
+            },
+            messages: {
+                //EmpID: "Please select Employee",
+                DeptID: "Please select Department"
+            },
+            submitHandler: function(form) {
+                form.sibmit();
+                var data = new FormData($('#AssingComplaint')[0]);
+                $.ajax({
+                    url: '<?= base_url('/complaints/assign_complaint'); ?>',
+                    type: "POST",
+                    data: data,
+                    mimeType: "multipart/form-data",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    error: function(request, response) {
+                        console.log(request);
+                    },
+                    success: function(result) {
+                        var obj = jQuery.parseJSON(result);
+                        if (obj.status == 'Success')
+                            $("#InfoDiv").addClass('alert-success').removeClass('alert-danger');
+                        else
+                            $("#InfoDiv").addClass('alert-danger').removeClass('alert-success');
+                        $("#InfoDiv").html(obj.msg);
+                        $("#InfoDiv").show();
+                        setTimeout(function() {
+                            $("#InfoDiv").hide();
+                        }, 3000);
+                        if (obj.status == 'Success')
+                            window.location.href = window.location.href;
+                    }
                 });
             }
         });
