@@ -313,57 +313,23 @@
                                         <span class="DataTxt">--------</span>
                                     </td>
                                     <td>';
-                                        if($complaint->AssignedBy != '')
+                                        if($complaint->ComplaintStatus == '2')
                                             echo '<span id="LnkBtn1" onclick="javascript:InprocessComplaint('.$complaint->ComID.');" class="BtnLnk Prcss">In Process</span>';
+                                        else if($complaint->ComplaintStatus == '3')
+                                            echo '<span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>';
                                         else
                                             echo '<span class="DataTxt">'.$complaint->StausName.'</span>';
                                     echo '</td>
                                     <td>';
-                                        if($complaint->AssignedBy != '') 
-                                            echo '<span class="DataTxt">'.$complaint->AssignedBy.'</span>';
+                                        if($complaint->ComplaintStatus == '1') 
+                                            echo '<span id="LnkBtn1" onclick="javascript:AssignComplaint('.$complaint->ComID.');" class="BtnLnk">Assign Complaint</span>';  
                                         else
-                                            echo '<span id="LnkBtn1" onclick="javascript:AssignComplaint('.$complaint->ComID.');" class="BtnLnk">Assign Complaint</span>';
+                                            echo '<span class="DataTxt">'.$complaint->AssignedBy.'</span>';
                                     echo '</td>
                                 </tr>';
                                 $i++;
                             } 
                         } ?>
-                        <!-- <tr>
-                            <td>
-                                <span class="DataTxt">8</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">8</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">Heating/ Cooling</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">Area Name</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">Block A</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">Waiting Hall - 1</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">Employee</span>
-                                &nbsp;<span class="CmpltBy"><img src="<?= base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg'); ?>"/><span class="CmpltByInfo">Manual</span></span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">03:00 PM (+1 Hour)</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">--------</span>
-                            </td>
-                            <td>
-                                <span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>
-                            </td>
-                            <td>
-                                <span class="DataTxt">N. Gopal</span>
-                            </td>
-                        </tr>-->
                     </table>
                 </div>
             </div>

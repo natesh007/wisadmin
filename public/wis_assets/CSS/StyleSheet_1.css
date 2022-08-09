@@ -7515,12 +7515,12 @@ div.TableHldr table.AppDataTbl td .BtnLnk {
 }
 
 div.TableHldr table.AppDataTbl td .BtnLnk.Prcss {
-    background: #ED7302;
+    background: #ED7302 !important;
     width: 182px;
 }
 
 div.TableHldr table.AppDataTbl td .BtnLnk.Cmpltd {
-    background: #17A300;
+    background: #17A300 !important;
     width: 182px;
 }
 
