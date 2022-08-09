@@ -57,6 +57,12 @@ class Employees extends BaseController
 			$data['prev_exp'] = @$prev_exp_data->data;
 		}
 
+		//Get Previous Experience For Dropdown
+		$shifts_data = $this->AuthModel->callwebservice(SAURL."shiftslist", "");
+		$data['shifts'] = [];
+		if (@$shifts_data->status == "Success") {
+			$data['shifts'] = @$shifts_data->data;
+		}
 		//For Download CSV File
 		if(isset($_POST['Download'])){
 			$filename = 'employees.csv';

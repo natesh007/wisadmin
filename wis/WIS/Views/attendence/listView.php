@@ -229,7 +229,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="BrID" class="FrmLbl">Branch</label>
-                                <select class="form-select InptBx selectpicker" name="BrID[]" id="BrID" multiple data-live-search="true">
+                                <select class="form-control InptBx selectpicker" name="BrID[]" id="BrID" multiple data-live-search="true">
                                 <?php if(!empty($branches)){
                                     foreach($branches as $branch){
                                         echo '<option value="'.$branch->BrID .'">'.$branch->BrName.'</option>';
@@ -292,13 +292,24 @@
                                     <option disabled selected value hidden>Select Previous Experience</option>
                                     <?php if(!empty($prev_exp)){
                                         foreach($prev_exp as $key => $exp){
-                                            echo '<option value="'.$key .'">'.$exp.'</option>';
+                                            echo '<option value="'.$key.'">'.$exp.'</option>';
                                         }
                                     } ?>
                                 </select>
                             </div>
                         </div>
                         <div class="formgrp row">
+                            <div class="col-md-6">
+                                <label for="Shift" class="FrmLbl">Previous Experience</label>
+                                <select class="form-select InptBx" name="Shift" id="Shift">
+                                    <option disabled selected value hidden>Select Shift</option>
+                                    <?php if(!empty($shifts)){
+                                        foreach($shifts as $key => $shift){
+                                            echo '<option value="'.$shift->ShID.'">'.$shift->ShiftDesc.'</option>';
+                                        }
+                                    } ?>
+                                </select>
+                            </div>
                             <div class="col-md-6">
                                 <label for="Address" class="FrmLbl">Address</label>
                                 <textarea class="form-control InptBx" rows="5" id="Address" name="Address" placeholder="Enter Address"></textarea>
@@ -367,12 +378,16 @@
                         $("#DateOfJoining").val(data.employee.DateOfJoining);
                         $("#JobType").val(data.employee.JobType);
                         $('#PreviousExp option[value="'+data.employee.PreviousExp+'"]').prop('selected', true);
-                        $("#Address").val(data.employee.Address);                        
+                        $('#Shift option[value="'+data.employee.Shift+'"]').prop('selected', true);
+                        $("#Address").val(data.employee.Address);   
+                        document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
                     });
+                }else{
+                    document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
                 }
-                document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
             } else {
                 $('#AddOrUpdateEmployeeForm input, #AddOrUpdateEmployeeForm select, #AddOrUpdateEmployeeForm textarea').val('');
+                $('#BrID').selectpicker('refresh');
                 document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr Hide');
             }
         }
@@ -409,6 +424,7 @@
                 "BrID[]": "required",
                 DeptID: "required",
                 JobTID: "required",
+                Shift: "required",
                 Email: {
                     required: true,
                     normalizer: function(value) {
@@ -430,6 +446,7 @@
                 "BrID[]": "Please select Branches",
                 DeptID: "Please select Department",
                 JobTID: "Please select Job Title",
+                Shift: "Please select Job Title",
                 Email: {
                     required: "Please enter Email.",
                     email: "Please enter valid Email.",
