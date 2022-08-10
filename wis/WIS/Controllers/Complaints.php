@@ -394,29 +394,6 @@ class Complaints extends BaseController
         exit;
 	}
 
-	//Get complaint for edit
-	public function get_complaint(){
-        $complaint_data = $this->AuthModel->callwebservice(SAURL."getcomplaint", @$this->request->getVar(), 1, 1);
-		$data['complaint'] = [];
-		if (@$complaint_data->status == "Success") {
-			$data['complaint'] = @$complaint_data->data->{0};
-			$data['Images'] = @$complaint_data->data->Images;
-		}
-		$data['departments'] = [];
-		$departments_array = array(
-			"DeptName" => "",
-			"BrID" => "",
-			"SortType" => "department",
-		);
-		$departments_data = $this->AuthModel->callwebservice(SAURL."alldepartments", $departments_array, 1, 1);
-		if (@$departments_data->status == "Success") {
-			$data['departments'] = @$departments_data->data;
-		}
-		header('Content-type: application/json');
-        print json_encode($data, JSON_PRETTY_PRINT);
-        exit;
-	}
-
 	//Get employees by departments for dropdown
 	public function getemployeesbydepartment(){
         $employees_data = $this->AuthModel->callwebservice(SAURL."employeesbydepartment", @$this->request->getVar(), 1, 1);
@@ -429,12 +406,38 @@ class Complaints extends BaseController
         exit;
 	}
 
-	//Update Complaint
-	public function update_complaint(){
+	//Update Complaint(Assign and In Process)
+	public function update_complaint($ComID, $Mode){
+		$complaint_array = array(
+			"ComID" => $ComID
+		);
+		$complaint_data = $this->AuthModel->callwebservice(SAURL."getcomplaint", $complaint_array, 1, 1);
+		$data['complaint'] = [];
+		if (@$complaint_data->status == "Success") {
+			$data['complaint'] = @$complaint_data->data->{0};
+			$data['images'] = @$complaint_data->data->Images;
+		}
+		$data['departments'] = [];
+		$departments_array = array(
+			"DeptName" => "",
+			"BrID" => "",
+			"SortType" => "department",
+		);
+		$departments_data = $this->AuthModel->callwebservice(SAURL."alldepartments", $departments_array, 1, 1);
+		if (@$departments_data->status == "Success") {
+			$data['departments'] = @$departments_data->data;
+		}
+		$data['ComID'] = $ComID;
+		$data['Mode'] = $Mode;
 		if ($this->request->getMethod() == 'post') {
             $complaint_array =  @$this->request->getVar();
 			$complaint_data = $this->AuthModel->callwebservice(SAURL."updatecomplaint", $complaint_array, 1, 1);
-			echo json_encode($complaint_data);
+			if($complaint_data->status == 'Success'){
+				return redirect()->to(base_url('/complaintList'))->with('SusMsg', $complaint_data->msg);
+			}else{
+				return redirect()->to(base_url('/complaints/update_complaint/'.$ComID.'/'.$Mode))->with('ErrMsg', $complaint_data->msg);
+			}
         }
+		echo view('Modules\WIS\Views\complaint\UpdateComplaint', $data);
 	}
 }

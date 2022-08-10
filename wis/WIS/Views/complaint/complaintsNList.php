@@ -222,10 +222,18 @@
                     </div>
                 </div>
             </div>
+            <?php if(session('SusMsg') != '')
+                echo '<div class="alert alert-success alert-dismissible w-75 m-auto" role="alert" class="">
+                    '.session('SusMsg').'
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            ?>
             <div class="InnrPgBgHldr">
-                <div class="AddCmplt">
-                    <a href="<?= base_url('complaints/add_complaint') ?>" class="AddNewRcrd">Add Complaint</a>
-                </div>
+                <?php if(session('DeptName') == 'Admin')
+                    echo '<div class="AddCmplt">
+                        <a href="'.base_url('complaints/add_complaint').'" class="AddNewRcrd">Add Complaint</a>
+                    </div>';
+                ?>
                 <div class="TableHldr">
                     <table class="AppDataTbl">
                         <tr class="Hdr">
@@ -273,7 +281,7 @@
                             $i = 1;
                             foreach($complaints->List as $complaint){
                                 echo '<tr ';
-                                if($complaint->AssignedBy == '')
+                                if($complaint->ComplaintStatus == '1') 
                                     echo 'class="Rd"';
                                 echo '>
                                     <td>
@@ -314,7 +322,7 @@
                                     </td>
                                     <td>';
                                         if($complaint->ComplaintStatus == '2')
-                                            echo '<span id="LnkBtn1" onclick="javascript:InprocessComplaint('.$complaint->ComID.');" class="BtnLnk Prcss">In Process</span>';
+                                            echo '<span id="LnkBtn1" onclick="window.location.href='."'".base_url('/complaints/update_complaint/'.$complaint->ComID.'/2')."'".'" class="BtnLnk Prcss">In Process</span>';
                                         else if($complaint->ComplaintStatus == '3')
                                             echo '<span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>';
                                         else
@@ -322,7 +330,7 @@
                                     echo '</td>
                                     <td>';
                                         if($complaint->ComplaintStatus == '1') 
-                                            echo '<span id="LnkBtn1" onclick="javascript:AssignComplaint('.$complaint->ComID.');" class="BtnLnk">Assign Complaint</span>';  
+                                            echo '<span id="LnkBtn1" onclick="window.location.href='."'".base_url('/complaints/update_complaint/'.$complaint->ComID.'/1')."'".'" class="BtnLnk">Assign Complaint</span>';  
                                         else
                                             echo '<span class="DataTxt">'.$complaint->AssignedBy.'</span>';
                                     echo '</td>
@@ -333,18 +341,6 @@
                     </table>
                 </div>
             </div>
-        </div>
-    </div>
-    <div id="AppMdlHldr" class="AppModalHldr Hide">
-        <div class="AppModalInnrHldr Smllr">
-            <form action="" method="post" id="AssingComplaint">
-            </form>
-        </div>
-    </div>
-    <div id="AppMdlHldrTwo" class="AppModalHldr Hide">
-        <div class="AppModalInnrHldr Smllr">
-            <form action="" method="post" id="InprocessComplaint">
-            </form>
         </div>
     </div>
     <div id="AppMdlHldrThree" class="AppModalHldr Hide">
@@ -458,7 +454,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script>
         $('#ComCatID').change(function(){
             if($(this).val() != ''){
@@ -501,152 +496,6 @@
                         rooms += '<option value="'+field.RID+'">'+field.RoomName+'</option>';
                     });
                     $('#RID').html(rooms);
-                });
-            }
-        });
-        function AssignComplaint(ComID){
-            if (document.getElementById('AppMdlHldr').getAttribute('class') == 'AppModalHldr Hide') {
-                $.post("<?= base_url('/complaints/get_complaint') ?>", {ComID: ComID}, function(data, status){
-                    var complaint = '<input type="hidden" name="ComID" value="'+ComID+'"/><input type="hidden" name="Priority" value="'+data.complaint.ComplaintPriority+'"/><div class="ModalTtlHldr"><div class="ModalTtlHldr"><span class="SctnTtl">Assigned Complaint</span><span class="FtrTtl">'+data.complaint.CategoryName+'</span><span id="AppMdlClsBtn" onclick="javascript:AssignComplaint('+ComID+');" class="ModalClsBtn"></span></div><div class="ModalFnctnHldr"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Date</span><span class="InnrTxt">'+data.complaint.CreatedDate+'</span></div><div class="col-md-2"><span class="InnrTtl">Building</span><span class="InnrTxt">'+data.complaint.BuildingName+'</span></div><div class="col-md-2"><span class="InnrTtl">Block</span><span class="InnrTxt">'+data.complaint.BlockName+'</span></div><div class="col-md-1"><span class="InnrTtl">Floor</span><span class="InnrTxt">'+data.complaint.FloorName+'</span></div><div class="col-md-1"><span class="InnrTtl">Room</span><span class="InnrTxt">'+data.complaint.RoomName+'</span></div><div class="col-md-2"><span class="InnrTtl">Complaint by</span><span class="InnrTxt">';
-                    if(data.complaint.empid == 0) 
-                        complaint += 'Patient';
-                    else 
-                        complaint += 'Employee';
-                    complaint += '</span></div><div class="col-md-2"><span class="InnrTtl">Complaint Time</span><span class="InnrTxt Bad">03:00 PM (+2 Hour)</span></div></div></div></div><div class="ModalCntntHldr"><div class="alert alert-success" id="InfoDiv"></div><div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Patient Name</span><span class="InnrTxt">'+data.complaint.Name+'</span></div><div class="col-md-2"><span class="InnrTtl">Contact No.</span><span class="InnrTxt">+91 '+data.complaint.Mobile+'</span></div><!--<div class="col-md-2"><span class="InnrTtl">Patient ID</span><span class="InnrTxt">'+data.complaint.CategoryName+'</span></div>--><div class="col-md-5"><span class="InnrTtl">Comment</span><span class="InnrTxt">'+data.complaint.ComplaintRemarks+'</span></div><div class="col-md-3"><select name="DeptID" id="DeptID" class="form-select InptBx"><option disabled selected value hidden>Department</option>';
-                    $.each(data.departments, function (i, field) {
-                        complaint += '<option value="'+field.DeptID+'">'+field.DeptName+'</option>';
-                    });
-                    complaint += '</select></div></div></div></div><div class="TableHldr" id="EmpTbl"></div><!--<div class="ModalFnctnHldr" style="background: #fff;"><div class="container-fluid"><div class="row"><div class="col-md-12"><span class="InnrTtl">Recommended To</span><span class="InnrTxt">N. Raju (EMP-1001)</span></div></div></div></div>--><div class="CmpltImgBlk"><div class="container-fluid"><div class="col-md-12">';
-                    $.each(data.Images, function (i, field) {
-                        complaint += '<img src="'+field.Image+'" class="CmpltImg"/>';
-                    });
-                    complaint += '</div></div></div><div class="CmpltDescBlk"><div class="container-fluid"><div class="col-md-12"><p><span class="CmpltDesHed">Description : </span> '+data.complaint.ComplaintRemarks+'</p></div></div></div><div class="DvBtnHldr"><button type="submit" class="btn btn-primary SbmtBtn">Assign</button></div></div></div>';    
-                    $("#AppMdlHldr #AssingComplaint").html(complaint);            
-                    document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
-                });
-            } else {
-                document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr Hide');
-            }
-        }
-        function InprocessComplaint(ComID){
-            if (document.getElementById('AppMdlHldrTwo').getAttribute('class') == 'AppModalHldr Hide') {
-                $.post("<?= base_url('/complaints/get_complaint') ?>", {ComID: ComID}, function(data, status){
-                    var inprocess = '<input type="hidden" name="ComID" value="'+ComID+'"/><div class="ModalTtlHldr"><div class="ModalTtlHldr"><span class="SctnTtl">Assigned Complaint</span><span class="FtrTtl">'+data.complaint.CategoryName+'</span><span id="AppMdlClsBtn" onclick="javascript:ModalPopupTwo('+ComID+');" class="ModalClsBtn"></span></div><div class="ModalFnctnHldr"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Date</span><span class="InnrTxt">'+data.complaint.CreatedDate+'</span></div><div class="col-md-2"><span class="InnrTtl">Building</span><span class="InnrTxt">'+data.complaint.BuildingName+'</span></div><div class="col-md-2"><span class="InnrTtl">Block</span><span class="InnrTxt">'+data.complaint.BlockName+'</span></div><div class="col-md-1"><span class="InnrTtl">Floor</span><span class="InnrTxt">'+data.complaint.FloorName+'</span></div><div class="col-md-1"><span class="InnrTtl">Room</span><span class="InnrTxt">'+data.complaint.RoomName+'</span></div><div class="col-md-2"><span class="InnrTtl">Complaint by</span><span class="InnrTxt">';
-                    if(data.complaint.empid == 0) 
-                        inprocess += 'Patient';
-                    else 
-                        inprocess += 'Employee';
-                    inprocess += '</span></div><div class="col-md-2"><span class="InnrTtl">Complaint Time</span><span class="InnrTxt Bad">03:00 PM (+2 Hour)</span></div></div></div></div><div class="ModalCntntHldr"><div class="alert alert-success" id="InfoDiv1"></div><div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Patient Name</span><span class="InnrTxt">'+data.complaint.Name+'</span></div><div class="col-md-2"><span class="InnrTtl">Contact No.</span><span class="InnrTxt">+91 '+data.complaint.Mobile+'</span></div><!--<div class="col-md-2"><span class="InnrTtl">Patient ID</span><span class="InnrTxt">AA88565-55615</span></div>--><div class="col-md-6"><span class="InnrTtl">Comment</span><span class="InnrTxt">'+data.complaint.ComplaintRemarks+'</span></div></div></div></div><div class="ModalFnctnHldr HeightAuto" style="background: #ecffe6; border-color: #81e562;"><div class="container-fluid"><div class="row"><div class="col-md-4"><span class="InnrTtl">Assigned to</span><span class="InnrTxt">'+data.complaint.AssignedBy+'</span></div><div class="col-md-4"><span class="InnrTtl">Assigned time</span><span class="InnrTxt">'+data.complaint.UpdatedDate+'</span></div></div></div></div><div class="ModalFnctnHldr" style="background: #fff;"><div class="container-fluid"><div class="row"><div class="col-md-6"><input type="text" class="form-control InptBx" id="Note" name="Note" placeholder="Notes"></div><div class="col-md-3"><span class="InnrTtl">Status</span><div class="form-check"><input class="form-check-input" type="radio" name="ComplaintStatus" value="2" id="ComplaintStatus1"><label class="form-check-label" for="ComplaintStatus1">Pending</label></div></div><div class="col-md-3"><span class="InnrTtl">&nbsp;</span><div class="form-check"><input class="form-check-input" type="radio" name="ComplaintStatus" value="3" id="ComplaintStatus2"><label class="form-check-label" for="ComplaintStatus2">Complete</label></div></div></div></div></div><div class="CmpltImgBlk"><div class="container-fluid"><div class="col-md-12">';
-                    $.each(data.Images, function (i, field) {
-                        inprocess += '<img src="'+field.Image+'" class="CmpltImg"/>';
-                    });
-                    inprocess += '</div></div></div><div class="CmpltDescBlk"><div class="container-fluid"><div class="col-md-12"><p><span class="CmpltDesHed">Description : </span> '+data.complaint.ComplaintRemarks+'</p></div></div></div><div class="DvBtnHldr"><button type="submit" onclick="" class="btn btn-primary SbmtBtn">Save</button></div></div></div>';   
-                    $("#AppMdlHldrTwo #InprocessComplaint").html(inprocess);            
-                    document.getElementById('AppMdlHldrTwo').setAttribute('class', 'AppModalHldr');
-                });
-            } else {
-                document.getElementById('AppMdlHldrTwo').setAttribute('class', 'AppModalHldr Hide');
-            }
-        }
-        $(document).on("change", "#DeptID", function(){
-            if($(this).val() != ''){
-                $.post("<?= base_url('/complaints/getemployeesbydepartment') ?>", {DeptID: $(this).val()}, function(data, status){
-                    var employees = '<table class="AppDataTbl"><tr class="Hdr"><th></th><th><span class="DataTtl">Emp. ID.</span></th><th><span class="DataTtl">Employee Name</span></th><th><span class="DataTtl">Contact No.</span></th><th><span class="DataTtl">Shift Timing</span></th><th><span class="DataTtl">Assigned</span></th><th><span class="DataTtl">In Progress</span></th><th><span class="DataTtl">Total Task Completed</span></th></tr>';
-                    if(data != null){
-                        $.each(data, function (i, field) {
-                            employees += '<tr><td class="Cntr"><div class="form-check"><input class="form-check-input" type="radio" name="EmpID" value="'+field.EmpID+'"></div></td><td><span class="DataTxt">'+field.EmpID+'</span></td><td><span class="DataTxt">'+field.EmpName+'</span></td><td><span class="DataTxt">+91 '+field.Mobile+'</span></td><td><span class="DataTxt">'+field.Shift+'</span></td><td><span class="DataTxt">'+field.Assigned+'</span></td><td><span class="DataTxt">'+field.InProcess+'</span></td><td><span class="DataTxt">'+field.Completed+'</span></td></tr>';
-                        });
-                    }else{
-                        employees += '<tr><td colspan="7" style="text-align:center"><span class="DataTxt">No data found.</span></td></tr>';
-                    }
-                    employees += '</table>';
-                    $('#EmpTbl').html(employees);
-                });
-            }
-        });
-        $("form[id='AssingComplaint']").validate({
-            ignore: [],
-            rules: {
-                DeptID: "required",
-                EmpID: "required",
-            },
-            messages: {
-                EmpID: "Please select Employee",
-                DeptID: "Please select Department"
-            },
-            
-            errorPlacement: function(error, element) {
-                if (element.attr("name") == "EmpID") {
-                    error.insertAfter("#EmpTbl");
-                } else {
-                    error.insertAfter(element);
-                }
-            },
-            submitHandler: function(form) {
-                var data = new FormData($('#AssingComplaint')[0]);
-                $.ajax({
-                    url: '<?= base_url('/complaints/update_complaint'); ?>',
-                    type: "POST",
-                    data: data,
-                    mimeType: "multipart/form-data",
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    error: function(request, response) {
-                        console.log(request);
-                    },
-                    success: function(result) {
-                        var obj = jQuery.parseJSON(result);
-                        if (obj.status == 'Success')
-                            $("#InfoDiv").addClass('alert-success').removeClass('alert-danger');
-                        else
-                            $("#InfoDiv").addClass('alert-danger').removeClass('alert-success');
-                        $("#InfoDiv").html(obj.msg);
-                        $("#InfoDiv").show();
-                        setTimeout(function() {
-                            $("#InfoDiv").hide();
-                        }, 3000);
-                        if (obj.status == 'Success')
-                            window.location.href = window.location.href;
-                    }
-                });
-            }
-        });
-        $("form[id='InprocessComplaint']").validate({
-            ignore: [],
-            rules: {
-                ComplaintStatus: "required"
-            },
-            messages: {
-                ComplaintStatus: "Please select Status"
-            },
-            submitHandler: function(form) {  
-                var data = new FormData($('#InprocessComplaint')[0]);
-                $.ajax({
-                    url: '<?= base_url('/complaints/update_complaint'); ?>',
-                    type: "POST",
-                    data: data,
-                    mimeType: "multipart/form-data",
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    error: function(request, response) {
-                        console.log(request);
-                    },
-                    success: function(result) {
-                        var obj = jQuery.parseJSON(result);
-                        if (obj.status == 'Success')
-                            $("#InfoDiv1").addClass('alert-success').removeClass('alert-danger');
-                        else
-                            $("#InfoDiv1").addClass('alert-danger').removeClass('alert-success');
-                        $("#InfoDiv1").html(obj.msg);
-                        $("#InfoDiv1").show();
-                        setTimeout(function() {
-                            $("#InfoDiv1").hide();
-                        }, 3000);
-                        if (obj.status == 'Success')
-                            window.location.href = window.location.href;
-                    }
                 });
             }
         });

@@ -8528,13 +8528,16 @@ div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.LdrPrfDtlsHldr div.
     text-align: center;
 }
 
-div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.DvBtnHldr {
+div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.DvBtnHldr,
+div.AssBtnHldr {
     border-top: 1px solid #ddd;
     padding: 10px;
 }
-
-
-div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.DvBtnHldr .SbmtBtn {
+div.AssBtnHldr {
+    text-align: center;
+}
+div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.DvBtnHldr .SbmtBtn,
+div.AssBtnHldr .SbmtBtn{
     font: 600 12px/100% 'Open Sans';
     color: #fff;
     padding: 12px 40px 12px 12px;
@@ -8546,8 +8549,11 @@ div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.DvBtnHldr .SbmtBtn 
     height: 40px;
     position: relative;
 }
-
-div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.DvBtnHldr .SbmtBtn:before {
+div.AssBtnHldr .SbmtBtn{
+    margin: 0;
+}
+div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.DvBtnHldr .SbmtBtn:before,
+div.AssBtnHldr .SbmtBtn:before {
     content: '';
     background: transparent url(../Images/AppIcon-Arrow-White.svg) no-repeat center center;
     background-size: 10px;
@@ -8560,12 +8566,14 @@ div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.DvBtnHldr .SbmtBtn:
     transition: 0.3s;
 }
 
-div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.DvBtnHldr .SbmtBtn:hover:before {
+div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.DvBtnHldr .SbmtBtn:hover:before,
+div.AssBtnHldr .SbmtBtn:hover:before {
     right: 10px;
     transition: 0.3s;
 }
 
-div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.DvBtnHldr .SbmtBtn:focus {
+div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.DvBtnHldr .SbmtBtn:focus,
+div.AssBtnHldr .SbmtBtn:focus {
     box-shadow: none;
 }
 
