@@ -11,29 +11,27 @@ class Departments extends BaseController
 			header('Location: ' . base_url('/'));
 			exit;
 		}
+		$branches_data = $this->AuthModel->callwebservice(SAURL."branches", "", 1, 1);
+        $this->data['branches'] = [];
+        if (@$branches_data->status == "Success") {
+            $this->data['branches'] = @$branches_data->data;
+        }
 	}
 	//get departments for list view
 	public function index(){
-		$data['DepartmentName'] = @$this->request->getVar('DepartmentName');
-		$data['Branch'] = @$this->request->getVar('Branch');
-		$data['SortType'] = @$this->request->getVar('SortType');
+		$this->data['DepartmentName'] = @$this->request->getVar('DepartmentName');
+		$this->data['Branch'] = @$this->request->getVar('Branch');
+		$this->data['SortType'] = @$this->request->getVar('SortType');
 		$departments_array = array(
-			"DeptName" => $data['DepartmentName'],
-			"BrID" => $data['Branch'],
-			"SortType" => $data['SortType'],
+			"DeptName" => $this->data['DepartmentName'],
+			"BrID" => $this->data['Branch'],
+			"SortType" => $this->data['SortType'],
 		);
 		$departments_data = $this->AuthModel->callwebservice(SAURL."alldepartments", $departments_array, 1, 1);
-		$data['departments'] = [];
+		$this->data['departments'] = [];
 		if (@$departments_data->status == "Success") {
-			$data['departments'] = @$departments_data->data;
+			$this->data['departments'] = @$departments_data->data;
 		}
-
-		//Get Branches For Dropdowns
-        $branches_data = $this->AuthModel->callwebservice(SAURL."branches", "", 1, 1);
-        $data['branches'] = [];
-        if (@$branches_data->status == "Success") {
-            $data['branches'] = @$branches_data->data;
-        }
 
 		//For Download CSV File
 		if(isset($_POST['Download'])){
@@ -42,8 +40,8 @@ class Departments extends BaseController
 			header("Content-Disposition: attachment; filename=$filename");
 			header("Content-Type: application/csv; ");
 			$departments = [];
-			if($data['departments']){
-				foreach($data['departments'] as $key => $dept){
+			if($this->data['departments']){
+				foreach($this->data['departments'] as $key => $dept){
 					$departments[$key] = [
 						'SINO' => $key+1,
 						'DeptName' => @$dept->DeptName,
@@ -62,7 +60,7 @@ class Departments extends BaseController
 			exit;
 		}
 
-		echo view('Modules\WIS\Views\attendence\ListViewDepartment', $data);
+		echo view('Modules\WIS\Views\attendence\ListViewDepartment', $this->data);
 	}
 	//Get department for edit
 	public function get_department(){

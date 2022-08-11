@@ -139,7 +139,7 @@
                 <ul class="PrflHdrLnk">
                     <li>
                         <div class="PrfHldr">
-                            <img src="Images/UserImg.jpg" class="UserImg" />
+                            <img src="<?= session('ProfilePic') ?>" class="UserImg" />
                             <span class="UsrNme"><?= session('EmpName'); ?></span>
                         </div>
                     </li>
@@ -163,25 +163,17 @@
                     <div class="col-2"><a href="Dashboard.html" class="BackBtn"></a></div>
                     <div class="col-10">
                         <div class="PrptyDrpDwn">
-                            <span class="PrptyNm">FirstMedic Banjara</span>
+                            <span class="PrptyNm"><?= session('OrgName'); ?></span>
                             <div class="DrpDwnHldr">
                                 <ul class="DrpDwnLst">
-                                    <li>
-                                        <a href="HospitalSelection.html" class="InnrPrptyNm">FirstMedic Banjara</a>
-                                        <span class="InnrPrptyAddrs">Road No. 12, Banjara Hills, Hyderabad, Telangana.</span>
-                                    </li>
-                                    <li>
-                                        <a href="HospitalSelection.html" class="InnrPrptyNm">FirstMedic Banjara</a>
-                                        <span class="InnrPrptyAddrs">Road No. 12, Banjara Hills, Hyderabad, Telangana.</span>
-                                    </li>
-                                    <li>
-                                        <a href="HospitalSelection.html" class="InnrPrptyNm">FirstMedic Banjara</a>
-                                        <span class="InnrPrptyAddrs">Road No. 12, Banjara Hills, Hyderabad, Telangana.</span>
-                                    </li>
-                                    <li>
-                                        <a href="HospitalSelection.html" class="InnrPrptyNm">FirstMedic Banjara</a>
-                                        <span class="InnrPrptyAddrs">Road No. 12, Banjara Hills, Hyderabad, Telangana.</span>
-                                    </li>
+                                    <?php if(!empty($branches)){
+                                        foreach($branches as $branch){
+                                            echo '<li>
+                                                <a href="'.base_url().'/HospitalAdmin/hospitalSelection" class="InnrPrptyNm">'.$branch->OrgName.' '.$branch->BrName.'</a>
+                                                <span class="InnrPrptyAddrs">'.$branch->Address.'</span>
+                                            </li>';
+                                        }
+                                    } ?>
                                 </ul>
                             </div>
                         </div>

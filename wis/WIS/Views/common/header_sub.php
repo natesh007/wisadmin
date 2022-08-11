@@ -2,25 +2,17 @@
         <div class="ContainerLeft">
             <div class="PrprtyPnl">
                 <div class="PrptyDrpDwn">
-                    <span class="PrptyNm">FirstMedic Banjara</span>
+                    <span class="PrptyNm"><?= session('OrgName'); ?></span>
                     <div class="DrpDwnHldr">
                         <ul class="DrpDwnLst">
-                            <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="InnrPrptyNm">FirstMedic Banjara</a>
-                                <span class="InnrPrptyAddrs">Road No. 12, Banjara Hills, Hyderabad, Telangana.</span>
-                            </li>
-                            <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="InnrPrptyNm">FirstMedic Banjara</a>
-                                <span class="InnrPrptyAddrs">Road No. 12, Banjara Hills, Hyderabad, Telangana.</span>
-                            </li>
-                            <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="InnrPrptyNm">FirstMedic Banjara</a>
-                                <span class="InnrPrptyAddrs">Road No. 12, Banjara Hills, Hyderabad, Telangana.</span>
-                            </li>
-                            <li>
-                                <a href="<?php echo base_url(); ?>HospitalAdmin/hospitalSelection" class="InnrPrptyNm">FirstMedic Banjara</a>
-                                <span class="InnrPrptyAddrs">Road No. 12, Banjara Hills, Hyderabad, Telangana.</span>
-                            </li>
+                            <?php if(!empty($branches)){
+                                foreach($branches as $branch){
+                                    echo '<li>
+                                        <a href="'.base_url().'/HospitalAdmin/hospitalSelection" class="InnrPrptyNm">'.$branch->OrgName.' '.$branch->BrName.'</a>
+                                        <span class="InnrPrptyAddrs">'.$branch->Address.'</span>
+                                    </li>';
+                                }
+                            } ?>
                         </ul>
                     </div>
                 </div>

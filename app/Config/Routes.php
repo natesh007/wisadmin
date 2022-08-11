@@ -37,7 +37,7 @@ $routes->add('/login', 'Auth::login',['namespace' => 'Modules\Auth\Controllers']
 $routes->add('/logout', 'Auth::logout', ['namespace' => 'Modules\Auth\Controllers']);
 $routes->add('/loginAjax', 'Auth::loginAjax', ['namespace' => 'Modules\Auth\Controllers']);
 $routes->add('/dashboard', 'Home::dashboard',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/hospitalSelection', 'Home::hospitalSelection',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/HospitalAdmin/hospitalSelection', 'Home::hospitalSelection',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/checklistSubDetails', 'Home::checklistSubDetails',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/checklist', 'Home::checklist',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/checklistDetails', 'Home::checklistDetails',['namespace' => 'Modules\WIS\Controllers']);
@@ -108,6 +108,7 @@ $routes->add('/complaints/getfloorsbyblock', 'Complaints::getfloorsbyblock',['na
 $routes->add('/complaints/getroomsbyfloor', 'Complaints::getroomsbyfloor',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/getcomplainttypesbycomplaintcategory', 'Complaints::getcomplainttypesbycomplaintcategory',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/getemployeesbydepartment', 'Complaints::getemployeesbydepartment',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/getcomplaint', 'Complaints::getcomplaint',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/update_complaint/(:num)/(:num)', 'Complaints::update_complaint/$1/$2',['namespace' => 'Modules\WIS\Controllers']);
 
 /**

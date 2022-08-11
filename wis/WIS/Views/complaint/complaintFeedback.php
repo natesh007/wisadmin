@@ -122,7 +122,7 @@
                     <div class="row">
                         <div class="col-md-1">
                             <span class="InnrTtl">Date</span>
-                            <span class="InnrTxt">05-12-2021</span>
+                            <span class="InnrTxt"><?= date('d-m-Y') ?></span>
                         </div>
                         <div class="col-md-2">
                             <select class="form-select InptBx" aria-label="Default select example">

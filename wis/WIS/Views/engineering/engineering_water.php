@@ -210,7 +210,7 @@
                 <ul class="PrflHdrLnk">
                     <li>
                         <div class="PrfHldr">
-                            <img src="Images/UserImg.jpg" class="UserImg" />
+                            <img src="<?= session('ProfilePic') ?>" class="UserImg" />
                             <span class="UsrNme"><?= session('EmpName'); ?></span>
                         </div>
                     </li>

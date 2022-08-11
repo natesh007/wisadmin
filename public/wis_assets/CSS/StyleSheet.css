@@ -7926,4 +7926,9 @@ div#InfoDiv, div#ErrDiv, div#InfoDiv1{
       top: 0;
       width: 100%;
     }
-  }
+}
+img#Profile{
+    border-radius: 50%;
+    margin-top: 3px;
+    display: none;
+}

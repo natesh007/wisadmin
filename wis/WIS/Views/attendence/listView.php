@@ -68,7 +68,7 @@
                         <form action="" method="post">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <select class="form-select InptBx" aria-label="Default select example" name="Department">
+                                    <select class="form-select InptBx" aria-label="Department" name="Department">
                                         <option disabled selected value hidden>Service Department</option>
                                         <option value="">All</option>
                                         <?php if(!empty($departments)){
@@ -83,7 +83,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <select class="form-select InptBx" aria-label="Default select example" name="JobTitle">
+                                    <select class="form-select InptBx" aria-label="JobTitle" name="JobTitle">
                                         <option disabled selected value hidden>Job Title</option>
                                         <option value="">All</option>
                                         <?php if(!empty($jobtitles)){
@@ -96,17 +96,27 @@
                                     </select>
                                 </div>
                                 <div class="col-md-2 BttnHldr">
-                                    <select class="form-select InptBx" aria-label="Default select example" name="JoiningDate">
+                                    <select class="form-select InptBx" aria-label="JoiningDate" name="JoiningDate">
                                         <option disabled selected value hidden>Joining To Date</option>
-                                        <option value="1" <?=($JoiningDate==1?'selected':'')?>>6 Months</option>
-                                        <option value="2" <?=($JoiningDate==2?'selected':'')?>>1 Year</option>
-                                        <option value="3" <?=($JoiningDate==3?'selected':'')?>>All</option>
+                                        <option value="3">All</option>
+                                        <option value="1" <?= ($JoiningDate == '1') ? 'selected' : ''; ?>>6 Months</option>
+                                        <option value="2" <?= ($JoiningDate == '2') ? 'selected' : ''; ?>>1 Year</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2 BttnHldr">
+                                    <select class="form-select InptBx" aria-label="Status" name="Status">
+                                        <option disabled selected value hidden>Status</option>
+                                        <option value="">All</option>
+                                        <option value="1" <?= ($Status == '1') ? 'selected' : ''; ?>>Active</option>
+                                        <option value="0" <?= ($Status == '0') ? 'selected' : ''; ?>>Inactive</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4 BttnHldr">
-                                    <button type="submit" class="btn btn-primary SbmtBtn">Submit</button>
-                                    <button type="button" class="btn btn-primary FnctnBtn Prnt" onclick="printemployees()">Print</button>
-                                    <button type="submit" class="btn btn-primary FnctnBtn Dwnld" name="Download">Download</button>
+                                    <button type="submit" class="btn btn-primary SbmtBtn m-0">Submit</button>
+                                    &nbsp;
+                                    <button type="submit" class="btn btn-primary FnctnBtn Dwnld m-0" name="DownloadXL">Download XL</button>
+                                    &nbsp;
+                                    <button type="submit" class="btn btn-primary FnctnBtn Dwnld m-0" name="DownloadPDF">Download PDF</button>
                                 </div>
                             </div>
                         </form>
@@ -221,7 +231,7 @@
                 </div>
                 <div class="ModalCntntHldr AddEmpBlk" style="top:60px">
                     <div class="alert alert-success alert-dismissible" id="InfoDiv"></div>
-                    <form method="post" id="AddOrUpdateEmployeeForm">
+                    <form method="post" id="AddOrUpdateEmployeeForm" enctype="multipart/form-data">
                         <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="EmpName" class="FrmLbl">Employee Name</label>
@@ -315,6 +325,13 @@
                                 <textarea class="form-control InptBx" rows="5" id="Address" name="Address" placeholder="Enter Address"></textarea>
                             </div>
                         </div>
+                        <div class="formgrp row">
+                            <div class="col-md-6">
+                                <label for="ProfilePic" class="FrmLbl">Profile Pic</label>
+                                <input type="file" class="form-control InptBx" name="ProfilePic" id="ProfilePic" style="padding: 10px"/>
+                                <img src="" id="Profile"/>
+                            </div>
+                        </div>
                         <div class="text-center SavBtnBlk">
                             <button type="submit" class="btn btn-primary SavBtn">Submit</button>
                         </div>
@@ -380,9 +397,14 @@
                         $('#PreviousExp option[value="'+data.employee.PreviousExp+'"]').prop('selected', true);
                         $('#Shift option[value="'+data.employee.Shift+'"]').prop('selected', true);
                         $("#Address").val(data.employee.Address);   
+                        if(data.employee.ProfilePic != ''){
+                            $("#Profile").show();
+                            $("#Profile").attr('src', data.employee.ProfilePic);
+                        }
                         document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
                     });
                 }else{
+                    $("#Profile").hide();
                     document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
                 }
             } else {
@@ -425,6 +447,7 @@
                 DeptID: "required",
                 JobTID: "required",
                 Shift: "required",
+                Gender: "required", 
                 Email: {
                     required: true,
                     normalizer: function(value) {
@@ -447,6 +470,7 @@
                 DeptID: "Please select Department",
                 JobTID: "Please select Job Title",
                 Shift: "Please select Job Title",
+                Gender: "Please select Gender",
                 Email: {
                     required: "Please enter Email.",
                     email: "Please enter valid Email.",
@@ -491,8 +515,12 @@
                 });
             }
         });
-        function printemployees(){
-            window.print();
+        ProfilePic.onchange = evt => {
+            const [file] = ProfilePic.files
+            if (file) {
+                $("#Profile").show();
+                Profile.src = URL.createObjectURL(file)
+            }
         }
     </script>
 </body>

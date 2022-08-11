@@ -11,68 +11,68 @@ class Employees extends BaseController
 			header('Location: ' . base_url('/'));
 			exit;
 		}
+		$branches_data = $this->AuthModel->callwebservice(SAURL."branches", "", 1, 1);
+        $this->data['branches'] = [];
+        if (@$branches_data->status == "Success") {
+            $this->data['branches'] = @$branches_data->data;
+        }
 	}
 	//get employees for list view
 	public function index(){
 		//Get Employees
-		$data['Department'] = @$this->request->getVar('Department');
-		$data['JobTitle'] = @$this->request->getVar('JobTitle');
-		$data['JoiningDate'] = @$this->request->getVar('JoiningDate');
+		$this->data['Department'] = @$this->request->getVar('Department');
+		$this->data['JobTitle'] = @$this->request->getVar('JobTitle');
+		$this->data['JoiningDate'] = @$this->request->getVar('JoiningDate');
+		$this->data['Status'] = @$this->request->getVar('Status');
 		$employees_array = array(
-			"DeptID" => $data['Department'],
-			"JobTID"  => $data['JobTitle'],
-			"JoiningDate"  => $data['JoiningDate']
+			"DeptID" => $this->data['Department'],
+			"JobTID"  => $this->data['JobTitle'],
+			"JoiningDate"  => $this->data['JoiningDate'],
+			"Status"  => $this->data['Status']
 		);
 		$employees_data = $this->AuthModel->callwebservice(SAURL."employees", $employees_array, 1, 1);
-		$data['employees'] = [];
+		$this->data['employees'] = [];
 		if (@$employees_data->status == "Success") {
-			$data['employees'] = @$employees_data->data;
+			$this->data['employees'] = @$employees_data->data;
 		}
 
 		//Get Departments For Search Dropdown
         $departments_data = $this->AuthModel->callwebservice(SAURL."alldepartments", "", 1, 1);
-		$data['departments'] = [];
+		$this->data['departments'] = [];
 		if (@$departments_data->status == "Success") {
-			$data['departments'] = @$departments_data->data;
-		}
-
-		//Get Branches For Dropdown
-		$branches_data = $this->AuthModel->callwebservice(SAURL."branches", "", 1, 1);
-		$data['branches'] = [];
-		if (@$branches_data->status == "Success") {
-			$data['branches'] = @$branches_data->data;
+			$this->data['departments'] = @$departments_data->data;
 		}
 
 		//Get Job Titles For Dropdown
 		$jobtitles_data = $this->AuthModel->callwebservice(SAURL."jobtitles", "", 1, 1);
-		$data['jobtitles'] = [];
+		$this->data['jobtitles'] = [];
 		if (@$jobtitles_data->status == "Success") {
-			$data['jobtitles'] = @$jobtitles_data->data;
+			$this->data['jobtitles'] = @$jobtitles_data->data;
 		}
 
 		//Get Previous Experience For Dropdown
 		$prev_exp_data = $this->AuthModel->callwebservice(SAURL."experiencelist", "");
-		$data['prev_exp'] = [];
+		$this->data['prev_exp'] = [];
 		if (@$prev_exp_data->status == "Success") {
-			$data['prev_exp'] = @$prev_exp_data->data;
+			$this->data['prev_exp'] = @$prev_exp_data->data;
 		}
 
 		//Get Previous Experience For Dropdown
 		$shifts_data = $this->AuthModel->callwebservice(SAURL."shiftslist", "");
-		$data['shifts'] = [];
+		$this->data['shifts'] = [];
 		if (@$shifts_data->status == "Success") {
-			$data['shifts'] = @$shifts_data->data;
+			$this->data['shifts'] = @$shifts_data->data;
 		}
 		//For Download CSV File
-		if(isset($_POST['Download'])){
+		if(isset($_POST['DownloadXL'])){
 			$filename = 'employees.csv';
 			header("Content-Description: File Transfer");
 			header("Content-Disposition: attachment; filename=$filename");
 			header("Content-Type: application/csv; ");
 			$employees = [];
-			if($data['employees']){
+			if($this->data['employees']){
 				$i = 0;
-				foreach($data['employees'] as $employee){
+				foreach($this->data['employees'] as $employee){
 					if(@$employee->Employees){
 						foreach($employee->Employees as $emp){
 							$employees[$i] = [
@@ -106,7 +106,7 @@ class Employees extends BaseController
 			exit;
 		}
 		
-		echo view('Modules\WIS\Views\attendence\listView', $data);
+		echo view('Modules\WIS\Views\attendence\listView', $this->data);
 		
 	}
 	//Get departments based on selected organization and branches
@@ -149,6 +149,20 @@ class Employees extends BaseController
 		if ($this->request->getMethod() == 'post') {
             $employee_array =  @$this->request->getVar();
 			$employee_array['BrID'] = implode(',', $employee_array['BrID']);
+			$employee_array['ProfilePic'] = [];
+			if ($this->request->getFile('ProfilePic')->getName() != '') {
+				$orginalextension = $this->request->getFile('ProfilePic')->getClientExtension();
+				$randcharforimg = substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(8 / strlen($x)))), 1, 8);
+				$newimgname = $randcharforimg . '-' . time() . '.' . $orginalextension;
+				$this->request->getFile('ProfilePic')->move(WRITEPATH . 'uploads/ProfilePics/', $newimgname);
+				$ProfilePic = \Config\Services::image()
+					->withFile(WRITEPATH . 'uploads/ProfilePics/' . $newimgname)
+					->resize(100, 100, true, 'height')
+					->save(WRITEPATH . 'uploads/ProfilePics/Thumbs/' . $newimgname);
+				if ($ProfilePic) {
+					$employee_array['ProfilePic'] = 'writable/uploads/ProfilePics/Thumbs/' . $newimgname;
+				}
+			}
 			if(@$this->request->getVar('EmpID')){
 				$employee_data = $this->AuthModel->callwebservice(SAURL."editemployee", $employee_array, 1, 1);
 			}else{

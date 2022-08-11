@@ -193,7 +193,7 @@
                 <ul class="PrflHdrLnk">
                     <li>
                         <div class="PrfHldr">
-                            <img src="Images/UserImg.jpg" class="UserImg" />
+                            <img src="<?= session('ProfilePic') ?>" class="UserImg" />
                             <span class="UsrNme"><?= session('EmpName'); ?></span>
                         </div>
                     </li>
@@ -217,7 +217,7 @@
                     <div class="col-2"><a href="Dashboard.html" class="BackBtn"></a></div>
                     <div class="col-10">
                         <div class="PrptyDrpDwn">
-                            <span class="PrptyNm">FirstMedic Banjara</span>
+                            <span class="PrptyNm"><?= session('OrgName'); ?></span>
                             <div class="DrpDwnHldr">
                                 <ul class="DrpDwnLst">
                                     <li>

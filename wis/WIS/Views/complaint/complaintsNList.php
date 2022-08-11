@@ -118,7 +118,7 @@
                     <div class="row">
                         <div class="col-md-1">
                             <span class="InnrTtl">Date</span>
-                            <span class="InnrTxt">05-12-2021</span>
+                            <span class="InnrTxt"><?= date('d-m-Y') ?></span>
                         </div>
                         <div class="col-md-11">
                             <form action="" method="post">
@@ -324,7 +324,7 @@
                                         if($complaint->ComplaintStatus == '2')
                                             echo '<span id="LnkBtn1" onclick="window.location.href='."'".base_url('/complaints/update_complaint/'.$complaint->ComID.'/2')."'".'" class="BtnLnk Prcss">In Process</span>';
                                         else if($complaint->ComplaintStatus == '3')
-                                            echo '<span id="LnkBtn1" onclick="javascript:ModalPopupThree();" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>';
+                                            echo '<span id="LnkBtn1" onclick="javascript:ComplatedComplaint('.$complaint->ComID.');" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>';
                                         else
                                             echo '<span class="DataTxt">'.$complaint->StausName.'</span>';
                                     echo '</td>
@@ -343,113 +343,7 @@
             </div>
         </div>
     </div>
-    <div id="AppMdlHldrThree" class="AppModalHldr Hide">
-        <div class="AppModalInnrHldr Smllr">
-            <div class="ModalTtlHldr">
-                <div class="ModalTtlHldr">
-                    <span class="SctnTtl">Assigned Complaint</span>
-                    <span class="FtrTtl">Heating/ Cooling</span>
-                    <span id="AppMdlClsBtn" onclick="javascript:ModalPopupThree();" class="ModalClsBtn"></span>
-                </div>
-                <div class="ModalFnctnHldr">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Date</span>
-                                <span class="InnrTxt">06-12-2021</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Area</span>
-                                <span class="InnrTxt">Building 01</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Block</span>
-                                <span class="InnrTxt">Block A</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Room</span>
-                                <span class="InnrTxt">Wating Hall - 1</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Complaint by</span>
-                                <span class="InnrTxt">Patient</span>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="InnrTtl">Complaint Time</span>
-                                <span class="InnrTxt Bad">03:00 PM (+2 Hour)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ModalCntntHldr">
-                    <div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <span class="InnrTtl">Patient Name</span>
-                                    <span class="InnrTxt">Naveen Kumar</span>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="InnrTtl">Contact No.</span>
-                                    <span class="InnrTxt">+91 1234567890</span>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="InnrTtl">Patient ID</span>
-                                    <span class="InnrTxt">AA88565-55615</span>
-                                </div>
-                                <div class="col-md-6">
-                                    <span class="InnrTtl">Comment</span>
-                                    <span class="InnrTxt">A/c is not cooling</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ModalFnctnHldr HeightAuto" style="background: #ecffe6; border-color: #81e562;">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <span class="InnrTtl">Assigned to</span>
-                                    <span class="InnrTxt">N. Raju (EMP-1001)</span>
-                                </div>
-                                <div class="col-md-4">
-                                    <span class="InnrTtl">Assigned time</span>
-                                    <span class="InnrTxt">05:18 PM</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ModalFnctnHldr HeightAuto" style="background: #ecffe6; border-color: #81e562;">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <span class="InnrTtl">Note</span>
-                                    <span class="InnrTxt">Resolve this action immediately.</span>
-                                </div>
-                                <div class="col-md-6">
-                                    <span class="InnrTtl">Status</span>
-                                    <span class="InnrTxt">Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="CmpltImgBlk">
-                        <div class="container-fluid">
-                            <div class="col-md-12">
-                                <img src="<?= base_url('/public/wis_assets/Images/Complaint1.png'); ?>" class="CmpltImg"/>
-                                <img src="<?= base_url('/public/wis_assets/Images/Complaint2.png'); ?>" class="CmpltImg"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="CmpltDescBlk">
-                        <div class="container-fluid">
-                            <div class="col-md-12">
-                                <p><span class="CmpltDesHed">Description : </span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="AppMdlHldr" class="AppModalHldr Hide">
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
@@ -499,6 +393,55 @@
                 });
             }
         });
+        function tConvert (time) {
+            // Check correct time format and split into components
+            time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+            if (time.length > 1) { // If time format correct
+                time = time.slice (1);  // Remove full string match value
+                time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+                time[0] = +time[0] % 12 || 12; // Adjust hours
+            }
+            return time.join (''); // return adjusted time or original string
+        }
+        function ComplatedComplaint(ComID){
+            if (document.getElementById('AppMdlHldr').getAttribute('class') == 'AppModalHldr Hide') {
+                $.post("<?= base_url('/complaints/getcomplaint') ?>", {ComID: ComID}, function(data, status){
+                    var complaint = '<div class="AppModalInnrHldr Smllr"><div class="ModalTtlHldr"><div class="ModalTtlHldr"><span class="SctnTtl">Assigned Complaint</span><span class="FtrTtl">'+data.complaint.CategoryName+'</span><span id="AppMdlClsBtn" onclick="javascript:ComplatedComplaint('+ComID+');" class="ModalClsBtn"></span></div><div class="ModalFnctnHldr"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Date</span><span class="InnrTxt">';
+                    var dateAr = data.complaint.UpdatedDate.split('-');
+                    var newDate = dateAr[2].slice(0, -9) + '-' + dateAr[1] + '-' + dateAr[0];
+                    complaint += newDate+'</span></div><div class="col-md-2"><span class="InnrTtl">Building</span><span class="InnrTxt">'+data.complaint.BuildingName+'</span></div><div class="col-md-2"><span class="InnrTtl">Block</span><span class="InnrTxt">'+data.complaint.BlockName+'</span></div><div class="col-md-2"><span class="InnrTtl">Floor</span><span class="InnrTxt">'+data.complaint.FloorName+'</span></div><div class="col-md-2"><span class="InnrTtl">Room</span><span class="InnrTxt">'+data.complaint.RoomName+'</span></div></div></div></div><div class="ModalCntntHldr"><div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Complaint By</span><span class="InnrTxt">';
+                    if(data.complaint.empid == 0) 
+                        complaint += 'Patient'; 
+                    else 
+                        complaint += 'Employee';
+                    complaint += '</span></div><div class="col-md-2"><span class="InnrTtl">Complaint Time</span><span class="InnrTxt Bad">';
+                    var dateAr = data.complaint.CreatedDate.split(':');
+                    var AMPM = tConvert(dateAr[0].slice(11)+':'+dateAr[1]);
+                    complaint += AMPM+' (+2 Hour)</span></div><div class="col-md-2"><span class="InnrTtl">Patient Name</span><span class="InnrTxt">'+data.complaint.Name+'</span></div><div class="col-md-2"><span class="InnrTtl">Contact No.</span><span class="InnrTxt">';
+                    if(data.complaint.Mobile != '')
+                        complaint += '+91 '+data.complaint.Name;
+                    complaint += '</span></div></div></div></div><div class="ModalFnctnHldr HeightAuto" style="background: #ecffe6; border-color: #81e562;"><div class="container-fluid"><div class="row"><div class="col-md-4"><span class="InnrTtl">Assigned To</span><span class="InnrTxt">'+data.complaint.AssignedBy+'</span></div><div class="col-md-4"><span class="InnrTtl">Assigned Time</span><span class="InnrTxt">';
+                    var dateAr = data.complaint.UpdatedDate.split(':');
+                    var AMPM = tConvert(dateAr[0].slice(11)+':'+dateAr[1]);
+                    complaint += AMPM+'</span></div></div></div></div><div class="ModalFnctnHldr HeightAuto" style="background: #ecffe6; border-color: #81e562;"><div class="container-fluid"><div class="row"><div class="col-md-4"><span class="InnrTtl">Note</span><span class="InnrTxt">'+data.complaint.AssignedNote+'</span></div><div class="col-md-4"><span class="InnrTtl">Status</span><span class="InnrTxt">'+data.complaint.StausName+'</span></div></div></div></div>';
+                    if(data.images != null){
+                        complaint += '<div class="CmpltImgBlk"><div class="container-fluid"><div class="col-md-12">';
+                        $.each(data.images, function (i, field) {
+                            complaint += '<img src="'+field.Image+'" class="CmpltImg"/>';
+                        });
+                        complaint += '</div></div></div>';
+                    } if(data.complaint.ComplaintRemarks != ''){
+                        complaint += '<div class="CmpltDescBlk"><div class="container-fluid"><div class="col-md-12"><p><span class="CmpltDesHed">Description : </span> '+data.complaint.ComplaintRemarks+'</p></div></div></div>';
+                    }
+                    complaint += '</div></div></div>';    
+                    $("#AppMdlHldr").html(complaint);            
+                    document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
+                });
+            } else {
+                document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr Hide');
+            }
+        }
     </script>
 </body>
 </html>

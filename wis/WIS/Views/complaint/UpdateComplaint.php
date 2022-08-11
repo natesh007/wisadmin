@@ -124,7 +124,7 @@
                     <div class="row">
                         <div class="col-md-2">
                             <span class="InnrTtl">Date</span>
-                            <span class="InnrTxt"><?= $complaint->CreatedDate ?></span>
+                            <span class="InnrTxt"><?= date('d-m-Y', strtotime($complaint->CreatedDate)); ?></span>
                         </div>
                         <div class="col-md-2">
                             <span class="InnrTtl">Building</span>
@@ -155,14 +155,14 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <span class="InnrTtl">Complaint by</span>
+                                        <span class="InnrTtl">Complaint By</span>
                                         <span class="InnrTxt">';
                                         if($complaint->empid == 0) echo 'Patient'; else echo 'Employee';
                                         echo '</span>
                                     </div>
                                     <div class="col-md-2">
                                         <span class="InnrTtl">Complaint Time</span>
-                                        <span class="InnrTxt Bad">03:00 PM (+2 Hour)</span>
+                                        <span class="InnrTxt Bad">'.date('h:i A', strtotime($complaint->CreatedDate)).' (+2 Hour)</span>
                                     </div>
                                     <div class="col-md-2">
                                         <span class="InnrTtl">Patient Name</span>
@@ -239,7 +239,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <span class="InnrTtl">Complaint Time</span>
-                                        <span class="InnrTxt Bad">03:00 PM (+2 Hour)</span>
+                                        <span class="InnrTxt Bad">'.date('h:i A', strtotime($complaint->CreatedDate)).' (+2 Hour)</span>
                                     </div>
                                     <div class="col-md-2">
                                         <span class="InnrTtl">Patient Name</span>
@@ -271,7 +271,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <span class="InnrTtl">Assigned Time</span>
-                                        <span class="InnrTxt">'.$complaint->UpdatedDate.'</span>
+                                        <span class="InnrTxt">'.date('h:i A', strtotime($complaint->UpdatedDate)).'</span>
                                     </div>
                                 </div>
                             </div>

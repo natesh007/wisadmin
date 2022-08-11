@@ -37,6 +37,7 @@ class Auth extends BaseController
             "OrgName" => $user->OrgName,
             "DeptID" => $user->DeptID,
             "DeptName" => $user->DeptName,
+            "ProfilePic" => $user->ProfilePic,
             "EmpID" => $user->EmpID,
             "EmpName" => $user->EmpName,
             "RoleID" => $user->RoleID,
