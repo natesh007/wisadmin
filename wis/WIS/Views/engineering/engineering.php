@@ -191,7 +191,7 @@
     <!-- <div class="AppHeader">
         <div class="ContainerLeft">
             <div class="AppClientLogo">
-                <img src="Images/ClientLogo.png" class="ClientLogo" />
+                <img src="<?= session('Logo'); ?>" class="ClientLogo" />
             </div>
         </div>
         <div class="ContainerRight">

@@ -200,7 +200,7 @@
     <div class="AppHeader DshbrdMpPg">
         <div class="ContainerLeft">
             <div class="AppClientLogo">
-                <img src="<?= base_url() ; ?>/public/wis_assets/Images/ClientLogo.png" class="ClientLogo" />
+                <img src="<?= session('Logo'); ?>" class="ClientLogo" />
             </div>
         </div>
         <div class="ContainerRight">

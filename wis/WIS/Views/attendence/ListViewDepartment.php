@@ -205,9 +205,11 @@
                         $("#DeptName").val(data.DeptName);
                         $('#ParentDeptID option[value="'+data.ParentDept+'"]').prop('selected', true);
                         $('#BrID option[value="'+data.BrID+'"]').prop('selected', true);
+                        document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
                     });
+                }else{
+                    document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
                 }
-                document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
             } else {
                 $('#AddOrUpdateDepartmentForm input, #AddOrUpdateDepartmentForm select, #AddOrUpdateDepartmentForm textarea').val('');
                 document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr Hide');

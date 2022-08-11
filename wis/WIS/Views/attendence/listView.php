@@ -310,7 +310,7 @@
                         </div>
                         <div class="formgrp row">
                             <div class="col-md-6">
-                                <label for="Shift" class="FrmLbl">Previous Experience</label>
+                                <label for="Shift" class="FrmLbl">Shift</label>
                                 <select class="form-select InptBx" name="Shift" id="Shift">
                                     <option disabled selected value hidden>Select Shift</option>
                                     <?php if(!empty($shifts)){

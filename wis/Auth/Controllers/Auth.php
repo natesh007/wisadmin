@@ -43,6 +43,7 @@ class Auth extends BaseController
             "RoleID" => $user->RoleID,
             "accessToken" => $user->accessToken,
             "fb" => $user->fb,
+            "Logo" => $user->Logo,
             "is_logged_in" => true
         ];
         session()->set($data);
