@@ -29,9 +29,9 @@
                     <li>
                         <a href="<?php echo base_url(); ?>/listViewDepartment" class="LnkTxt Actv">Departments</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?php echo base_url(); ?>/listViewVacancy" class="LnkTxt">Vacancies</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

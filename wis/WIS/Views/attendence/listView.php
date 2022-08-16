@@ -34,9 +34,9 @@
                     <li>
                         <a href="<?php echo base_url(); ?>/listViewDepartment" class="LnkTxt">Departments</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?php echo base_url(); ?>/listViewVacancy" class="LnkTxt">Vacancies</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -415,7 +415,7 @@
         }
         $('#BrID').change(function(){
             if($("#BrID").val() != ''){
-                $.post("<?= base_url('/employees/getdepartmentsbyorgnbranch') ?>", {BrID: $("#BrID").val()}, function(data, status){
+                $.post("<?php base_url('/employees/getdepartmentsbyorgnbranch') ?>", {BrID: $("#BrID").val()}, function(data, status){
                     var depts = '<option disabled selected value hidden>Select Departments</option>';
                     $.each(data, function (i, field) {
                         if(field.Subdeparts.length !== 0){

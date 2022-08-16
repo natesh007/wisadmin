@@ -27,15 +27,15 @@
                     <li>
                         <a href="<?php echo base_url(); ?>/complaintList" class="LnkTxt Actv">Complaints Admin</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?php echo base_url(); ?>/complaintAttendence" class="LnkTxt">Man Power</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>/complaintDashboard" class="LnkTxt">Complaints Dashboard</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
-            <div class="SctnInnerMenu" style="margin-top: 0;">
+            <!-- <div class="SctnInnerMenu" style="margin-top: 0;">
                 <div class="accordion" id="accordionFlushExample">
                     <div class="accordion-item">
                         <span class="accordion-header" id="flush-headingFive">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="ContainerRight">
             <div class="SctnDtlsTtlHldr">

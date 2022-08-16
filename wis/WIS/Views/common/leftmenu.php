@@ -8,15 +8,15 @@
                     <span class="LnkTxt">Map</span>
                 </a>
             </li>
-            <li>
-                <a href="<?php echo base_url(); ?>/hospitalSelection" class="AppMenuLnk Dshbrd">
+            <!-- <li>
+                <a href="<?php echo base_url(); ?>/HospitalAdmin/hospitalSelection" class="AppMenuLnk Dshbrd">
                     <span class="LnkTxt">Dashboard</span>
                 </a>
-            </li>
+            </li> -->
         </ul>
         <div class="MenuAccrdn">
             <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
+                <!-- <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         <span class="AppMenuAccrdnLnk EnggSltns Actv">
@@ -51,7 +51,7 @@
                         </ul>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -68,7 +68,7 @@
                                     <span class="LnkTxt">Attendance</span>
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="<?php echo base_url(); ?>/checklist" class="AppMenuLnk Chcklsts">
                                     <span class="LnkTxt">Checklists</span>
                                 </a>
@@ -82,13 +82,13 @@
                                 <a href="<?php echo base_url(); ?>/amc" class="AppMenuLnk PPM">
                                     <span class="LnkTxt">AMC</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
-                                <a href="<?php echo base_url(); ?>/complaintFeedback" class="AppMenuLnk CmplntsFdbck">
+                                <a href="<?php echo base_url(); ?>/complaintList" class="AppMenuLnk CmplntsFdbck">
                                     <span class="LnkTxt">Complaints & Feedback</span>
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="<?php echo base_url(); ?>/bedsOccupancy" class="AppMenuLnk BdsOccpncy">
                                     <span class="LnkTxt">Beds & Occupancy</span>
                                 </a>
@@ -113,13 +113,13 @@
                                 <a href="<?php echo base_url(); ?>/billingSoftware" class="AppMenuLnk BllngSftwr">
                                     <span class="LnkTxt">Billing Software</span>
                                 </a>
-                            </li>
+                            </li> -->
                             
                         </ul>
                     </div>
                   </div>
                 </div>
-                <div class="accordion-item">
+                <!-- <div class="accordion-item">
                   <h2 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         <span class="AppMenuAccrdnLnk ExtrMls">
@@ -163,7 +163,7 @@
                         </ul>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
         </div>
     </div>

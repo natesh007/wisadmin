@@ -27,15 +27,15 @@
                     <li>
                         <a href="<?php echo base_url(); ?>/complaintList" class="LnkTxt Actv">Complaints Admin</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?php echo base_url(); ?>/complaintAttendence" class="LnkTxt">Man Power</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>/complaintDashboard" class="LnkTxt">Complaints Dashboard</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
-            <div class="SctnInnerMenu" style="margin-top: 0;">
+            <!-- <div class="SctnInnerMenu" style="margin-top: 0;">
                 <div class="accordion" id="accordionFlushExample">
                     <div class="accordion-item">
                         <span class="accordion-header" id="flush-headingFive">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="ContainerRight">
             <div class="SctnDtlsTtlHldr">
@@ -173,19 +173,36 @@
                                         <span class="InnrTxt">';
                                         if($complaint->Mobile != '') echo '+91 '.$complaint->Mobile; else echo '';
                                         echo '</span>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <select name="DeptID" id="DeptID" class="form-select InptBx">
-                                            <option disabled selected value hidden>Department</option>';
-                                            foreach($departments as $department) {
-                                                echo '<option value="'.$department->DeptID.'">'.$department->DeptName.'</option>';
-                                            }
-                                        echo '</select>
+                                    </div>';
+                                    if(!isset($Result)){
+                                        echo '<div class="col-md-2">
+                                            <select name="DeptID" id="DeptID" class="form-select InptBx">
+                                                <option disabled selected value hidden>Department</option>';
+                                                foreach($departments as $department) {
+                                                    echo '<option value="'.$department->DeptID.'">'.$department->DeptName.'</option>';
+                                                }
+                                            echo '</select>
+                                        </div>';
+                                    }
+                                echo '</div>
+                            </div>
+                        </div>';
+                        if(isset($Result) && $Result == 'Success')
+                            echo '<div class="SrchFltrDv ChckLst" style="background: #ecffe6; border-color: #81e562;">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <span class="InnrTtl">Assigned To</span>
+                                            <span class="InnrTxt">'.$complaint->AssignedBy.'</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <span class="InnrTtl">Assigned Time</span>
+                                            <span class="InnrTxt">'.date('h:i A', strtotime($complaint->UpdatedDate)).'</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div id="EmpTbl">
+                            </div>';
+                        echo '<div id="EmpTbl">
                         </div>
                         <span id="EmpErr"></span>
                         <!--<div class="ModalFnctnHldr" style="background: #fff;">
@@ -219,9 +236,12 @@
                                 </div>
                             </div>';
                         }
-                        echo '<div class="AssBtnHldr">
-                            <button type="submit" class="btn btn-primary SbmtBtn">Assign</button>
-                        </div>
+                        echo '<div class="AssBtnHldr">';
+                            if(isset($Result) && $Result == 'Success')
+                                echo '<a class="btn btn-success SbmtBtn" target="_blank" href="https://wa.me/'.$complaint->EmpMobile.'?text=test content">Whatsapp</a>';
+                            else
+                                echo '<button type="submit" class="btn btn-primary SbmtBtn">Assign</button>';
+                        echo '</div>
                     </div>
                 </form>';
             }else{
@@ -250,14 +270,6 @@
                                         <span class="InnrTxt">';
                                         if($complaint->Mobile != '') echo '+91 '.$complaint->Mobile; else echo '';
                                         echo '</span>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <select name="DeptID" id="DeptID" class="form-select InptBx">
-                                            <option disabled selected value hidden>Department</option>';
-                                            foreach($departments as $department) {
-                                                echo '<option value="'.$department->DeptID.'">'.$department->DeptName.'</option>';
-                                            }
-                                        echo '</select>
                                     </div>
                                 </div>
                             </div>
@@ -321,7 +333,7 @@
                             </div>';
                         }
                         echo '<div class="AssBtnHldr">
-                            <button type="submit" class="btn btn-primary SbmtBtn">Assign</button>
+                            <button type="submit" class="btn btn-primary SbmtBtn">Save</button>
                         </div>
                     </div>
                 </form>';

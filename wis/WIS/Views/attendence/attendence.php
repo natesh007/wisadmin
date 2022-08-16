@@ -28,7 +28,7 @@
     <div class="AppFllContainer">
         <div class="ContainerLeft">
             <span class="SctnTtl Attndnc">Attendance</span>
-            <div class="AttndncDshBrd">
+            <!-- <div class="AttndncDshBrd">
                 <div class="BscDshbrd">
                     <span class="AttndncDate">Today, 19 June 2021</span>
                     <span class="AttndncTimeShft">Shift 01 - 08 AM to 04 PM</span>
@@ -184,32 +184,32 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="ContainerRight">
             <div class="SctnDtlsTtlHldr">
-                <div class="BrcmnbHldr">
+                <!-- <div class="BrcmnbHldr">
                     <ul class="DtlsBrdCrmb">
                         <li>
                             <span class="PgTtl">All Dept.s</span>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <div class="SlctDrpdwnHldr">
                     <ul class="TbTtlLnkHldr">
-                    <li>
+                        <li>
                             <span class="TbLnk Grphvw" onclick="location.href='<?php echo base_url(); ?>/listView'">List</span>
                         </li>
-                        <li>
+                        <!-- <li>
                             <span class="TbLnk Grphvw Actv">Graph View</span>
                         </li>
                         <li>
                             <span class="TbLnk Grdvw">Grid View</span>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
-            <div class="SrchFltrDv ChckLst">
+            <!-- <div class="SrchFltrDv ChckLst">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-2">
@@ -234,8 +234,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="SctnGrphDsh">
+            </div> -->
+            <!-- <div class="SctnGrphDsh">
                 <div class="GrphCol AtttnDshbrd">
                     <div class="GraphHldr">
                         <span class="GrphTtl">Attendence</span>
@@ -378,8 +378,8 @@
                         </script>
                     </div>
                 </div>
-            </div>
-            <div class="InnrPgBgHldr">
+            </div> -->
+            <!-- <div class="InnrPgBgHldr">
                 <div class="PrptyFtrsDshbrd StffAttndDshb">
                     <div class="FtrTtlHldr">
                         <a href="<?php echo base_url(); ?>/attendenceDeptDetail" class="FtrTtl Icn MdclStff"><span class="LnkTxt">Medical Staff</span></a>
@@ -966,7 +966,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </body>

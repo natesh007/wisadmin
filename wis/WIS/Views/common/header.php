@@ -14,12 +14,12 @@
                             <span class="UsrNme"><?= session('EmpName'); ?></span>
                         </div>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?php echo base_url(); ?>/notifications" class="HdrIcoLnk Ntfctns Updts"></a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>/settings" class="HdrIcoLnk Sttngs"></a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="<?php echo base_url(); ?>/logout" class="HdrIcoLnk Lgout"></a>
                     </li>

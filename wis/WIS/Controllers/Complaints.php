@@ -434,11 +434,44 @@ class Complaints extends BaseController
 		}
 		$this->data['ComID'] = $ComID;
 		$this->data['Mode'] = $Mode;
+		$SearchKeywords = array(
+			"ComCatID" => "",
+			"ComNatID" => "",
+			"BID" => "",
+			"BKID" => "",
+			"FID" => "",
+			"RID" => "",
+			"ComplaintBy" => "",
+			"ComplaintStatus" => "",
+		);
+		$complaints_data = $this->AuthModel->callwebservice(SAURL."getcomplaints", $SearchKeywords, 1, 1);
+		$this->data['complaints'] = [];
+		if (@$complaints_data->status == "Success") {
+			$this->data['complaints'] = @$complaints_data->data;
+		}
 		if ($this->request->getMethod() == 'post') {
             $complaint_array =  @$this->request->getVar();
 			$complaint_data = $this->AuthModel->callwebservice(SAURL."updatecomplaint", $complaint_array, 1, 1);
 			if($complaint_data->status == 'Success'){
-				return redirect()->to(base_url('/complaintList'))->with('SusMsg', $complaint_data->msg);
+				if($Mode == 1){
+					$complaint_array = array(
+						"ComID" => $ComID
+					);
+					$complaint_data = $this->AuthModel->callwebservice(SAURL."getcomplaint", $complaint_array, 1, 1);
+					$this->data['complaint'] = [];
+					if (@$complaint_data->status == "Success") {
+						$this->data['complaint'] = @$complaint_data->data->{0};
+					}
+					if(isset($this->data['complaint']->EmpMobile) && $this->data['complaint']->EmpMobile != null){
+						$this->data['Result'] = $complaint_data->status;
+						echo view('Modules\WIS\Views\complaint\UpdateComplaint', $this->data);
+						exit;
+					}else{
+						return redirect()->to(base_url('/complaintList'))->with('SusMsg', $complaint_data->msg);
+					}
+				}else{
+					return redirect()->to(base_url('/complaintList'))->with('SusMsg', $complaint_data->msg);
+				}
 			}else{
 				return redirect()->to(base_url('/complaints/update_complaint/'.$ComID.'/'.$Mode))->with('ErrMsg', $complaint_data->msg);
 			}

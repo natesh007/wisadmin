@@ -35,15 +35,15 @@
                     <span class="LnkTxt">Map <?= session('EmpName'); ?></span>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="<?php echo base_url(); ?>/hospitalSelection" class="AppMenuLnk Dshbrd">
                     <span class="LnkTxt">Dashboard</span>
                 </a>
-            </li>
+            </li> -->
         </ul>
         <div class="MenuAccrdn">
             <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
+                <!-- <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         <span class="AppMenuAccrdnLnk EnggSltns">
@@ -77,7 +77,7 @@
                         </ul>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -94,7 +94,7 @@
                                     <span class="LnkTxt">Attendance</span>
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="<?php echo base_url(); ?>/checklist" class="AppMenuLnk Chcklsts">
                                     <span class="LnkTxt">Checklists</span>
                                 </a>
@@ -108,13 +108,13 @@
                                 <a href="<?php echo base_url(); ?>/amc" class="AppMenuLnk PPM">
                                     <span class="LnkTxt">AMC</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="<?php echo base_url(); ?>/complaintFeedback" class="AppMenuLnk CmplntsFdbck">
                                     <span class="LnkTxt">Complaints & Feedback</span>
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="<?php echo base_url(); ?>/bedsOccupancy" class="AppMenuLnk BdsOccpncy">
                                     <span class="LnkTxt">Beds & Occupancy</span>
                                 </a>
@@ -139,12 +139,12 @@
                                 <a href="<?php echo base_url(); ?>/billingSoftware" class="AppMenuLnk BllngSftwr">
                                     <span class="LnkTxt">Billing Software</span>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                   </div>
                 </div>
-                <div class="accordion-item">
+                <!-- <div class="accordion-item">
                   <h2 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         <span class="AppMenuAccrdnLnk ExtrMls">
@@ -188,7 +188,7 @@
                         </ul>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
         </div>
         
@@ -212,12 +212,12 @@
                             <span class="UsrNme"><?= session('EmpName'); ?></span>
                         </div>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?php echo base_url(); ?>/notifications" class="HdrIcoLnk Ntfctns Updts"></a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>/settings" class="HdrIcoLnk Sttngs"></a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="<?php echo base_url(); ?>/logout" class="HdrIcoLnk Lgout"></a>
                     </li>
@@ -229,7 +229,7 @@
         <div class="ContainerLeft">
         </div>
         <div class="ContainerRight">
-            <div class="CtyDrpDwn MpActv">
+            <!-- <div class="CtyDrpDwn MpActv">
                 <span class="DrpdwnTxt">All 16 Locations</span>
                 <div class="MpSrchBx">
                     <input class="form-control MpSrchInpt" type="text" placeholder="Search by area name"
@@ -243,9 +243,9 @@
                                     data-bs-target="#flush-collapseCOne" aria-expanded="false"
                                     aria-controls="flush-collapseCOne">
                                     <span class="CtyNme Lctn">Chennai</span>
-                                    <span class="SbDtls Icn Hsptl"><span class="Val">4</span></span>
+                                    <span class="SbDtls Icn Hsptl"><span class="Val">4</span></span> -->
                                     <!--<span class="SbDtls Icn HsptlBds"><span class="Val">970</span></span>-->
-                                    <span class="SbDtls Icn Ntfctns"><span class="Val">0</span></span>
+                                    <!-- <span class="SbDtls Icn Ntfctns"><span class="Val">0</span></span>
                                 </button>
                             </span>
                             <div id="flush-collapseCOne" class="accordion-collapse collapse"
@@ -278,9 +278,9 @@
                                     data-bs-target="#flush-collapseCTwo" aria-expanded="false"
                                     aria-controls="flush-collapseCTwo">
                                     <span class="CtyNme Lctn">Delhi</span>
-                                    <span class="SbDtls Icn Hsptl"><span class="Val">4</span></span>
+                                    <span class="SbDtls Icn Hsptl"><span class="Val">4</span></span> -->
                                     <!--<span class="SbDtls Icn HsptlBds"><span class="Val">970</span></span>-->
-                                    <span class="SbDtls Icn Ntfctns"><span class="Val">5</span></span>
+                                    <!-- <span class="SbDtls Icn Ntfctns"><span class="Val">5</span></span>
                                 </button>
                             </span>
                             <div id="flush-collapseCTwo" class="accordion-collapse collapse"
@@ -313,9 +313,9 @@
                                     data-bs-target="#flush-collapseCThree" aria-expanded="false"
                                     aria-controls="flush-collapseCThree">
                                     <span class="CtyNme Lctn">Hyderabad</span>
-                                    <span class="SbDtls Icn Hsptl"><span class="Val">3</span></span>
+                                    <span class="SbDtls Icn Hsptl"><span class="Val">3</span></span> -->
                                     <!--<span class="SbDtls Icn HsptlBds"><span class="Val">970</span></span>-->
-                                    <span class="SbDtls Icn Ntfctns"><span class="Val">1</span></span>
+                                    <!-- <span class="SbDtls Icn Ntfctns"><span class="Val">1</span></span>
                                 </button>
                             </span>
                             <div id="flush-collapseCThree" class="accordion-collapse collapse"
@@ -344,9 +344,9 @@
                                     data-bs-target="#flush-collapseCFour" aria-expanded="false"
                                     aria-controls="flush-headingCFour">
                                     <span class="CtyNme Lctn">Kolkata</span>
-                                    <span class="SbDtls Icn Hsptl"><span class="Val">5</span></span>
+                                    <span class="SbDtls Icn Hsptl"><span class="Val">5</span></span> -->
                                     <!--<span class="SbDtls Icn HsptlBds"><span class="Val">970</span></span>-->
-                                    <span class="SbDtls Icn Ntfctns"><span class="Val">3</span></span>
+                                    <!-- <span class="SbDtls Icn Ntfctns"><span class="Val">3</span></span>
                                 </button>
                             </span>
                             <div id="flush-collapseCFour" class="accordion-collapse collapse"
@@ -383,9 +383,9 @@
                                     data-bs-target="#flush-collapseCFive" aria-expanded="false"
                                     aria-controls="flush-headingCFour">
                                     <span class="CtyNme Lctn">Mumbai</span>
-                                    <span class="SbDtls Icn Hsptl"><span class="Val">4</span></span>
+                                    <span class="SbDtls Icn Hsptl"><span class="Val">4</span></span> -->
                                     <!--<span class="SbDtls Icn HsptlBds"><span class="Val">970</span></span>-->
-                                    <span class="SbDtls Icn Ntfctns"><span class="Val">0</span></span>
+                                    <!-- <span class="SbDtls Icn Ntfctns"><span class="Val">0</span></span>
                                 </button>
                             </span>
                             <div id="flush-collapseCFive" class="accordion-collapse collapse"
@@ -414,7 +414,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="AppFllContainer DshbordPg">
