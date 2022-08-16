@@ -238,7 +238,7 @@
                         }
                         echo '<div class="AssBtnHldr">';
                             if(isset($Result) && $Result == 'Success')
-                                echo '<a class="btn btn-success SbmtBtn" target="_blank" href="https://wa.me/'.$complaint->EmpMobile.'?text=test content">Whatsapp</a>';
+                                echo '<a class="btn btn-success SbmtBtn" target="_blank" href="https://wa.me/'.$complaint->EmpMobile.'?text='.base_url('/complaints/update_complaint/'.$ComID.'/'.$Mode).'">Whatsapp</a>';
                             else
                                 echo '<button type="submit" class="btn btn-primary SbmtBtn">Assign</button>';
                         echo '</div>
