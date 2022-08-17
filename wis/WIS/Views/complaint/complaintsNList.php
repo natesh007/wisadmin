@@ -197,7 +197,7 @@
                                     </div>
                                     <div class="col-md-2 mb-2">
                                         <select class="form-select InptBx" aria-label="ComplaintBy" name="ComplaintBy">
-                                            <option disabled selected value hidden>Complaint by</option>
+                                            <option disabled selected value hidden>Complaint By</option>
                                             <option value="ALL" <?php if($SearchKeywords['ComplaintBy'] == 'ALL') echo 'selected'; ?>>All</option>
                                             <option value="0" <?php if($SearchKeywords['ComplaintBy'] == '0') echo 'selected'; ?>>Patient</option>
                                             <option value="1" <?php if($SearchKeywords['ComplaintBy'] == '1') echo 'selected'; ?>>Employee</option>
@@ -261,11 +261,11 @@
                             <th>
                                 <span class="DataTtl">Room</span>
                             </th>
-                            <th>
-                                <span class="DataTtl">Complaint given by</span>
+                            <th width="9%">
+                                <span class="DataTtl">Complaint Given By</span>
                             </th>
                             <th>
-                                <span class="DataTtl">Complaint time</span>
+                                <span class="DataTtl">Complaint Time</span>
                             </th>
                             <th>
                                 <span class="DataTtl">Repair - Material</span>
@@ -274,7 +274,7 @@
                                 <span class="DataTtl">Status</span>
                             </th>
                             <th>
-                                <span class="DataTtl">Completed by</span>
+                                <span class="DataTtl">Completed By</span>
                             </th>
                         </tr>
                         <?php if(!empty($complaints->List)){
@@ -308,7 +308,7 @@
                                     <td>
                                         <span class="DataTxt">'.$complaint->RoomName.'</span>
                                     </td>
-                                    <td>
+                                    <td width="9%">
                                         <span class="DataTxt">';
                                         if($complaint->empid == 0) echo 'Patient'; else echo 'Employee';
                                         echo '</span>

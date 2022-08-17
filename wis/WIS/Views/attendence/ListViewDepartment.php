@@ -162,8 +162,10 @@
                                 <label for="ParentDeptID" class="FrmLbl">Parent Department</label>
                                 <select class="form-select InptBx" name="ParentDeptID" id="ParentDeptID">
                                     <option disabled selected value hidden>Select Parent Department</option>
-                                    <?php foreach($departments as $department){
-                                        echo '<option value="' . $department->DeptID . '">' . $department->DeptName . '</option>' ;
+                                    <?php if(!empty($departments)){
+                                        foreach($departments as $department){
+                                            echo '<option value="' . $department->DeptID . '">' . $department->DeptName . '</option>' ;
+                                        }
                                     } ?>
                                 </select>
                             </div>

@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div class="col-md-2" style="text-align: right">
-                            <button type="button" onclick="javascript:AddOrUpdateEmployee('');" class="btn btn-primary SbmtBtn">Add New Employee</button>
+                            <button type="button" onclick="javascript:AddOrUpdateEmployee('');" class="btn btn-primary SbmtBtn">Add Employee</button>
                         </div>
                     </div>
                 </div>
@@ -415,9 +415,11 @@
         }
         $('#BrID').change(function(){
             if($("#BrID").val() != ''){
-                $.post("<?php base_url('/employees/getdepartmentsbyorgnbranch') ?>", {BrID: $("#BrID").val()}, function(data, status){
+                $.post("<?= base_url('/employees/getdepartmentsbyorgnbranch') ?>", {BrID: $("#BrID").val()}, function(data, status){
                     var depts = '<option disabled selected value hidden>Select Departments</option>';
+                    console.log(data);
                     $.each(data, function (i, field) {
+                        
                         if(field.Subdeparts.length !== 0){
                             depts += '<optgroup label="'+field.DeptName+'">';
                         }else{

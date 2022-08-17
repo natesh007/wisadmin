@@ -110,7 +110,7 @@
                                 </a>
                             </li> -->
                             <li>
-                                <a href="<?php echo base_url(); ?>/complaintFeedback" class="AppMenuLnk CmplntsFdbck">
+                                <a href="<?php echo base_url(); ?>/complaintList" class="AppMenuLnk CmplntsFdbck">
                                     <span class="LnkTxt">Complaints & Feedback</span>
                                 </a>
                             </li>

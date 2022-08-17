@@ -162,7 +162,7 @@
                             <label class="CmpntInptTtl">Complaint Remarks</label>
                             <div class="col-md-12" id="RemarksDiv">
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control CmpntInptBx" placeholder="Add description" id="Remarks" name="Remarks"></textarea>
+                                    <textarea class="form-control CmpntInptBx" placeholder="Add Remarks" id="Remarks" name="Remarks"></textarea>
                                     <label for="Remarks" class="CmpntInptLbl">Add Remarks</label>
                                 </div>
                             </div>

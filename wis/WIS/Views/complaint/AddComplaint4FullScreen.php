@@ -93,8 +93,9 @@
                     <div class="row">
                         <label class="CmpntInptTtl">Complaint Remarks</label>
                         <div class="col-md-12">
-                            <div class="mb-3">
-                                <textarea class="form-control CmpntInptBx" placeholder="Add description" id="Description" readonly>'.$complaint->ComplaintRemarks.'</textarea>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control CmpntInptBx" placeholder="Remarks" id="Remarks" readonly>'.$complaint->ComplaintRemarks.'</textarea>
+                                <label for="Remarks" class="CmpntInptLbl">Remarks</label>
                             </div>
                         </div>
                     </div>';

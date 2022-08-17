@@ -6,11 +6,11 @@ use Modules\Auth\Models\AuthModel;
 class Employees extends BaseController
 {
 	function __construct(){
-		$this->AuthModel = new AuthModel();
 		if (session('EmpID') == null) {
 			header('Location: ' . base_url('/'));
 			exit;
 		}
+		$this->AuthModel = new AuthModel();
 		$branches_data = $this->AuthModel->callwebservice(SAURL."branches", "", 1, 1);
         $this->data['branches'] = [];
         if (@$branches_data->status == "Success") {
@@ -105,23 +105,7 @@ class Employees extends BaseController
 			fclose($file);
 			exit;
 		}
-		
 		echo view('Modules\WIS\Views\attendence\listView', $this->data);
-		
-	}
-	//Get departments based on selected organization and branches
-	public function getdepartmentsbyorgnbranch(){
-        $departments_array = array(
-            "BrID" => implode(',', @$this->request->getVar('BrID'))
-        );
-        $departments_data = $this->AuthModel->callwebservice(SAURL."departments", $departments_array, 1, 1);
-		$departments = [];
-		if (@$departments_data->status == "Success") {
-			$departments = @$departments_data->data;
-		}
-		header('Content-type: application/json');
-        print json_encode($departments, JSON_PRETTY_PRINT);
-        exit; 
 	}
 	//Get employee for edit
 	public function get_employee(){
@@ -170,5 +154,19 @@ class Employees extends BaseController
 			}
             echo json_encode($employee_data);
         }
+	}
+	//Get departments based on selected organization and branches
+	public function getdepartmentsbyorgnbranch(){
+        $departments_array = array(
+            "BrID" => implode(',', @$this->request->getVar('BrID'))
+        );
+        $departments_data = $this->AuthModel->callwebservice(SAURL."departments", $departments_array, 1, 1);
+		$data = [];
+		if (@$departments_data->status == "Success") {
+			$data = @$departments_data->data;
+		}
+		header('Content-type: application/json');
+        print json_encode($data, JSON_PRETTY_PRINT);
+        exit;
 	}
 }
