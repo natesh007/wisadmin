@@ -420,7 +420,7 @@
                     var AMPM = tConvert(dateAr[0].slice(11)+':'+dateAr[1]);
                     complaint += AMPM+' (+2 Hour)</span></div><div class="col-md-2"><span class="InnrTtl">Patient Name</span><span class="InnrTxt">'+data.complaint.Name+'</span></div><div class="col-md-2"><span class="InnrTtl">Contact No.</span><span class="InnrTxt">';
                     if(data.complaint.Mobile != '')
-                        complaint += '+91 '+data.complaint.Name;
+                        complaint += '+91 '+data.complaint.Mobile;
                     complaint += '</span></div></div></div></div><div class="ModalFnctnHldr HeightAuto" style="background: #ecffe6; border-color: #81e562;"><div class="container-fluid"><div class="row"><div class="col-md-4"><span class="InnrTtl">Assigned To</span><span class="InnrTxt">'+data.complaint.AssignedBy+'</span></div><div class="col-md-4"><span class="InnrTtl">Assigned Time</span><span class="InnrTxt">';
                     var dateAr = data.complaint.UpdatedDate.split(':');
                     var AMPM = tConvert(dateAr[0].slice(11)+':'+dateAr[1]);

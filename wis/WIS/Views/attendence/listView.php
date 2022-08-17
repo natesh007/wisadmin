@@ -461,7 +461,9 @@
                     required: true,
                     normalizer: function(value) {
                         return $.trim(value);
-                    }
+                    },
+                    minlength: 10,
+                    maxlength: 10,
                 },
             },
             messages: {
@@ -474,10 +476,14 @@
                 Shift: "Please select Job Title",
                 Gender: "Please select Gender",
                 Email: {
-                    required: "Please enter Email.",
-                    email: "Please enter valid Email.",
+                    required: "Please enter Email",
+                    email: "Please enter valid Email",
                 },
-                Mobile: "Please enter Mobile Number",
+                Mobile: {
+                    required: "Please enter Mobile Number",
+                    minlength: "Please enter minimum 10 characters",
+                    maxlength: "Please enter less than 10 characters",
+                },
             },
             errorPlacement: function(error, element) {
                 if (element.attr("name") == "BrID[]") {
