@@ -336,7 +336,7 @@
                                 $i++;
                             } 
                         }else{
-                            echo '<tr><td colspan="12" class="text-center">No data found.</td></tr>'
+                            echo '<tr><td colspan="12" class="text-center">No data found.</td></tr>';
                         } ?>
                     </table>
                 </div>
