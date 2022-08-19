@@ -229,11 +229,9 @@
                 </div>';
             ?>
             <div class="InnrPgBgHldr">
-                <?php if(session('DeptName') == 'Admin')
-                    echo '<div class="AddCmplt">
-                        <a href="'.base_url('complaints/add_complaint').'" class="AddNewRcrd">Add Complaint</a>
-                    </div>';
-                ?>
+                <div class="AddCmplt">
+                    <a href="<?= base_url('complaints/add_complaint') ?>" class="AddNewRcrd">Add Complaint</a>
+                </div>
                 <div class="TableHldr">
                     <table class="AppDataTbl">
                         <tr class="Hdr">
@@ -312,7 +310,7 @@
                                         <span class="DataTxt">';
                                         if($complaint->empid == 0) echo 'Patient'; else echo 'Employee';
                                         echo '</span>
-                                        &nbsp;<span class="CmpltBy"><img src="'.base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg').'"/><span class="CmpltByInfo">Mobile</span></span>
+                                        &nbsp;<span class="CmpltBy"><img src="'.base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg').'"/><span class="CmpltByInfo">Web</span></span>
                                     </td>
                                     <td>
                                         <span class="DataTxt">'.$complaint->CreatedDate.'</span>
@@ -337,6 +335,8 @@
                                 </tr>';
                                 $i++;
                             } 
+                        }else{
+                            echo '<tr><td colspan="12" class="text-center">No data found.</td></tr>'
                         } ?>
                     </table>
                 </div>
