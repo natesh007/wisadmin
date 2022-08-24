@@ -16,7 +16,7 @@
     <body style="background-color: #FFFFFF; overflow-y: auto;">
         <div class="InnrPg">
             <div class="PgHdr">
-                <span class="PgHdrTtl1">Enter Address of Area to Raise a Complaint</span>
+                <span class="PgHdrTtl1">Select Location</span>
             </div>
             <div class="PgInnrCntnt">
                 <form action="<?= base_url('complaints/add_complaint2_mob'); ?>" method="get" id="AddComplaint1">

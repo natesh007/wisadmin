@@ -70,11 +70,11 @@
             </div>
             <div class="InnrPg">
                 <div class="PgHdr">
-                    <span class="PgHdrTtl1">Enter Address of Area to Raise a Complaint <a href="<?= base_url('/complaints/add_complaint_mob'); ?>" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
+                    <span class="PgHdrTtl1">Select Location <a href="<?= base_url('/complaints/add_complaint_mob'); ?>" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
                 </div>
-                <div class="PgInnrHdr">
+                <!-- <div class="PgInnrHdr">
                     <span class="AdrsTxt">Organization : <?= (session('OrgName') ? session('OrgName'): '') ?></span>
-                </div>
+                </div> -->
                 <div class="PgInnrCntnt">
                     <form action="<?= base_url('complaints/add_complaint2'); ?>" method="get" id="AddComplaint1">
                         <div class="row">

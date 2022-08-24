@@ -112,11 +112,9 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4 BttnHldr">
-                                    <button type="submit" class="btn btn-primary SbmtBtn m-0">Submit</button>
-                                    &nbsp;
-                                    <button type="submit" class="btn btn-primary FnctnBtn Dwnld m-0" name="DownloadXL">Download XL</button>
-                                    &nbsp;
-                                    <button type="submit" class="btn btn-primary FnctnBtn Dwnld m-0" name="DownloadPDF">Download PDF</button>
+                                    <button type="submit" class="btn btn-primary SbmtBtn">Submit</button>
+                                    <button type="button" class="btn btn-primary FnctnBtn Prnt">Print</button>
+                                    <button type="submit" class="btn btn-primary FnctnBtn Dwnld" name="Download">Download</button>
                                 </div>
                             </div>
                         </form>
@@ -129,36 +127,35 @@
                         <div class="TableHldr">
                             <table class="AppDataTbl">
                                 <tbody>
-                                    <tr class="Hdr">
-                                        <th>
+                                    <tr class="Hdr bg-light">
+                                        <th style="width: 5%">
                                             <span class="DataTtl">S. No.</span>
                                         </th>
-                                        <th>
+                                        <th style="width: 7%">
                                             <span class="DataTtl">Emp. ID.</span>
                                         </th>
-                                        <th>
+                                        <th style="width: 15%">
                                             <span class="DataTtl">Employee Name</span>
                                         </th>
-                                        <th>
+                                        <th style="width: 15%">
                                             <span class="DataTtl">Service Department</span>
                                         </th>
-                                        <th>
+                                        <th style="width: 10%">
                                             <span class="DataTtl">Job Type</span>
                                         </th>
-                                        <th>
+                                        <th style="width: 10%">
                                             <span class="DataTtl">Job Title</span>
                                         </th>
-                                        <th>
+                                        <th style="width: 10%">
                                             <span class="DataTtl">Joined On</span>
                                         </th>
-                                        <th>
+                                        <th style="width: 9%">
                                             <span class="DataTtl">Experience</span>
                                         </th>
-                                        <th>
+                                        <th style="width: 9%">
                                             <span class="DataTtl">Previous Experience</span>
                                         </th>
-                                       
-                                        <th>
+                                        <th style="width: 10%">
                                             <span class="DataTtl">Actions</span>
                                         </th>
                                     </tr>';

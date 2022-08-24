@@ -49,48 +49,12 @@
                         </div>
                     </div>
                 </div>
-            </div>     
-            <div class="SrchFltrDv ChckLst">
-                <div class="container-fluid">
-                    <form action="" method="post"> 
-                        <div class="row">
-                            <div class="col-md-2">
-                                <input type="search" class="form-control InptBx" placeholder="Search By Department" name="DepartmentName" value="<?= $DepartmentName; ?>"/>
-                            </div>
-                            <div class="col-md-2">
-                                <select class="form-select InptBx" name="Branch">
-                                    <option disabled selected value hidden>Select Branch</option>
-                                    <option value="">All</option>
-                                    <?php if(!empty($branches)){
-                                        foreach($branches as $branch){
-                                            echo '<option value="'.$branch->BrID.'"';
-                                            if($Branch == $branch->BrID) echo 'selected';
-                                            echo '>'.$branch->BrName.'</option>';
-                                        }
-                                    } ?>
-                                </select>
-                            </div>
-                            <div class="col-md-2">
-                                <select class="form-select InptBx" aria-label="Default select example" name="SortType">
-                                    <option disabled selected value hidden>Sort By</option>
-                                    <option value="department" <?php if($SortType == 'department') echo 'selected'; ?>>Service Department</option>
-                                    <option value="branch" <?php if($SortType == 'branch') echo 'selected'; ?>>Branch</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 BttnHldr">
-                                <button type="submit" class="btn btn-primary SbmtBtn">Submit</button>
-                                <button type="button" class="btn btn-primary FnctnBtn Prnt">Print</button>
-                                <button type="submit" class="btn btn-primary FnctnBtn Dwnld" name="Download">Download</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            </div> 
             <div class="InnrPgBgHldr">
                 <div class="TableHldr">
                     <table class="AppDataTbl">
                         <tbody>
-                            <tr class="Hdr">
+                            <tr class="Hdr bg-light">
                                 <th>
                                     <span class="DataTtl">S. No.</span>
                                 </th>

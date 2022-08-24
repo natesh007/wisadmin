@@ -8530,7 +8530,6 @@ div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.LdrPrfDtlsHldr div.
 
 div.AppModalHldr div.AppModalInnrHldr div.ModalCntntHldr div.DvBtnHldr,
 div.AssBtnHldr {
-    border-top: 1px solid #ddd;
     padding: 10px;
 }
 div.AssBtnHldr {
@@ -9127,6 +9126,7 @@ div.CmpltImgBlk {
 
 div.CmpltDescBlk {
     padding: 10px;
+    border-bottom: 1px solid #ddd;
 }
 
 span.CmpltDesHed {

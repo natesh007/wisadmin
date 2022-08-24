@@ -94,17 +94,24 @@
                         <input type="hidden" name="RID" value="<?= $_GET['RID']; ?>"/>
                         <input type="hidden" name="ComCatID" value="<?= $_GET['ComCatID']; ?>"/>
                         <div class="row" id="ComplaintDiv">
-                            <label class="CmpntInptTtl">Common Complaint</label>
+                            <label class="CmpntInptTtl">Raise Complaint</label>
                             <div class="col-md-6">
-                                <div class="mb-3">
-                                    <select class="form-select CmpntInptBx" id="ComNatID" name="ComNatID">
-                                        <option disabled selected value hidden>Select Common Complaint</option>
-                                        <?php if(!empty($complaints)){
-                                            foreach($complaints as $key => $complaint){
-                                                echo '<option value="'.$key.'">'.$complaint.'</option>';
-                                            }
-                                        } ?>
-                                    </select>
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="mb-3">
+                                            <select class="form-select CmpntInptBx" id="ComNatID" name="ComNatID">
+                                                <option disabled selected value hidden>Select Complaint</option>
+                                                <?php if(!empty($complaints)){
+                                                    foreach($complaints as $key => $complaint){
+                                                        echo '<option value="'.$key.'">'.$complaint.'</option>';
+                                                    }
+                                                } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 text-center my-auto">
+                                        <label class="CmpntInptTtl">OR</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -120,7 +127,7 @@
                                 <label class="CmpntInptTtl">Add Images</label>
                                 <div class="mb-3">
                                     <!-- <div class="UpdFle">+</div> -->
-                                    <input type="file" multiple name="Images[]" id="AddImages"/>
+                                    <input type="file" multiple name="Images[]" id="AddImages" class="form-control"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -160,7 +167,7 @@
                         <hr>
                         <div class="row">
                             <label class="CmpntInptTtl">Complaint Remarks</label>
-                            <div class="col-md-12" id="RemarksDiv">
+                            <div class="col-md-12">
                                 <div class="form-floating mb-3">
                                     <textarea class="form-control CmpntInptBx" placeholder="Add Remarks" id="Remarks" name="Remarks"></textarea>
                                     <label for="Remarks" class="CmpntInptLbl">Add Remarks</label>
@@ -194,18 +201,14 @@
                             return false;
                         }
                     }
-                },
-                Remarks: "required",
+                }
             },
             messages: {
-                ComNatID: "Please select Common Complaint or enter Custom Complaint",
-                Remarks: "Please enter complaint remarks",
+                ComNatID: "Please select complaint or enter custom complaint"
             },
             errorPlacement: function(error, element) {
                 if (element.attr("name") == "ComNatID") {
                     error.insertAfter("#ComplaintDiv");
-                } else if(element.attr("name") == "Remarks") {
-                    error.insertAfter("#RemarksDiv");
                 }else {
                     error.insertAfter(element);
                 }

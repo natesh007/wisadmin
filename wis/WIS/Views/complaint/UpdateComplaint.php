@@ -202,10 +202,7 @@
                                     </div>
                                 </div>
                             </div>';
-                        echo '<div id="EmpTbl">
-                        </div>
-                        <span id="EmpErr"></span>
-                        <!--<div class="ModalFnctnHldr" style="background: #fff;">
+                        echo '<!--<div class="ModalFnctnHldr" style="background: #fff;">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -236,7 +233,10 @@
                                 </div>
                             </div>';
                         }
-                        echo '<div class="AssBtnHldr">';
+                        echo '<div id="EmpTbl">
+                        </div>
+                        <span id="EmpErr"></span>
+                        <div class="AssBtnHldr">';
                             if(isset($Result) && $Result == 'Success')
                                 echo '<a class="btn btn-success SbmtBtn" target="_blank" href="https://wa.me/'.$complaint->EmpMobile.'?text='.base_url('/complaints/update_complaint/'.$ComID.'/2').'">Whatsapp</a>';
                             else
@@ -287,29 +287,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="SrchFltrDv ChckLst" style="background: #fff;">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control InptBx" id="Note" name="Note" placeholder="Notes">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <span class="InnrTtl">Status</span>
-                                        <div class="form-check CompSts">
-                                            <input class="form-check-input" type="radio" name="ComplaintStatus" value="2" id="ComplaintStatus1">
-                                            <label class="form-check-label" for="ComplaintStatus1">Pending</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <span class="InnrTtl">&nbsp;</span>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="ComplaintStatus" value="3" id="ComplaintStatus2">
-                                            <label class="form-check-label" for="ComplaintStatus2">Complete</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>';
                         if(!empty($images)){
                             echo '<div class="CmpltImgBlk">
@@ -332,8 +309,39 @@
                                 </div>
                             </div>';
                         }
-                        echo '<div class="AssBtnHldr">
-                            <button type="submit" class="btn btn-primary SbmtBtn">Save</button>
+                        echo '<div class="SrchFltrDv ChckLst" style="background: #fff;">
+                            <div class="container-fluid">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control InptBx" id="Note" name="Note" placeholder="Notes">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="InnrTtl">Status</span>
+                                        <div class="form-check CompSts">
+                                            <input class="form-check-input" type="radio" name="ComplaintStatus" value="2" id="ComplaintStatus1">
+                                            <label class="form-check-label" for="ComplaintStatus1">Pending</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="InnrTtl">&nbsp;</span>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="ComplaintStatus" value="3" id="ComplaintStatus2">
+                                            <label class="form-check-label" for="ComplaintStatus2">Complete</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control InptBx" id="Material" name="Material" placeholder="Material">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="file" class="form-control InptBx" style="padding: 10px" id="Images" name="Images[]" multiple>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="AssBtnHldr">
+                            <button type="submit" class="btn btn-primary SbmtBtn">Update</button>
                         </div>
                     </div>
                 </form>';
@@ -382,7 +390,7 @@
         $(document).on("change", "#DeptID", function(){
             if($(this).val() != ''){
                 $.post("<?= base_url('/complaints/getemployeesbydepartment') ?>", {DeptID: $(this).val()}, function(data, status){
-                    var employees = '<div class="TableHldr"><table class="AppDataTbl"><tr class="Hdr"><th></th><th><span class="DataTtl">Emp. ID.</span></th><th><span class="DataTtl">Employee Name</span></th><th><span class="DataTtl">Contact No.</span></th><th><span class="DataTtl">Shift Timing</span></th><th><span class="DataTtl">Assigned</span></th><th><span class="DataTtl">In Progress</span></th><th><span class="DataTtl">Total Task Completed</span></th></tr>';
+                    var employees = '<div class="TableHldr" style="border: none;"><table class="AppDataTbl"><tr class="Hdr bg-light"><th></th><th><span class="DataTtl">Emp. ID.</span></th><th><span class="DataTtl">Employee Name</span></th><th><span class="DataTtl">Contact No.</span></th><th><span class="DataTtl">Shift Timing</span></th><th><span class="DataTtl">Assigned</span></th><th><span class="DataTtl">In Progress</span></th><th><span class="DataTtl">Total Task Completed</span></th></tr>';
                     if(data != null){
                         $.each(data, function (i, field) {
                             employees += '<tr><td class="Cntr"><div class="form-check"><input class="form-check-input EmpID" type="radio" name="EmpID" value="'+field.EmpID+'"></div></td><td><span class="DataTxt">'+field.EmpID+'</span></td><td><span class="DataTxt">'+field.EmpName+'</span></td><td><span class="DataTxt">+91 '+field.Mobile+'</span></td><td><span class="DataTxt">'+field.Shift+'</span></td><td><span class="DataTxt">'+field.Assigned+'</span></td><td><span class="DataTxt">'+field.InProcess+'</span></td><td><span class="DataTxt">'+field.Completed+'</span></td></tr>';

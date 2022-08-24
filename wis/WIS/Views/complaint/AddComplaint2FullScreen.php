@@ -62,7 +62,7 @@
         $( ".CmplntTypBlk" ).click(function() {
             $(".CmplntTypBlk").css("background", "#FFFFFF");
             $(".CmplntTypBlk").find("span.CmplntType").css("color", "#4E4B4B");
-            $(this).css("background", "green");
+            $(this).css("background", "#0078BB");
             $(this).find("span.CmplntType").css("color", "#FFFFFF");
             $("#ComCatID").val($(this).attr('var'));
         });

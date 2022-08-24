@@ -234,7 +234,7 @@
                 </div>
                 <div class="TableHldr">
                     <table class="AppDataTbl">
-                        <tr class="Hdr">
+                        <tr class="Hdr bg-light">
                             <th>
                                 <span class="DataTtl">S. No.</span>
                             </th>
@@ -250,17 +250,8 @@
                             <th>
                                 <span class="DataTtl">Building</span>
                             </th>
-                            <th>
-                                <span class="DataTtl">Block</span>
-                            </th>
-                            <th>
-                                <span class="DataTtl">Floor</span>
-                            </th>
-                            <th>
-                                <span class="DataTtl">Room</span>
-                            </th>
                             <th width="9%">
-                                <span class="DataTtl">Complaint Given By</span>
+                                <span class="DataTtl">Priority</span>
                             </th>
                             <th>
                                 <span class="DataTtl">Complaint Time</span>
@@ -297,20 +288,8 @@
                                     <td>
                                         <span class="DataTxt">'.$complaint->BuildingName.'</span>
                                     </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->BlockName.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->FloorName.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->RoomName.'</span>
-                                    </td>
                                     <td width="9%">
-                                        <span class="DataTxt">';
-                                        if($complaint->empid == 0) echo 'Patient'; else echo 'Employee';
-                                        echo '</span>
-                                        &nbsp;<span class="CmpltBy"><img src="'.base_url('/public/wis_assets/Images/AppIcon-About-BluThm.svg').'"/><span class="CmpltByInfo">Web</span></span>
+                                        <span class="DataTxt"></span>
                                     </td>
                                     <td>
                                         <span class="DataTxt">'.$complaint->CreatedDate.'</span>
