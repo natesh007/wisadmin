@@ -10,7 +10,7 @@
     <link rel="shortcut icon" type="image/png" href="<?= base_url() ; ?>/public/wis_assets/Images/ClientIcon.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link href="<?= base_url() ; ?>/public/wis_assets/CSS/StyleSheet_1.css?ver=1" rel="stylesheet" />
     <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
 </head>
@@ -72,11 +72,11 @@
                 <div class="PgHdr">
                     <?php if(!empty(@$categories->location)){
                         echo '<span class="PgHdrTtl1">'.@$categories->location->RoomName.' <a href="'.base_url().'/complaints/add_complaint2_mob';
-                        if(isset($_GET['BID']) && isset($_GET['BKID']) && isset($_GET['FID']) && isset($_GET['RID'])){
-                            echo '?BID='.$_GET['BID'].'&BKID='.$_GET['BKID'].'&FID='.$_GET['FID'].'&RID='.$_GET['RID'];
+                        if(isset($_GET['BID']) && isset($_GET['FID']) && isset($_GET['RID'])){
+                            echo '?BID='.$_GET['BID'].'&FID='.$_GET['FID'].'&RID='.$_GET['RID'];
                         }
                         echo '" class="float-end me-2"><i class="far fa-arrows-alt"></i></a></span>
-                        <h1 class="PgHdrTtl2">'.@$categories->location->FloorName.', '.@$categories->location->BlockName.', '.@$categories->location->BuildingName.'</h1>';
+                        <h1 class="PgHdrTtl2">'.@$categories->location->FloorName.', '.@$categories->location->BuildingName.'</h1>';
                     } ?>
                 </div>
                 <div class="PgInnrHdr">
@@ -85,7 +85,6 @@
                 <div class="PgInnrCntnt">
                     <form action="<?= base_url('complaints/add_complaint3'); ?>" method="get" id="AddComplaint2">
                         <input type="hidden" name="BID" value="<?= $_GET['BID']; ?>"/>
-                        <input type="hidden" name="BKID" value="<?= $_GET['BKID']; ?>"/>
                         <input type="hidden" name="FID" value="<?= $_GET['FID']; ?>"/>
                         <input type="hidden" name="RID" value="<?= $_GET['RID']; ?>"/>
                         <div class="row" id="NatureDiv">
@@ -122,8 +121,7 @@
         $( ".CmplntTypBlk" ).click(function() {
             $(".CmplntTypBlk").css("background", "#FFFFFF");
             $(".CmplntTypBlk").find("span.CmplntType").css("color", "#4E4B4B");
-            $(this).css("background", "#0078BB");
-            $(this).find("span.CmplntType").css("color", "#FFFFFF");
+            $(this).css("background", "#e2edf3");
             $("#ComCatID").val($(this).attr('var'));
         });
         $("form[id='AddComplaint2']").validate({

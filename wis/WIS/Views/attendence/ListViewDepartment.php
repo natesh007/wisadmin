@@ -52,9 +52,9 @@
             </div> 
             <div class="InnrPgBgHldr">
                 <div class="TableHldr">
-                    <table class="AppDataTbl">
+                    <table class="AppDataTbl tablesorter" id="DeptsTbl">
                         <tbody>
-                            <tr class="Hdr bg-light">
+                            <tr class="Hdr">
                                 <th>
                                     <span class="DataTtl">S. No.</span>
                                 </th>
@@ -67,7 +67,7 @@
                                 <th>
                                     <span class="DataTtl">Branch</span>
                                 </th>
-                                <th>
+                                <th class="sorter-false">
                                     <span class="DataTtl">Actions</span>
                                 </th>
                             </tr>
@@ -157,7 +157,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="<?= base_url() ?>/public/wis_assets/Scripts/tablesorter.js"></script>
     <script>
+        $(function() {
+            $("#DeptsTbl").tablesorter();
+        });
         function AddOrUpdateDepartment(DeptID){
             $("#DeptID").remove();
             if (document.getElementById('AppMdlHldr').getAttribute('class') == 'AppModalHldr Hide') {

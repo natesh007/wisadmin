@@ -67,52 +67,6 @@
                     </ul>
                 </div>
             </div>
-            <div class="AppWdgtHldr InnrHldr Cmplnts">
-                <div class="WdgtDv">
-                    <div class="WdgtDtls">
-                        <div class="WdgtIcnDv">
-                            <img src="<?= base_url() ; ?>/public/wis_assets/Images/Blank.png" class="WdgtIcnHldr TtCmplnts" />
-                        </div>
-                        <div class="WdgtTxtDtlsDv">
-                            <span class="WdgtVlu"><?= @$complaints->ComplaintsData[0]->UnAssigned+@$complaints->ComplaintsData[0]->InProcess+@$complaints->ComplaintsData[0]->Completed; ?></span>
-                            <span class="WdgtNme">Total Complaints</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="WdgtDv">
-                    <div class="WdgtDtls">
-                        <div class="WdgtIcnDv">
-                            <img src="<?= base_url() ; ?>/public/wis_assets/Images/Blank.png" class="WdgtIcnHldr UnAssgnd" />
-                        </div>
-                        <div class="WdgtTxtDtlsDv">
-                            <span class="WdgtVlu"><?= @$complaints->ComplaintsData[0]->UnAssigned; ?></span>
-                            <span class="WdgtNme">Un-Assigned</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="WdgtDv">
-                    <div class="WdgtDtls">
-                        <div class="WdgtIcnDv">
-                            <img src="<?= base_url() ; ?>/public/wis_assets/Images/Blank.png" class="WdgtIcnHldr InPrcss" />
-                        </div>
-                        <div class="WdgtTxtDtlsDv">
-                            <span class="WdgtVlu"><?= @$complaints->ComplaintsData[0]->InProcess; ?></span>
-                            <span class="WdgtNme">In Process</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="WdgtDv">
-                    <div class="WdgtDtls">
-                        <div class="WdgtIcnDv">
-                            <img src="<?= base_url() ; ?>/public/wis_assets/Images/Blank.png" class="WdgtIcnHldr Cmpltd" />
-                        </div>
-                        <div class="WdgtTxtDtlsDv">
-                            <span class="WdgtVlu"><?= @$complaints->ComplaintsData[0]->Completed; ?></span>
-                            <span class="WdgtNme">Completed</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <?php if(session('ErrMsg') != '')                               
                 echo '<div class="alert alert-danger alert-dismissible" role="alert" class="w-90 m-auto">
                     '.session('ErrMsg').'
@@ -131,10 +85,6 @@
                             <span class="InnrTxt"><?= $complaint->BuildingName ?></span>
                         </div>
                         <div class="col-md-2">
-                            <span class="InnrTtl">Block</span>
-                            <span class="InnrTxt"><?= $complaint->BlockName ?></span>
-                        </div>
-                        <div class="col-md-2">
                             <span class="InnrTtl">Floor</span>
                             <span class="InnrTxt"><?= $complaint->FloorName ?></span>
                         </div>
@@ -142,7 +92,6 @@
                             <span class="InnrTtl">Room</span>
                             <span class="InnrTxt"><?= $complaint->RoomName ?></span>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -390,7 +339,7 @@
         $(document).on("change", "#DeptID", function(){
             if($(this).val() != ''){
                 $.post("<?= base_url('/complaints/getemployeesbydepartment') ?>", {DeptID: $(this).val()}, function(data, status){
-                    var employees = '<div class="TableHldr" style="border: none;"><table class="AppDataTbl"><tr class="Hdr bg-light"><th></th><th><span class="DataTtl">Emp. ID.</span></th><th><span class="DataTtl">Employee Name</span></th><th><span class="DataTtl">Contact No.</span></th><th><span class="DataTtl">Shift Timing</span></th><th><span class="DataTtl">Assigned</span></th><th><span class="DataTtl">In Progress</span></th><th><span class="DataTtl">Total Task Completed</span></th></tr>';
+                    var employees = '<div class="TableHldr" style="border: none;"><table class="AppDataTbl"><tr class="Hdr"><th></th><th><span class="DataTtl">Emp. ID.</span></th><th><span class="DataTtl">Employee Name</span></th><th><span class="DataTtl">Contact No.</span></th><th><span class="DataTtl">Shift Timing</span></th><th><span class="DataTtl">Assigned</span></th><th><span class="DataTtl">In Progress</span></th><th><span class="DataTtl">Total Task Completed</span></th></tr>';
                     if(data != null){
                         $.each(data, function (i, field) {
                             employees += '<tr><td class="Cntr"><div class="form-check"><input class="form-check-input EmpID" type="radio" name="EmpID" value="'+field.EmpID+'"></div></td><td><span class="DataTxt">'+field.EmpID+'</span></td><td><span class="DataTxt">'+field.EmpName+'</span></td><td><span class="DataTxt">+91 '+field.Mobile+'</span></td><td><span class="DataTxt">'+field.Shift+'</span></td><td><span class="DataTxt">'+field.Assigned+'</span></td><td><span class="DataTxt">'+field.InProcess+'</span></td><td><span class="DataTxt">'+field.Completed+'</span></td></tr>';

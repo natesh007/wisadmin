@@ -20,78 +20,19 @@ class Complaints extends BaseController
 			header('Location: ' . base_url('/'));
 			exit;
 		}
-		$buildings_array = array(
-			"OrgID" => session('OrgID')
-		);
-		$buildings_data = $this->AuthModel->callwebservice(SAURL."getbuildings", $buildings_array, 1, 1);
-		$this->data['buildings'] = [];
-		if (@$buildings_data->status == "Success") {
-			$this->data['buildings'] = @$buildings_data->data;
-		}	
-		$complaint_status = $this->AuthModel->callwebservice(SAURL."complaintstatus", '', 1, 1);
-		$this->data['complaint_status'] = [];
-		if($complaint_status->status == 'Success'){
-			$this->data['complaint_status'] = @$complaint_status->data;
-		}
-		$categories = $this->AuthModel->callwebservice(SAURL."complaintcategorysearch", '', 1, 1);
-		$this->data['categories'] = [];
-		if($categories->status == 'Success'){
-			$this->data['categories'] = @$categories->data->data;
-		}
 		$this->data['SearchKeywords'] = array(
-			"ComCatID" => $this->request->getVar('ComCatID'),
-			"ComNatID" => $this->request->getVar('ComNatID'),
-			"BID" => $this->request->getVar('BID'),
-			"BKID" => $this->request->getVar('BKID'),
-			"FID" => $this->request->getVar('FID'),
-			"RID" => $this->request->getVar('RID'),
-			"ComplaintBy" => $this->request->getVar('ComplaintBy'),
-			"ComplaintStatus" => $this->request->getVar('ComplaintStatus'),
+			"ComCatID" => "",
+			"ComNatID" => "",
+			"BID" => "",
+			"FID" => "",
+			"RID" => "",
+			"ComplaintBy" => "",
+			"ComplaintStatus" => "",
 		);
 		$complaints_data = $this->AuthModel->callwebservice(SAURL."getcomplaints", $this->data['SearchKeywords'], 1, 1);
 		$this->data['complaints'] = [];
 		if (@$complaints_data->status == "Success") {
 			$this->data['complaints'] = @$complaints_data->data;
-		}
-		$this->data['types'] = [];
-		if($this->request->getVar('ComCatID') != ''){
-			$categories_array = array(
-				"ComCatID" => $this->request->getVar('ComCatID')
-			);
-			$natures_data = $this->AuthModel->callwebservice(SAURL."complaintnature", $categories_array, 1, 1);
-			if (@$natures_data->status == "Success") {
-				$this->data['types'] = @$natures_data->data;
-			}
-		}	
-		$this->data['blocks'] = [];
-		if($this->request->getVar('BID') != ''){
-			$building_array = array(
-				"BuildingID" => $this->request->getVar('BID')
-			);
-			$blocks_data = $this->AuthModel->callwebservice(SAURL."getblocks", $building_array, 1, 1);
-			if (@$blocks_data->status == "Success") {
-				$this->data['blocks'] = @$blocks_data->data;
-			}
-		}
-		$this->data['floors'] = [];
-		if($this->request->getVar('BKID') != ''){
-			$block_array = array(
-				"BlockID" => $this->request->getVar('BKID')
-			);
-			$floors_data = $this->AuthModel->callwebservice(SAURL."getfloors", $block_array, 1, 1);
-			if (@$floors_data->status == "Success") {
-				$this->data['floors'] = @$floors_data->data;
-			}
-		}
-		$this->data['rooms'] = [];
-		if($this->request->getVar('FID') != ''){
-			$floor_array = array(
-				"FloorID" => $this->request->getVar('FID')
-			);
-			$rooms_data = $this->AuthModel->callwebservice(SAURL."getrooms", $floor_array, 1, 1);
-			if (@$rooms_data->status == "Success") {
-				$this->data['rooms'] = @$rooms_data->data;
-			}
 		}
 		echo view('Modules\WIS\Views\complaint\complaintsNList', $this->data);
 	}
@@ -137,7 +78,6 @@ class Complaints extends BaseController
 		}
 		$location_array = array(
 			"BID" => $_GET['BID'],
-			"BKID" => $_GET['BKID'],
 			"FID" => $_GET['FID'],
 			"RID" => $_GET['RID']
 		);
@@ -219,16 +159,15 @@ class Complaints extends BaseController
 	}
 
 	//Add Complaint Mobile
-	public function add_complaint_mob($OrgID = '', $BID = '', $BKID = '', $FID = '', $RID = ''){
+	public function add_complaint_mob($OrgID = '', $BID = '', $FID = '', $RID = ''){
 		$this->data = [
 			'OrgID' => $OrgID,
 			'BID' => $BID,
-			'BKID' => $BKID,
 			'FID' => $FID,
 			'RID' => $RID,
 		];
 		$this->data['info'] = [];
-		if($OrgID != '' && $BID != '' && $BKID != '' && $FID != '' && $RID != ''){
+		if($OrgID != '' && $BID != '' && $FID != '' && $RID != ''){
 			$info_data = $this->AuthModel->callwebservice(SAURL."getinfo", $this->data, 1, 1);
 			if (@$info_data->status == "Success") {
 				$this->data['info'] = @$info_data->data;
@@ -257,7 +196,6 @@ class Complaints extends BaseController
 	public function add_complaint3_mob(){
 		$location_array = array(
 			"BID" => $_GET['BID'],
-			"BKID" => $_GET['BKID'],
 			"FID" => $_GET['FID'],
 			"RID" => $_GET['RID']
 		);
@@ -360,23 +298,10 @@ class Complaints extends BaseController
 		exit;
 	}
 
-	//Get Blocks By Building
-	public function getblocksbybuilding(){
+	//Get Floors By Building
+	public function getfloorsbybuilding(){
 		$building_array =  @$this->request->getVar();
-		$blocks_data = $this->AuthModel->callwebservice(SAURL."getblocks", $building_array, 1, 1);
-		$blocks = [];
-		if (@$blocks_data->status == "Success") {
-			$blocks = @$blocks_data->data;
-		}	
-		header('Content-type: application/json');
-        print json_encode($blocks, JSON_PRETTY_PRINT);
-        exit;
-	}
-
-	//Get Floors By Block
-	public function getfloorsbyblock(){
-		$block_array =  @$this->request->getVar();
-		$floors_data = $this->AuthModel->callwebservice(SAURL."getfloors", $block_array, 1, 1);
+		$floors_data = $this->AuthModel->callwebservice(SAURL."getfloors", $building_array, 1, 1);
 		$floors = [];
 		if (@$floors_data->status == "Success") {
 			$floors = @$floors_data->data;
@@ -438,7 +363,6 @@ class Complaints extends BaseController
 			"ComCatID" => "",
 			"ComNatID" => "",
 			"BID" => "",
-			"BKID" => "",
 			"FID" => "",
 			"RID" => "",
 			"ComplaintBy" => "",

@@ -127,7 +127,7 @@
                         <div class="TableHldr">
                             <table class="AppDataTbl">
                                 <tbody>
-                                    <tr class="Hdr bg-light">
+                                    <tr class="Hdr">
                                         <th style="width: 5%">
                                             <span class="DataTtl">S. No.</span>
                                         </th>
@@ -276,6 +276,10 @@
                         </div>
                         <div class="formgrp row">
                             <div class="col-md-6">
+                                <label for="Mobile" class="FrmLbl">Whatsapp Number (Same As Mobile Number <input type="checkbox" id="SameAsMbl" class="form-check-input" checked/> )</label>
+                                <input type="text" class="form-control InptBx" id="Whatsapp" name="Whatsapp" placeholder="Enter Whatsapp Number"/>
+                            </div>
+                            <div class="col-md-6">
                                 <label for="Gender" class="FrmLbl">Gender</label>
                                 <select class="form-select InptBx" name="Gender" id="Gender">
                                     <option disabled selected value hidden>Select Gender</option>
@@ -283,16 +287,18 @@
 								    <option value="F">Female</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="DateOfJoining" class="FrmLbl">Date Of Joining</label>
                                 <input type="date" class="form-control InptBx" id="DateOfJoining" name="DateOfJoining" placeholder="Select Date Of Joining"/>
                             </div>
-                        </div>
-                        <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="JobType" class="FrmLbl">Job Type</label>
                                 <input type="text" class="form-control InptBx" id="JobType" name="JobType" placeholder="Enter Job Type"/>
                             </div>
+                        </div>
+                        <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="PreviousExp" class="FrmLbl">Previous Experience</label>
                                 <select class="form-select InptBx" name="PreviousExp" id="PreviousExp">
@@ -304,8 +310,6 @@
                                     } ?>
                                 </select>
                             </div>
-                        </div>
-                        <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="Shift" class="FrmLbl">Shift</label>
                                 <select class="form-select InptBx" name="Shift" id="Shift">
@@ -317,12 +321,12 @@
                                     } ?>
                                 </select>
                             </div>
+                        </div>
+                        <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="Address" class="FrmLbl">Address</label>
                                 <textarea class="form-control InptBx" rows="5" id="Address" name="Address" placeholder="Enter Address"></textarea>
                             </div>
-                        </div>
-                        <div class="formgrp row">
                             <div class="col-md-6">
                                 <label for="ProfilePic" class="FrmLbl">Profile Pic</label>
                                 <input type="file" class="form-control InptBx" name="ProfilePic" id="ProfilePic" style="padding: 10px"/>
@@ -346,6 +350,16 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="<?= base_url()?>/public/wis_assets/Scripts/bootstrap-select.min.js"></script>
     <script>
+        $("#Mobile").keyup(function(){
+            $("#Whatsapp").val($(this).val());
+        });
+        $( "#SameAsMbl" ).change(function() {
+            if ($(this).prop('checked')==false){ 
+                $("#Whatsapp").val('');
+            }if ($(this).prop('checked')==true){ 
+                $("#Whatsapp").val($("#Mobile").val());
+            }
+        });
         function AddOrUpdateEmployee(EmpID){
             $("#EmpID").remove();
             if (document.getElementById('AppMdlHldr').getAttribute('class') == 'AppModalHldr Hide') {

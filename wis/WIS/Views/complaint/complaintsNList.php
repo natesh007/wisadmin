@@ -112,114 +112,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="SrchFltrDv ChckLst">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-1">
-                            <span class="InnrTtl">Date</span>
-                            <span class="InnrTxt"><?= date('d-m-Y') ?></span>
-                        </div>
-                        <div class="col-md-11">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <div class="col-md-2 mb-2">
-                                        <select class="form-select InptBx" aria-label="ComCatID" name="ComCatID" id="ComCatID">
-                                            <option disabled selected value hidden>Complaint Category</option>
-                                            <?php if(!empty($categories)){
-                                                foreach($categories as $category){ 
-                                                    echo '<option value="'.$category->ComCatID.'" ';
-                                                    if($SearchKeywords['ComCatID'] == $category->ComCatID) echo 'selected';
-                                                    echo '>'.$category->CategoryName.'</option>';
-                                                }
-                                            } ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2 mb-2">
-                                        <select class="form-select InptBx" aria-label="ComNatID" name="ComNatID" id="ComNatID">
-                                            <option disabled selected value hidden>Complaint Type</option>
-                                            <?php if(!empty($types)){
-                                                foreach($types as $key => $type){ 
-                                                    echo '<option value="'.$key.'" ';
-                                                    if($SearchKeywords['ComNatID'] == $key) echo 'selected';
-                                                    echo '>'.$type.'</option>';
-                                                }
-                                            } ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2 mb-2">
-                                        <select class="form-select InptBx" aria-label="BID" name="BID" id="BID">
-                                            <option disabled selected value hidden>Building</option>
-                                            <?php if(!empty($buildings)){
-                                                foreach($buildings as $building){
-                                                    echo '<option value="'.$building->BID.'" ';
-                                                    if($SearchKeywords['BID'] == $building->BID) echo 'selected';
-                                                    echo '>'.$building->BuildingName.' ('.$building->BrName.')</option>';
-                                                }
-                                            } ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2 mb-2">
-                                        <select class="form-select InptBx" aria-label="BKID" name="BKID" id="BKID">
-                                            <option disabled selected value hidden>Block</option>
-                                            <?php if(!empty($blocks)){
-                                                foreach($blocks as $block){ 
-                                                    echo '<option value="'.$block->BKID.'" ';
-                                                    if($SearchKeywords['BKID'] == $block->BKID) echo 'selected';
-                                                    echo '>'.$block->BlockName.'</option>';
-                                                }
-                                            } ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2 mb-2">
-                                        <select class="form-select InptBx" aria-label="FID" name="FID" id="FID">
-                                            <option disabled selected value hidden>Floor</option>
-                                            <?php if(!empty($floors)){
-                                                foreach($floors as $floor){ 
-                                                    echo '<option value="'.$floor->FID.'" ';
-                                                    if($SearchKeywords['FID'] == $floor->FID) echo 'selected';
-                                                    echo '>'.$floor->FloorName.'</option>';
-                                                }
-                                            } ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2 mb-2">
-                                        <select class="form-select InptBx" aria-label="RID" name="RID" id="RID">
-                                            <option disabled selected value hidden>Room</option> 
-                                            <?php if(!empty($rooms)){
-                                                foreach($rooms as $room){ 
-                                                    echo '<option value="'.$room->RID.'" ';
-                                                    if($SearchKeywords['RID'] == $room->RID) echo 'selected';
-                                                    echo '>'.$room->RoomName.'</option>';
-                                                }
-                                            } ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2 mb-2">
-                                        <select class="form-select InptBx" aria-label="ComplaintBy" name="ComplaintBy">
-                                            <option disabled selected value hidden>Complaint By</option>
-                                            <option value="ALL" <?php if($SearchKeywords['ComplaintBy'] == 'ALL') echo 'selected'; ?>>All</option>
-                                            <option value="0" <?php if($SearchKeywords['ComplaintBy'] == '0') echo 'selected'; ?>>Patient</option>
-                                            <option value="1" <?php if($SearchKeywords['ComplaintBy'] == '1') echo 'selected'; ?>>Employee</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2 mb-2">
-                                        <select class="form-select InptBx" aria-label="ComplaintStatus" name="ComplaintStatus">
-                                            <option disabled selected value hidden>Status</option>
-                                            <?php if(!empty($complaint_status)){
-                                                foreach($complaint_status as $key => $status){
-                                                    echo '<option value="'.$key.'">'.$status.'</option> ';
-                                                }
-                                            } ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-1 BttnHldr mb-2">
-                                        <button type="submit" class="btn btn-primary SbmtBtn">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                <div class="AddCmplt">
+                    <a href="<?= base_url('complaints/add_complaint') ?>" class="AddNewRcrd">Add Complaint</a>
                 </div>
             </div>
             <?php if(session('SusMsg') != '')
@@ -229,17 +123,17 @@
                 </div>';
             ?>
             <div class="InnrPgBgHldr">
-                <div class="AddCmplt">
-                    <a href="<?= base_url('complaints/add_complaint') ?>" class="AddNewRcrd">Add Complaint</a>
+                <div>
+
                 </div>
                 <div class="TableHldr">
                     <table class="AppDataTbl">
-                        <tr class="Hdr bg-light">
-                            <th>
+                        <tr class="Hdr">
+                            <th style="width: 5%">
                                 <span class="DataTtl">S. No.</span>
                             </th>
-                            <th>
-                                <span class="DataTtl">Complaint S. No.</span>
+                            <th style="width: 5%">
+                                <span class="DataTtl">C. No.</span>
                             </th>
                             <th>
                                 <span class="DataTtl">Complaint Category</span>
@@ -328,50 +222,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
     <script>
-        $('#ComCatID').change(function(){
-            if($(this).val() != ''){
-                $.post("<?= base_url('/complaints/getcomplainttypesbycomplaintcategory') ?>", {ComCatID: $(this).val()}, function(data, status){    
-                    var types = '<option disabled selected value hidden>Complaint Type</option>';
-                    $.each(data, function (i, field) {
-                        types += '<option value="'+i+'">'+field+'</option>';
-                    });
-                    $('#ComNatID').html(types);
-                });
-            }
-        });
-        $('#BID').change(function(){
-            if($(this).val() != ''){
-                $.post("<?= base_url('/complaints/getblocksbybuilding') ?>", {BuildingID: $(this).val()}, function(data, status){      
-                    var blocks = '<option disabled selected value hidden>Block</option>';
-                    $.each(data, function (i, field) {
-                        blocks += '<option value="'+field.BKID+'">'+field.BlockName+'</option>';
-                    });
-                    $('#BKID').html(blocks);
-                });
-            }
-        });
-        $('#BKID').change(function(){
-            if($(this).val() != ''){
-                $.post("<?= base_url('/complaints/getfloorsbyblock') ?>", {BlockID: $(this).val()}, function(data, status){
-                    var floors = '<option disabled selected value hidden>Floor</option>';
-                    $.each(data, function (i, field) {
-                        floors += '<option value="'+field.FID+'">'+field.FloorName+'</option>';
-                    });
-                    $('#FID').html(floors);
-                });
-            }
-        });
-        $('#FID').change(function(){
-            if($(this).val() != ''){
-                $.post("<?= base_url('/complaints/getroomsbyfloor') ?>", {FloorID: $(this).val()}, function(data, status){
-                    var rooms = '<option disabled selected value hidden>Room</option>';
-                    $.each(data, function (i, field) {
-                        rooms += '<option value="'+field.RID+'">'+field.RoomName+'</option>';
-                    });
-                    $('#RID').html(rooms);
-                });
-            }
-        });
         function tConvert (time) {
             // Check correct time format and split into components
             time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
@@ -389,7 +239,7 @@
                     var complaint = '<div class="AppModalInnrHldr Smllr"><div class="ModalTtlHldr"><div class="ModalTtlHldr"><span class="SctnTtl">Assigned Complaint</span><span class="FtrTtl">'+data.complaint.CategoryName+'</span><span id="AppMdlClsBtn" onclick="javascript:ComplatedComplaint('+ComID+');" class="ModalClsBtn"></span></div><div class="ModalFnctnHldr"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Date</span><span class="InnrTxt">';
                     var dateAr = data.complaint.UpdatedDate.split('-');
                     var newDate = dateAr[2].slice(0, -9) + '-' + dateAr[1] + '-' + dateAr[0];
-                    complaint += newDate+'</span></div><div class="col-md-2"><span class="InnrTtl">Building</span><span class="InnrTxt">'+data.complaint.BuildingName+'</span></div><div class="col-md-2"><span class="InnrTtl">Block</span><span class="InnrTxt">'+data.complaint.BlockName+'</span></div><div class="col-md-2"><span class="InnrTtl">Floor</span><span class="InnrTxt">'+data.complaint.FloorName+'</span></div><div class="col-md-2"><span class="InnrTtl">Room</span><span class="InnrTxt">'+data.complaint.RoomName+'</span></div></div></div></div><div class="ModalCntntHldr"><div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Complaint By</span><span class="InnrTxt">';
+                    complaint += newDate+'</span></div><div class="col-md-2"><span class="InnrTtl">Building</span><span class="InnrTxt">'+data.complaint.BuildingName+'</span></div><div class="col-md-2"><span class="InnrTtl">Floor</span><span class="InnrTxt">'+data.complaint.FloorName+'</span></div><div class="col-md-2"><span class="InnrTtl">Room</span><span class="InnrTxt">'+data.complaint.RoomName+'</span></div></div></div></div><div class="ModalCntntHldr"><div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Complaint By</span><span class="InnrTxt">';
                     if(data.complaint.empid == 0) 
                         complaint += 'Patient'; 
                     else 

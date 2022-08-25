@@ -10,7 +10,7 @@
         <link rel="shortcut icon" type="image/png" href="<?= base_url() ; ?>/public/wis_assets/Images/ClientIcon.png" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
         <link href="<?= base_url() ; ?>/public/wis_assets/CSS/StyleSheet_1.css?ver=1" rel="stylesheet" />
     </head>
     <body style="background-color: #FFFFFF; overflow-y: auto;">
@@ -18,7 +18,7 @@
             <div class="PgHdr">
                 <?php if(!empty(@$location)){
                     echo '<span class="PgHdrTtl1">'.@$location->RoomName.'</span>
-                    <h1 class="PgHdrTtl2">'.@$location->FloorName.', '.@$location->BlockName.', '.@$location->BuildingName.'</h1>';
+                    <h1 class="PgHdrTtl2">'.@$location->FloorName.', '.@$location->BuildingName.'</h1>';
                 } ?>
             </div>
             <div class="PgInnrCntnt">
@@ -31,7 +31,6 @@
                 <form action="" method="post" enctype="multipart/form-data" id="AddComplaint3">
                     <input type="hidden" name="EmpID" value="<?= session('EmpID'); ?>"/>
                     <input type="hidden" name="BID" value="<?= $_GET['BID']; ?>"/>
-                    <input type="hidden" name="BKID" value="<?= $_GET['BKID']; ?>"/>
                     <input type="hidden" name="FID" value="<?= $_GET['FID']; ?>"/>
                     <input type="hidden" name="RID" value="<?= $_GET['RID']; ?>"/>
                     <input type="hidden" name="ComCatID" value="<?= $_GET['ComCatID']; ?>"/>
@@ -92,14 +91,21 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <label class="CmpntInptTtl">Complaint Raised By (Optional)</label>
-                        <div class="col-md-6">
+                        <label class="CmpntInptTtl">Complaint Raised By</label>
+                        <div class="col-md-4 mb-3">
+                            <select class="form-control CmpntInptBx" id="RaisedBy" name="RaisedBy">
+                                <option disabled selected value hidden>Select Complaint Raised By</option>
+                                <option value="Employee">Employee</option>
+                                <option value="Customer">Customer</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control CmpntInptBx" id="Name" name="Name" placeholder="Name"/>
                                 <label for="Name" class="CmpntInptLbl">Name</label>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control CmpntInptBx" id="Mobile" name="Mobile" placeholder="Phone Number (+91)"/>
                                 <label for="Mobile" class="CmpntInptLbl">Phone Number (+91)</label>
@@ -142,10 +148,12 @@
                             return false;
                         }
                     }
-                }
+                },
+                RaisedBy: 'required',
             },
             messages: {
-                ComNatID: "Please select complaint or enter custom complaint"
+                ComNatID: "Please select complaint or enter custom complaint",
+                RaisedBy: "Please select complaint raised by"
             },
             errorPlacement: function(error, element) {
                 if (element.attr("name") == "ComNatID") {

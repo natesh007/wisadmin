@@ -99,12 +99,11 @@ $routes->add('/complaints/add_complaint2', 'Complaints::add_complaint2',['namesp
 $routes->add('/complaints/add_complaint3', 'Complaints::add_complaint3',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint4', 'Complaints::add_complaint4',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint_mob', 'Complaints::add_complaint_mob',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/complaints/add_complaint_mob/(:num)/(:num)/(:num)/(:num)/(:num)', 'Complaints::add_complaint_mob/$1/$2/$3/$4/$5',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/add_complaint_mob/(:num)/(:num)/(:num)/(:num)', 'Complaints::add_complaint_mob/$1/$2/$3/$4',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint2_mob', 'Complaints::add_complaint2_mob',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint3_mob', 'Complaints::add_complaint3_mob',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint4_mob', 'Complaints::add_complaint4_mob',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/complaints/getblocksbybuilding', 'Complaints::getblocksbybuilding',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/complaints/getfloorsbyblock', 'Complaints::getfloorsbyblock',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/getfloorsbybuilding', 'Complaints::getfloorsbybuilding',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/getroomsbyfloor', 'Complaints::getroomsbyfloor',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/getcomplainttypesbycomplaintcategory', 'Complaints::getcomplainttypesbycomplaintcategory',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/getemployeesbydepartment', 'Complaints::getemployeesbydepartment',['namespace' => 'Modules\WIS\Controllers']);

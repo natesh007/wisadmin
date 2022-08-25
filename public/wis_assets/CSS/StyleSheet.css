@@ -6539,7 +6539,6 @@ div.TableHldr {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
-    padding: 5px 10px;
 }
 
 div.TableHldr table.AppDataTbl {
@@ -6587,14 +6586,17 @@ td {
 }
 
 div.TableHldr table.AppDataTbl th {
-    font: 600 12px/100% 'Open Sans';
+    font: 700 12px/100% 'Open Sans';
     color: #333;
+    background-color: #e2edf3;
+    line-height: 1.3;
 }
 
 div.TableHldr table.AppDataTbl td {
     font: 400 12px/100% 'Open Sans';
     color: #555;
     position: relative;
+    line-height: 1.3;
 }
 
 div.TableHldr table.AppDataTbl td span.PrssStts {
@@ -7899,37 +7901,66 @@ label.error {
 .InptBx.error {
     border-color: red !important;
 }
-div#InfoDiv, div#ErrDiv, div#InfoDiv1{
+
+div#InfoDiv,
+div#ErrDiv,
+div#InfoDiv1 {
     display: none;
-}.bootstrap-select>.dropdown-toggle{
+}
+
+.bootstrap-select>.dropdown-toggle {
     border: 1px solid #ddd !important;
     font: 400 12px 'Open Sans' !important;
     box-sizing: border-box !important;
     height: 40px !important;
     background: #FFFFFF !important;
     outline: none !important;
-}.bootstrap-select>.dropdown-toggle:focus,
+}
+
+.bootstrap-select>.dropdown-toggle:focus,
 .bs-searchbox .form-control:focus {
     box-shadow: none !important;
     border-color: #0078BA !important;
-}@media print {
+}
+
+@media print {
     body * {
-      visibility: hidden;
-      position: unset;
+        visibility: hidden;
+        position: unset;
     }
-    #EmpTbl, #EmpTbl * {
-      visibility: visible;
+
+    #EmpTbl,
+    #EmpTbl * {
+        visibility: visible;
     }
+
     #EmpTbl {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
     }
 }
-img#Profile{
+
+img#Profile {
     margin-top: 3px;
     display: none;
     width: 100px;
     height: 100px;
+}
+
+th.tablesorter-header {
+    background-image: url(../../images/small.gif);
+    cursor: pointer;
+    font-weight: bold;
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+th.tablesorter-headerAsc {
+    background-image: url(../../images/small_desc.gif);
+}
+
+th.tablesorter-headerDesc {
+    background-image: url(../../images/small_asc.gif);
 }
