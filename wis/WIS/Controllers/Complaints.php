@@ -114,8 +114,8 @@ class Complaints extends BaseController
 						$orginalextension = $image->getClientExtension();
 						$randcharforimg = substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(8 / strlen($x)))), 1, 8);
 						$newimgname = $randcharforimg . '-' . time() . '.' . $orginalextension;
-						$image->move(WRITEPATH . 'uploads/category/', $newimgname);
-						$complaint_array['Images'][$key] = 'writable/uploads/category/' . $newimgname;
+						$image->move(WRITEPATH . 'uploads/complaints/before/', $newimgname);
+						$complaint_array['Images'][$key] = 'writable/uploads/complaints/before/' . $newimgname;
 					}
 				}
 			}
@@ -232,8 +232,8 @@ class Complaints extends BaseController
 						$orginalextension = $image->getClientExtension();
 						$randcharforimg = substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(8 / strlen($x)))), 1, 8);
 						$newimgname = $randcharforimg . '-' . time() . '.' . $orginalextension;
-						$image->move(WRITEPATH . 'uploads/category/', $newimgname);
-						$complaint_array['Images'][$key] = 'writable/uploads/category/' . $newimgname;
+						$image->move(WRITEPATH . 'uploads/complaints/before/', $newimgname);
+						$complaint_array['Images'][$key] = 'writable/uploads/complaints/before/' . $newimgname;
 					}
 				}
 			}
@@ -359,22 +359,22 @@ class Complaints extends BaseController
 		}
 		$this->data['ComID'] = $ComID;
 		$this->data['Mode'] = $Mode;
-		$SearchKeywords = array(
-			"ComCatID" => "",
-			"ComNatID" => "",
-			"BID" => "",
-			"FID" => "",
-			"RID" => "",
-			"ComplaintBy" => "",
-			"ComplaintStatus" => "",
-		);
-		$complaints_data = $this->AuthModel->callwebservice(SAURL."getcomplaints", $SearchKeywords, 1, 1);
-		$this->data['complaints'] = [];
-		if (@$complaints_data->status == "Success") {
-			$this->data['complaints'] = @$complaints_data->data;
-		}
 		if ($this->request->getMethod() == 'post') {
             $complaint_array =  @$this->request->getVar();
+			if($Mode == 2){
+				$complaint_array['Images'] = [];
+				if ($this->request->getFileMultiple('Images')) {
+					foreach ($this->request->getFileMultiple('Images') as $key => $image) {
+						if($image != ''){
+							$orginalextension = $image->getClientExtension();
+							$randcharforimg = substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(8 / strlen($x)))), 1, 8);
+							$newimgname = $randcharforimg . '-' . time() . '.' . $orginalextension;
+							$image->move(WRITEPATH . 'uploads/complaints/after/', $newimgname);
+							$complaint_array['Images'][$key] = 'writable/uploads/complaints/after/' . $newimgname;
+						}
+					}
+				}
+			}
 			$complaint_data = $this->AuthModel->callwebservice(SAURL."updatecomplaint", $complaint_array, 1, 1);
 			if($complaint_data->status == 'Success'){
 				if($Mode == 1){
@@ -386,7 +386,7 @@ class Complaints extends BaseController
 					if (@$complaint_data->status == "Success") {
 						$this->data['complaint'] = @$complaint_data->data->{0};
 					}
-					if(isset($this->data['complaint']->EmpMobile) && $this->data['complaint']->EmpMobile != null){
+					if(isset($this->data['complaint']->WhatsApp) && $this->data['complaint']->WhatsApp != ''){
 						$this->data['Result'] = $complaint_data->status;
 						echo view('Modules\WIS\Views\complaint\UpdateComplaint', $this->data);
 						exit;

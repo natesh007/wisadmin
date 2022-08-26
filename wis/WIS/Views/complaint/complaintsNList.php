@@ -183,13 +183,13 @@
                                         <span class="DataTxt">'.$complaint->BuildingName.'</span>
                                     </td>
                                     <td width="9%">
-                                        <span class="DataTxt"></span>
+                                        <span class="DataTxt">'.$complaint->Priority.'</span>
                                     </td>
                                     <td>
                                         <span class="DataTxt">'.$complaint->CreatedDate.'</span>
                                     </td>
                                     <td>
-                                        <span class="DataTxt">--------</span>
+                                        <span class="DataTxt">'.$complaint->Material.'</span>
                                     </td>
                                     <td>';
                                         if($complaint->ComplaintStatus == '2')

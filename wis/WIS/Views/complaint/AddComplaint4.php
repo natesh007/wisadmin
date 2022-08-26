@@ -141,7 +141,7 @@
                             <label class="FrmLbl">Complaint Raised By</label>
                             <div class="col-md-4">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control InptBx" id="RaisedBy" placeholder="Raised By" value="'.$complaint->Name.'" readonly/>
+                                    <input type="text" class="form-control InptBx" id="RaisedBy" placeholder="Raised By" value="'.$complaint->ComplaintRaisedBy.'" readonly/>
                                     <label for="RaisedBy" class="CmpntInptLbl">Raised By</label>
                                 </div>
                             </div>

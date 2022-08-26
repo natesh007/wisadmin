@@ -93,7 +93,7 @@
                     <div class="row">
                         <label class="FrmLbl">Complaint Raised By</label>
                         <div class="col-md-4 mb-3">
-                            <select class="form-select InptBx" id="RaisedBy" name="RaisedBy">
+                            <select class="form-select InptBx" id="ComplaintRaisedBy" name="ComplaintRaisedBy">
                                 <option disabled selected value hidden>Select Complaint Raised By</option>
                                 <option value="Employee">Employee</option>
                                 <option value="Customer">Customer</option>
@@ -149,11 +149,11 @@
                         }
                     }
                 },
-                RaisedBy: 'required',
+                ComplaintRaisedBy: 'required',
             },
             messages: {
                 ComNatID: "Please select complaint or enter custom complaint",
-                RaisedBy: "Please select complaint raised by"
+                ComplaintRaisedBy: "Please select complaint raised by"
             },
             errorPlacement: function(error, element) {
                 if (element.attr("name") == "ComNatID") {

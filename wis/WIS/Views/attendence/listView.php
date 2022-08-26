@@ -353,6 +353,12 @@
         $("#Mobile").keyup(function(){
             $("#WhatsApp").val($(this).val());
         });
+        $("#WhatsApp").keyup(function(){
+            if($("#WhatsApp").val() === $("#Mobile").val())
+                $("#SameAsMbl").prop('checked', true);
+            else
+                $("#SameAsMbl").prop('checked', false);
+        });
         $( "#SameAsMbl" ).change(function() {
             if ($(this).prop('checked')==false){ 
                 $("#WhatsApp").val('');
@@ -402,6 +408,11 @@
                         $('#JobTID option[value="'+data.employee.JobTID+'"]').prop('selected', true);
                         $("#Email").val(data.employee.EmailID);
                         $("#Mobile").val(data.employee.Mobile);
+                        $("#WhatsApp").val(data.employee.WhatsApp);
+                        if(data.employee.Mobile === data.employee.WhatsApp)
+                            $('#SameAsMbl').prop('checked', true);
+                        else    
+                            $('#SameAsMbl').prop('checked', false);
                         $('#Gender option[value="'+data.employee.Gender+'"]').prop('selected', true);
                         $("#DateOfJoining").val(data.employee.DateOfJoining);
                         $("#JobType").val(data.employee.JobType);

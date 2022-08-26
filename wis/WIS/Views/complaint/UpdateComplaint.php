@@ -96,7 +96,7 @@
                 </div>
             </div>
             <?php if($Mode == 1){
-                echo '<form action="" method="post" id="AssingComplaint">
+                echo '<form action="" method="post" id="AssingComplaint" enctype="multipart/form-data">
                     <input type="hidden" name="ComID" value="'.$ComID.'" />
                     <input type="hidden" name="ComplaintStatus" value="2" />
                     <div class="ModalCntntHldr">
@@ -194,7 +194,7 @@
                     </div>
                 </form>';
             }else{
-                echo '<form action="" method="post" id="InprocessComplaint">
+                echo '<form action="" method="post" id="InprocessComplaint" enctype="multipart/form-data">
                     <input type="hidden" name="ComID" value="'.$ComID.'" />
                     <div class="ModalCntntHldr">
                         <div class="SrchFltrDv ChckLst" style="background: #fff6ff; border-color: #e7bde7;">
