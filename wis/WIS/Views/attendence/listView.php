@@ -276,8 +276,8 @@
                         </div>
                         <div class="formgrp row">
                             <div class="col-md-6">
-                                <label for="Mobile" class="FrmLbl">Whatsapp Number (Same As Mobile Number <input type="checkbox" id="SameAsMbl" class="form-check-input" checked/> )</label>
-                                <input type="text" class="form-control InptBx" id="Whatsapp" name="Whatsapp" placeholder="Enter Whatsapp Number"/>
+                                <label for="Mobile" class="FrmLbl">WhatsApp Number (Same As Mobile Number <input type="checkbox" id="SameAsMbl" class="form-check-input" checked/> )</label>
+                                <input type="text" class="form-control InptBx" id="WhatsApp" name="WhatsApp" placeholder="Enter WhatsApp Number"/>
                             </div>
                             <div class="col-md-6">
                                 <label for="Gender" class="FrmLbl">Gender</label>
@@ -351,13 +351,13 @@
     <script src="<?= base_url()?>/public/wis_assets/Scripts/bootstrap-select.min.js"></script>
     <script>
         $("#Mobile").keyup(function(){
-            $("#Whatsapp").val($(this).val());
+            $("#WhatsApp").val($(this).val());
         });
         $( "#SameAsMbl" ).change(function() {
             if ($(this).prop('checked')==false){ 
-                $("#Whatsapp").val('');
+                $("#WhatsApp").val('');
             }if ($(this).prop('checked')==true){ 
-                $("#Whatsapp").val($("#Mobile").val());
+                $("#WhatsApp").val($("#Mobile").val());
             }
         });
         function AddOrUpdateEmployee(EmpID){

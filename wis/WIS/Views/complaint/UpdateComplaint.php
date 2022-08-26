@@ -187,7 +187,7 @@
                         <span id="EmpErr"></span>
                         <div class="AssBtnHldr">';
                             if(isset($Result) && $Result == 'Success')
-                                echo '<a class="btn btn-success SbmtBtn" target="_blank" href="https://wa.me/'.$complaint->EmpMobile.'?text='.base_url('/complaints/update_complaint/'.$ComID.'/2').'">Whatsapp</a>';
+                                echo '<a class="btn btn-success SbmtBtn" target="_blank" href="https://wa.me/'.$complaint->EmpMobile.'?text='.base_url('/complaints/update_complaint/'.$ComID.'/2').'">WhatsApp</a>';
                             else
                                 echo '<button type="submit" class="btn btn-primary SbmtBtn">Assign</button>';
                         echo '</div>
@@ -303,7 +303,7 @@
                 <div class="ModalTtlHldr">
                     <div class="ModalTtlHldr">
                         <span class="SctnTtl">';
-                        if($Mode == 1) echo 'Assigned Complaint Images'; else echo 'In Process Complaint Imagesss'; 
+                        if($Mode == 1) echo 'Assigned Complaint Images'; else echo 'In Process Complaint Images'; 
                         echo '</span>
                         <span class="FtrTtl">'.$complaint->CategoryName.'</span>
                         <span id="AppMdlClsBtn" onclick="javascript:ModalPopup();" class="ModalClsBtn"></span>
