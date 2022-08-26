@@ -23,7 +23,7 @@
             </div>
             <div class="PgInnrCntnt">
                 <?php if(!empty($complaint_category)){
-                    echo '<div class="mb-3 CmpntPrt" style="padding: 15px;">
+                    echo '<div class="mb-3 CmpntPrt">
                         <img src="'.$complaint_category->CategoryIcon.'"/>
                         <span class="CmplntType ms-4">'.$complaint_category->CategoryName.'</span>
                     </div>';
@@ -35,12 +35,12 @@
                     <input type="hidden" name="RID" value="<?= $_GET['RID']; ?>"/>
                     <input type="hidden" name="ComCatID" value="<?= $_GET['ComCatID']; ?>"/>
                     <div class="row" id="ComplaintDiv">
-                        <label class="CmpntInptTtl">Raise Complaint</label>
+                        <label class="FrmLbl">Raise Complaint</label>
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-11">
                                     <div class="mb-3">
-                                        <select class="form-select CmpntInptBx" id="ComNatID" name="ComNatID">
+                                        <select class="form-select InptBx" id="ComNatID" name="ComNatID">
                                             <option disabled selected value hidden>Select Complaint</option>
                                             <?php if(!empty($complaints)){
                                                 foreach($complaints as $key => $complaint){
@@ -51,13 +51,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-1 text-center my-auto">
-                                    <label class="CmpntInptTtl">OR</label>
+                                    <label class="FrmLbl">OR</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="CustomComplaint" name="CustomComplaint" placeholder="Add Custom Complaint"/>
+                                <input type="text" class="form-control InptBx" id="CustomComplaint" name="CustomComplaint" placeholder="Add Custom Complaint"/>
                                 <label for="CustomComplaint" class="CmpntInptLbl">Add Custom Complaint</label>
                             </div>
                         </div>
@@ -65,15 +65,15 @@
                     <hr>
                     <div class="row">
                         <div class="col-md-6">
-                            <label class="CmpntInptTtl">Add Images</label>
+                            <label class="FrmLbl">Add Images</label>
                             <div class="mb-3">
                                 <!-- <div class="UpdFle">+</div> -->
-                                <input type="file" multiple name="Images[]" id="AddImages" class="form-control"/>
+                                <input type="file" multiple name="Images[]" id="AddImages" class="form-control InptBx" style="padding: 10px"/>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label class="CmpntInptTtl">Complaint Priority</label>
-                            <div class="mb-3 CmpntPrt" style="padding: 20px;">
+                            <label class="FrmLbl">Complaint Priority</label>
+                            <div class="mb-3 CmpntPrt">
                                 <div class="row">
                                     <?php if(!empty($priorities)){
                                         foreach($priorities as $key => $priority){
@@ -91,9 +91,9 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <label class="CmpntInptTtl">Complaint Raised By</label>
+                        <label class="FrmLbl">Complaint Raised By</label>
                         <div class="col-md-4 mb-3">
-                            <select class="form-control CmpntInptBx" id="RaisedBy" name="RaisedBy">
+                            <select class="form-select InptBx" id="RaisedBy" name="RaisedBy">
                                 <option disabled selected value hidden>Select Complaint Raised By</option>
                                 <option value="Employee">Employee</option>
                                 <option value="Customer">Customer</option>
@@ -101,23 +101,23 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="Name" name="Name" placeholder="Name"/>
+                                <input type="text" class="form-control InptBx" id="Name" name="Name" placeholder="Name"/>
                                 <label for="Name" class="CmpntInptLbl">Name</label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="Mobile" name="Mobile" placeholder="Phone Number (+91)"/>
+                                <input type="text" class="form-control InptBx" id="Mobile" name="Mobile" placeholder="Phone Number (+91)"/>
                                 <label for="Mobile" class="CmpntInptLbl">Phone Number (+91)</label>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <label class="CmpntInptTtl">Complaint Remarks</label>
+                        <label class="FrmLbl">Complaint Remarks</label>
                         <div class="col-md-12">
                             <div class="form-floating mb-3">
-                                <textarea class="form-control CmpntInptBx" placeholder="Add Remarks" id="Remarks" name="Remarks"></textarea>
+                                <textarea class="form-control InptBx" placeholder="Add Remarks" id="Remarks" name="Remarks"></textarea>
                                 <label for="Remarks" class="CmpntInptLbl">Add Remarks</label>
                             </div>
                         </div>

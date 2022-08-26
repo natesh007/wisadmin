@@ -78,9 +78,9 @@
                 <div class="PgInnrCntnt">
                     <form action="<?= base_url('complaints/add_complaint2'); ?>" method="get" id="AddComplaint1">
                         <div class="row">
-                            <div class="col-md-6  mb-3">
-                                <label for="BID" class="CmpntInptTtl">Building Name</label>
-                                <select class="form-select CmpntInptBx" id="BID" name="BID">
+                            <div class="col-md-4 mb-3">
+                                <label for="BID" class="FrmLbl">Building Name</label>
+                                <select class="form-select InptBx" id="BID" name="BID">
                                     <option disabled selected value hidden>Select Building Name</option>
                                     <?php if(!empty($buildings)){
                                         foreach($buildings as $building){
@@ -89,15 +89,15 @@
                                     } ?>
                                 </select>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="FID" class="CmpntInptTtl">Floor Name/ Number</label>
-                                <select class="form-select CmpntInptBx" id="FID" name="FID">
+                            <div class="col-md-4 mb-3">
+                                <label for="FID" class="FrmLbl">Floor Name/ Number</label>
+                                <select class="form-select InptBx" id="FID" name="FID">
                                     <option disabled selected value hidden>Select Floor Name/ Number</option>
                                 </select>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="RID" class="CmpntInptTtl">Room Name/ Number</label>
-                                <select class="form-select CmpntInptBx" id="RID" name="RID">
+                            <div class="col-md-4 mb-3">
+                                <label for="RID" class="FrmLbl">Room Name/ Number</label>
+                                <select class="form-select InptBx" id="RID" name="RID">
                                     <option disabled selected value hidden>Select Room Name/ Number</option>
                                 </select>
                             </div>

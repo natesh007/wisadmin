@@ -23,31 +23,31 @@
                     <?php if($OrgID != '' && $BID != '' && $FID != '' && $RID != ''){
                         echo '<div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="OrgID" class="CmpntInptTtl">Organization</label>
-                                <input type="text" class="form-control CmpntInptBx" value="'.$info->OrgName.'" readonly>
+                                <label for="OrgID" class="FrmLbl">Organization</label>
+                                <input type="text" class="form-control InptBx" value="'.$info->OrgName.'" readonly>
                                 <input type="hidden" id="OrgID" name="OrgID" value="'.$OrgID.'">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="BID" class="CmpntInptTtl">Building Name</label>
-                                <input type="text" class="form-control CmpntInptBx" value="'.$info->BuildingName.'" readonly>
+                                <label for="BID" class="FrmLbl">Building Name</label>
+                                <input type="text" class="form-control InptBx" value="'.$info->BuildingName.'" readonly>
                                 <input type="hidden" id="BID" name="BID" value="'.$BID.'">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="FID" class="CmpntInptTtl">Floor Name/ Number</label>
-                                <input type="text" class="form-control CmpntInptBx" value="'.$info->FloorName.'" readonly>
+                                <label for="FID" class="FrmLbl">Floor Name/ Number</label>
+                                <input type="text" class="form-control InptBx" value="'.$info->FloorName.'" readonly>
                                 <input type="hidden" id="FID" name="FID" value="'.$FID.'">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="RID" class="CmpntInptTtl">Room Name/ Number</label>
-                                <input type="text" class="form-control CmpntInptBx" value="'.$info->RoomName.'" readonly>
+                                <label for="RID" class="FrmLbl">Room Name/ Number</label>
+                                <input type="text" class="form-control InptBx" value="'.$info->RoomName.'" readonly>
                                 <input type="hidden" id="RID" name="RID" value="'.$RID.'">
                             </div>
                         </div>';
                     }else {
                         echo '<div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="OrgID" class="CmpntInptTtl">Organization</label>
-                                <select class="form-select CmpntInptBx" id="OrgID" name="OrgID">
+                                <label for="OrgID" class="FrmLbl">Organization</label>
+                                <select class="form-select InptBx" id="OrgID" name="OrgID">
                                     <option disabled selected value hidden>Select Organization</option>';
                                     if(!empty($organizations)){
                                         foreach($organizations as $organization){
@@ -57,20 +57,20 @@
                                 echo '</select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="BID" class="CmpntInptTtl">Building Name</label>
-                                <select class="form-select CmpntInptBx" id="BID" name="BID">
+                                <label for="BID" class="FrmLbl">Building Name</label>
+                                <select class="form-select InptBx" id="BID" name="BID">
                                     <option disabled selected value hidden>Select Building Name</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="FID" class="CmpntInptTtl">Floor Name/ Number</label>
-                                <select class="form-select CmpntInptBx" id="FID" name="FID">
+                                <label for="FID" class="FrmLbl">Floor Name/ Number</label>
+                                <select class="form-select InptBx" id="FID" name="FID">
                                     <option disabled selected value hidden>Select Floor Name/ Number</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="RID" class="CmpntInptTtl">Room Name/ Number</label>
-                                <select class="form-select CmpntInptBx" id="RID" name="RID">
+                                <label for="RID" class="FrmLbl">Room Name/ Number</label>
+                                <select class="form-select InptBx" id="RID" name="RID">
                                     <option disabled selected value hidden>Select Room Name/ Number</option>
                                 </select>
                             </div>

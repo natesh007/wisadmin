@@ -24,7 +24,7 @@
             </div>
             <div class="PgInnrCntnt">
                 <?php if(!empty($complaint_category)){
-                    echo '<div class="mb-3 CmpntPrt" style="padding: 15px;">
+                    echo '<div class="mb-3 CmpntPrt">
                         <img src="'.$complaint_category->CategoryIcon.'"/>
                         <span class="CmplntType ms-4">'.$complaint_category->CategoryName.'</span>
                     </div>';
@@ -42,22 +42,22 @@
                 <?php if(!empty($complaint)){
                     echo '<div class="row">
                         <div class="col-md-6">
-                            <label class="CmpntInptTtl">Location</label>
+                            <label class="FrmLbl">Location</label>
                             <div class="mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="Location" placeholder="Location" value="'.$complaint->RoomName.', '.$complaint->FloorName.', '.$complaint->BuildingName.'" readonly/>
+                                <input type="text" class="form-control InptBx" id="Location" placeholder="Location" value="'.$complaint->RoomName.', '.$complaint->FloorName.', '.$complaint->BuildingName.'" readonly/>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label class="CmpntInptTtl">Nature of Complaint</label>
+                            <label class="FrmLbl">Nature of Complaint</label>
                             <div class="mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="Nature" placeholder="Nature of Complaint" value="'.$complaint->ComplaintNature.'" readonly/>
+                                <input type="text" class="form-control InptBx" id="Nature" placeholder="Nature of Complaint" value="'.$complaint->ComplaintNature.'" readonly/>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-md-6">
-                            <label class="CmpntInptTtl">Images</label>
+                            <label class="FrmLbl">Images</label>
                             <div class="mb-3">';
                             if(isset($complaint_images)){
                                 foreach($complaint_images as $Image){
@@ -67,40 +67,42 @@
                             echo '</div>
                         </div>
                         <div class="col-md-6">
-                            <label class="CmpntInptTtl">Complaint Priority</label>
-                            <div class="mb-3 CmpntPrt" style="padding: 20px;">
-                                <span class="SlctdPrt">'.$complaint->Priority.'</span>
-                            </div>
-                        </div>
+                            <label class="FrmLbl">Complaint Priority</label>';
+                            if($complaint->Priority != ''){
+                                echo '<div class="mb-3 CmpntPrt">
+                                    <span class="SlctdPrt">'.$complaint->Priority.'</span>
+                                </div>';
+                            }
+                        echo '</div>
                     </div>
                     <hr>
                     <div class="row">
-                        <label class="CmpntInptTtl">Complaint Raised By</label>
+                        <label class="FrmLbl">Complaint Raised By</label>
                         <div class="col-md-4">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="RaisedBy" placeholder="Raised By" value="'.$complaint->Name.'" readonly/>
+                                <input type="text" class="form-control InptBx" id="RaisedBy" placeholder="Raised By" value="'.$complaint->Name.'" readonly/>
                                 <label for="RaisedBy" class="CmpntInptLbl">Raised By</label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="Name" placeholder="Name" value="'.$complaint->Name.'" readonly/>
+                                <input type="text" class="form-control InptBx" id="Name" placeholder="Name" value="'.$complaint->Name.'" readonly/>
                                 <label for="Name" class="CmpntInptLbl">Name</label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control CmpntInptBx" id="PhoneNo" placeholder="Phone Number (+91)" value="'.$complaint->Mobile.'" readonly/>
+                                <input type="text" class="form-control InptBx" id="PhoneNo" placeholder="Phone Number (+91)" value="'.$complaint->Mobile.'" readonly/>
                                 <label for="PhoneNo" class="CmpntInptLbl">Phone Number (+91)</label>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <label class="CmpntInptTtl">Complaint Remarks</label>
+                        <label class="FrmLbl">Complaint Remarks</label>
                         <div class="col-md-12">
                             <div class="form-floating mb-3">
-                                <textarea class="form-control CmpntInptBx" placeholder="Remarks" id="Remarks" readonly>'.$complaint->ComplaintRemarks.'</textarea>
+                                <textarea class="form-control InptBx" placeholder="Remarks" id="Remarks" readonly>'.$complaint->ComplaintRemarks.'</textarea>
                                 <label for="Remarks" class="CmpntInptLbl">Remarks</label>
                             </div>
                         </div>
