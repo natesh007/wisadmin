@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link href="<?= base_url() ; ?>/public/wis_assets/CSS/StyleSheet_1.css?ver=1" rel="stylesheet" />
+    <link href="<?= base_url() ; ?>/public/wis_assets/CSS/daterangepicker.css" rel="stylesheet" />
 </head>
 <body>
 <?php echo view('Modules\WIS\Views\common/leftmenu')  ?>
@@ -116,6 +117,26 @@
                     <a href="<?= base_url('complaints/add_complaint') ?>" class="AddNewRcrd">Add Complaint</a>
                 </div>
             </div>
+            <div class="SrchFltrDv ChckLst">
+                <div class="container-fluid">
+                    <form action="" method="post" class="m-0">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div id="reportrange" style="background: #fff; cursor: pointer; padding: 10px; border: 1px solid #ccc;">
+                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                                    <span></span> 
+                                    <input type="hidden" value="" name="FromDate" id="FromDate"/>
+                                    <input type="hidden" value="" name="ToDate" id="ToDate"/>
+                                    <b class="caret"></b>
+                                </div>
+                            </div>
+                            <div class="col-md-2 BttnHldr">
+                                <button type="submit" class="btn btn-primary SbmtBtn">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <?php if(session('SusMsg') != '')
                 echo '<div class="alert alert-success alert-dismissible w-75 m-auto" role="alert" class="">
                     '.session('SusMsg').'
@@ -123,9 +144,6 @@
                 </div>';
             ?>
             <div class="InnrPgBgHldr">
-                <div>
-
-                </div>
                 <div class="TableHldr">
                     <table class="AppDataTbl">
                         <tr class="Hdr">
@@ -221,6 +239,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
+    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/moment.min.js"></script>
+    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/daterangepicker.js"></script>
     <script>
         function tConvert (time) {
             // Check correct time format and split into components
@@ -271,6 +291,33 @@
                 document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr Hide');
             }
         }
+        $(function() {
+
+            var start = moment().startOf('month');
+            var end = moment().endOf('month');
+
+            function cb(start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                $("#FromDate").val(start.format('YYYY-MM-DD'));
+                $("#ToDate").val(end.format('YYYY-MM-DD'));
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+            }, cb);
+
+            cb(start, end);
+
+        });
     </script>
 </body>
 </html>

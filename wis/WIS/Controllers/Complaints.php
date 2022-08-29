@@ -28,6 +28,8 @@ class Complaints extends BaseController
 			"RID" => "",
 			"ComplaintBy" => "",
 			"ComplaintStatus" => "",
+			"FromDate" => @$this->request->getVar('FromDate'),
+			"ToDate" => @$this->request->getVar('ToDate')
 		);
 		$complaints_data = $this->AuthModel->callwebservice(SAURL."getcomplaints", $this->data['SearchKeywords'], 1, 1);
 		$this->data['complaints'] = [];
