@@ -20,7 +20,16 @@ class Complaints extends BaseController
 			header('Location: ' . base_url('/'));
 			exit;
 		}
-		$this->data['SearchKeywords'] = array(
+		//print_r($this->data['SearchKeywords']);exit;
+		$complaints_data = $this->AuthModel->callwebservice(SAURL."getcomplaints", array(), 1, 1);
+		$this->data['complaints'] = [];
+		if (@$complaints_data->status == "Success") {
+			$this->data['complaints'] = @$complaints_data->data->ComplaintsData[0];
+		}
+		echo view('Modules\WIS\Views\complaint\complaintsNList', $this->data);
+	}
+	public function getcomplaints(){
+		$array = array(
 			"ComCatID" => "",
 			"ComNatID" => "",
 			"BID" => "",
@@ -31,14 +40,15 @@ class Complaints extends BaseController
 			"FromDate" => @$this->request->getVar('FromDate'),
 			"ToDate" => @$this->request->getVar('ToDate')
 		);
-		$complaints_data = $this->AuthModel->callwebservice(SAURL."getcomplaints", $this->data['SearchKeywords'], 1, 1);
-		$this->data['complaints'] = [];
+		$complaints_data = $this->AuthModel->callwebservice(SAURL."getcomplaints", $array, 1, 1);
+		$complaints = [];
 		if (@$complaints_data->status == "Success") {
-			$this->data['complaints'] = @$complaints_data->data;
+			$complaints = @$complaints_data->data->List;
 		}
-		echo view('Modules\WIS\Views\complaint\complaintsNList', $this->data);
+		header('Content-type: application/json');
+		print json_encode($complaints, JSON_PRETTY_PRINT);
+		exit;
 	}
-
 	//Add Complaint
 	public function add_complaint(){
 		if (session('EmpID') == null) {
@@ -416,5 +426,46 @@ class Complaints extends BaseController
 		header('Content-type: application/json');
         print json_encode($data, JSON_PRETTY_PRINT);
         exit;
+	}
+	//Get QR Codes
+	public function QR_Codes(){
+		if (session('EmpID') == null) {
+			header('Location: ' . base_url('/'));
+			exit;
+		}
+		//print_r($this->data['SearchKeywords']);exit;
+		$rooms_data = $this->AuthModel->callwebservice(SAURL."getorgsrooms", '', 1, 1);
+		$this->data['rooms'] = [];
+		if (@$rooms_data->status == "Success") {
+			$this->data['rooms'] = @$rooms_data->data->rooms;
+		}
+		//For Download CSV File
+		if(isset($_POST['Download'])){
+			$filename = 'qr_codes.csv';
+			header("Content-Description: File Transfer");
+			header("Content-Disposition: attachment; filename=$filename");
+			header("Content-Type: application/csv; ");
+			$file = fopen('php://output', 'w');
+			$rooms = [];
+			$i = 0;
+			foreach($this->data['rooms'] as $room){
+				$rooms[$i] = [
+					'SNO' => $i+1,
+					'Building' => @$room->BuildingName,
+					'Floor' => @$room->FloorName,
+					'Room' => @$room->RoomName,
+					'QR_Code' => base_url('complaints/add_complaint/'.session('OrgID').'/'.$room->BID.'/'.$room->FID.'/'.$room->RID)
+				];
+				$i++;
+			}
+			$header = array("S. No.", "Building Name", "Floor Name", "Room Name", "QR Code URL");
+			fputcsv($file, $header);
+			foreach ($rooms as $key => $line) {
+				fputcsv($file, $line);
+			}
+			fclose($file);
+			exit;
+		}
+		echo view('Modules\WIS\Views\complaint\QR_Codes', $this->data);
 	}
 }

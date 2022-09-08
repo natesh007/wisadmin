@@ -99,7 +99,7 @@ $routes->add('/complaints/add_complaint2', 'Complaints::add_complaint2',['namesp
 $routes->add('/complaints/add_complaint3', 'Complaints::add_complaint3',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint4', 'Complaints::add_complaint4',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint_mob', 'Complaints::add_complaint_mob',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/complaints/add_complaint_mob/(:num)/(:num)/(:num)/(:num)', 'Complaints::add_complaint_mob/$1/$2/$3/$4',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/add_complaint/(:num)/(:num)/(:num)/(:num)', 'Complaints::add_complaint_mob/$1/$2/$3/$4',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint2_mob', 'Complaints::add_complaint2_mob',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint3_mob', 'Complaints::add_complaint3_mob',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/add_complaint4_mob', 'Complaints::add_complaint4_mob',['namespace' => 'Modules\WIS\Controllers']);
@@ -109,6 +109,8 @@ $routes->add('/complaints/getcomplainttypesbycomplaintcategory', 'Complaints::ge
 $routes->add('/complaints/getemployeesbydepartment', 'Complaints::getemployeesbydepartment',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/getcomplaint', 'Complaints::getcomplaint',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/update_complaint/(:num)/(:num)', 'Complaints::update_complaint/$1/$2',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/getcomplaints', 'Complaints::getcomplaints',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaints/QR_Codes', 'Complaints::QR_Codes',['namespace' => 'Modules\WIS\Controllers']);
 
 /**
  * --------------------------------------------------------------------

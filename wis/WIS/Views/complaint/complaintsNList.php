@@ -75,7 +75,7 @@
                             <img src="<?= base_url() ; ?>/public/wis_assets/Images/Blank.png" class="WdgtIcnHldr TtCmplnts" />
                         </div>
                         <div class="WdgtTxtDtlsDv">
-                            <span class="WdgtVlu"><?= @$complaints->ComplaintsData[0]->UnAssigned+@$complaints->ComplaintsData[0]->InProcess+@$complaints->ComplaintsData[0]->Completed; ?></span>
+                            <span class="WdgtVlu"><?= @$complaints->UnAssigned+@$complaints->InProcess+@$complaints->Completed; ?></span>
                             <span class="WdgtNme">Total Complaints</span>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                             <img src="<?= base_url() ; ?>/public/wis_assets/Images/Blank.png" class="WdgtIcnHldr UnAssgnd" />
                         </div>
                         <div class="WdgtTxtDtlsDv">
-                            <span class="WdgtVlu"><?= @$complaints->ComplaintsData[0]->UnAssigned; ?></span>
+                            <span class="WdgtVlu"><?= @$complaints->UnAssigned; ?></span>
                             <span class="WdgtNme">Un-Assigned</span>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                             <img src="<?= base_url() ; ?>/public/wis_assets/Images/Blank.png" class="WdgtIcnHldr InPrcss" />
                         </div>
                         <div class="WdgtTxtDtlsDv">
-                            <span class="WdgtVlu"><?= @$complaints->ComplaintsData[0]->InProcess; ?></span>
+                            <span class="WdgtVlu"><?= @$complaints->InProcess; ?></span>
                             <span class="WdgtNme">In Process</span>
                         </div>
                     </div>
@@ -108,33 +108,14 @@
                             <img src="<?= base_url() ; ?>/public/wis_assets/Images/Blank.png" class="WdgtIcnHldr Cmpltd" />
                         </div>
                         <div class="WdgtTxtDtlsDv">
-                            <span class="WdgtVlu"><?= @$complaints->ComplaintsData[0]->Completed; ?></span>
+                            <span class="WdgtVlu"><?= @$complaints->Completed; ?></span>
                             <span class="WdgtNme">Completed</span>
                         </div>
                     </div>
                 </div>
                 <div class="AddCmplt">
                     <a href="<?= base_url('complaints/add_complaint') ?>" class="AddNewRcrd">Add Complaint</a>
-                </div>
-            </div>
-            <div class="SrchFltrDv ChckLst">
-                <div class="container-fluid">
-                    <form action="" method="post" class="m-0">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div id="reportrange" style="background: #fff; cursor: pointer; padding: 10px; border: 1px solid #ccc;">
-                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
-                                    <span></span> 
-                                    <input type="hidden" value="" name="FromDate" id="FromDate"/>
-                                    <input type="hidden" value="" name="ToDate" id="ToDate"/>
-                                    <b class="caret"></b>
-                                </div>
-                            </div>
-                            <div class="col-md-2 BttnHldr">
-                                <button type="submit" class="btn btn-primary SbmtBtn">Submit</button>
-                            </div>
-                        </div>
-                    </form>
+                    <a href="<?= base_url('complaints/QR_Codes') ?>" class="AddNewRcrd">QR Codes</a>
                 </div>
             </div>
             <?php if(session('SusMsg') != '')
@@ -143,92 +124,60 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>';
             ?>
-            <div class="InnrPgBgHldr">
+            <div class="SrchFltrDv ChckLst">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3 ms-auto">
+                            <div id="reportrange" style="background: #fff; cursor: pointer; padding: 10px; border: 1px solid #ccc;">
+                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                                <span></span> 
+                                <input type="hidden" value="" name="FromDate" id="FromDate"/>
+                                <input type="hidden" value="" name="ToDate" id="ToDate"/>
+                                <b class="caret"></b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="InnrPgBgHldr pt-0">
                 <div class="TableHldr">
                     <table class="AppDataTbl">
-                        <tr class="Hdr">
-                            <th style="width: 5%">
-                                <span class="DataTtl">S. No.</span>
-                            </th>
-                            <th style="width: 5%">
-                                <span class="DataTtl">C. No.</span>
-                            </th>
-                            <th>
-                                <span class="DataTtl">Complaint Category</span>
-                            </th>
-                            <th>
-                                <span class="DataTtl">Complaint Type</span>
-                            </th>
-                            <th>
-                                <span class="DataTtl">Building</span>
-                            </th>
-                            <th width="9%">
-                                <span class="DataTtl">Priority</span>
-                            </th>
-                            <th>
-                                <span class="DataTtl">Complaint Time</span>
-                            </th>
-                            <th>
-                                <span class="DataTtl">Repair - Material</span>
-                            </th>
-                            <th>
-                                <span class="DataTtl">Status</span>
-                            </th>
-                            <th>
-                                <span class="DataTtl">Completed By</span>
-                            </th>
-                        </tr>
-                        <?php if(!empty($complaints->List)){
-                            $i = 1;
-                            foreach($complaints->List as $complaint){
-                                echo '<tr ';
-                                if($complaint->ComplaintStatus == '1') 
-                                    echo 'class="Rd"';
-                                echo '>
-                                    <td>
-                                        <span class="DataTxt">'.$i.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->ComID.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->CategoryName.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->ComplaintNature.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->BuildingName.'</span>
-                                    </td>
-                                    <td width="9%">
-                                        <span class="DataTxt">'.$complaint->Priority.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->CreatedDate.'</span>
-                                    </td>
-                                    <td>
-                                        <span class="DataTxt">'.$complaint->Material.'</span>
-                                    </td>
-                                    <td>';
-                                        if($complaint->ComplaintStatus == '2')
-                                            echo '<span id="LnkBtn1" onclick="window.location.href='."'".base_url('/complaints/update_complaint/'.$complaint->ComID.'/2')."'".'" class="BtnLnk Prcss">In Process</span>';
-                                        else if($complaint->ComplaintStatus == '3')
-                                            echo '<span id="LnkBtn1" onclick="javascript:ComplatedComplaint('.$complaint->ComID.');" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>';
-                                        else
-                                            echo '<span class="DataTxt">'.$complaint->StausName.'</span>';
-                                    echo '</td>
-                                    <td>';
-                                        if($complaint->ComplaintStatus == '1') 
-                                            echo '<span id="LnkBtn1" onclick="window.location.href='."'".base_url('/complaints/update_complaint/'.$complaint->ComID.'/1')."'".'" class="BtnLnk">Assign Complaint</span>';  
-                                        else
-                                            echo '<span class="DataTxt">'.$complaint->AssignedBy.'</span>';
-                                    echo '</td>
-                                </tr>';
-                                $i++;
-                            } 
-                        }else{
-                            echo '<tr><td colspan="12" class="text-center">No data found.</td></tr>';
-                        } ?>
+                        <thead>
+                            <tr class="Hdr">
+                                <th style="width: 5%">
+                                    <span class="DataTtl">S. No.</span>
+                                </th>
+                                <th style="width: 5%">
+                                    <span class="DataTtl">C. No.</span>
+                                </th>
+                                <th>
+                                    <span class="DataTtl">Complaint Category</span>
+                                </th>
+                                <th>
+                                    <span class="DataTtl">Complaint Type</span>
+                                </th>
+                                <th>
+                                    <span class="DataTtl">Building</span>
+                                </th>
+                                <th width="9%">
+                                    <span class="DataTtl">Priority</span>
+                                </th>
+                                <th>
+                                    <span class="DataTtl">Complaint Time</span>
+                                </th>
+                                <th>
+                                    <span class="DataTtl">Repair - Material</span>
+                                </th>
+                                <th>
+                                    <span class="DataTtl">Status</span>
+                                </th>
+                                <th>
+                                    <span class="DataTtl">Completed By</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -300,6 +249,34 @@
                 $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
                 $("#FromDate").val(start.format('YYYY-MM-DD'));
                 $("#ToDate").val(end.format('YYYY-MM-DD'));
+                $.post("<?= base_url('/complaints/getcomplaints') ?>", {FromDate: $("#FromDate").val(), ToDate: $("#ToDate").val()}, function(data, status){
+                    var complaints = '';
+                        if(data != null){
+                            var j = 1;
+                            $.each(data, function (i, complaint) {
+                                complaints += '<tr ';
+                                if(complaint.ComplaintStatus == '1') 
+                                    complaints += 'class="Rd"';
+                                complaints += '><td><span class="DataTxt">'+j+'</span></td><td><span class="DataTxt">'+complaint.ComID+'</span></td><td><span class="DataTxt">'+complaint.CategoryName+'</span></td><td><span class="DataTxt">'+complaint.ComplaintNature+'</span></td><td><span class="DataTxt">'+complaint.BuildingName+'</span></td><td width="9%"><span class="DataTxt">'+complaint.Priority+'</span></td><td><span class="DataTxt">'+complaint.CreatedDate+'</span></td><td><span class="DataTxt">'+complaint.Material+'</span></td><td>';
+                                if(complaint.ComplaintStatus == '2')
+                                    complaints += '<span id="LnkBtn1" onclick="window.location.href='+"'"+'<?= base_url() ?>'+'/complaints/update_complaint/'+complaint.ComID+'/2'+"'"+'" class="BtnLnk Prcss">In Process</span>';
+                                else if(complaint.ComplaintStatus == '3')
+                                    complaints += '<span id="LnkBtn1" onclick="javascript:ComplatedComplaint('+complaint.ComID+');" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>';
+                                else
+                                    complaints += '<span class="DataTxt">'+complaint.StausName+'</span>';
+                                complaints += '</td><td>';
+                                if(complaint.ComplaintStatus == '1') 
+                                    complaints += '<span id="LnkBtn1" onclick="window.location.href='+"'"+'<?= base_url() ?>'+'/complaints/update_complaint/'+complaint.ComID+'/1'+"'"+'" class="BtnLnk">Assign Complaint</span>';  
+                                else
+                                    complaints += '<span class="DataTxt">'+complaint.AssignedBy+'</span>';
+                                complaints += '</td></tr>';
+                                j++;
+                            });
+                        }else{
+                            complaints += '<tr><td colspan="12" class="text-center">No data found.</td></tr>';
+                        }
+                    $('.AppDataTbl tbody').html(complaints);
+                });
             }
 
             $('#reportrange').daterangepicker({
