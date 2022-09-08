@@ -127,7 +127,7 @@
             <div class="SrchFltrDv ChckLst">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-3 ms-auto">
+                        <div class="col-md-3">
                             <div id="reportrange" style="background: #fff; cursor: pointer; padding: 10px; border: 1px solid #ccc;">
                                 <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
                                 <span></span> 
