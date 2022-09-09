@@ -2,6 +2,10 @@
 
 namespace Modules\WIS\Controllers;
 use Modules\Auth\Models\AuthModel;
+use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Common\EccLevel;
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\Output\QROutputInterface;
 
 class Complaints extends BaseController
 {
@@ -467,5 +471,11 @@ class Complaints extends BaseController
 			exit;
 		}
 		echo view('Modules\WIS\Views\complaint\QR_Codes', $this->data);
+	}
+	public function QR_Test(){
+		$url = 'https://igreen.systems/';
+		$str = (new QRCode)->render($url);
+		echo '<img src="'.(new QRCode)->render($url).'" width="200" height="200" />';
+		//echo 'Hi Ranga';
 	}
 }
