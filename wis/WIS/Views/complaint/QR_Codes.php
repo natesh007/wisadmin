@@ -47,7 +47,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="SrchFltrDv ChckLst">
+            <!-- <div class="SrchFltrDv ChckLst">
                 <div class="container-fluid">
                     <form action="" method="post">
                         <div class="row">
@@ -57,7 +57,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> -->
             <div class="InnrPgBgHldr">
                 <div class="TableHldr">
                     <table class="AppDataTbl">
@@ -66,7 +66,7 @@
                                 <span class="DataTtl">S. No.</span>
                             </th>
                             <th>
-                                <span class="DataTtl">Building</span>
+                                <span class="DataTtl">Building Name</span>
                             </th>
                             <th>
                                 <span class="DataTtl">Floor</span>
@@ -75,32 +75,28 @@
                                 <span class="DataTtl">Room</span>
                             </th>
                             <th>
-                                <span class="DataTtl">QR Code URL</span>
+                                <span class="DataTtl">QR Code</span>
                             </th>
                         </tr>
                         <?php if(!empty($rooms)){
-                            $i = 1;
                             foreach($rooms as $room){
                                 echo '<tr>
                                     <td>
-                                        <span class="DataTxt">'.$i.'</span>
+                                        <span class="DataTxt">'.$room['SNO'].'</span>
                                     </td>
                                     <td>
-                                        <span class="DataTxt">'.$room->BuildingName.'</span>
+                                        <span class="DataTxt">'.$room['Building'].'</span>
                                     </td>
                                     <td>
-                                        <span class="DataTxt">'.$room->FloorName.'</span>
+                                        <span class="DataTxt">'.$room['Floor'].'</span>
                                     </td>
                                     <td>
-                                        <span class="DataTxt">'.$room->RoomName.'</span>
+                                        <span class="DataTxt">'.$room['Room'].'</span>
                                     </td>
                                     <td>
-                                        <span class="DataTxt">
-                                            <a class="CopyQrCodeUrl" href="'.base_url('complaints/add_complaint/'.session('OrgID').'/'.$room->BID.'/'.$room->FID.'/'.$room->RID).'">Copy</a>
-                                        </span>
+                                        <span class="DataTxt">'.$room['QR_Code'].'</span>
                                     </td>
                                 </tr>';
-                                $i++;
                             }
                         } ?>
                     </table>
@@ -113,26 +109,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
-    <script>
-        $('.CopyQrCodeUrl').click(function (e) {
-            //Copy Text
-            e.preventDefault();
-            var copyText = $(this).attr('href');
-
-            document.addEventListener('copy', function(e) {
-                e.clipboardData.setData('text/plain', copyText);
-                e.preventDefault();
-            }, true);
-
-            document.execCommand('copy');
-            //Change Text
-            $(this).html('Copied');
-
-            setTimeout(function () {
-                $(this).html('Copy');
-            }.bind(this), 1000);
-
-        });
-    </script>
 </body>
 </html>

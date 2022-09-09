@@ -441,41 +441,17 @@ class Complaints extends BaseController
 		$rooms_data = $this->AuthModel->callwebservice(SAURL."getorgsrooms", '', 1, 1);
 		$this->data['rooms'] = [];
 		if (@$rooms_data->status == "Success") {
-			$this->data['rooms'] = @$rooms_data->data->rooms;
-		}
-		//For Download CSV File
-		if(isset($_POST['Download'])){
-			$filename = 'qr_codes.csv';
-			header("Content-Description: File Transfer");
-			header("Content-Disposition: attachment; filename=$filename");
-			header("Content-Type: application/csv; ");
-			$file = fopen('php://output', 'w');
-			$rooms = [];
-			$i = 0;
-			foreach($this->data['rooms'] as $room){
-				$rooms[$i] = [
-					'SNO' => $i+1,
+			$rooms = @$rooms_data->data->rooms;
+			foreach($rooms as $key => $room){
+				$this->data['rooms'][] = [
+					'SNO' => $key+1,
 					'Building' => @$room->BuildingName,
 					'Floor' => @$room->FloorName,
 					'Room' => @$room->RoomName,
-					'QR_Code' => base_url('complaints/add_complaint/'.session('OrgID').'/'.$room->BID.'/'.$room->FID.'/'.$room->RID)
+					'QR_Code' => '<img src="'.(new QRCode)->render(base_url('complaints/add_complaint/'.session('OrgID').'/'.$room->BID.'/'.$room->FID.'/'.$room->RID)).'" width="150" height="150" />'
 				];
-				$i++;
 			}
-			$header = array("S. No.", "Building Name", "Floor Name", "Room Name", "QR Code URL");
-			fputcsv($file, $header);
-			foreach ($rooms as $key => $line) {
-				fputcsv($file, $line);
-			}
-			fclose($file);
-			exit;
 		}
 		echo view('Modules\WIS\Views\complaint\QR_Codes', $this->data);
-	}
-	public function QR_Test(){
-		$url = 'https://igreen.systems/';
-		$str = (new QRCode)->render($url);
-		echo '<img src="'.(new QRCode)->render($url).'" width="200" height="200" />';
-		//echo 'Hi Ranga';
 	}
 }

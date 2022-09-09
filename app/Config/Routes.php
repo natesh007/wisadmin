@@ -111,8 +111,6 @@ $routes->add('/complaints/getcomplaint', 'Complaints::getcomplaint',['namespace'
 $routes->add('/complaints/update_complaint/(:num)/(:num)', 'Complaints::update_complaint/$1/$2',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/getcomplaints', 'Complaints::getcomplaints',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaints/QR_Codes', 'Complaints::QR_Codes',['namespace' => 'Modules\WIS\Controllers']);
-$routes->add('/complaints/QR_Test', 'Complaints::QR_Test',['namespace' => 'Modules\WIS\Controllers']);
-
 /**
  * --------------------------------------------------------------------
  * Additional Routing
