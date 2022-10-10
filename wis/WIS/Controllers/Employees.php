@@ -64,12 +64,11 @@ class Employees extends BaseController
 			$this->data['shifts'] = @$shifts_data->data;
 		}
 		//For Download CSV File
-		if(isset($_POST['Download'])){
+		if(isset($_POST['DownloadXL'])){
 			$filename = 'employees.csv';
 			header("Content-Description: File Transfer");
 			header("Content-Disposition: attachment; filename=$filename");
 			header("Content-Type: application/csv; ");
-			$file = fopen('php://output', 'w');
 			$employees = [];
 			if($this->data['employees']){
 				$i = 0;
@@ -97,6 +96,7 @@ class Employees extends BaseController
 					}
 				}
 			}
+			$file = fopen('php://output', 'w');
 			$header = array("S. No.", "Emp. ID.", "Employee Name", "Email ID", "Contact No.", "Service Department", "Job Type", "Job Title", "Joined On", "Experience", "Previous Experience", "Total Experience", "Created On", "Last Updated On");
 			fputcsv($file, $header);
 			foreach ($employees as $key => $line) {

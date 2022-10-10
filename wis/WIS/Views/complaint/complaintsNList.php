@@ -36,7 +36,7 @@
                     </li> -->
                 </ul>
             </div>
-            <!-- <div class="SctnInnerMenu" style="margin-top: 0;">
+             <div class="SctnInnerMenu" style="margin-top: 0;">
                 <div class="accordion" id="accordionFlushExample">
                     <div class="accordion-item">
                         <span class="accordion-header" id="flush-headingFive">
@@ -49,14 +49,14 @@
                                 <ul class="SbLnk">
                                    
                                     <li>
-                                        <a href="<?php echo base_url(); ?>HospitalAdmin/complaintCReports" class="SbLnk">Complaints Report Overview</a>
+                                        <a href="<?php echo base_url(); ?>/complaintCReports" class="SbLnk">Complaints Report Overview</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div> 
         </div>
         <div class="ContainerRight">
             <div class="SctnDtlsTtlHldr">
@@ -208,7 +208,7 @@
                     var complaint = '<div class="AppModalInnrHldr Smllr"><div class="ModalTtlHldr"><div class="ModalTtlHldr"><span class="SctnTtl">Completed Complaint</span><span class="FtrTtl">'+data.complaint.CategoryName+'</span><span id="AppMdlClsBtn" onclick="javascript:ComplatedComplaint('+ComID+');" class="ModalClsBtn"></span></div><div class="ModalFnctnHldr"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Date</span><span class="InnrTxt">';
                     var dateAr = data.complaint.UpdatedDate.split('-');
                     var newDate = dateAr[2].slice(0, -9) + '-' + dateAr[1] + '-' + dateAr[0];
-                    complaint += newDate+'</span></div><div class="col-md-2"><span class="InnrTtl">Building</span><span class="InnrTxt">'+data.complaint.BuildingName+'</span></div><div class="col-md-2"><span class="InnrTtl">Floor</span><span class="InnrTxt">'+data.complaint.FloorName+'</span></div><div class="col-md-2"><span class="InnrTtl">Room</span><span class="InnrTxt">'+data.complaint.RoomName+'</span></div></div></div></div><div class="ModalCntntHldr"><div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Complaint By</span><span class="InnrTxt">';
+                    complaint += newDate+'</span></div><div class="col-md-2"><span class="InnrTtl">Building</span><span class="InnrTxt">'+data.complaint.BuildingName+'</span></div><div class="col-md-2"><span class="InnrTtl">Floor</span><span class="InnrTxt">'+data.complaint.FloorName+'</span></div><div class="col-md-2"><span class="InnrTtl">Room</span><span class="InnrTxt">'+data.complaint.RoomName+'</span></div></div></div></div><div class="ModalCntntHldr"><div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;"><div class="container-fluid"><div class="row"><div class="col-md-2"><span class="InnrTtl">Complaint Category</span><span class="InnrTxt">'+data.complaint.CategoryName+'</span></div><div class="col-md-2"><span class="InnrTtl">Material</span><span class="InnrTxt">'+data.complaint.Material+'</span></div><div class="col-md-6"><span class="InnrTtl">Nature of Complaint</span><span class="InnrTxt">'+data.complaint.ComplaintNature+' '+data.complaint.CustomComplaint+'</span></div></div></div></div><div class="ModalFnctnHldr HeightAuto" style="background: #fff6ff; border-color: #e7bde7;"><div class="container-fluid"> <div class="row"><div class="col-md-2"><span class="InnrTtl">Complaint By</span><span class="InnrTxt">';
                     if(data.complaint.empid == 0) 
                         complaint += 'Patient'; 
                     else 
@@ -216,21 +216,33 @@
                     complaint += '</span></div><div class="col-md-2"><span class="InnrTtl">Complaint Time</span><span class="InnrTxt Bad">';
                     var dateAr = data.complaint.CreatedDate.split(':');
                     var AMPM = tConvert(dateAr[0].slice(11)+':'+dateAr[1]);
-                    complaint += AMPM+' (+2 Hour)</span></div><div class="col-md-2"><span class="InnrTtl">Patient Name</span><span class="InnrTxt">'+data.complaint.Name+'</span></div><div class="col-md-2"><span class="InnrTtl">Contact No.</span><span class="InnrTxt">';
+                    complaint += AMPM+' </span></div><div class="col-md-2"><span class="InnrTtl">Patient Name</span><span class="InnrTxt">'+data.complaint.Name+'</span></div><div class="col-md-2"><span class="InnrTtl">Contact No.</span><span class="InnrTxt">';
                     if(data.complaint.Mobile != '')
                         complaint += '+91 '+data.complaint.Mobile;
-                    complaint += '</span></div></div></div></div><div class="ModalFnctnHldr HeightAuto" style="background: #ecffe6; border-color: #81e562;"><div class="container-fluid"><div class="row"><div class="col-md-4"><span class="InnrTtl">Assigned To</span><span class="InnrTxt">'+data.complaint.AssignedBy+'</span></div><div class="col-md-4"><span class="InnrTtl">Assigned Time</span><span class="InnrTxt">';
-                    var dateAr = data.complaint.UpdatedDate.split(':');
-                    var AMPM = tConvert(dateAr[0].slice(11)+':'+dateAr[1]);
-                    complaint += AMPM+'</span></div></div></div></div><div class="ModalFnctnHldr HeightAuto" style="background: #ecffe6; border-color: #81e562;"><div class="container-fluid"><div class="row"><div class="col-md-4"><span class="InnrTtl">Note</span><span class="InnrTxt">'+data.complaint.AssignedNote+'</span></div><div class="col-md-4"><span class="InnrTtl">Status</span><span class="InnrTxt">'+data.complaint.StausName+'</span></div></div></div></div>';
+                    complaint += '</span></div></div></div></div>';
                     if(data.images != null){
-                        complaint += '<div class="CmpltImgBlk"><div class="container-fluid"><div class="col-md-12">';
+                        complaint += '<div class="CmpltImgBlk"><div class="container-fluid"><div class="col-md-12"><span class="InnrTtl">Images</span></div><div class="col-md-12">';
                         $.each(data.images, function (i, field) {
-                            complaint += '<img src="'+field.Image+'" class="CmpltImg"/>';
+                            complaint += '<a href="'+field.Image+'" target="_blank" ><img src="'+field.Image+'" class="CmpltImg" target="_blank"/></a>';
                         });
                         complaint += '</div></div></div>';
-                    } if(data.complaint.ComplaintRemarks != ''){
+                    }
+                    if(data.complaint.ComplaintRemarks != ''){
                         complaint += '<div class="CmpltDescBlk"><div class="container-fluid"><div class="col-md-12"><p><span class="CmpltDesHed">Description : </span> '+data.complaint.ComplaintRemarks+'</p></div></div></div>';
+                    }
+                    complaint += '<h4 style="text-align:center">Action Taken</h4><div class="ModalFnctnHldr HeightAuto" style="background: #ecffe6; border-color: #81e562;"><div class="container-fluid"><div class="row"><div class="col-md-4"><span class="InnrTtl">Assigned To</span><span class="InnrTxt">'+data.complaint.AssignedBy+'</span></div><div class="col-md-4"><span class="InnrTtl">Assigned Time</span><span class="InnrTxt">';
+                    var dateAr1 = data.complaint.AssignedTime.split(' ');
+                    var dateAr = data.complaint.AssignedTime.split(':');
+                    var dd = tConvert(dateAr1[0]);
+                    var AMPM = tConvert(dateAr[0].slice(11)+':'+dateAr[1]);
+                    complaint += dd+' '+AMPM+'</span></div></div></div></div><div class="ModalFnctnHldr HeightAuto" style="background: #ecffe6; border-color: #81e562;"><div class="container-fluid"><div class="row"><div class="col-md-4"><span class="InnrTtl">Notes</span><span class="InnrTxt">'+data.complaint.AssignedNote+'</span></div><div class="col-md-4"><span class="InnrTtl">Status</span><span class="InnrTxt">'+data.complaint.StausName+'</span></div><div class="col-md-4"><span class="InnrTtl">Completed Time</span><span class="InnrTxt">'+data.complaint.CompletedDateTime+' ( <span style="color:red">'+data.complaint.CompletedTime+'</span> ) </span></div></div></div></div>';
+                    
+                    if(data.afterimages != null){
+                        complaint += '<div class="CmpltImgBlk"><div class="container-fluid"><div class="col-md-12"><span class="InnrTtl">Images</span></div><div class="col-md-12">';
+                        $.each(data.afterimages, function (i, field) {
+                            complaint += '<a href="'+field.AfterImage+'" target="_blank" ><img src="'+field.AfterImage+'" class="CmpltImg"/></a>';
+                        });
+                        complaint += '</div></div></div>';
                     }
                     complaint += '</div></div></div>';    
                     $("#AppMdlHldr").html(complaint);            
@@ -261,7 +273,7 @@
                                 if(complaint.ComplaintStatus == '2')
                                     complaints += '<span id="LnkBtn1" onclick="window.location.href='+"'"+'<?= base_url() ?>'+'/complaints/update_complaint/'+complaint.ComID+'/2'+"'"+'" class="BtnLnk Prcss">In Process</span>';
                                 else if(complaint.ComplaintStatus == '3')
-                                    complaints += '<span id="LnkBtn1" onclick="javascript:ComplatedComplaint('+complaint.ComID+');" class="BtnLnk Cmpltd">Completed (1hr 35 mins)</span>';
+                                    complaints += '<span id="LnkBtn1" onclick="javascript:ComplatedComplaint('+complaint.ComID+');" class="BtnLnk Cmpltd">Completed ('+complaint.CompletedTime+')</span>';
                                 else
                                     complaints += '<span class="DataTxt">'+complaint.StausName+'</span>';
                                 complaints += '</td><td>';

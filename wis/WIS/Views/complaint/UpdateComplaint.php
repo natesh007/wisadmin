@@ -92,7 +92,29 @@
                             <span class="InnrTtl">Room</span>
                             <span class="InnrTxt"><?= $complaint->RoomName ?></span>
                         </div>
-                    </div>
+                    </div>                    
+                </div>
+            </div>
+
+            <div class="SrchFltrDv ChckLst">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <span class="InnrTtl">Complaint Category</span>
+                            <span class="InnrTxt"><?= $complaint->CategoryName; ?></span>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="InnrTtl">Priority</span>
+                            <span class="InnrTxt"><?= $complaint->Priority; ?></span>
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <span class="InnrTtl">Nature of Complaint</span>
+                            <span class="InnrTxt"><?= ($complaint->ComplaintNature!=""?$complaint->ComplaintNature:$complaint->CustomComplaint); ?></span>
+                        </div>
+                       
+                       
+                    </div>                    
                 </div>
             </div>
             <?php if($Mode == 1){
@@ -111,7 +133,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <span class="InnrTtl">Complaint Time</span>
-                                        <span class="InnrTxt Bad">'.date('h:i A', strtotime($complaint->CreatedDate)).' (+2 Hour)</span>
+                                        <span class="InnrTxt Bad">'.date('h:i A', strtotime($complaint->CreatedDate)).' </span>
                                     </div>
                                     <div class="col-md-2">
                                         <span class="InnrTtl">Patient Name</span>
@@ -146,7 +168,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <span class="InnrTtl">Assigned Time</span>
-                                            <span class="InnrTxt">'.date('h:i A', strtotime($complaint->UpdatedDate)).'</span>
+                                            <span class="InnrTxt">'.date('d-m-Y h:i A', strtotime($complaint->AssignedTime)).'</span>
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +206,20 @@
                         }
                         echo '<div id="EmpTbl">
                         </div>
-                        <span id="EmpErr"></span>
+                        <span id="EmpErr"></span><br/>
+                        <div class="col-md-6 container-fluid">
+                            <div class="row SrchFltrDv ">
+                                <div class="col-md-4 ">
+                                    <span class="InnrTxt"><input type="checkbox" name="mode" value="1"/> Mobile App</span>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <span class="InnrTxt"><input type="checkbox" name="mode" value="2"/> WhatsApp</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="InnrTxt"><input type="checkbox" name="mode" value="3"/> SMS</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="AssBtnHldr">';
                             if(isset($Result) && $Result == 'Success')
                                 echo '<a class="btn btn-success SbmtBtn" target="_blank" href="https://wa.me/'.$complaint->EmpMobile.'?text='.base_url('/complaints/update_complaint/'.$ComID.'/2').'">WhatsApp</a>';
@@ -208,7 +243,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <span class="InnrTtl">Complaint Time</span>
-                                        <span class="InnrTxt Bad">'.date('h:i A', strtotime($complaint->CreatedDate)).' (+2 Hour)</span>
+                                        <span class="InnrTxt Bad">'.date('h:i A', strtotime($complaint->CreatedDate)).' </span>
                                     </div>
                                     <div class="col-md-2">
                                         <span class="InnrTtl">Patient Name</span>
@@ -219,20 +254,6 @@
                                         <span class="InnrTxt">';
                                         if($complaint->Mobile != '') echo '+91 '.$complaint->Mobile; else echo '';
                                         echo '</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="SrchFltrDv ChckLst" style="background: #ecffe6; border-color: #81e562;">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <span class="InnrTtl">Assigned To</span>
-                                        <span class="InnrTxt">'.$complaint->AssignedBy.'</span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <span class="InnrTtl">Assigned Time</span>
-                                        <span class="InnrTxt">'.date('h:i A', strtotime($complaint->UpdatedDate)).'</span>
                                     </div>
                                 </div>
                             </div>
@@ -258,11 +279,27 @@
                                 </div>
                             </div>';
                         }
+                        
+                        echo '<h4 style="text-align:center">Action Taken</h4><div class="SrchFltrDv ChckLst" style="background: #ecffe6; border-color: #81e562;">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <span class="InnrTtl">Assigned To</span>
+                                        <span class="InnrTxt">'.$complaint->AssignedBy.'</span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span class="InnrTtl">Assigned Time</span>
+                                        <span class="InnrTxt">'.date('d-m-Y h:i A', strtotime($complaint->AssignedTime)).'</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+                       
                         echo '<div class="SrchFltrDv ChckLst" style="background: #fff;">
                             <div class="container-fluid">
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control InptBx" id="Note" name="Note" placeholder="Notes">
+                                        <input type="text" class="form-control InptBx" id="Note" name="Note" placeholder="Notes" value="'.$complaint->AssignedNote.'">
                                     </div>
                                     <div class="col-md-3">
                                         <span class="InnrTtl">Status</span>
@@ -281,7 +318,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control InptBx" id="Material" name="Material" placeholder="Material">
+                                        <input type="text" class="form-control InptBx" id="Material" name="Material" placeholder="Material added / replaced" value="'.$complaint->Material.'">
                                     </div>
                                     <div class="col-md-6">
                                         <input type="file" class="form-control InptBx" style="padding: 10px" id="Images" name="Images[]" multiple>
@@ -342,7 +379,7 @@
                     var employees = '<div class="TableHldr" style="border: none;"><table class="AppDataTbl"><tr class="Hdr"><th></th><th><span class="DataTtl">Emp. ID.</span></th><th><span class="DataTtl">Employee Name</span></th><th><span class="DataTtl">Contact No.</span></th><th><span class="DataTtl">Shift Timing</span></th><th><span class="DataTtl">Assigned</span></th><th><span class="DataTtl">In Progress</span></th><th><span class="DataTtl">Total Task Completed</span></th></tr>';
                     if(data != null){
                         $.each(data, function (i, field) {
-                            employees += '<tr><td class="Cntr"><div class="form-check"><input class="form-check-input EmpID" type="radio" name="EmpID" value="'+field.EmpID+'"></div></td><td><span class="DataTxt">'+field.EmpID+'</span></td><td><span class="DataTxt">'+field.EmpName+'</span></td><td><span class="DataTxt">+91 '+field.Mobile+'</span></td><td><span class="DataTxt">'+field.Shift+'</span></td><td><span class="DataTxt">'+field.Assigned+'</span></td><td><span class="DataTxt">'+field.InProcess+'</span></td><td><span class="DataTxt">'+field.Completed+'</span></td></tr>';
+                            employees += '<tr><td class="Cntr"><div class="form-check"><input class="form-check-input EmpID" type="radio" name="EmpID" value="'+field.EmpID+'"></div></td><td><span class="DataTxt">'+field.EmpID+'</span></td><td><span class="DataTxt">'+field.EmpName+'</span></td><td><span class="DataTxt">+91 '+field.Mobile+'</span> </td><td><span class="DataTxt">'+field.Shift+'</span></td><td><span class="DataTxt">'+field.Assigned+'</span></td><td><span class="DataTxt">'+field.InProcess+'</span></td><td><span class="DataTxt">'+field.Completed+'</span></td></tr>';
                         });
                     }else{
                         employees += '<tr><td colspan="7" style="text-align:center"><span class="DataTxt">No data found.</span></td></tr>';

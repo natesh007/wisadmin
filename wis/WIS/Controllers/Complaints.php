@@ -165,12 +165,14 @@ class Complaints extends BaseController
 		if (@$complaint_data->status == "Success") {
 			$this->data['complaint'] = @$complaint_data->data->{0};
 			$this->data['complaint_images'] = @$complaint_data->data->Images;
+			$this->data['complaint_AfterImages'] = @$complaint_data->data->AfterImages;
 		}
 		$complaint_status = $this->AuthModel->callwebservice(SAURL."complaintstatus", '', 1, 1);
 		$this->data['complaint_status'] = [];
 		if($complaint_status->status == 'Success'){
 			$this->data['complaint_status'] = @$complaint_status->data;
 		}
+		$this->data['Mode'] = 1;
 		echo view('Modules\WIS\Views\complaint\AddComplaint4', $this->data);
 	}
 
@@ -279,6 +281,7 @@ class Complaints extends BaseController
 		if (@$complaint_data->status == "Success") {
 			$this->data['complaint'] = @$complaint_data->data->{0};
 			$this->data['complaint_images'] = @$complaint_data->data->Images;
+			$this->data['complaint_AfterImages'] = @$complaint_data->data->AfterImages;
 		}
 		$complaint_status = $this->AuthModel->callwebservice(SAURL."complaintstatus", '', 1, 1);
 		$this->data['complaint_status'] = [];
@@ -392,6 +395,7 @@ class Complaints extends BaseController
 				}
 			}
 			$complaint_data = $this->AuthModel->callwebservice(SAURL."updatecomplaint", $complaint_array, 1, 1);
+			
 			if($complaint_data->status == 'Success'){
 				if($Mode == 1){
 					$complaint_array = array(
@@ -426,6 +430,7 @@ class Complaints extends BaseController
 		if (@$complaint_data->status == "Success") {
 			$data['complaint'] = @$complaint_data->data->{0};
 			$data['images'] = @$complaint_data->data->Images;
+			$data['afterimages'] = @$complaint_data->data->AfterImages;
 		}
 		header('Content-type: application/json');
         print json_encode($data, JSON_PRETTY_PRINT);

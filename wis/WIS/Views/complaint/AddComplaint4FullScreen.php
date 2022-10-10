@@ -106,7 +106,70 @@
                                 <label for="Remarks" class="CmpntInptLbl">Remarks</label>
                             </div>
                         </div>
-                    </div>';
+                    </div>
+                    <hr>
+                        <div class="row">
+                            <label class="FrmLbl">Complaint Assigned To</label>
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control InptBx" id="AssignedBy" placeholder="Assigned To" value="'.$complaint->AssignedBy.'" readonly/>
+                                    <label for="Assigned To" class="CmpntInptLbl">Assigned To</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control InptBx" id="Name" placeholder="Department" value="'.$complaint->DeptName.'" readonly/>
+                                    <label for="Department" class="CmpntInptLbl">Department</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control InptBx" id="PhoneNo" placeholder="Assigned Time" value="'.$complaint->AssignedTime.'" readonly/>
+                                    <label for="AssignedTime" class="CmpntInptLbl">Assigned Time</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        <div class="row">
+                            <label class="FrmLbl">Complaint Material</label>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control InptBx" id="Material" placeholder="Material" value="'.$complaint->Material.'" readonly/>
+                                    <label for="Material" class="CmpntInptLbl">Material</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control InptBx" id="AssignedNote" placeholder="AssignedNote" value="'.$complaint->AssignedNote.'" readonly/>
+                                    <label for="AssignedNote" class="CmpntInptLbl">AssignedNote</label>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="FrmLbl">After Images</label>
+                                <div class="mb-3">';
+                                if(isset($complaint_AfterImages)){
+                                    foreach($complaint_AfterImages as $Image){
+                                        echo '<img src="'.$Image->AfterImage.'" class="CmpltImg"/>';
+                                    }
+                                } 
+                                echo '</div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <label class="FrmLbl">Completed Date</label>
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control InptBx" placeholder="CompletedDateTime" id="CompletedDateTime" readonly>'.$complaint->CompletedDateTime.'</textarea>
+                                    <label for="Completed Date" class="CmpntInptLbl">Completed Date</label>
+                                </div>
+                            </div>
+                        </div>';
                 } ?>
             </div>
         </div>

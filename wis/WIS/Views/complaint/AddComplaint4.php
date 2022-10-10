@@ -12,9 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link href="<?= base_url() ; ?>/public/wis_assets/CSS/StyleSheet_1.css?ver=1" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
     <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
 </head>
 <body>
@@ -122,7 +119,7 @@
                                 <div class="mb-3">';
                                 if(isset($complaint_images)){
                                     foreach($complaint_images as $Image){
-                                        echo '<img src="'.$Image->Image.'" class="CmpltImg"/>';
+                                        echo '<img src="'.$Image->Image.'" class="CmpltImg" onclick="javascript:ModalPopup();"/>';
                                     }
                                 } 
                                 echo '</div>
@@ -167,11 +164,147 @@
                                     <label for="Remarks" class="CmpntInptLbl">Remarks</label>
                                 </div>
                             </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <label class="FrmLbl">Complaint Assigned To</label>
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control InptBx" id="AssignedBy" placeholder="Assigned To" value="'.$complaint->AssignedBy.'" readonly/>
+                                    <label for="Assigned To" class="CmpntInptLbl">Assigned To</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control InptBx" id="Name" placeholder="Department" value="'.$complaint->DeptName.'" readonly/>
+                                    <label for="Department" class="CmpntInptLbl">Department</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control InptBx" id="PhoneNo" placeholder="Assigned Time" value="'.$complaint->AssignedTime.'" readonly/>
+                                    <label for="AssignedTime" class="CmpntInptLbl">Assigned Time</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        <div class="row">
+                            <label class="FrmLbl">Complaint Material</label>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control InptBx" id="Material" placeholder="Material" value="'.$complaint->Material.'" readonly/>
+                                    <label for="Material" class="CmpntInptLbl">Material</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control InptBx" id="AssignedNote" placeholder="AssignedNote" value="'.$complaint->AssignedNote.'" readonly/>
+                                    <label for="AssignedNote" class="CmpntInptLbl">AssignedNote</label>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="FrmLbl">After Images</label>
+                                <div class="mb-3">';
+                                if(isset($complaint_AfterImages)){
+                                    foreach($complaint_AfterImages as $Image){
+                                        echo '<img src="'.$Image->AfterImage.'" class="CmpltImg" onclick="javascript:ModalPopupTwo();"/>';
+                                    }
+                                } 
+                                echo '</div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <label class="FrmLbl">Completed Date</label>
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control InptBx" placeholder="CompletedDateTime" id="CompletedDateTime" readonly>'.$complaint->CompletedDateTime.'</textarea>
+                                    <label for="Completed Date" class="CmpntInptLbl">Completed Date</label>
+                                </div>
+                            </div>
                         </div>';
+                        
                     } ?>
                 </div>
             </div>
         </div>
     </div>
+    <?php if(!empty($complaint_images)){
+        echo '<div id="AppMdlHldr" class="AppModalHldr Hide">
+            <div class="AppModalInnrHldr Smllr">
+                <div class="ModalTtlHldr">
+                    <div class="ModalTtlHldr">
+                        <span class="SctnTtl">';
+                        if($Mode == 1) echo 'Assigned Complaint Images'; else echo 'In Process Complaint Images'; 
+                        echo '</span>
+                        <span class="FtrTtl">'.$complaint->CategoryName.'</span>
+                        <span id="AppMdlClsBtn" onclick="javascript:ModalPopup();" class="ModalClsBtn"></span>
+                    </div>
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner">';
+                            foreach($complaint_images as $key => $image){
+                                echo '<div class="carousel-item';
+                                if($key == 0) echo ' active';
+                                echo '">
+                                    <img src="'.$image->Image.'" class="d-block w-100" alt="CompImg'.$key.'" style="height:600px">
+                                </div>';
+                            }
+                        echo '</div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>';
+    } ?>
+    <?php if(!empty($complaint_AfterImages)){
+        echo '<div id="AppMdlHldrTwo" class="AppModalHldr Hide">
+            <div class="AppModalInnrHldr Smllr">
+                <div class="ModalTtlHldr">
+                    <div class="ModalTtlHldr">
+                        <span class="SctnTtl">';
+                        if($Mode == 1) echo 'Assigned Complaint Images'; else echo 'In Process Complaint Images'; 
+                        echo '</span>
+                        <span class="FtrTtl">'.$complaint->CategoryName.'</span>
+                        <span id="AppMdlClsBtn" onclick="javascript:ModalPopupTwo();" class="ModalClsBtn"></span>
+                    </div>
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner">';
+                            foreach($complaint_AfterImages as $key => $image){
+                                echo '<div class="carousel-item';
+                                if($key == 0) echo ' active';
+                                echo '">
+                                    <img src="'.$image->AfterImage.'" class="d-block w-100" alt="CompImg'.$key.'" style="height:600px">
+                                </div>';
+                            }
+                        echo '</div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>';
+    } ?>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 </html>

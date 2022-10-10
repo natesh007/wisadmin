@@ -108,8 +108,8 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-1 text-center my-auto">
-                                        <label class="FrmLbl">OR</label>
+                                    <div class="col-md-1 orlabel">
+                                        <label class="FrmLbl" >OR</label>
                                     </div>
                                 </div>
                             </div>
@@ -155,6 +155,7 @@
                                     <option disabled selected value hidden>Select Complaint Raised By</option>
                                     <option value="Employee">Employee</option>
                                     <option value="Customer">Customer</option>
+                                    <option value="Customer">Patient</option>
                                 </select>
                             </div>
                             <div class="col-md-4">
@@ -188,6 +189,9 @@
             </div>
         </div>
     </div>
+    <style>
+        .orlabel{padding-left:0px;}.orlabel label{font-size:25px;}
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
