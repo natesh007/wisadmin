@@ -169,6 +169,9 @@
                                     <span class="DataTtl">Repair - Material</span>
                                 </th>
                                 <th>
+                                    <span class="DataTtl">Completed Time</span>
+                                </th>
+                                <th>
                                     <span class="DataTtl">Status</span>
                                 </th>
                                 <th>
@@ -185,6 +188,9 @@
     </div>
     <div id="AppMdlHldr" class="AppModalHldr Hide">
     </div>
+    <style>
+        .reassign{float:right; margin-top:20px;}
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="<?= base_url() ; ?>/public/wis_assets/Scripts/Script.js"></script>
@@ -244,7 +250,10 @@
                         });
                         complaint += '</div></div></div>';
                     }
-                    complaint += '</div></div></div>';    
+                    var link = '<?=base_url()?>/complaints/update_complaint/'+data.complaint.ComID+'/4';
+                    complaint += '<div class="col-md-12"><div class="col-md-2 reassign"><a href='+link+' class="AddNewRcrd" >Re Assign</a></div></div>';  
+                    complaint += '</div></div></div>'; 
+                     
                     $("#AppMdlHldr").html(complaint);            
                     document.getElementById('AppMdlHldr').setAttribute('class', 'AppModalHldr');
                 });
@@ -269,7 +278,7 @@
                                 complaints += '<tr ';
                                 if(complaint.ComplaintStatus == '1') 
                                     complaints += 'class="Rd"';
-                                complaints += '><td><span class="DataTxt">'+j+'</span></td><td><span class="DataTxt">'+complaint.ComID+'</span></td><td><span class="DataTxt">'+complaint.CategoryName+'</span></td><td><span class="DataTxt">'+complaint.ComplaintNature+'</span></td><td><span class="DataTxt">'+complaint.BuildingName+'</span></td><td width="9%"><span class="DataTxt">'+complaint.Priority+'</span></td><td><span class="DataTxt">'+complaint.CreatedDate+'</span></td><td><span class="DataTxt">'+complaint.Material+'</span></td><td>';
+                                complaints += '><td><span class="DataTxt">'+j+'</span></td><td><span class="DataTxt">'+complaint.ComID+'</span></td><td><span class="DataTxt">'+complaint.CategoryName+'</span></td><td><span class="DataTxt">'+complaint.ComplaintNature+'</span></td><td><span class="DataTxt">'+complaint.BuildingName+'</span></td><td width="9%"><span class="DataTxt">'+complaint.Priority+'</span></td><td><span class="DataTxt">'+complaint.CreatedDate+'</span></td><td><span class="DataTxt">'+complaint.Material+'</span></td><td><span class="DataTxt">'+complaint.CompletedDateTime+'</span></td><td>';
                                 if(complaint.ComplaintStatus == '2')
                                     complaints += '<span id="LnkBtn1" onclick="window.location.href='+"'"+'<?= base_url() ?>'+'/complaints/update_complaint/'+complaint.ComID+'/2'+"'"+'" class="BtnLnk Prcss">In Process</span>';
                                 else if(complaint.ComplaintStatus == '3')

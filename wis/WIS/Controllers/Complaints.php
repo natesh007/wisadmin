@@ -367,11 +367,21 @@ class Complaints extends BaseController
 			$this->data['images'] = @$complaint_data->data->Images;
 		}
 		$this->data['departments'] = [];
-		$departments_array = array(
-			"DeptName" => "",
-			"BrID" => "",
-			"SortType" => "department",
-		);
+		if($Mode == 4){
+			$departments_array = array(
+				"DeptID" => $complaint_data->data->{0}->DeptID,
+				"DeptName" => "",
+				"BrID" => "",
+				"SortType" => "department",
+			);
+		}else{
+			$departments_array = array(
+				"DeptName" => "",
+				"BrID" => "",
+				"SortType" => "department",
+			);
+		}
+		
 		$departments_data = $this->AuthModel->callwebservice(SAURL."alldepartments", $departments_array, 1, 1);
 		if (@$departments_data->status == "Success") {
 			$this->data['departments'] = @$departments_data->data;
@@ -379,7 +389,27 @@ class Complaints extends BaseController
 		$this->data['ComID'] = $ComID;
 		$this->data['Mode'] = $Mode;
 		if ($this->request->getMethod() == 'post') {
+			//echo "<pre>";print_r($this->request->getVar());
             $complaint_array =  @$this->request->getVar();
+			if($Mode == 4){
+				$complaint_array =  @$this->request->getVar();
+
+				$reassign_array = array(
+					"ComID" => $ComID,
+					"AssignTo" => $complaint_data->data->{0}->empid,
+					"ComplaintStatus" => $complaint_data->data->{0}->ComplaintStatus,
+					"AssignTime" => $complaint_data->data->{0}->AssignedTime,
+					"CompletedTime" => $complaint_data->data->{0}->CompletedDateTime
+				);  
+				$reassign_data = $this->AuthModel->callwebservice(SAURL."addreassign", $reassign_array, 1, 1);
+				$complaint_array = array(
+					"ComID" => $ComID,
+ 					"EmpID" => $this->request->getVar('EmpID'),
+					"ComplaintStatus" => $this->request->getVar('ComplaintStatus'),
+					"ReAssign" => "1"
+				);
+			}
+			
 			if($Mode == 2){
 				$complaint_array['Images'] = [];
 				if ($this->request->getFileMultiple('Images')) {
@@ -394,8 +424,8 @@ class Complaints extends BaseController
 					}
 				}
 			}
-			$complaint_data = $this->AuthModel->callwebservice(SAURL."updatecomplaint", $complaint_array, 1, 1);
 			
+			$complaint_data = $this->AuthModel->callwebservice(SAURL."updatecomplaint", $complaint_array, 1, 1);
 			if($complaint_data->status == 'Success'){
 				if($Mode == 1){
 					$complaint_array = array(

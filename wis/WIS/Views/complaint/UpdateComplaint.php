@@ -117,7 +117,7 @@
                     </div>                    
                 </div>
             </div>
-            <?php if($Mode == 1){
+            <?php if($Mode == 1 OR $Mode == 4){
                 echo '<form action="" method="post" id="AssingComplaint" enctype="multipart/form-data">
                     <input type="hidden" name="ComID" value="'.$ComID.'" />
                     <input type="hidden" name="ComplaintStatus" value="2" />
@@ -150,7 +150,7 @@
                                             <select name="DeptID" id="DeptID" class="form-select InptBx">
                                                 <option disabled selected value hidden>Department</option>';
                                                 foreach($departments as $department) {
-                                                    echo '<option value="'.$department->DeptID.'">'.$department->DeptName.'</option>';
+                                                    echo '<option value="'.$department->DeptID.'" '.($Mode == 4?"selected":"").'>'.$department->DeptName.'</option>';
                                                 }
                                             echo '</select>
                                         </div>';
@@ -389,6 +389,29 @@
                 });
             }
         });
+        <?php 
+        if($Mode == 4){
+            ?>
+            var DeptIDD = "<?=$departments[0]->DeptID;?>";
+            $( document ).ready(function() {
+                if(DeptIDD != ''){
+                    $.post("<?= base_url('/complaints/getemployeesbydepartment') ?>", {DeptID: DeptIDD}, function(data, status){
+                        var employees = '<div class="TableHldr" style="border: none;"><table class="AppDataTbl"><tr class="Hdr"><th></th><th><span class="DataTtl">Emp. ID.</span></th><th><span class="DataTtl">Employee Name</span></th><th><span class="DataTtl">Contact No.</span></th><th><span class="DataTtl">Shift Timing</span></th><th><span class="DataTtl">Assigned</span></th><th><span class="DataTtl">In Progress</span></th><th><span class="DataTtl">Total Task Completed</span></th></tr>';
+                        if(data != null){
+                            $.each(data, function (i, field) {
+                                employees += '<tr><td class="Cntr"><div class="form-check"><input class="form-check-input EmpID" type="radio" name="EmpID" value="'+field.EmpID+'"></div></td><td><span class="DataTxt">'+field.EmpID+'</span></td><td><span class="DataTxt">'+field.EmpName+'</span></td><td><span class="DataTxt">+91 '+field.Mobile+'</span> </td><td><span class="DataTxt">'+field.Shift+'</span></td><td><span class="DataTxt">'+field.Assigned+'</span></td><td><span class="DataTxt">'+field.InProcess+'</span></td><td><span class="DataTxt">'+field.Completed+'</span></td></tr>';
+                            });
+                        }else{
+                            employees += '<tr><td colspan="7" style="text-align:center"><span class="DataTxt">No data found.</span></td></tr>';
+                        }
+                        employees += '</table></div>';
+                        $('#EmpTbl').html(employees);
+                    });
+                }
+            });
+            <?php
+        }
+        ?>
         $("form[id='AssingComplaint']").validate({
             ignore: [],
             rules: {
