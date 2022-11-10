@@ -155,7 +155,7 @@
                                     <option disabled selected value hidden>Select Complaint Raised By</option>
                                     <option value="Employee">Employee</option>
                                     <option value="Customer">Customer</option>
-                                    <option value="Customer">Patient</option>
+                                    <option value="Patient">Patient</option>
                                 </select>
                             </div>
                             <div class="col-md-4">

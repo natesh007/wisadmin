@@ -78,17 +78,17 @@
                                     <?php if(!empty($priorities)){
                                         foreach($priorities as $key => $priority){
                                             echo '<div class="col-md-4">
-                                                <div class="form-check">
+                                                    <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="Priority" id="Priority'.$key.'" value="'.$key.'">
                                                     <label class="form-check-label CmplntType" for="Priority'.$key.'">'.$priority.'</label>
-                                                </div>
+                                                    </div>
                                             </div>';
                                         } 
                                     } ?>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div><br/>
                     <hr>
                     <div class="row">
                         <label class="FrmLbl">Complaint Raised By</label>
@@ -97,6 +97,7 @@
                                 <option disabled selected value hidden>Select Complaint Raised By</option>
                                 <option value="Employee">Employee</option>
                                 <option value="Customer">Customer</option>
+                                <option value="Customer">Patient</option>
                             </select>
                         </div>
                         <div class="col-md-4">
