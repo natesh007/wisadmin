@@ -51,7 +51,7 @@
                                 <ul class="SbLnk">
                                    
                                     <li>
-                                        <a href="<?php echo base_url(); ?>/complaintCReports" class="SbLnk Actv">Complaints Report Overview</a>
+                                        <a href="<?php echo base_url(); ?>/complaintCReports" class="SbLnk Actv">Overview Report</a>
                                     </li>
                                 </ul>
                             </div>
@@ -72,25 +72,41 @@
             </div>
             <div class="SrchFltrDv ChckLst">
                 <div class="container-fluid">
+                <form method="post" id="ComplaintsForm">
                     <div class="row">
                         <div class="col-md-2">
-                            <span class="InnrTtl">Today</span>
-                            <span class="InnrTxt">08 December 2021</span>
+                            <span class="InnrTtl">Date</span>
+                            <span class="InnrTxt" id="rdates"><?= date("jS \ F Y");?></span>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <input type="date" class="form-control InptBx Clndr" name="FromDate" id="FromDate" />
                         </div>
                         <div class="col-md-2">
-                            <input type="text" class="form-control InptBx Clndr" id="staticEmail" value="From Date" />
+                            <input type="date" class="form-control InptBx Clndr" name="ToDate" id="ToDate"  />
                         </div>
                         <div class="col-md-2">
-                            <input type="text" class="form-control InptBx Clndr" id="Text1" value="To Date" />
+                        <select class="form-select InptBx" id="Dates" name="Dates">
+                                                <option>Select Filter</option>
+                                                <option value="1">Today</option>
+                                                <option value="2">This Month</option>
+                                                <!-- <option value="3">Last Month</option> -->
+                                                <option value="4">Last 3 months</option>
+                                                <option value="5">Year Till Date</option>
+                                                
+                         </select>
                         </div>
-                        <div class="col-md-6 BttnHldr">
-                            <button type="button" class="btn btn-primary SbmtBtn">
+                        
+                        <div class="col-md-4 BttnHldr">
+                            <button type="button" class="btn btn-primary SbmtBtn" id="formsubmit" name="formsubmit">
                                 Submit
                             </button>
                             <button type="button" class="btn btn-primary FnctnBtn Prnt">Print</button>
                             <button type="button" class="btn btn-primary FnctnBtn Dwnld">Download</button>
                         </div>
+                        
                     </div>
+                    </form>
                 </div>
             </div>
             <div class="SctnGrphDsh">
@@ -98,163 +114,21 @@
                     <div class="GraphHldr ">
                         <span class="GrphTtl">Complaints by</span>
                         <canvas id="OpThChart1" height="100"></canvas>
-                        <script>
-                            var ctx = document.getElementById('OpThChart1').getContext('2d');
-                            var myChart = new Chart(ctx, {
-                                type: 'doughnut', // line, bar, radar, doughnut, polarArea, bubble, scatter
-                                data: {
-                                    labels: ['Visitors', 'Employee', 'Doctors'],
-                                    datasets: [
-                                        {
-                                            label: 'Male',
-                                            data: [64, 45, 22],
-                                            borderWidth: 0,
-                                            hoverBorderColor: 'rgba(255,255,255,1)',
-                                            hoverBackgroundColor: [
-                                                'rgba(0, 137, 231, 1)',
-                                                'rgba(236, 19, 188, 1)',
-                                                'rgba(32, 201, 151, 1)'
-                                            ],
-                                            backgroundColor: [
-                                                'rgba(0, 137, 231, 0.75)',
-                                                'rgba(236, 19, 188, 0.75)',
-                                                'rgba(32, 201, 151, 0.75)'
-                                            ]
-                                        }
-                                    ]
-                                },
-                                options: {
-                                    plugins: {
-                                        legend: {
-                                            labels: {
-                                                // This more specific font property overrides the global property
-                                                font: {
-                                                    family: "'Open Sans'",
-                                                    weight: 600,
-                                                    size: 13
-                                                },
-                                                color: "#444",
-                                            },
-
-                                        }
-                                    },
-
-                                }
-                            });
-                        </script>
+                        
                     </div>
                 </div>
                 <div class="GrphCol CRReport">
                     <div class="GraphHldr ">
-                        <span class="GrphTtl">Total Complaints</span>
+                        <span class="GrphTtl" id="tcomp">Total Complaints</span>
                         <canvas id="OpThChart" height="100"></canvas>
-                        <script>
-                            var ctx = document.getElementById('OpThChart').getContext('2d');
-                            var myChart = new Chart(ctx, {
-                                type: 'doughnut', // line, bar, radar, doughnut, polarArea, bubble, scatter
-                                data: {
-                                    labels: ['Unassigned', 'In Process', 'Completed','Pending'],
-                                    datasets: [
-                                        {
-                                            label: 'Male',
-                                            data: [64, 45, 50,30],
-                                            borderWidth: 0,
-                                            hoverBorderColor: 'rgba(255,255,255,1)',
-                                            hoverBackgroundColor: [
-                                                'rgba(220, 53, 69, 1)',
-                                                'rgba(253, 126, 20, 1)',
-                                                'rgba(25, 135, 84, 1)',
-                                                'rgba(250, 135, 84, 1)'
-                                            ],
-                                            backgroundColor: [
-                                                'rgba(220, 53, 69, 0.75)',
-                                                'rgba(253, 126, 20, 0.75',
-                                                'rgba(25, 135, 84, 0.75)',
-                                                'rgba(250, 135, 84, 0.75)'
-                                            ]
-                                        }
-                                    ]
-                                },
-                                options: {
-                                    plugins: {
-                                        legend: {
-                                            labels: {
-                                                // This more specific font property overrides the global property
-                                                font: {
-                                                    family: "'Open Sans'",
-                                                    weight: 600,
-                                                    size: 13
-                                                },
-                                                color: "#444",
-                                            },
-
-                                        }
-                                    },
-
-                                }
-                            });
-                        </script>
+                        
                     </div>
                 </div>
                 <div class="GrphCol CRReport">
                     <div class="GraphHldr ">
                         <span class="GrphTtl">Complaints Type</span>
                         <canvas id="OpThChartB" height="100"></canvas>
-                        <script>
-                            var ctx = document.getElementById('OpThChartB').getContext('2d');
-                            var myChart = new Chart(ctx, {
-                                type: 'doughnut', // line, bar, radar, doughnut, polarArea, bubble, scatter
-                                data: {
-                                    labels: ['Heating/ Cooling', 'Cleanliness', 'Water', 'Equipment', 'Damages', 'Soap', 'Tissues', 'Drinking Water'],
-                                    datasets: [
-                                        {
-                                            label: 'Male',
-                                            data: [64, 30, 21, 45, 50, 50, 50, 66],
-                                            borderWidth: 0,
-                                            hoverBorderColor: 'rgba(255,255,255,1)',
-                                            hoverBackgroundColor: [
-                                                'rgba(13, 110, 253, 1)',
-                                                'rgba(102, 16, 242, 1)',
-                                                'rgba(214, 51, 132, 1)',
-                                                'rgba(253, 126, 20, 1)',
-                                                'rgba(32, 201, 151, 1)',
-                                                'rgba(13, 202, 240, 1)',
-                                                'rgba(108, 117, 125, 1)',
-                                                'rgba(220, 53, 69, 1)'
-
-                                            ],
-                                            backgroundColor: [
-                                                'rgba(13, 110, 253, 0.75)',
-                                                'rgba(102, 16, 242, 0.75)',
-                                                'rgba(214, 51, 132, 0.75)',
-                                                'rgba(253, 126, 20, 0.75)',
-                                                'rgba(32, 201, 151, 0.75)',
-                                                'rgba(13, 202, 240, 0.75)',
-                                                'rgba(108, 117, 125, 0.75)',
-                                                'rgba(220, 53, 69, 0.75)'
-                                            ]
-                                        }
-                                    ]
-                                },
-                                options: {
-                                    plugins: {
-                                        legend: {
-                                            labels: {
-                                                // This more specific font property overrides the global property
-                                                font: {
-                                                    family: "'Open Sans'",
-                                                    weight: 600,
-                                                    size: 13
-                                                },
-                                                color: "#444",
-                                            },
-
-                                        }
-                                    },
-
-                                }
-                            });
-                        </script>
+                        
                     </div>
                 </div>
                 
@@ -773,4 +647,195 @@
         </div>
     </div>
 </body>
+<script>
+    //  var data = {FromDate:"",ToDate:"",ComBy:"1"};
+    
+    $.ajax({
+            url: '<?= base_url('/complaintCReports1'); ?>',
+            type: "POST",
+            data: {FromDate:"",ToDate:"",ComBy:"4"},
+            async:false,
+            error: function(request, response) {
+                console.log(request);
+            },
+            success: function(result) {
+                var obj = jQuery.parseJSON(result);
+                addDataToGraph(obj);
+            }
+        });
+      function addDataToGraph(data){
+        $("#tcomp").text("Total Complaints : "+data['data']['totalcount']);
+        $("#rdates").text(data['data']['Dates']['FromDate']+" To "+data['data']['Dates']['ToDate']);
+        let chartStatus = Chart.getChart("OpThChart1"); // <canvas> id
+            if (chartStatus != undefined) {
+            chartStatus.destroy();
+            }
+        var ctx_compliantby = document.getElementById('OpThChart1').getContext('2d');
+        var myChart_compliantby = new Chart(ctx_compliantby, {
+        type: 'doughnut', // line, bar, radar, doughnut, polarArea, bubble, scatter
+        data: {
+            labels: ['Customers', 'Employee', 'Patient'],
+            datasets: [
+                {
+                    label: 'Male',
+                    data: [data['data']['data'][0]['Customer'], data['data']['data'][0]['Employee'], data['data']['data'][0]['Patient']],
+                    borderWidth: 0,
+                    hoverBorderColor: 'rgba(255,255,255,1)',
+                    hoverBackgroundColor: [
+                        'rgba(0, 137, 231, 1)',
+                        'rgba(236, 19, 188, 1)',
+                        'rgba(32, 201, 151, 1)'
+                    ],
+                    backgroundColor: [
+                        'rgba(0, 137, 231, 0.75)',
+                        'rgba(236, 19, 188, 0.75)',
+                        'rgba(32, 201, 151, 0.75)'
+                    ]
+                }
+            ]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        // This more specific font property overrides the global property
+                        font: {
+                            family: "'Open Sans'",
+                            weight: 600,
+                            size: 13
+                        },
+                        color: "#444",
+                    },
+
+                }
+            },
+
+        }
+    });
+    let chartStatus1 = Chart.getChart("OpThChart"); // <canvas> id
+            if (chartStatus1 != undefined) {
+            chartStatus1.destroy();
+            }
+    var ctx_total_complaints = document.getElementById('OpThChart').getContext('2d');
+    var myChart_total_complaints = new Chart(ctx_total_complaints, {
+        type: 'doughnut', // line, bar, radar, doughnut, polarArea, bubble, scatter
+        data: {
+            labels: ['Unassigned', 'In Process', 'Completed'],
+            datasets: [
+                {
+                    label: 'Male',
+                    data: [data['data']['data'][0]['Assigned'], data['data']['data'][0]['InProcess'], data['data']['data'][0]['Completed']],
+                    borderWidth: 0,
+                    hoverBorderColor: 'rgba(255,255,255,1)',
+                    hoverBackgroundColor: [
+                        'rgba(220, 53, 69, 1)',
+                        'rgba(253, 126, 20, 1)',
+                        'rgba(25, 135, 84, 1)',
+                        'rgba(250, 135, 84, 1)'
+                    ],
+                    backgroundColor: [
+                        'rgba(220, 53, 69, 0.75)',
+                        'rgba(253, 126, 20, 0.75',
+                        'rgba(25, 135, 84, 0.75)',
+                        'rgba(250, 135, 84, 0.75)'
+                    ]
+                }
+            ]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        // This more specific font property overrides the global property
+                        font: {
+                            family: "'Open Sans'",
+                            weight: 600,
+                            size: 13
+                        },
+                        color: "#444",
+                    },
+
+                }
+            },
+
+        }
+    });
+    let chartStatus2 = Chart.getChart("OpThChartB"); // <canvas> id
+            if (chartStatus2 != undefined) {
+            chartStatus2.destroy();
+            }
+    var ctx_complaint_type = document.getElementById('OpThChartB').getContext('2d');
+    var myChart_complaint_type = new Chart(ctx_complaint_type, {
+        type: 'doughnut', // line, bar, radar, doughnut, polarArea, bubble, scatter
+        data: {
+            labels: [data['data']['ComplaintsType'][0]['CategoryName'], data['data']['ComplaintsType'][1]['CategoryName'], data['data']['ComplaintsType'][2]['CategoryName'], data['data']['ComplaintsType'][3]['CategoryName'], data['data']['ComplaintsType'][4]['CategoryName'], data['data']['ComplaintsType'][5]['CategoryName'], data['data']['ComplaintsType'][6]['CategoryName'], data['data']['ComplaintsType'][7]['CategoryName']],
+            datasets: [
+                {
+                    label: 'Male',
+                    data: [data['data']['ComplaintsType'][0]['Count'], data['data']['ComplaintsType'][1]['Count'], data['data']['ComplaintsType'][2]['Count'], data['data']['ComplaintsType'][3]['Count'], data['data']['ComplaintsType'][4]['Count'], data['data']['ComplaintsType'][5]['Count'], data['data']['ComplaintsType'][6]['Count'], data['data']['ComplaintsType'][7]['Count']],
+                    borderWidth: 0,
+                    hoverBorderColor: 'rgba(255,255,255,1)',
+                    hoverBackgroundColor: [
+                        'rgba(13, 110, 253, 1)',
+                        'rgba(102, 16, 242, 1)',
+                        'rgba(214, 51, 132, 1)',
+                        'rgba(253, 126, 20, 1)',
+                        'rgba(32, 201, 151, 1)',
+                        'rgba(13, 202, 240, 1)',
+                        'rgba(108, 117, 125, 1)',
+                        'rgba(220, 53, 69, 1)'
+
+                    ],
+                    backgroundColor: [
+                        'rgba(13, 110, 253, 0.75)',
+                        'rgba(102, 16, 242, 0.75)',
+                        'rgba(214, 51, 132, 0.75)',
+                        'rgba(253, 126, 20, 0.75)',
+                        'rgba(32, 201, 151, 0.75)',
+                        'rgba(13, 202, 240, 0.75)',
+                        'rgba(108, 117, 125, 0.75)',
+                        'rgba(220, 53, 69, 0.75)'
+                    ]
+                }
+            ]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        // This more specific font property overrides the global property
+                        font: {
+                            family: "'Open Sans'",
+                            weight: 600,
+                            size: 13
+                        },
+                        color: "#444",
+                    },
+
+                }
+            },
+
+        }
+    });
+      }  
+      $("#formsubmit").click(function(){ 
+        var fromdate = $("#FromDate").val();
+	            var todate = $("#ToDate").val(); 
+                var dates = $("#Dates").val(); 
+                $.ajax({
+                url: '<?= base_url('/complaintCReports1'); ?>',
+                type: "POST",
+                data: {FromDate:fromdate,ToDate:todate,ComBy:dates},
+                async:false,
+                error: function(request, response) {
+                    console.log(request);
+                },
+                success: function(result) {
+                    var obj = jQuery.parseJSON(result);
+                    addDataToGraph(obj);
+                }
+            });
+      });
+      
+    </script>
 </html>

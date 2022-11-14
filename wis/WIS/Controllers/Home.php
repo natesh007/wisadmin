@@ -109,6 +109,20 @@ class Home extends BaseController
 	public function complaintCReports(){
 		echo view('Modules\WIS\Views/complaint/complaintsNCReport', $this->data);
 	}
+	public function complaintCReports1(){
+		$this->data['FromDate'] = @$this->request->getVar('FromDate');
+		$this->data['ToDate'] = @$this->request->getVar('ToDate');
+		$this->data['ComBy'] = @$this->request->getVar('ComBy');
+		$creport_array = array(
+			"FromDate" => $this->data['FromDate'],
+			"ToDate" => $this->data['ToDate'],
+			"ComBy" => $this->data['ComBy'],
+		);
+		// echo json_encode($creport_ array);die();
+		$creport_data = $this->AuthModel->callwebservice(SAURL."graphcomplaintsby", $creport_array, 1, 1);
+		echo json_encode($creport_data);
+		//echo view('Modules\WIS\Views/complaint/complaintsNCReport', $creport_data);
+	}
 	public function complaintEReports(){
 		echo view('Modules\WIS\Views/complaint/complaintsNEReport', $this->data);
 	}

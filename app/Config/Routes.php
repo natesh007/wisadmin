@@ -70,6 +70,7 @@ $routes->add('/complaintDashboard', 'Home::complaintDashboard',['namespace' => '
 $routes->add('/complaintAttendence', 'Home::complaintAttendence',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaintDetReports', 'Home::complaintDetReports',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/complaintCReports', 'Home::complaintCReports',['namespace' => 'Modules\WIS\Controllers']);
+$routes->add('/complaintCReports1', 'Home::complaintCReports1',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/bedsOccupancy', 'Home::bedsOccupancy',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/bedsOccupancyDetails', 'Home::bedsOccupancyDetails',['namespace' => 'Modules\WIS\Controllers']);
 $routes->add('/manpowerUtilization', 'Home::manpowerUtilization',['namespace' => 'Modules\WIS\Controllers']);
