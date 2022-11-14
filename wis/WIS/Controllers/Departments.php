@@ -81,7 +81,7 @@ class Departments extends BaseController
 		if ($this->request->getMethod() == 'post') {
             $department_array =  @$this->request->getVar();
 			if(@$this->request->getVar('DeptID')){
-				$department_data = $this->AuthModel-> (SAURL."editdepartment", $department_array, 1, 1);
+				$department_data = $this->AuthModel->callwebservice(SAURL."editdepartment", $department_array, 1, 1);
 			}else{
 				$department_data = $this->AuthModel->callwebservice(SAURL."adddepartment", $department_array, 1, 1);
 			}
